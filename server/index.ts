@@ -2,6 +2,8 @@ import express from "express";
 const app: express.Express = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+import shopRoute from "./shop/route";
+import userRoute from "./user/route";
 
 //CROS対応（というか完全無防備：本番環境ではだめ絶対）
 app.use(
@@ -12,6 +14,9 @@ app.use(
     next();
   }
 );
+
+app.use("/shop", shopRoute);
+app.use("/user", userRoute);
 
 app.listen(7000, () => {
   console.log("Start on port 7000.");
