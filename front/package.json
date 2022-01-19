@@ -1,6 +1,7 @@
 {
   "name": "my-app",
   "private": true,
+  "proxcy": "http://localhost:7000",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
