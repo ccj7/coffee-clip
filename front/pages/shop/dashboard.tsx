@@ -1,4 +1,6 @@
 import Head from "next/head";
+
+import Header from "../../component/Header";
 import Profile from "../../component/Profile";
 import PrimaryButton from "../../component/Button";
 
@@ -31,6 +33,7 @@ function PhotoImage() {
         <title>Dashboard</title>
         <meta name="dashboard" content="ダッシュボード" />
       </Head>
+      <Header />
       <Profile shopInfo={dammy} />
       <p>住所：{dammy.address}</p>
       <p>HP：{dammy.HP}</p>
