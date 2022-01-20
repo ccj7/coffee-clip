@@ -1,4 +1,8 @@
 import Head from "next/head";
+import Link from "next/link";
+
+import UserHeader from "../../component/UserHeader";
+
 
 function Shoplist () {
 
@@ -28,17 +32,24 @@ function Shoplist () {
     <div>
       <Head>
         <title>ショップ一覧</title>
+        <meta name="shoplist" content="ショップ一覧" />
       </Head>
-      {shoplist.map(shop => {
-        return (
-          <div key={shop.shopId}>
-            <p>{shop.name}</p>
-            <p>{shop.shopId}</p>
-            <p>{shop.image}</p>
-            <p>{shop.comment}</p>
-          </div>
-          )
-        })}
+      <UserHeader />
+      <section>
+        {shoplist.map(shop => {
+          return (
+            <Link href="/">
+            {/* TODO リンク先は各shopのTOPページ */}
+            <div key={shop.shopId}>
+              <p>{shop.name}</p>
+              <p>{shop.shopId}</p>
+              <p>{shop.image}</p>
+              <p>{shop.comment}</p>
+            </div>
+            </Link>
+            )
+          })}
+      </section>
     </div>
   );
 }
