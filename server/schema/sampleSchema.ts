@@ -1,3 +1,5 @@
+// TODO: This is a sample schema! Please remove this file before deploying.
+
 import { Schema }  from "mongoose";
 
 interface Kitty {
