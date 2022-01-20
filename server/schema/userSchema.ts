@@ -8,7 +8,7 @@ interface Review {
 interface User {
     auth_id: string
     handle_name: string
-    display_name?: string
+    display_name: string
     icon?: string
     follower_handle_names?: Types.Array<string>
     followee_handle_names?: Types.Array<string>
@@ -18,7 +18,7 @@ interface User {
 const userSchema = new Schema<User, Model<User>>({
     auth_id: { type: String, required: true },
     handle_name: { type: String, required: true },
-    display_name: String,
+    display_name: { type: String, required: true },
     icon: String,
     follower_handle_names: [String],
     followee_handle_names: [String],
