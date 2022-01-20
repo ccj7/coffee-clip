@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-import Header from '../../component/Header'
+import Header from '../../component/shop/Header'
 
 function shopTopPage() {
     return (
