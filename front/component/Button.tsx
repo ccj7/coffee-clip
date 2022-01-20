@@ -1,11 +1,11 @@
 // TODO propsの型を変換する
 function PrimaryButton(props: any) {
-  const { text } = props;
+  const { text, onclick } = props
   return (
     <div>
-      <button>{text}</button>
+      <button onClick={onclick}>{text}</button>
     </div>
-  );
+  )
 }
 
-export default PrimaryButton;
+export default PrimaryButton
