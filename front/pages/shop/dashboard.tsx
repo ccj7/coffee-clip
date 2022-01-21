@@ -46,10 +46,13 @@ function PhotoImage() {
         <meta name="dashboard" content="ダッシュボード" />
       </Head>
       <Header />
-      <Profile shopInfo={dammy} />
-      <p>住所：{dammy.address}</p>
-      <p>HP：{dammy.HP}</p>
-      <p>instagram:{dammy.instagram}</p>
+      <Profile
+        display_name={shopInfo.display_name}
+        handle_name={shopInfo.handle_name}
+      />
+      <p>住所：{shopInfo.address}</p>
+      <p>HP：{shopInfo.hp_url}</p>
+      <p>instagram:{shopInfo.instagram_url}</p>
       <p>お気に入り　●（数を表示）</p>
       <PrimaryButton text="編集" />
       <PrimaryButton text="公開ページを作成" />
