@@ -1,0 +1,50 @@
+{
+    "users": [
+        {
+            "auth_id": "1111",
+            "handle_name": "@kaori_hikita",
+            "display_name": "Kaori",
+            "icon": "Kaoriのアイコン画像",
+            "follower_handle_names": ["@bob", "@alice", "@vue_love"],
+            "followee_handle_names": ["@alice", "@james", "@react_love"],
+            "reviews": [
+                {
+                    "image": "レビュー画像A",
+                    "description": "とてもおいしいコーヒーでした"
+                },
+                {
+                    "image": "レビュー画像B",
+                    "description": "もっと味に深みがほしい"
+                }
+            ]
+        },
+        {
+            "auth_id": "2222",
+            "handle_name": "@bob",
+            "display_name": "Bob",
+            "icon": "Bobのアイコン画像",
+            "follower_handle_names": ["@alice", "@vue_love"],
+            "followee_handle_names": ["@kaori_hikita"],
+            "reviews": [
+                {
+                    "image": "レビュー画像C",
+                    "description": "最高！！"
+                }
+            ]
+        },
+        {
+            "auth_id": "3333",
+            "handle_name": "@alice",
+            "display_name": "Alice",
+            "icon": "Aliceのアイコン画像",
+            "follower_handle_names": ["@kaori_hikita", "@bob", "@vue_love"],
+            "followee_handle_names": ["@kaori_hikita", "@react_love"],
+            "reviews": [
+                {
+                    "image": "レビュー画像D",
+                    "description": "さっぱりしていた"
+                }
+            ]
+        }
+    ]
+}
