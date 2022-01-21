@@ -1,9 +1,9 @@
 import React from 'react'
 
-// props typeを指定
+// TODO propsの型指定
+// TODO tabの色を変更
 const Tabs = (props: any) => {
   const { color } = props
-
   const [openTab, setOpenTab] = React.useState(1)
   return (
     <>
@@ -29,7 +29,7 @@ const Tabs = (props: any) => {
                 href="#link1"
                 role="tablist"
               >
-                Profile
+                飲んだ！
               </a>
             </li>
             <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
@@ -48,7 +48,7 @@ const Tabs = (props: any) => {
                 href="#link2"
                 role="tablist"
               >
-                Settings
+                飲みたい！
               </a>
             </li>
             <li className="-mb-px mr-2 last:mr-0 flex-auto text-center">
@@ -67,7 +67,7 @@ const Tabs = (props: any) => {
                 href="#link3"
                 role="tablist"
               >
-                Options
+                お気に入りのshop！
               </a>
             </li>
           </ul>

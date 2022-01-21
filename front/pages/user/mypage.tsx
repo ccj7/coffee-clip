@@ -27,6 +27,7 @@ function Mypage() {
   //　user情報を取得
   useEffect(() => {
     const getUser = async (authId: string) => {
+      //　🚫エラーになるのでコメントアウトしてます！
       //   const res: any = await axios.get(`/api/users/${authId}`)
       //   setUserInfo(res)
     }
@@ -47,9 +48,7 @@ function Mypage() {
       <p>フォロー数表示</p>
       <p>フォロワー数表示</p>
       <section>
-        <Tabs color="pink" />
-        {/* TODO ここにタブを作る */}
-        <p>ここにタブを作る</p>
+        <Tabs color="amber" />
       </section>
     </div>
   )
