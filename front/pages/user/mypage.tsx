@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import axios from 'axios'
+// import axios from 'axios'
 
 import UserHeader from '../../components/user/UserHeader'
 import Profile from '../../components/Profile'
