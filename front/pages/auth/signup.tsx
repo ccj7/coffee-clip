@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-import Header from '../../component/shop/Header'
+import Header from '../../components/shop/Header'
 import { useForm } from 'react-hook-form'
 
 import {
