@@ -8,7 +8,7 @@ export const getUsers = async (req: Request, res: Response) => {
 }
 
 export const getUserByHandleName = async (req: Request, res: Response) => {
-    const handleName: String = req.params.handleName
+    const handleName: String = req.params.authId
 
     const user = data.users.filter((user) => user.handle_name === handleName)
     res.json(user[0])
