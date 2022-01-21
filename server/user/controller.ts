@@ -7,10 +7,10 @@ export const getUsers = async (req: Request, res: Response) => {
     res.json(data)
 }
 
-export const getUserByHandleName = async (req: Request, res: Response) => {
+export const getUserByAuthId = async (req: Request, res: Response) => {
     const authId: String = req.params.authId
 
-    const user = data.users.filter((user) => user.handle_name === authId)
+    const user = data.users.filter((user) => user.auth_id === authId)
     res.json(user[0])
 }
 

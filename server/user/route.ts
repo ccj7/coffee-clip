@@ -1,10 +1,10 @@
 import { Router } from 'express'
-import { getUsers, getUserByHandleName, postUser } from './controller'
+import { getUsers, getUserByAuthId, postUser } from './controller'
 
 const routes = Router()
 
 routes.get('/', getUsers)
-routes.get('/:authId', getUserByHandleName)
+routes.get('/:authId', getUserByAuthId)
 
 routes.post('/', postUser)
 
