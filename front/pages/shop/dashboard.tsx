@@ -3,29 +3,41 @@ import Head from 'next/head'
 import Header from '../../components/shop/Header'
 import Profile from '../../components/Profile'
 import PrimaryButton from '../../components/Button'
+import { useEffect, useState } from 'react'
 
 function PhotoImage() {
   const dammy = {
-    uid: 1234,
-    shopId: 'arasuna_coffee',
-    name: 'Arasuna Coffee',
-    Image: 'image',
+    auth_id: '1',
+    handle_name: 'arasuna_coffee',
+    display_name: 'Arasuna Coffee',
+    icon: 'image',
     address: '東京都コードクリサリス',
-    googlemap: 'googlemap URL',
-    HP: 'HP URL',
-    instagram: 'instagram URL',
-    OpeningHours: '9:00~10:00',
-    holiday: '月曜日',
-    comment: '美味しいコーヒー提供してま〜す',
-    recommendCoffee: {
+    map_url: 'googlemap URL',
+    hp_url: 'HPURL',
+    instagram_url: 'instagram URL',
+    opening_hours: '9:00~10:00',
+    regular_day_off: '月曜日',
+    concept: '美味しいコーヒー提供してま〜す',
+    recommendation: {
       title: 'グリッチ',
-      photo: 'image',
       description: '酸味が特徴！',
+      image: 'image',
     },
-    PhotosOfTheStore: 'image',
-    commitmentToCoffee: '人生かけてコーヒー淹れてます！',
+    selling_point: 'image',
+    follower_handle_name: ['ccmizki'],
   }
-  // const [shopInfo, setShopInfo] = useEffect<any>(dammy);
+  const [shopInfo, setShopInfo] = useState<any>(dammy)
+
+  console.log(shopInfo.display_name)
+  //　user情報を取得
+  useEffect(() => {
+    const getShop = async (authId: string) => {
+      //　🚫エラーになるのでコメントアウトしてます！
+      //   const res: any = await axios.get(`/api/shops/${authId}`)
+      //   setShopInfo(res)
+    }
+    getShop('test')
+  }, [])
 
   return (
     <div>
