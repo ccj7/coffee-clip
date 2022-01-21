@@ -4,8 +4,10 @@ import Header from '../../components/shop/Header'
 import Profile from '../../components/Profile'
 import PrimaryButton from '../../components/Button'
 import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 function PhotoImage() {
+    // TODO: dammyデータ削除 & Interfaceをサーバー側のスキーマから流用して作成
   const dammy = {
     auth_id: '1',
     handle_name: 'arasuna_coffee',
@@ -32,10 +34,12 @@ function PhotoImage() {
   //　user情報を取得
   useEffect(() => {
     const getShop = async (authId: string) => {
-      //　🚫エラーになるのでコメントアウトしてます！
-      //   const res: any = await axios.get(`/api/shops/${authId}`)
-      //   setShopInfo(res)
+      // TODO: dammy変更してください
+        const res: any = await axios.get('/api/shops')
+        console.log(res.data.dammy)
+        setShopInfo(res.data.dammy[0])
     }
+    // TODO: testはdummyの値です
     getShop('test')
   }, [])
 
