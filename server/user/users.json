@@ -5,8 +5,8 @@
             "handle_name": "@kaori_hikita",
             "display_name": "Kaori",
             "icon": "Kaoriのアイコン画像",
-            "follower_handle_names": ["@bob", "@alice", "@vue_love"],
-            "followee_handle_names": ["@alice", "@james", "@react_love"],
+            "follower_auth_ids": ["2222", "3333", "6666"],
+            "followee_auth_ids": ["3333", "7777", "8888"],
             "reviews": [
                 {
                     "image": "レビュー画像A",
@@ -23,8 +23,8 @@
             "handle_name": "@bob",
             "display_name": "Bob",
             "icon": "Bobのアイコン画像",
-            "follower_handle_names": ["@alice", "@vue_love"],
-            "followee_handle_names": ["@kaori_hikita"],
+            "follower_auth_ids": ["3333", "6666"],
+            "followee_auth_ids": ["1111"],
             "reviews": [
                 {
                     "image": "レビュー画像C",
@@ -37,8 +37,8 @@
             "handle_name": "@alice",
             "display_name": "Alice",
             "icon": "Aliceのアイコン画像",
-            "follower_handle_names": ["@kaori_hikita", "@bob", "@vue_love"],
-            "followee_handle_names": ["@kaori_hikita", "@react_love"],
+            "follower_auth_ids": ["1111", "2222", "6666"],
+            "followee_auth_ids": ["1111", "8888"],
             "reviews": [
                 {
                     "image": "レビュー画像D",
