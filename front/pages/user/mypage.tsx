@@ -7,33 +7,20 @@ import Tabs from '../../components/Tab'
 import { useEffect, useState } from 'react'
 
 function Mypage() {
-  const [userInfo, setUserInfo] = useState({
-    auth_id: '2222',
-    handle_name: '@bob',
-    display_name: 'Bob',
-    icon: 'Bobのアイコン画像',
-    follower_handle_names: ['@alice', '@vue_love'],
-    followee_handle_names: ['@kaori_hikita'],
-    reviews: [
-      {
-        image: 'レビュー画像C',
-        description: '最高！！',
-      },
-    ],
-  })
+  const [userInfo, setUserInfo] = useState({})
   // TODO paramsからハンドルネームを取得
-
-  console.log(userInfo.display_name)
+  
   //　user情報を取得
   useEffect(() => {
     const getUser = async (authId: string) => {
-      //　🚫エラーになるのでコメントアウトしてます！
-      //   const res: any = await axios.get(`/api/users/${authId}`)
-      //   setUserInfo(res)
+      const res: any = await axios.get(`/api/users/${authId}`)
+      setUserInfo(res.data)
     }
-    getUser('test')
+    // TODO: 実際のユーザーIDに変更
+    getUser('1111')
   }, [])
 
+  // TODO: typescriptのuserInfo用のinterfaceをサーバー側から流用して作成
   return (
     <div>
       <Head>
