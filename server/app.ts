@@ -1,7 +1,6 @@
-import express, { application } from "express";
+import express from "express";
 import shopRoute from "./shop/route";
 import userRoute from "./user/route";
-import path from "path";
 
 const app: express.Express = express();
 app.use(express.json());
@@ -15,8 +14,6 @@ app.use(express.json());
 //     next();
 //   }
 // );
-
-// app.use(express.static(path.join(__dirname, './out')));
 
 app.use("/api/shops", shopRoute);
 app.use("/api/users", userRoute);
