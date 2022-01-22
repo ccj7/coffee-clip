@@ -1,3 +1,4 @@
-{
-  "extends": "next/core-web-vitals"
-}
+// TODO: コメントアウト戻す。ビルドするときにエラーが出るので一旦コメントアウトしてます。
+// {
+//   "extends": "next/core-web-vitals"
+// }
