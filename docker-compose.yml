@@ -1,0 +1,29 @@
+version: '3'
+services:
+  nginx:
+    image: 381157525858.dkr.ecr.ap-northeast-1.amazonaws.com/ccj7/coffee-clip-nginx
+    container_name: nginx
+    restart: always
+    build: 
+      context: ./nginx
+      dockerfile: Dockerfile
+    ports:
+      - '80:80'
+  client:
+    image: 381157525858.dkr.ecr.ap-northeast-1.amazonaws.com/ccj7/coffee-clip-front
+    container_name: client
+    restart: always
+    build: 
+      context: ./front
+      dockerfile: Dockerfile
+    ports:
+     - '3000:3000'
+  api:
+    image: 381157525858.dkr.ecr.ap-northeast-1.amazonaws.com/ccj7/coffee-clip-api
+    container_name: api
+    restart: always
+    build: 
+      context: ./server
+      dockerfile: Dockerfile
+    ports:
+     - '7000:7000'
