@@ -41,8 +41,8 @@ function Signup() {
       </Head>
       <Header />
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input {...register('email')} />
-        <input {...register('password')} />
+        <input {...register('email', { required: true })} />
+        <input {...register('password', { required: true })} />
         <input type="submit" />
       </form>
     </div>
