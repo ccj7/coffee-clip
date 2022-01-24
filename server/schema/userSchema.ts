@@ -12,6 +12,7 @@ interface User {
     icon?: string
     follower_auth_ids?: Types.Array<string>
     followee_auth_ids?: Types.Array<string>
+    followee_shops_auth_ids?: Types.Array<string>
     reviews?: Types.DocumentArray<Review>
 }
 
@@ -22,6 +23,7 @@ const userSchema = new Schema<User, Model<User>>({
     icon: String,
     follower_auth_ids: [String],
     followee_auth_ids: [String],
+    followee_shops_auth_ids: [String],
     reviews: [
         {
             image: String,
