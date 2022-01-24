@@ -55,7 +55,7 @@ export const getReviewsOfFolloweesByAuthId = async (
             }
         }
 
-        res.json({ followeeReviews: result })
+        res.json({ reviewsOfFollowees: result })
     } else {
         res.status(400).send('Error')
     }
