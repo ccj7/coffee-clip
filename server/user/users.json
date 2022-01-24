@@ -6,7 +6,7 @@
             "display_name": "Kaori",
             "icon": "Kaoriのアイコン画像",
             "follower_auth_ids": ["2222", "3333"],
-            "followee_auth_ids": ["3333"],
+            "followee_auth_ids": ["2222", "3333"],
             "followee_shops_auth_ids": [],
             "reviews": [
                 {
@@ -24,7 +24,7 @@
             "handle_name": "bob",
             "display_name": "Bob",
             "icon": "Bobのアイコン画像",
-            "follower_auth_ids": ["3333"],
+            "follower_auth_ids": ["1111", "3333"],
             "followee_auth_ids": ["1111"],
             "followee_shops_auth_ids": [],
             "reviews": [
@@ -46,6 +46,10 @@
                 {
                     "image": "レビュー画像D",
                     "description": "さっぱりしていた"
+                },
+                {
+                    "image": "レビュー画像E",
+                    "description": "コクがある"
                 }
             ]
         },
