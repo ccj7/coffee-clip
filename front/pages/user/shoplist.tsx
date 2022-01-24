@@ -1,46 +1,60 @@
-import Head from "next/head";
+// TODO　U-002 github issue#23
 
-function Shoplist () {
+import Head from 'next/head'
+import ShopCard from '../../components/user/ShopCard'
 
+import UserHeader from '../../components/user/UserHeader'
+
+function Shoplist() {
   const shoplist = [
     {
-      name: "Arasuna Coffee",
-      shopId: "arasuna_coffee",
-      image: "ここにImg",
-      comment: "美味しいコーヒー提供してま〜す"
+      display_name: 'Arasuna Coffee',
+      handle_name: '@arasuna_kiyosumi',
+      image: 'ここにImg',
+      description: '美味しいコーヒー提供してま〜す',
+      url: '/',
     },
     {
-      name: "Arasuna Coffee2",
-      shopId: "Arasuna_kiyosumi",
-      image: "ここにImg",
-      comment: "清澄白河にあるカフェです。清澄白河にあるカフェです。清澄白河にあるカフェです。"
+      display_name: 'Arasuna Coffee2',
+      handle_name: '@arasuna_kiyosumi',
+      image: 'ここにImg',
+      description:
+        '清澄白河にあるカフェです。清澄白河にあるカフェです。清澄白河にあるカフェです。清澄白河にあるカフェです。清澄白河にあるカフェです。清澄白河にあるカフェです。',
+      url: '/',
     },
     {
-      name: "Arasuna Coffee3",
-      shopId: "Arasuna_kiyosumi",
-      image: "ここにImg",
-      comment: "清澄白河にあるカフェです。清澄白河にあるカフェです。清澄白河にあるカフェです。"
-    }
-  ];
-
+      display_name: 'Arasuna Coffee3',
+      handle_name: '@arasuna_kiyosumi',
+      image: 'ここにImg',
+      description:
+        '清澄白河にあるカフェです。清澄白河にあるカフェです。清澄白河にあるカフェです。',
+      url: '/',
+    },
+  ]
 
   return (
     <div>
       <Head>
         <title>ショップ一覧</title>
+        <meta name="shoplist" content="ショップ一覧" />
       </Head>
-      {shoplist.map(shop => {
+      <UserHeader />
+      <section className='flex flex-wrap'>
+      { shoplist.map((shop, key) => {
         return (
-          <div key={shop.shopId}>
-            <p>{shop.name}</p>
-            <p>{shop.shopId}</p>
-            <p>{shop.image}</p>
-            <p>{shop.comment}</p>
-          </div>
-          )
-        })}
+        <ShopCard
+         key={key}
+         display_name={shop.display_name}
+         handle_name={shop.handle_name}
+         image={shop.image}
+         description={shop.description}
+         url={shop.url}
+         />
+        )})
+      }
+      </section>
     </div>
-  );
+  )
 }
 
-export default Shoplist;
+export default Shoplist

@@ -1,18 +1,24 @@
-import { Router, Request, Response } from "express";
-// import {} from "./controller";
+import { Router, Request, Response } from 'express'
+// const data = require('../dammy.json')
+// import dammy from "../dammy.json"
 
-const basePath = "/api/tasks";
-const routes = Router();
+import { getShops } from "./controller";
 
-routes.get("/", (req: Request, res: Response) => {
-  res.json({ message: `😸 Yay!` });
-});
+// const basePath = '/api/tasks'
+const routes = Router()
 
-// routes.get(basePath, getTasks);
-// routes.get(`${basePath}/:id`, getTaskById);
+routes.get('/', getShops)
+
+// routes.get('/:authId', async (req: Request, res: Response): Promise<void> => {
+//     const shopAuthId = req.params.authId
+
+//     const arrayOfShop = data.filter((shop: any) => {
+//         if (shop.auth_id === shopAuthId) {
+//             res.json({ shop: shop })
+//         }
+//     })
+// })
 
 // // TODO: create more routes here
-// routes.post(`${basePath}/`, createTask);
-// routes.delete(`${basePath}/:id`, deleteTaskById);
 
-export default routes;
+export default routes
