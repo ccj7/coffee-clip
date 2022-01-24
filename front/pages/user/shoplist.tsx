@@ -44,7 +44,6 @@ function Shoplist() {
           return (
             <ShopCard
             key={key}
-            auth_id={shop.auth_id}
             display_name={shop.display_name}
             handle_name={shop.handle_name}
             icon={shop.icon}
