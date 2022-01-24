@@ -6,14 +6,13 @@ import {
   MenuItem,
   MenuList,
   Spacer,
+  Text,
 } from '@chakra-ui/react'
 import { HamburgerIcon, NotAllowedIcon } from '@chakra-ui/icons'
 
 import { getAuth, signOut } from 'firebase/auth'
 import Link from 'next/link'
 import firebase from '../../auth/firebaseConfig'
-import PrimaryButton from '../Button'
-import { Text } from '@chakra-ui/react'
 
 function Header() {
   const logout = async () => {
@@ -42,7 +41,7 @@ function Header() {
             icon={<HamburgerIcon />}
             variant="outline"
           />
-          <MenuList>
+          <MenuList color="black">
             <MenuItem icon={<NotAllowedIcon />} onClick={logout}>
               Logout
             </MenuItem>
