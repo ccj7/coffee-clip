@@ -1,73 +1,78 @@
 {
-  "shops": [
-    {
-      "auth_id": "1111",
-      "handle_name": "mizki",
-      "display_name": "mizkiii",
-      "icon": "URL",
-      "address": "japan",
-      "map_url": "Google URL",
-      "hp_url": "hpURL",
-      "instagram_url": "URL",
-      "opening_hours": "8:00~20:00",
-      "regular_day_off": "金曜日",
-      "concept": "こだわってます",
-      "recommendation": [
+    "shops": [
         {
-          "title": "アメリカンコーヒー",
-          "description": "さっぱりで飲みやすい",
-          "image": "URL"
+            "auth_id": "1111",
+            "handle_name": "mizki",
+            "display_name": "mizkiii",
+            "icon": "URL",
+            "address": "japan",
+            "map_url": "Google URL",
+            "hp_url": "hpURL",
+            "instagram_url": "URL",
+            "opening_hours": "8:00~20:00",
+            "regular_day_off": "金曜日",
+            "concept": "こだわってます",
+            "recommendation": [
+                {
+                    "title": "アメリカンコーヒー",
+                    "description": "さっぱりで飲みやすい",
+                    "image": "URL"
+                },
+                {
+                    "title": "ブラジルコーヒー",
+                    "description": "よくわかりません",
+                    "image": "URL"
+                },
+                {
+                    "title": "エチオピア産豆",
+                    "description": "酸味が効いてます",
+                    "image": "URL"
+                }
+            ],
+            "selling_point": [
+                {
+                    "text": "おしゃよ",
+                    "image": "URL"
+                }
+            ],
+            "follower_auth_ids": ["ccmizki", "ccwalk"]
         },
         {
-          "title": "ブラジルコーヒー",
-          "description": "よくわかりません",
-          "image": "URL"
-        },
-        {
-          "title": "エチオピア産豆",
-          "description": "酸味が効いてます",
-          "image": "URL"
+            "auth_id": "2222",
+            "handle_name": "arasuna",
+            "display_name": "arasuna_kiyosumi",
+            "icon": "URL",
+            "address": "japan",
+            "map_url": "Google URL",
+            "hp_url": "hpURL",
+            "instagram_url": "URL",
+            "opening_hours": "8:00~20:00",
+            "regular_day_off": "金曜日",
+            "concept": "こだわってます",
+            "recommendation": [
+                {
+                    "title": "アメリカンコーヒー",
+                    "description": "さっぱりで飲みやすい",
+                    "image": "URL"
+                },
+                {
+                    "title": "ブラジルコーヒー",
+                    "description": "よくわかりません",
+                    "image": "URL"
+                },
+                {
+                    "title": "エチオピア産豆",
+                    "description": "酸味が効いてます",
+                    "image": "URL"
+                }
+            ],
+            "selling_point": [
+                {
+                    "text": "おしゃよ",
+                    "image": "URL"
+                }
+            ],
+            "follower_auth_ids": ["ccmizki"]
         }
-      ],
-      "selling_point": "オシャレです",
-      "follower_auth_ids": [
-        "ccmizki",
-        "ccwalk"
-      ]
-    },
-    {
-      "auth_id": "2222",
-      "handle_name": "arasuna",
-      "display_name": "arasuna_kiyosumi",
-      "icon": "URL",
-      "address": "japan",
-      "map_url": "Google URL",
-      "hp_url": "hpURL",
-      "instagram_url": "URL",
-      "opening_hours": "8:00~20:00",
-      "regular_day_off": "金曜日",
-      "concept": "こだわってます",
-      "recommendation": [
-        {
-          "title": "アメリカンコーヒー",
-          "description": "さっぱりで飲みやすい",
-          "image": "URL"
-        },
-        {
-          "title": "ブラジルコーヒー",
-          "description": "よくわかりません",
-          "image": "URL"
-        },
-        {
-          "title": "エチオピア産豆",
-          "description": "酸味が効いてます",
-          "image": "URL"
-        }
-      ],
-      "selling_point": "オシャレです",
-      "follower_auth_ids": [
-        "ccmizki"
-      ]
-    }
-  ]
+    ]
 }
