@@ -2,11 +2,11 @@
     "users": [
         {
             "auth_id": "1111",
-            "handle_name": "@kaori_hikita",
+            "handle_name": "kaori_hikita",
             "display_name": "Kaori",
             "icon": "Kaoriのアイコン画像",
-            "follower_auth_ids": ["2222", "3333", "6666"],
-            "followee_auth_ids": ["3333", "7777", "8888"],
+            "follower_auth_ids": ["2222", "3333"],
+            "followee_auth_ids": ["3333"],
             "reviews": [
                 {
                     "image": "レビュー画像A",
@@ -20,10 +20,10 @@
         },
         {
             "auth_id": "2222",
-            "handle_name": "@bob",
+            "handle_name": "bob",
             "display_name": "Bob",
             "icon": "Bobのアイコン画像",
-            "follower_auth_ids": ["3333", "6666"],
+            "follower_auth_ids": ["3333"],
             "followee_auth_ids": ["1111"],
             "reviews": [
                 {
@@ -34,17 +34,44 @@
         },
         {
             "auth_id": "3333",
-            "handle_name": "@alice",
+            "handle_name": "alice",
             "display_name": "Alice",
             "icon": "Aliceのアイコン画像",
-            "follower_auth_ids": ["1111", "2222", "6666"],
-            "followee_auth_ids": ["1111", "8888"],
+            "follower_auth_ids": ["1111", "2222"],
+            "followee_auth_ids": ["1111"],
             "reviews": [
                 {
                     "image": "レビュー画像D",
                     "description": "さっぱりしていた"
                 }
             ]
+        },
+        {
+            "auth_id": "4444",
+            "handle_name": "harry",
+            "display_name": "Harry",
+            "icon": "",
+            "follower_auth_ids": [],
+            "followee_auth_ids": [],
+            "reviews": []
+        },
+        {
+            "auth_id": "5555",
+            "handle_name": "taro_yamada",
+            "display_name": "山田　太郎",
+            "icon": "",
+            "follower_auth_ids": [],
+            "followee_auth_ids": ["6666"],
+            "reviews": []
+        },
+        {
+            "auth_id": "6666",
+            "handle_name": "emma",
+            "display_name": "Emma",
+            "icon": "",
+            "follower_auth_ids": ["5555"],
+            "followee_auth_ids": [],
+            "reviews": []
         }
     ]
 }
