@@ -7,6 +7,7 @@
             "icon": "Kaoriのアイコン画像",
             "follower_auth_ids": ["2222", "3333"],
             "followee_auth_ids": ["3333"],
+            "followee_shops_auth_ids": [],
             "reviews": [
                 {
                     "image": "レビュー画像A",
@@ -25,6 +26,7 @@
             "icon": "Bobのアイコン画像",
             "follower_auth_ids": ["3333"],
             "followee_auth_ids": ["1111"],
+            "followee_shops_auth_ids": [],
             "reviews": [
                 {
                     "image": "レビュー画像C",
@@ -39,6 +41,7 @@
             "icon": "Aliceのアイコン画像",
             "follower_auth_ids": ["1111", "2222"],
             "followee_auth_ids": ["1111"],
+            "followee_shops_auth_ids": [],
             "reviews": [
                 {
                     "image": "レビュー画像D",
@@ -53,6 +56,7 @@
             "icon": "",
             "follower_auth_ids": [],
             "followee_auth_ids": [],
+            "followee_shops_auth_ids": [],
             "reviews": []
         },
         {
@@ -62,6 +66,7 @@
             "icon": "",
             "follower_auth_ids": [],
             "followee_auth_ids": ["6666"],
+            "followee_shops_auth_ids": [],
             "reviews": []
         },
         {
@@ -71,6 +76,7 @@
             "icon": "",
             "follower_auth_ids": ["5555"],
             "followee_auth_ids": [],
+            "followee_shops_auth_ids": [],
             "reviews": []
         }
     ]
