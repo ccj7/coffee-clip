@@ -1,10 +1,12 @@
+import { Button, ButtonGroup } from '@chakra-ui/react'
+
 // TODO propsの型を変換する
 function PrimaryButton(props: any) {
   const { text, onclick } = props
   return (
-    <div>
-      <button onClick={onclick}>{text}</button>
-    </div>
+    <>
+      <Button onClick={onclick}>{text}</Button>
+    </>
   )
 }
 
