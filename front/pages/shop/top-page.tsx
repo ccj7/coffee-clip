@@ -6,8 +6,8 @@ function shopTopPage() {
   return (
     <div>
       <Head>
-        <title>Signup</title>
-        <meta name="Signup" content="ユーザー登録" />
+        <title>shop Top Page</title>
+        <meta name="shopTopPage" content="shop Top Page" />
       </Head>
       <Header />
     </div>
