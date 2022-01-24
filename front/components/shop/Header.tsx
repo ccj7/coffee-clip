@@ -29,7 +29,7 @@ function Header() {
     // TODO　色変更
     <div>
       <HStack p="2" bg="gray.800" color="white">
-        <Link href="/">
+        <Link href="/shop/dashboard">
           <Text fontSize="3xl">COFFEE CLIP</Text>
         </Link>
         <Spacer></Spacer>
