@@ -60,9 +60,9 @@ function Timeline() {
         <Stack>
           {userInfo &&
             <Box>
-              {userInfo.map((data) => {
+              {userInfo.map((data, key) => {
                 return <LogCard 
-                  key={data._id}
+                  key={key}
                   display_name={data.display_name}
                   handle_name={data.handle_name}
                   icon={data.icon}
