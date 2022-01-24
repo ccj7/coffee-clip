@@ -4,16 +4,16 @@ import Head from 'next/head'
 
 import Header from '../../components/shop/Header'
 
-function Timelime() {
+function Timeline() {
   return (
     <div>
       <Head>
-        <title>Timelime</title>
-        <meta name="Timelime" content="タイムライン" />
+        <title>Timeline</title>
+        <meta name="Timeline" content="タイムライン" />
       </Head>
       <Header />
     </div>
   )
 }
 
-export default Timelime
+export default Timeline
