@@ -6,10 +6,10 @@ function ShopCard(props: any) {
   const { display_name, handle_name, image, description, url } = props;
   return (
     <Link href={url}>
-      <Box>
+      <Box w={600} >
         <Heading size="lg">{display_name}</Heading>
         <Text>{handle_name}</Text>
-        <Image src={url} />
+        <Image src={image} />
         <Text>{description}</Text>
       </Box>
     </Link>
