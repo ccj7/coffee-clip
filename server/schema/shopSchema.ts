@@ -6,6 +6,11 @@ interface Recommendation {
     image?: string
 }
 
+interface Selling_point {
+    text?: string
+    image?: string
+}
+
 interface ShopsData {
     auth_id: string
     handle_name: string
@@ -19,7 +24,7 @@ interface ShopsData {
     regular_day_off?: string
     concept?: string
     recommendation?: Types.DocumentArray<Recommendation>
-    selling_point?: string
+    selling_point?: Types.DocumentArray<Selling_point>
     follower_auth_ids?: Types.Array<string>
 }
 
@@ -36,7 +41,7 @@ const shopsDataSchema = new Schema<ShopsData, Model<ShopsData>>({
     regular_day_off: String,
     concept: String,
     recommendation: [{ title: String, description: String, image: String }],
-    selling_point: String,
+    selling_point: [{ text: String, image: String }],
     follower_auth_ids: [String],
 })
 
