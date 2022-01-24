@@ -10,25 +10,25 @@ function Shoplist() {
     {
       display_name: 'Arasuna Coffee',
       handle_name: '@arasuna_kiyosumi',
-      image: 'ここにImg',
+      image: 'https://picsum.photos/300/200/?random',
       description: '美味しいコーヒー提供してま〜す',
-      url: 'https://picsum.photos/300/200/?random',
+      url: '/',
     },
     {
       display_name: 'Arasuna Coffee2',
       handle_name: '@arasuna_kiyosumi',
-      image: 'ここにImg',
+      image: 'https://picsum.photos/300/200/?random',
       description:
         '清澄白河にあるカフェです。清澄白河にあるカフェです。清澄白河にあるカフェです。清澄白河にあるカフェです。清澄白河にあるカフェです。清澄白河にあるカフェです。',
-      url: 'https://picsum.photos/300/200/?random',
+      url: '/',
     },
     {
       display_name: 'Arasuna Coffee3',
       handle_name: '@arasuna_kiyosumi',
-      image: 'ここにImg',
+      image: 'https://picsum.photos/300/200/?random',
       description:
         '清澄白河にあるカフェです。清澄白河にあるカフェです。清澄白河にあるカフェです。',
-      url: 'https://picsum.photos/300/200/?random',
+      url: '/',
     },
   ];
 
