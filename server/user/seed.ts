@@ -1,12 +1,13 @@
 import userModel from '../schema/userSchema'
 import data from './users.json'
 import connectToDB from '../db-connection'
+import mongoose from 'mongoose'
 
-async function run(): Promise<void> {
+export async function runSeedUser(): Promise<void> {
     await connectToDB()
+    mongoose.connection.db.dropCollection('users')
     await userModel.create(data.users)
     console.log('insert user data success!!')
-    process.exit()
 }
 
-run().catch((err) => console.log(err))
+export default runSeedUser
