@@ -37,8 +37,8 @@ function PhotoImage() {
     const getShop = async (authId: string) => {
       // TODO: dammy変更してください
       const res: any = await axios.get('/api/shops')
-      console.log(res.data.dammy)
-      setShopInfo(res.data.dammy[0])
+      console.log(res.data)
+      setShopInfo(res.data[0])
     }
     // TODO: testはdummyの値です
     getShop('test')
