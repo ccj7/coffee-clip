@@ -39,15 +39,18 @@ export const getReviewsOfFolloweesByAuthId = async (
                 })
 
                 if (followee) {
-                    const reviews = {
-                        auth_id: followee.auth_id,
-                        handle_name: followee.handle_name,
-                        display_name: followee.display_name,
-                        icon: followee.icon,
-                        reviews: followee.reviews,
+                    if (followee.reviews) {
+                        for (const review of followee.reviews) {
+                            const reviews = {
+                                auth_id: followee.auth_id,
+                                handle_name: followee.handle_name,
+                                display_name: followee.display_name,
+                                icon: followee.icon,
+                                reviews: review,
+                            }
+                            result.push(reviews)
+                        }
                     }
-
-                    result.push(reviews)
                 }
             }
         }
