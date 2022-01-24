@@ -1,11 +1,9 @@
 import { Request, Response } from 'express'
-import { connect } from 'mongoose'
 import userModel from '../schema/userSchema'
-
-const dbConnect = () => connect('mongodb://localhost:27017/coffee_clip')
+import connectToDB from '../db-connection'
 
 export const getUsers = async (req: Request, res: Response): Promise<void> => {
-    await dbConnect()
+    await connectToDB()
     const users = await userModel.find({})
     res.json(users)
 }
@@ -14,7 +12,7 @@ export const getUserByAuthId = async (
     req: Request,
     res: Response
 ): Promise<void> => {
-    await dbConnect()
+    await connectToDB()
     const authId: String = req.params.authId
     const user = await userModel.findOne({ auth_id: authId })
 
@@ -22,7 +20,7 @@ export const getUserByAuthId = async (
 }
 
 export const postUser = async (req: Request, res: Response): Promise<void> => {
-    await dbConnect()
+    await connectToDB()
     const newData = req.body
 
     const authIdCheck = await userModel.findOne({

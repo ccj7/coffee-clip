@@ -1,9 +1,9 @@
-import { connect } from 'mongoose'
 import userModel from '../schema/userSchema'
 import data from './users.json'
+import connectToDB from '../db-connection'
 
 async function run(): Promise<void> {
-    await connect('mongodb://localhost:27017/coffee_clip')
+    await connectToDB()
     await userModel.create(data.users)
     console.log('insert user data success!!')
     process.exit()
