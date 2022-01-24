@@ -61,6 +61,7 @@ function PhotoImage() {
       <p>instagram:{shopInfo.instagram_url}</p>
       <p>お気に入り　●（数を表示）</p> */}
 
+      {/* TODO 謎の丸括弧を削除する */}
       <PrimaryButton text="編集" />
       <Spacer></Spacer>
       <PrimaryButton text="公開ページを作成" />
