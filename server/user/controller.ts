@@ -19,6 +19,45 @@ export const getUserByAuthId = async (
     res.json(user)
 }
 
+export const getReviewsOfFolloweesByAuthId = async (
+    req: Request,
+    res: Response
+): Promise<void> => {
+    await connectToDB()
+    const authId: String = req.params.authId
+    const user = await userModel.findOne({ auth_id: authId })
+
+    if (user) {
+        const followeeAuthIds = user.followee_auth_ids
+
+        const result = []
+
+        if (followeeAuthIds) {
+            for (const followeeAuthId of followeeAuthIds) {
+                const followee = await userModel.findOne({
+                    auth_id: followeeAuthId,
+                })
+
+                if (followee) {
+                    const reviews = {
+                        auth_id: followee.auth_id,
+                        handle_name: followee.handle_name,
+                        display_name: followee.display_name,
+                        icon: followee.icon,
+                        reviews: followee.reviews,
+                    }
+
+                    result.push(reviews)
+                }
+            }
+        }
+
+        res.json({ followeeReviews: result })
+    } else {
+        res.status(400).send('Error')
+    }
+}
+
 export const postUser = async (req: Request, res: Response): Promise<void> => {
     await connectToDB()
     const newData = req.body
@@ -35,6 +74,6 @@ export const postUser = async (req: Request, res: Response): Promise<void> => {
         await userModel.create(newData)
         res.json(newData)
     } else {
-        res.status(400).send('auth_id or handle_nameが被っています')
+        res.status(400).send('Error')
     }
 }
