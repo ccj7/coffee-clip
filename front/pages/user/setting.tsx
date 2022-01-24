@@ -3,6 +3,7 @@
 import Head from 'next/head'
 
 import Header from '../../components/shop/Header'
+import UserHeader from '../../components/user/UserHeader'
 
 function Setting() {
   return (
@@ -11,7 +12,7 @@ function Setting() {
         <title>Setting</title>
         <meta name="Setting" content="Setting" />
       </Head>
-      <Header />
+      <UserHeader />
     </div>
   )
 }
