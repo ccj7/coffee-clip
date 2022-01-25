@@ -1,16 +1,16 @@
 import Link from 'next/link'
-import { Box, Heading, Image, Text } from '@chakra-ui/react'
+import { Box, Heading, Image, Text, Center } from '@chakra-ui/react'
 
 // TODO propsの型を変換する
 function ShopCard(props: any) {
-  const { auth_id, display_name, handle_name, icon, concept } = props;
+  const { display_name, handle_name, icon, concept } = props;
   return (
-    // TODO: 本番はdisplay_nameを使ったLink先
-    <Link href="/shop/shop-top-page">
-      <Box w={600} m={10}>
+    // TODO: 本番はhandle_nameを使ったLink先
+    <Link href={`/shop/top-page/${handle_name}`}>
+      <Box w={600} m={10} border='2px' borderColor='gray.200' textAlign='center'>
         <Heading size="lg">{display_name}</Heading>
         <Text>{handle_name}</Text>
-        <Image w={300} src="https://unsplash.it/630/400" />
+        <Center><Image w={300} src={icon} /></Center>
         <Text>{concept}</Text>
       </Box>
     </Link>
