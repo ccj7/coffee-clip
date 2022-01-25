@@ -10,38 +10,38 @@ import { Spacer } from '@chakra-ui/react'
 function PhotoImage() {
   // TODO: dammyデータ削除 & Interfaceをサーバー側のスキーマから流用して作成
   const dammy = {
-    auth_id: '1',
-    handle_name: 'arasuna_coffee',
-    display_name: 'Arasuna Coffee',
-    icon: 'image',
-    address: '東京都コードクリサリス',
-    map_url: 'googlemap URL',
-    hp_url: 'HPURL',
-    instagram_url: 'instagram URL',
-    opening_hours: '9:00~10:00',
-    regular_day_off: '月曜日',
-    concept: '美味しいコーヒー提供してま〜す',
+    auth_id: '',
+    handle_name: '',
+    display_name: '',
+    icon: '',
+    address: '',
+    map_url: '',
+    hp_url: '',
+    instagram_url: '',
+    opening_hours: '',
+    regular_day_off: '',
+    concept: '',
     recommendation: {
-      title: 'グリッチ',
-      description: '酸味が特徴！',
-      image: 'image',
+      title: '',
+      description: '',
+      image: '',
     },
-    selling_point: 'image',
-    follower_handle_name: ['ccmizki'],
+    selling_point: '',
+    follower_handle_name: [''],
   }
+
   const [shopInfo, setShopInfo] = useState<any>(dammy)
 
-  console.log(shopInfo.display_name)
+  // console.log(shopInfo.display_name)
   //　user情報を取得
   useEffect(() => {
     const getShop = async (authId: string) => {
       // TODO: dammy変更してください
-      const res: any = await axios.get('/api/shops')
-      console.log(res.data)
-      setShopInfo(res.data[0])
+      const res: any = await axios.get(`/api/shops/${authId}`)
+      setShopInfo(res.data)
     }
-    // TODO: testはdummyの値です
-    getShop('test')
+    // TODO: 直接入力しているauthIDを変更
+    getShop('540PJipKIwXZUY422LmC2j3ZlvU2')
   }, [])
 
   return (
@@ -61,7 +61,6 @@ function PhotoImage() {
       <p>instagram:{shopInfo.instagram_url}</p>
       <p>お気に入り　●（数を表示）</p> */}
 
-      {/* TODO 謎の丸括弧を削除する */}
       <PrimaryButton text="編集" />
       <Spacer></Spacer>
       <PrimaryButton text="公開ページを作成" />
