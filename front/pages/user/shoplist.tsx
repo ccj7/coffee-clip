@@ -24,8 +24,7 @@ function Shoplist() {
   useEffect(() => {
     const getShopsInfo = async () => {
       const res: any = await axios.get('/api/shops');
-      // 本番はdammyはいらない
-      setShopsInfo(res.data.dammy)
+      setShopsInfo(res.data)
     }
 
     getShopsInfo()
