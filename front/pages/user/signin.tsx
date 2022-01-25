@@ -20,18 +20,17 @@ function Signin() {
   const onSubmit = async (data: any) => {
     const auth = getAuth(firebase)
 
-    try {
-      signInWithEmailAndPassword(auth, data.email, data.password)
-        .then((userCredential) => {
-          // const user = userCredential.user;
-          // console.log(user)
-          router.push('/user/timeline')
-        })
-    } catch (error: any) {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      console.log(errorCode, errorMessage)
-    }
+    signInWithEmailAndPassword(auth, data.email, data.password)
+      .then((userCredential) => {
+        // const user = userCredential.user;
+        // console.log(user)
+        router.push('/user/timeline')
+      }).catch((error: any) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage)
+        router.push('/index')
+      })
   }
   return (
     <div>
