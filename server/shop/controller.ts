@@ -18,8 +18,9 @@ export const getShop = async (req: Request, res: Response) => {
     res.json(data)
 }
 
-export const getShopEdit = async (req: Request, res: Response) => {
+export const putShop = async (req: Request, res: Response) => {
     await connectToDB()
+    await ShopsDataModel.updateOne({ auth_id: req.params.authId }, req.body)
     const data = await ShopsDataModel.findOne({ auth_id: req.params.authId })
-    res.json(data)
+    res.send(data)
 }
