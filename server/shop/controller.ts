@@ -10,10 +10,11 @@ export const getShops = async (req: Request, res: Response) => {
 
 export const getShop = async (req: Request, res: Response) => {
     await connectToDB()
-    const data = await ShopsDataModel.findOne({
-
-        auth_id: req.params.authId
-      
+    const data = await ShopsDataModel.find({
+        $or: [
+            { auth_id: req.params.authId },
+            { handle_name: req.params.handleName },
+        ],
     })
     res.json(data)
 }
