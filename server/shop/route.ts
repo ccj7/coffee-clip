@@ -9,7 +9,7 @@ const routes = Router()
 routes.get('/', getShops)
 
 //shopダッシュボード画面
-routes.get('/handle_name', getShop)
+routes.get('/:authId', getShop)
 
 // 【GET】shopダッシュボード編集画面
 routes.get('/:authId/edit', getShopEdit)
