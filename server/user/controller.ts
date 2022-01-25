@@ -56,7 +56,7 @@ export const getReviewsOfFolloweesByAuthId = async (
 
         res.json({ reviewsOfFollowees: result })
     } else {
-        res.status(400).send('Error')
+        res.status(400).end()
     }
 }
 
@@ -96,7 +96,7 @@ export const postUser = async (req: Request, res: Response): Promise<void> => {
         }
 
         await userModel.create(newUser)
-        res.status(201).end()
+        res.status(200).end()
     } else {
         res.status(400).end()
     }
@@ -123,7 +123,7 @@ export const postReview = async (
             )
         }
 
-        res.status(201).end()
+        res.status(200).end()
     } else {
         res.status(400).end()
     }
