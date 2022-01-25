@@ -35,8 +35,8 @@ function Signin() {
   return (
     <div>
       <Head>
-        <title>Signup</title>
-        <meta name="Signup" content="ユーザー登録" />
+        <title>Sign-In</title>
+        <meta name="Sign-In" content="ユーザーログイン" />
       </Head>
       <Header />
 
