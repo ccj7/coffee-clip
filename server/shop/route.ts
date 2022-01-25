@@ -9,15 +9,30 @@ const routes = Router()
 routes.get('/', getShops)
 
 //shopダッシュボード画面
-routes.get('/:authId', getShop)
+routes.get('/handle_name', getShop)
 
-// shopダッシュボード編集画面
+// 【GET】shopダッシュボード編集画面
 routes.get('/:authId/edit', getShopEdit)
 
+// 【PUT】shopダッシュボード編集画面
 // routes.put('/:authId/edit', async (req: Request, res: Response) => {
 //     await connectToDB()
 //     const data = await ShopsDataModel.findOne({ auth_id: req.params.authId })
-//     res.json(data)
+//     const body = {
+//         auth_id: { type: req., required: true },
+//         handle_name: { type: , required: true },
+//         display_name: { type: , required: true },
+//         icon: ,
+//         address: ,
+//         map_url: ,
+//         hp_url: ,
+//         instagram_url: ,
+//         opening_hours: ,
+//         regular_day_off: ,
+//         concept: ,
+//         recommendation: [{ title: , description: , image:  }],
+//         selling_point: [{ text: , image:  }],
+//     }
 // })
 
 // //フォローしているリスト
