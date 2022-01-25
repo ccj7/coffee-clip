@@ -9,7 +9,7 @@ function PostImage(props: ImageProps) {
   return (
     <>
       <Image
-        boxSize="100px"
+        boxSize="150px"
         objectFit="cover"
         src={props.src}
         alt={props.src}
