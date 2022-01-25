@@ -11,7 +11,9 @@ export const getShops = async (req: Request, res: Response) => {
 export const getShop = async (req: Request, res: Response) => {
     await connectToDB()
     const data = await ShopsDataModel.findOne({
-        auth_id: req.params.authId,
+
+        auth_id: req.params.authId
+      
     })
     res.json(data)
 }
