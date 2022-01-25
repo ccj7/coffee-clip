@@ -4,6 +4,7 @@ import {
     getUserByAuthId,
     postUser,
     getReviewsOfFolloweesByAuthId,
+    postReview,
 } from './controller'
 
 const routes = Router()
@@ -13,5 +14,6 @@ routes.get('/:authId', getUserByAuthId)
 routes.get('/:authId/followee/reviews', getReviewsOfFolloweesByAuthId)
 
 routes.post('/', postUser)
+routes.post('/:authId/reviews', postReview)
 
 export default routes

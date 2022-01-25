@@ -56,7 +56,7 @@ export const getReviewsOfFolloweesByAuthId = async (
 
         res.json({ reviewsOfFollowees: result })
     } else {
-        res.status(400).send('Error')
+        res.status(400).end()
     }
 }
 
@@ -96,8 +96,35 @@ export const postUser = async (req: Request, res: Response): Promise<void> => {
         }
 
         await userModel.create(newUser)
-        res.json(newUser)
+        res.status(200).end()
     } else {
-        res.status(400).send('Error')
+        res.status(400).end()
+    }
+}
+
+export const postReview = async (
+    req: Request,
+    res: Response
+): Promise<void> => {
+    await connectToDB()
+
+    const authId: String = req.params.authId
+    const user = await userModel.findOne({ auth_id: authId })
+
+    if (user) {
+        const newReviews = user.reviews
+
+        if (newReviews) {
+            newReviews.push(req.body)
+
+            await userModel.updateOne(
+                { auth_id: authId },
+                { reviews: newReviews }
+            )
+        }
+
+        res.status(200).end()
+    } else {
+        res.status(400).end()
     }
 }
