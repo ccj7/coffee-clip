@@ -62,19 +62,41 @@ export const getReviewsOfFolloweesByAuthId = async (
 
 export const postUser = async (req: Request, res: Response): Promise<void> => {
     await connectToDB()
-    const newData = req.body
+    const bodyData = req.body
 
     const authIdCheck = await userModel.findOne({
-        auth_id: newData.auth_id,
+        auth_id: bodyData.auth_id,
     })
 
     const handleNameCheck = await userModel.findOne({
-        handle_name: newData.handle_name,
+        handle_name: bodyData.handle_name,
     })
 
     if (!authIdCheck && !handleNameCheck) {
-        await userModel.create(newData)
-        res.json(newData)
+        interface User {
+            auth_id: String
+            handle_name: String
+            display_name: String
+            icon: String | undefined
+            follower_handle_names: Array<String>
+            followee_handle_names: Array<String>
+            followee_shops_handle_names: Array<String>
+            reviews: Array<String>
+        }
+
+        const newUser: User = {
+            auth_id: bodyData.auth_id,
+            handle_name: bodyData.handle_name,
+            display_name: bodyData.display_name,
+            icon: bodyData.icon,
+            follower_handle_names: [],
+            followee_handle_names: [],
+            followee_shops_handle_names: [],
+            reviews: [],
+        }
+
+        await userModel.create(newUser)
+        res.json(newUser)
     } else {
         res.status(400).send('Error')
     }
