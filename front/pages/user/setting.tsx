@@ -1,10 +1,13 @@
 // TODO　U-003 github issue#21
 
 import Head from 'next/head'
+// import axios from 'axios'
+
 import UserHeader from '../../components/user/UserHeader'
 import { useState } from 'react'
-// import axios from 'axios'
-import { Button } from '@chakra-ui/react'
+import { useForm, FormProvider } from 'react-hook-form' 
+import { Box, Button, Heading } from '@chakra-ui/react'
+import InputForm from '../../components/InputForm'
 
 // TODO: 全体的に型をちゃんと定義する
 function Setting() { 
@@ -35,19 +38,43 @@ function Setting() {
     encodeToBase64(image)
     
     // ここでbase64Codeを使ってfetchする
-    
+  }
+
+
+  // 仮データ
+  const dammy = {
+    auth_id: '1',
+    display_name: 'Kaori'
+  }
+  const [userInfo, setUserInfo] = useState<any>(dammy)
+  const methods = useForm()
+
+  const onSubmit = (data: any) => {
+    console.log(data)
   }
 
   return (
-    <div>
+    <Box>
       <Head>
         <title>Setting</title>
         <meta name="Setting" content="Setting" />
       </Head>
       <UserHeader />
-      <input type="file" accept="image/*" onChange={handleChangeImage}/>
-      <Button type="submit" onClick={uploadImage}>アップロード</Button>
-    </div>
+      <Heading size='md' m={'16px'}>ユーザープロフィール</Heading>
+      <FormProvider {...methods}>
+        <form onSubmit={methods.handleSubmit(onSubmit)}>
+          <InputForm
+           thema="display_name"
+           text="ユーザーネーム"
+           defaultValue={userInfo.display_name}
+           />
+          <input type="file" accept="image/*" onChange={handleChangeImage}/>
+          <Button type="submit" onClick={uploadImage}>アップロード</Button>
+
+          <Box><Button mt={4} type="submit">保存</Button></Box>
+        </form>
+      </FormProvider>
+    </Box>
   )
 }
 
