@@ -55,21 +55,6 @@ function FixShopInfo() {
     console.log(data)
   }
 
-  // useEffect(() => {
-  //   setValue('handle_name', shopInfo.handle_name)
-  //   setValue('display_name', shopInfo.display_name)
-  //   // setValue(icon, 'image',
-  //   setValue('address', shopInfo.address)
-  //   setValue('map_url', shopInfo.map_url)
-  //   setValue('hp_url', shopInfo.hp_url)
-  //   setValue('instagram_url', shopInfo.instagram_url)
-  //   setValue('opening_hours', shopInfo.opening_hours)
-  //   setValue('regular_day_off', shopInfo.regular_day_off)
-  //   setValue('concept', shopInfo.concept)
-  //   setValue('recommendation', shopInfo.recommendation)
-  //   setValue('selling_point', shopInfo.selling_point)
-  // }, [])
-
   // TODO　画像処理とseeling POINTのinput追加
   return (
     <div>
