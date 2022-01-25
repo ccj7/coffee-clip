@@ -10,9 +10,9 @@ interface User {
     handle_name: string
     display_name: string
     icon?: string
-    follower_auth_ids?: Types.Array<string>
-    followee_auth_ids?: Types.Array<string>
-    followee_shops_auth_ids?: Types.Array<string>
+    follower_handle_names?: Types.Array<string>
+    followee_handle_names?: Types.Array<string>
+    followee_shops_handle_names?: Types.Array<string>
     reviews?: Types.DocumentArray<Review>
 }
 
@@ -21,9 +21,9 @@ const userSchema = new Schema<User, Model<User>>({
     handle_name: { type: String, required: true },
     display_name: { type: String, required: true },
     icon: String,
-    follower_auth_ids: [String],
-    followee_auth_ids: [String],
-    followee_shops_auth_ids: [String],
+    follower_handle_names: [String],
+    followee_handle_names: [String],
+    followee_shops_handle_names: [String],
     reviews: [
         {
             image: String,

@@ -28,21 +28,20 @@ export const getReviewsOfFolloweesByAuthId = async (
     const user = await userModel.findOne({ auth_id: authId })
 
     if (user) {
-        const followeeAuthIds = user.followee_auth_ids
+        const followeeHandleNames = user.followee_handle_names
 
         const result = []
 
-        if (followeeAuthIds) {
-            for (const followeeAuthId of followeeAuthIds) {
+        if (followeeHandleNames) {
+            for (const followeeHandleName of followeeHandleNames) {
                 const followee = await userModel.findOne({
-                    auth_id: followeeAuthId,
+                    handle_name: followeeHandleName,
                 })
 
                 if (followee) {
                     if (followee.reviews) {
                         for (const review of followee.reviews) {
                             const reviews = {
-                                auth_id: followee.auth_id,
                                 handle_name: followee.handle_name,
                                 display_name: followee.display_name,
                                 icon: followee.icon,

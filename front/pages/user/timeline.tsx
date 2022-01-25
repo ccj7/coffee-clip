@@ -41,6 +41,7 @@ function Timeline() {
     }
     getUser('4E5Jby73IVRAypSDyV3IfFcQwXz1')
   }, [])
+
   return (
     <div>
       <Head>

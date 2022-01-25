@@ -1,86 +1,86 @@
 {
     "users": [
         {
-            "auth_id": "1111",
+            "auth_id": "4E5Jby73IVRAypSDyV3IfFcQwXz1",
             "handle_name": "kaori_hikita",
             "display_name": "Kaori",
-            "icon": "Kaoriのアイコン画像",
-            "follower_auth_ids": ["2222", "3333"],
-            "followee_auth_ids": ["2222", "3333"],
-            "followee_shops_auth_ids": [],
+            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon.jpg",
+            "follower_handle_names": ["bob", "alice"],
+            "followee_handle_names": ["bob", "alice"],
+            "followee_shops_handle_names": [],
             "reviews": [
                 {
-                    "image": "レビュー画像A",
-                    "description": "とてもおいしいコーヒーでした"
+                    "image": "",
+                    "description": "実際に飲んでみた感想は、普通に美味しいコーヒー。鮮度のことも考えると、100g単位でのパッケージはありがたいです。本当はグアテマラ目当てで購入したのですが、普段ではあまり自分で選ばないブラジルが良かったです。ブラジルのイメージは酸味が少なく軽い飲み口で、どちらかというと他の豆とブレンドしていただくイメージだったのですが、今回購入して単品で飲んでみた時に非常に美味しかったです。今後もブラジルを積極的に選択肢に加えるきっかけとなった豆かもしれません。"
                 },
                 {
-                    "image": "レビュー画像B",
+                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon.jpgB",
                     "description": "もっと味に深みがほしい"
                 }
             ]
         },
         {
-            "auth_id": "2222",
+            "auth_id": "FTbxuYF3NggkwRjP4f6woEY7RKB2",
             "handle_name": "bob",
             "display_name": "Bob",
             "icon": "Bobのアイコン画像",
-            "follower_auth_ids": ["1111", "3333"],
-            "followee_auth_ids": ["1111"],
-            "followee_shops_auth_ids": [],
+            "follower_handle_names": ["kaori_hikita", "alice"],
+            "followee_handle_names": ["kaori_hikita"],
+            "followee_shops_handle_names": [],
             "reviews": [
                 {
-                    "image": "レビュー画像C",
+                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon.jpg",
                     "description": "最高！！"
                 }
             ]
         },
         {
-            "auth_id": "3333",
+            "auth_id": "KwXrR15NeFhXUgPbUWfmj03qt0T2",
             "handle_name": "alice",
             "display_name": "Alice",
-            "icon": "Aliceのアイコン画像",
-            "follower_auth_ids": ["1111", "2222"],
-            "followee_auth_ids": ["1111"],
-            "followee_shops_auth_ids": [],
+            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon.jpg",
+            "follower_handle_names": ["kaori_hikita", "bob"],
+            "followee_handle_names": ["kaori_hikita"],
+            "followee_shops_handle_names": [],
             "reviews": [
                 {
-                    "image": "レビュー画像D",
+                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee.jpg",
                     "description": "さっぱりしていた"
                 },
                 {
-                    "image": "レビュー画像E",
-                    "description": "コクがある"
+                    "image": "",
+                    "description": "実際に飲んでみた感想は、普通に美味しいコーヒー。鮮度のことも考えると、100g単位でのパッケージはありがたいです。本当はグアテマラ目当てで購入したのですが、普段ではあまり自分で選ばないブラジルが良かったです。ブラジルのイメージは酸味が少なく軽い飲み口で、どちらかというと他の豆とブレンドしていただくイメージだったのですが、今回購入して単品で飲んでみた時に非常に美味しかったです。今後もブラジルを積極的に選択肢に加えるきっかけとなった豆かもしれません。"
                 }
             ]
         },
         {
-            "auth_id": "4444",
+            "auth_id": "zwXdROKXONZfOvTpExlHvDy3PEZ2",
             "handle_name": "harry",
             "display_name": "Harry",
-            "icon": "",
-            "follower_auth_ids": [],
-            "followee_auth_ids": [],
-            "followee_shops_auth_ids": [],
+            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee.jpg",
+            "follower_handle_names": [],
+            "followee_handle_names": [],
+            "followee_shops_handle_names": [],
             "reviews": []
         },
         {
-            "auth_id": "5555",
+            "auth_id": "OMEv4PkUyWXsDBtPYp15Da1ihjr2",
             "handle_name": "taro_yamada",
             "display_name": "山田　太郎",
-            "icon": "",
-            "follower_auth_ids": [],
-            "followee_auth_ids": ["6666"],
-            "followee_shops_auth_ids": [],
+            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee.jpg",
+            "follower_handle_names": [],
+            "followee_handle_names": ["emma"],
+            "followee_shops_handle_names": [],
             "reviews": []
         },
         {
-            "auth_id": "6666",
+            "auth_id": "5tTbzII9mQPuJ9ZuI4JUH7CEeja2",
             "handle_name": "emma",
             "display_name": "Emma",
-            "icon": "",
-            "follower_auth_ids": ["5555"],
-            "followee_auth_ids": [],
-            "followee_shops_auth_ids": [],
+            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee.jpg",
+            "follower_handle_names": ["taro_yamada"],
+            "followee_handle_names": [],
+            "followee_shops_handle_names": [],
             "reviews": []
         }
     ]
