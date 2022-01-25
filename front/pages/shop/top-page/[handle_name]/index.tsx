@@ -23,8 +23,14 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import axios from 'axios'
 import PostImage from '../../../../components/Image'
+import { useAuthContext } from '../../../auth/AuthContext'
 
-function shopTopPageTest() {
+let isLogin = false
+
+function shopTopPage() {
+  const { currentUser } = useAuthContext()
+  if (currentUser) isLogin = true
+
   const router = useRouter()
   const { handle_name } = router.query
 
@@ -164,4 +170,9 @@ function shopTopPageTest() {
   )
 }
 
-export default shopTopPageTest
+shopTopPage.getAccessControl = () => {
+  // TODO return,destinationの後帰る
+  return !isLogin ? { type: 'replace', destination: '/user/signin' } : null
+}
+
+export default shopTopPage

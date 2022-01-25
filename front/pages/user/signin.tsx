@@ -59,9 +59,7 @@ const Signin: WithGetAccessControl<VFC> = () => {
 
 Signin.getAccessControl = () => {
   // TODO returnの後を帰る
-  return isLogin
-    ? { type: 'replace', destination: '/user/favorite-shops' }
-    : null
+  return isLogin ? { type: 'replace', destination: '/user/mypage' } : null
 }
 
 export default Signin
