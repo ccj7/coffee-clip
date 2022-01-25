@@ -24,9 +24,9 @@ import { useRouter } from 'next/router'
 import axios from 'axios'
 
 function shopTopPageTest() {
-  const router = useRouter();
-  const { handle_name } = router.query;
-  
+  const router = useRouter()
+  const { handle_name } = router.query
+
   useEffect(() => {
     const getShop = async (handle_name: string) => {
       // TODO: dammy変更してください
@@ -37,7 +37,7 @@ function shopTopPageTest() {
       setShopInfo(res.data)
     }
     // TODO: 直接入力しているhandle_nameを変更
-    getShop("string")
+    getShop('string')
   }, [])
 
   const dammy = {
@@ -84,6 +84,7 @@ function shopTopPageTest() {
           <Profile
             display_name={shopInfo.display_name}
             handle_name={shopInfo.handle_name}
+            icon={shopInfo.icon}
           />
           <Spacer></Spacer>
 
