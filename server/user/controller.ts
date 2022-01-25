@@ -78,10 +78,10 @@ export const postUser = async (req: Request, res: Response): Promise<void> => {
             handle_name: String
             display_name: String
             icon: String | undefined
-            follower_handle_names: Array<undefined>
-            followee_handle_names: Array<undefined>
-            followee_shops_handle_names: Array<undefined>
-            reviews: Array<undefined>
+            follower_handle_names: Array<String>
+            followee_handle_names: Array<String>
+            followee_shops_handle_names: Array<String>
+            reviews: Array<String>
         }
 
         const newUser: User = {
