@@ -2,7 +2,7 @@ import { Router, Request, Response } from 'express'
 import connectToDB from '../db-connection'
 import ShopsDataModel from '../schema/shopSchema'
 // import { shopDashboard } from './controller'
-import { getShops, getShop } from './controller'
+import { getShops, getShop, getShopEdit } from './controller'
 
 const routes = Router()
 
@@ -11,17 +11,28 @@ routes.get('/', getShops)
 //shopダッシュボード画面
 routes.get('/:authId', getShop)
 
-//shopダッシュボード編集画面
-// routes.get('/:authId/edit', async (req: Request, res: Response) => {
-//     await connectToDB()
-//     const data = await ShopsDataModel.findOne({ auth_id: req.params.authId })
-//     res.json(data)
-// })
+// 【GET】shopダッシュボード編集画面
+// routes.get('/:authId/edit', getShopEdit)
 
-// routes.put('/:authId/edit', async (req: Request, res: Response) => {
+// 【PUT】shopダッシュボード編集画面
+// routes.put('/:authId', async (req: Request, res: Response) => {
 //     await connectToDB()
 //     const data = await ShopsDataModel.findOne({ auth_id: req.params.authId })
-//     res.json(data)
+//     const body = {
+//         auth_id: data?.auth_id.valueOf,
+//         handle_name: { type: , required: true },
+//         display_name: { type: , required: true },
+//         icon: ,
+//         address: ,
+//         map_url: ,
+//         hp_url: ,
+//         instagram_url: ,
+//         opening_hours: ,
+//         regular_day_off: ,
+//         concept: ,
+//         recommendation: [{ title: , description: , image:  }],
+//         selling_point: [{ text: , image:  }],
+//     }
 // })
 
 // //フォローしているリスト
