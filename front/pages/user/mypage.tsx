@@ -22,7 +22,7 @@ interface User {
 function Mypage() {
   const [userInfo, setUserInfo] = useState<User>()
   // TODO paramsからハンドルネームを取得
-  
+
   //　user情報を取得
   useEffect(() => {
     const getUser = async (authId: string) => {
@@ -41,12 +41,13 @@ function Mypage() {
         <meta name="mypage" content="マイページ" />
       </Head>
       <UserHeader />
-      {userInfo &&
+      {userInfo && (
         <Profile
           display_name={userInfo.display_name}
           handle_name={userInfo.handle_name}
+          icon={userInfo.icon}
         />
-      }
+      )}
       <p>フォロー数表示</p>
       <p>フォロワー数表示</p>
       <section>

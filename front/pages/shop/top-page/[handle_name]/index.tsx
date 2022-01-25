@@ -22,11 +22,12 @@ import Header from '../../../../components/shop/Header'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import axios from 'axios'
+import PostImage from '../../../../components/Image'
 
 function shopTopPageTest() {
-  const router = useRouter();
-  const { handle_name } = router.query;
-  
+  const router = useRouter()
+  const { handle_name } = router.query
+
   useEffect(() => {
     const getShop = async (handle_name: string) => {
       // TODO: dammy変更してください
@@ -37,7 +38,7 @@ function shopTopPageTest() {
       setShopInfo(res.data)
     }
     // TODO: 直接入力しているhandle_nameを変更
-    getShop("string")
+    getShop('string')
   }, [])
 
   const dammy = {
@@ -84,6 +85,7 @@ function shopTopPageTest() {
           <Profile
             display_name={shopInfo.display_name}
             handle_name={shopInfo.handle_name}
+            icon={shopInfo.icon}
           />
           <Spacer></Spacer>
 
@@ -127,13 +129,25 @@ function shopTopPageTest() {
             <TabPanel>
               {/* <Image boxSize="200px" /> */}
               <HStack>
-                <Box boxSize="200" bg="blue.200">
-                  image!
-                </Box>
+                <PostImage
+                  src={shopInfo.recommendation.image}
+                  alt="おすすめの一杯の写真"
+                />
                 <Stack>
                   <Text>おすすめの一杯</Text>
                   <Text>{shopInfo.recommendation.title}</Text>
                   <Text>{shopInfo.recommendation.description}</Text>
+                </Stack>
+              </HStack>
+              <HStack>
+                <PostImage
+                  src={shopInfo.recommendation.image}
+                  alt="お店の魅力を表す写真"
+                />
+                <Stack>
+                  <Text>お店の魅力</Text>
+                  <Text>{shopInfo.selling_point.text}</Text>
+                  <Text>{shopInfo.selling_point.image}</Text>
                 </Stack>
               </HStack>
             </TabPanel>
