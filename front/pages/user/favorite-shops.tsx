@@ -31,7 +31,6 @@ const LikeShops: WithGetAccessControl<VFC> = (props) => {
 
 // 🌸３🌸
 LikeShops.getAccessControl = () => {
-  // TODO return,destinationの後帰る
   return !isLogin ? { type: 'replace', destination: '/user/signin' } : null
 }
 // 🌸３🌸

@@ -8,8 +8,14 @@ import axios from 'axios'
 import { Spacer } from '@chakra-ui/react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useAuthContext } from '../auth/AuthContext'
 
-function PhotoImage() {
+let isLogin = false
+
+function DashBoard() {
+  const { currentUser } = useAuthContext()
+  if (currentUser) isLogin = true
+
   const router = useRouter()
   // TODO: dammyデータ削除 & Interfaceをサーバー側のスキーマから流用して作成
   const dammy = {
@@ -72,4 +78,9 @@ function PhotoImage() {
   )
 }
 
-export default PhotoImage
+DashBoard.getAccessControl = () => {
+  // TODO return,destinationの後帰る
+  return !isLogin ? { type: 'replace', destination: '/user/signin' } : null
+}
+
+export default DashBoard
