@@ -10,7 +10,7 @@ function PhotoImage(props: any) {
         <Image />
         <Stack>
           <Heading size="lg">{display_name}</Heading>
-          <Box>{handle_name}</Box>
+          <Box>@{handle_name}</Box>
         </Stack>
       </HStack>
     </>
