@@ -1,21 +1,31 @@
 import Link from 'next/link'
 import { Box, Heading, Image, Text, HStack } from '@chakra-ui/react'
-import IconImage from '../Image'
 
 function LogCard(props: any) {
-  const { display_name, handle_name, review } = props;
+  const { display_name, handle_name, icon, review } = props;
   return (
     <Link href={"test"}>
       <Box mb="10">
       <HStack>
-        <IconImage />
+        <Image
+          borderRadius='full'
+          boxSize='70px'
+          objectFit='cover'
+          src={icon}
+          alt={display_name} />
         <Box>
           <Heading size="lg">{display_name}</Heading>
           <Text>{handle_name}</Text>
         </Box>
       </HStack>
       <HStack>
-        <Image src={review.image} />
+        {review.image && 
+          <Image
+            boxSize='250px'
+            objectFit='cover'
+            src={review.image}
+            alt={review.description} />
+        }
         <Text>{review.description}</Text>
       </HStack>
       </Box>
