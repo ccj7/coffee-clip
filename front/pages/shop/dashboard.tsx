@@ -54,6 +54,7 @@ function PhotoImage() {
       <Profile
         display_name={shopInfo.display_name}
         handle_name={shopInfo.handle_name}
+        icon={shopInfo.icon}
       />
 
       {/* <p>住所：{shopInfo.address}</p>
