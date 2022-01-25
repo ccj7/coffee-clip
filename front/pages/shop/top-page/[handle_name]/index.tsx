@@ -14,33 +14,51 @@ import {
 } from '@chakra-ui/react'
 import { AiOutlineInstagram } from 'react-icons/ai'
 import Head from 'next/head'
-import { useState } from 'react'
-import PrimaryButton from '../../components/Button'
-import Profile from '../../components/Profile'
+import { useEffect, useState } from 'react'
+import PrimaryButton from '../../../../components/Button'
+import Profile from '../../../../components/Profile'
 
-import Header from '../../components/shop/Header'
+import Header from '../../../../components/shop/Header'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import axios from 'axios'
 
-function shopTopPage() {
+function shopTopPageTest() {
+  const router = useRouter();
+  const { handle_name } = router.query;
+  
+  useEffect(() => {
+    const getShop = async (handle_name: string) => {
+      // TODO: dammy変更してください
+      const res: any = await axios.get(
+        `/api/shops/540PJipKIwXZUY422LmC2j3ZlvU2`
+      )
+      console.log(res.data)
+      setShopInfo(res.data)
+    }
+    // TODO: 直接入力しているhandle_nameを変更
+    getShop("string")
+  }, [])
+
   const dammy = {
-    auth_id: '1',
-    handle_name: 'arasuna_coffee',
-    display_name: 'Arasuna Coffee',
-    icon: 'image',
-    address: '東京都コードクリサリス',
-    map_url: 'googlemap URL',
-    hp_url: 'HPURL',
-    instagram_url: 'instagram URL',
-    opening_hours: '9:00~10:00',
-    regular_day_off: '月曜日',
-    concept: '美味しいコーヒー提供してま〜す',
+    auth_id: '',
+    handle_name: '',
+    display_name: '',
+    icon: '',
+    address: '',
+    map_url: '',
+    hp_url: '',
+    instagram_url: '',
+    opening_hours: '',
+    regular_day_off: '',
+    concept: '',
     recommendation: {
-      title: 'グリッチ',
-      description: '酸味が特徴！',
-      image: 'image',
+      title: '',
+      description: '',
+      image: '',
     },
-    selling_point: 'image',
-    follower_handle_name: ['ccmizki'],
+    selling_point: '',
+    follower_handle_name: [''],
   }
   const [shopInfo, setShopInfo] = useState<any>(dammy)
   const [isfavorite, setIsfavorite] = useState<boolean>(false)
@@ -132,4 +150,4 @@ function shopTopPage() {
   )
 }
 
-export default shopTopPage
+export default shopTopPageTest
