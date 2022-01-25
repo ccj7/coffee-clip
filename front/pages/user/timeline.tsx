@@ -33,6 +33,7 @@ function postNewReview() {
 }
 
 function Timeline() {
+
   const [userInfo, setUserInfo] = useState<User>()
   // TODO paramsからハンドルネームを取得
   
@@ -44,6 +45,7 @@ function Timeline() {
     }
     getUser('1111')
   }, [])
+
   return (
     <div>
       <Head>
