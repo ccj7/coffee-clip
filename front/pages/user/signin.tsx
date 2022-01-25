@@ -9,8 +9,14 @@ import { Button } from '@chakra-ui/react'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import firebase from '../../auth/firebaseConfig'
 import { VFC } from 'react'
+import { useAuthContext } from '../auth/AuthContext'
+
+let isLogin = false
 
 const Signin: WithGetAccessControl<VFC> = () => {
+  const { currentUser } = useAuthContext()
+  if (currentUser) isLogin = true
+
   const methods = useForm()
   const router = useRouter()
 
@@ -53,7 +59,9 @@ const Signin: WithGetAccessControl<VFC> = () => {
 
 Signin.getAccessControl = () => {
   // TODO returnの後を帰る
-  return false ? { type: 'replace', destination: '/user/favorite-shops' } : null
+  return isLogin
+    ? { type: 'replace', destination: '/user/favorite-shops' }
+    : null
 }
 
 export default Signin
