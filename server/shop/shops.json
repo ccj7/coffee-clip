@@ -35,7 +35,7 @@
                     "image": "URL"
                 }
             ],
-            "follower_auth_ids": ["ccmizki", "ccwalk"]
+            "follower_handle_name": ["mizki", "walk"]
         },
         {
             "auth_id": "2222",
@@ -72,7 +72,7 @@
                     "image": "URL"
                 }
             ],
-            "follower_auth_ids": ["ccmizki"]
+            "follower_handle_name": ["mizki"]
         }
     ]
 }
