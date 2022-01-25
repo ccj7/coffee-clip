@@ -14,6 +14,7 @@ import LogCard from '../../components/user/LogCard'
 import PrimaryButton from '../../components/Button'
 import { useEffect, useState } from 'react'
 import { FiCoffee } from 'react-icons/fi';
+import { useRouter } from 'next/router'
 
 interface Review {
   image?: string
@@ -24,26 +25,21 @@ interface User {
   auth_id: string
   handle_name: string
   display_name: string
-  icon?: string
+  icon: string
   reviews: [Review]
-}
-
-function postNewReview() {
-  // TODO: 新しい投稿をポストする処理を記載
+  _id: string
 }
 
 function Timeline() {
-
-  const [userInfo, setUserInfo] = useState<User>()
+  const router = useRouter()
+  const [userInfo, setUserInfo] = useState<[User]>()
   // TODO paramsからハンドルネームを取得
-  
-  //　TODO: 仮データのままです！フォローしているユーザーのreviewsを取得
   useEffect(() => {
     const getUser = async (authId: string) => {
-      const res: any = await axios.get(`/api/users/${authId}`)
-      setUserInfo(res.data)
+      const res: any = await axios.get(`/api/users/${authId}/followee/reviews`)
+      setUserInfo(res.data.reviewsOfFollowees)
     }
-    getUser('1111')
+    getUser('4E5Jby73IVRAypSDyV3IfFcQwXz1')
   }, [])
 
   return (
@@ -59,14 +55,19 @@ function Timeline() {
           <Spacer></Spacer>
           <PrimaryButton
               text={"新しい投稿をする"}
-              onclick={postNewReview}
+              onclick={() => {router.push('/user/new-review')}}
             />
         </HStack>
         <Stack>
           {userInfo &&
             <Box>
-              {userInfo.reviews.map((review) => {
-                return <LogCard display_name={userInfo.display_name} handle_name={userInfo.handle_name} review={review}/>
+              {userInfo.map((data, key) => {
+                return <LogCard 
+                  key={key}
+                  display_name={data.display_name}
+                  handle_name={data.handle_name}
+                  icon={data.icon}
+                  review={data.reviews}/>
               }
             )}
             </Box>
