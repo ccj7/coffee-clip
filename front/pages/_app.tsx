@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app'
 import { ChakraProvider } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
+import { AuthProvider } from './auth/AuthContext'
 
 const useAccessControll = (getAccessControll: GetAccessControl) => {
   const router = useRouter()
@@ -30,9 +31,11 @@ function MyApp({ Component, pageProps }: Props) {
   const { getAccessControl = accessControl } = Component
   useAccessControll(getAccessControl)
   return (
-    <ChakraProvider>
-      <Component {...pageProps} />
-    </ChakraProvider>
+    <AuthProvider>
+      <ChakraProvider>
+        <Component {...pageProps} />
+      </ChakraProvider>
+    </AuthProvider>
   )
 }
 

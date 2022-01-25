@@ -1,11 +1,22 @@
 // TODO　U-005 github issue#25
 
 import Head from 'next/head'
-import { VFC } from 'react'
+import { useContext, VFC } from 'react'
 
 import Header from '../../components/shop/Header'
+import { useAuthContext } from '../auth/AuthContext'
+import { isLoggedIn } from '../auth/isLoggedIn'
+
+// 🌸１🌸
+let isLogin = false
+// 🌸１🌸
 
 const LikeShops: WithGetAccessControl<VFC> = (props) => {
+  // 🌸２🌸
+  const { currentUser } = useAuthContext()
+  if (currentUser) isLogin = true
+  // 🌸２🌸
+
   return (
     <div>
       <Head>
@@ -18,8 +29,11 @@ const LikeShops: WithGetAccessControl<VFC> = (props) => {
   )
 }
 
+// 🌸３🌸
 LikeShops.getAccessControl = () => {
   // TODO return,destinationの後帰る
-  return !true ? { type: 'replace', destination: '/user/signin' } : null
+  return !isLogin ? { type: 'replace', destination: '/user/signin' } : null
 }
+// 🌸３🌸
+
 export default LikeShops
