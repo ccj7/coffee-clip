@@ -1,8 +1,21 @@
-import { Avatar } from '@chakra-ui/react'
+import { Avatar, Image } from '@chakra-ui/react'
 
-function PhotoImage() {
-  // TODO 画像の表示形式を整える
-  return <Avatar size="lg" />
+type ImageProps = {
+  src: string
+  alt: string
 }
 
-export default PhotoImage
+function PostImage(props: ImageProps) {
+  return (
+    <>
+      <Image
+        boxSize="150px"
+        objectFit="cover"
+        src={props.src}
+        alt={props.src}
+      />
+    </>
+  )
+}
+
+export default PostImage

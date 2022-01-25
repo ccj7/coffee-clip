@@ -6,8 +6,11 @@ import PrimaryButton from '../../components/Button'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Spacer } from '@chakra-ui/react'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 function PhotoImage() {
+  const router = useRouter()
   // TODO: dammyデータ削除 & Interfaceをサーバー側のスキーマから流用して作成
   const dammy = {
     auth_id: '',
@@ -54,16 +57,17 @@ function PhotoImage() {
       <Profile
         display_name={shopInfo.display_name}
         handle_name={shopInfo.handle_name}
+        icon={shopInfo.icon}
       />
-
-      {/* <p>住所：{shopInfo.address}</p>
-      <p>HP：{shopInfo.hp_url}</p>
-      <p>instagram:{shopInfo.instagram_url}</p>
-      <p>お気に入り　●（数を表示）</p> */}
-
-      <PrimaryButton text="編集" />
+      <PrimaryButton
+        text="編集"
+        onclick={() => router.push('/shop/fix-shopInfo')}
+      />
       <Spacer></Spacer>
-      <PrimaryButton text="公開ページを作成" />
+      <PrimaryButton
+        text="公開ページを作成"
+        onclick={() => router.push(`/shop/top-page/${shopInfo.handle_name}`)}
+      />
     </>
   )
 }
