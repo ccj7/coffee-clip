@@ -1,24 +1,4 @@
-import {
-  Box,
-  Center,
-  HStack,
-  Icon,
-  Spacer,
-  Stack,
-  Text,
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
-} from '@chakra-ui/react'
-import {
-  FormErrorMessage,
-  FormLabel,
-  FormControl,
-  Input,
-  Button,
-} from '@chakra-ui/react'
+import { Button } from '@chakra-ui/react'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import { useForm, FormProvider, useFormContext } from 'react-hook-form'
