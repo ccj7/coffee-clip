@@ -29,16 +29,13 @@ function shopTopPageTest() {
   const { handle_name } = router.query
 
   useEffect(() => {
-    const getShop = async (handle_name: string) => {
-      // TODO: dammy変更してください
-      const res: any = await axios.get(
-        `/api/shops/540PJipKIwXZUY422LmC2j3ZlvU2`
-      )
-      console.log(res.data)
-      setShopInfo(res.data)
+    const getShop = async (handle: string | string[]) => {
+      const res: any = await axios.get(`/api/shops/details/${handle}`)
+      setShopInfo(res.data[0])
     }
-    // TODO: 直接入力しているhandle_nameを変更
-    getShop('string')
+    if(handle_name) {
+      getShop(handle_name)
+    }
   }, [])
 
   const dammy = {
