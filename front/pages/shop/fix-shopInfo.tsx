@@ -5,8 +5,14 @@ import { useForm, FormProvider, useFormContext } from 'react-hook-form'
 
 import Header from '../../components/shop/Header'
 import InputForm from '../../components/InputForm'
+import { useAuthContext } from '../auth/AuthContext'
+
+let isLogin = false
 
 function FixShopInfo() {
+  const { currentUser } = useAuthContext()
+  if (currentUser) isLogin = true
+
   const dammy = {
     auth_id: '1',
     handle_name: 'arasuna_coffee',
@@ -111,4 +117,7 @@ function FixShopInfo() {
   )
 }
 
+FixShopInfo.getAccessControl = () => {
+  return !isLogin ? { type: 'replace', destination: '/user/signin' } : null
+}
 export default FixShopInfo
