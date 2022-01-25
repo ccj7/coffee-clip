@@ -6,14 +6,11 @@ import { useForm, FormProvider } from 'react-hook-form'
 import InputForm from '../../components/InputForm'
 import { Button } from '@chakra-ui/react'
 
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-} from 'firebase/auth'
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import firebase from '../../auth/firebaseConfig'
+import { VFC } from 'react'
 
-function Signin() {
-
+const Signin: WithGetAccessControl<VFC> = () => {
   const methods = useForm()
   const router = useRouter()
 
@@ -25,9 +22,10 @@ function Signin() {
         // const user = userCredential.user;
         // console.log(user)
         router.push('/user/timeline')
-      }).catch((error: any) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+      })
+      .catch((error: any) => {
+        const errorCode = error.code
+        const errorMessage = error.message
         console.log(errorCode, errorMessage)
         router.push('/index')
       })
@@ -42,21 +40,20 @@ function Signin() {
 
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
-          <InputForm
-            thema="email"
-            text="メールアドレス"
-          />
-          <InputForm
-            thema="password"
-            text="パスワード"
-          />
+          <InputForm thema="email" text="メールアドレス" />
+          <InputForm thema="password" text="パスワード" />
           <Button mt={4} type="submit">
             Submit
           </Button>
-          </form>
+        </form>
       </FormProvider>
     </div>
   )
+}
+
+Signin.getAccessControl = () => {
+  // TODO returnの後を帰る
+  return false ? { type: 'replace', destination: '/user/favorite-shops' } : null
 }
 
 export default Signin
