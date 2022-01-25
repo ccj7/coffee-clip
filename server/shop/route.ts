@@ -14,6 +14,7 @@ routes.get('/:authId', getShop)
 // 【PUT】shopダッシュボード編集画面
 routes.put('/:authId', putShop)
 
+routes.get('/details/:handleName', getShop)
 // //フォローしているリスト
 // routes.put('/:authId/following', async (req: Request, res: Response) => {
 //     await connectToDB()
