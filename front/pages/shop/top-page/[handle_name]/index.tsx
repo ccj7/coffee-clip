@@ -35,7 +35,7 @@ const shopTopPage: WithGetAccessControl<VFC> = () => {
   useEffect(() => {
     const getShop = async (handle: string | string[]) => {
       const res: any = await axios.get(`/api/shops/details/${handle}`)
-      setShopInfo(res.data[0])
+      setShopInfo(res.data)
     }
     if (handle_name) {
       getShop(handle_name)
