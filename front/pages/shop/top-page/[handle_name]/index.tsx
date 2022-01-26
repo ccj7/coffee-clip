@@ -24,12 +24,10 @@ import { useRouter } from 'next/router'
 import axios from 'axios'
 import PostImage from '../../../../components/Image'
 import { useAuthContext } from '../../../../auth/AuthContext'
-
-let isLogin = false
+import { isLoggedIn } from '../../../../util'
 
 const shopTopPage: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
-  if (currentUser) isLogin = true
 
   const router = useRouter()
   const { handle_name } = router.query
@@ -39,7 +37,7 @@ const shopTopPage: WithGetAccessControl<VFC> = () => {
       const res: any = await axios.get(`/api/shops/details/${handle}`)
       setShopInfo(res.data[0])
     }
-    if(handle_name) {
+    if (handle_name) {
       getShop(handle_name)
     }
   }, [])
@@ -167,9 +165,11 @@ const shopTopPage: WithGetAccessControl<VFC> = () => {
   )
 }
 
-shopTopPage.getAccessControl = () => {
+shopTopPage.getAccessControl = async () => {
   // TODO return,destinationの後帰る
-  return !isLogin ? { type: 'replace', destination: '/user/signin' } : null
+  return !(await isLoggedIn())
+    ? { type: 'replace', destination: '/user/signin' }
+    : null
 }
 
 export default shopTopPage
