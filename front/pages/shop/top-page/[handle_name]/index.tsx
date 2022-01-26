@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react'
 import { AiOutlineInstagram } from 'react-icons/ai'
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, VFC } from 'react'
 import PrimaryButton from '../../../../components/Button'
 import Profile from '../../../../components/Profile'
 
@@ -27,7 +27,7 @@ import { useAuthContext } from '../../../auth/AuthContext'
 
 let isLogin = false
 
-function shopTopPage() {
+const shopTopPage: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
   if (currentUser) isLogin = true
 

@@ -1,6 +1,6 @@
 import { Button } from '@chakra-ui/react'
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, VFC } from 'react'
 import { useForm, FormProvider, useFormContext } from 'react-hook-form'
 
 import Header from '../../components/shop/Header'
@@ -9,7 +9,7 @@ import { useAuthContext } from '../auth/AuthContext'
 
 let isLogin = false
 
-function FixShopInfo() {
+const FixShopInfo: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
   if (currentUser) isLogin = true
 
