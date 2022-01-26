@@ -1,7 +1,8 @@
-import { Request, Response } from 'express'
+import e, { Request, Response } from 'express'
 import userModel from '../schema/userSchema'
 import connectToDB from '../db-connection'
 import { s3Upload } from '../s3'
+import ShopsDataModel from '../schema/shopSchema'
 
 export const getUsers = async (req: Request, res: Response): Promise<void> => {
     await connectToDB()
@@ -150,5 +151,81 @@ export const postReview = async (
         res.status(200).end()
     } else {
         res.status(400).end()
+    }
+}
+
+export const followShop = async (req: Request, res: Response): Promise<void> => {
+    await connectToDB()
+
+    const user = await userModel.findOne({auth_id: req.params.authId})
+    const shop = await ShopsDataModel.findOne({handle_name: req.body.handle_name})
+
+    if (!user || !shop) {
+        res.status(400).send({ error: '対象のユーザー、または、お店がありません'})
+    // followee-shops-handle-namesにフォローするショップのハンドルネームがないかを確認
+    }else if(user.followee_shops_handle_names?.includes(shop.handle_name)) {
+        res.status(400).send({ error: 'すでにフォロー済みです'})
+    // follower_handle_namesに自分のハンドルネームがないかを確認
+    } else if (shop.follower_handle_name?.includes(user.handle_name)) {
+        res.status(400).send({ error: 'すでにフォロー済みです'})
+    // 更新
+    } else {
+        // ユーザー側のfollowee_shops_handle_names更新
+        const shopList = user.followee_shops_handle_names
+        if (shopList) {
+            shopList.push(shop.handle_name)
+        }
+        await userModel.updateOne({auth_id: req.params.authId},{followee_shops_handle_names: shopList})
+        
+        // Shop側のfollower_handle_names更新
+        const userList = shop.follower_handle_name
+        if (userList) {
+            userList.push(user.handle_name)
+        }
+        await ShopsDataModel.updateOne({handle_name: req.body.handle_name}, {follower_handle_name: userList})
+
+        const newUser = await userModel.findOne({auth_id: req.params.authId})
+        res.json(newUser)
+    }
+}
+
+export const unfollowShop = async (req: Request, res: Response): Promise<void> => {
+    await connectToDB()
+    
+    const user = await userModel.findOne({auth_id: req.params.authId})
+    const shop = await ShopsDataModel.findOne({handle_name: req.body.handle_name})
+    
+    if (!user || !shop) {
+        res.status(400).send({ error: '対象のユーザー、または、お店がありません'})
+    // followee-shops-handle-namesにフォローするショップのハンドルネームがあるかを確認（なければエラー）
+    } else if(!user.followee_shops_handle_names?.includes(shop.handle_name)){
+        res.status(400).send({ error: 'まだフォローしていません'})
+    // follower_handle_namesに自分のハンドルネームがあるかを確認（なければばエラー）
+    } else if(!shop.follower_handle_name?.includes(user.handle_name)) {
+        res.status(400).send({ error: 'まだフォローしていません'})
+    // 更新
+    } else {
+        // ユーザー側のfollowee_shops_handle_namesから削除
+        const shopList = user.followee_shops_handle_names
+        for(let i=0; i<shopList.length; i++) {
+            if(shopList[i] === shop.handle_name) {
+                shopList.splice(i,1)
+            }
+        }
+        await userModel.updateOne({auth_id: req.params.authId}, {followee_shops_handle_names: shopList})
+        // Shop側のfollower_handle_namesから削除
+        const userList = shop.follower_handle_name
+        for(let i=0; i<userList.length; i++) {
+            if(userList[i] === user.handle_name) {
+                userList.splice(i,1)
+            }
+        }
+        await ShopsDataModel.updateOne({handle_name: req.body.handle_name}, {follower_handle_name: userList})
+
+        const newShop = await ShopsDataModel.findOne({handle_name: req.body.handle_name})
+        console.log(newShop)
+
+        const newUser = await userModel.findOne({auth_id: req.params.authId})
+        res.json(newUser)
     }
 }
