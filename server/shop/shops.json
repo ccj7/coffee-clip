@@ -2,8 +2,8 @@
     "shops": [
         {
             "auth_id": "540PJipKIwXZUY422LmC2j3ZlvU2",
-            "handle_name": "mizki",
-            "display_name": "mizkiii",
+            "handle_name": "coffeeeeen",
+            "display_name": "coffeeeeen",
             "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee.jpg",
             "address": "japan",
             "map_url": "https://goo.gl/maps/YcDNryCUYUqe9zYP9",
@@ -12,17 +12,15 @@
             "opening_hours": "8:00~20:00",
             "regular_day_off": "金曜日",
             "concept": "こだわってます",
-            "recommendation": 
-                {
-                    "title": "エチオピア産豆",
-                    "description": "酸味が効いてます",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee.jpg"
-                },
-            "selling_point": 
-                {
-                    "text": "おしゃよ",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon.jpg"
-                },
+            "recommendation": {
+                "title": "エチオピア産豆",
+                "description": "酸味が効いてます",
+                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee.jpg"
+            },
+            "selling_point": {
+                "text": "おしゃよ",
+                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon.jpg"
+            },
             "follower_handle_name": ["kaori_hikita", "bob"]
         },
         {
@@ -34,21 +32,88 @@
             "map_url": "https://goo.gl/maps/YcDNryCUYUqe9zYP9",
             "hp_url": "https://www.google.com/",
             "instagram_url": "https://www.instagram.com/",
+            "opening_hours": "8:00~21:00",
+            "regular_day_off": "",
+            "concept": "伝説のコーヒー豆を使用",
+            "recommendation": {
+                "title": "アメリカンコーヒー",
+                "description": "さっぱりで飲みやすい",
+                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee.jpg"
+            },
+            "selling_point": {
+                "text": "おしゃよ",
+                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon.jpg"
+            },
+            "follower_handle_name": ["bob"]
+        },
+        {
+            "auth_id": "4E5Jby73IVRAypSDyV3IfFcQwXz3",
+            "handle_name": "cafe_sweet",
+            "display_name": "Cafe Sweet",
+            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_user_1111.jpeg",
+            "address": "",
+            "map_url": "",
+            "hp_url": "",
+            "instagram_url": "",
+            "opening_hours": "",
+            "regular_day_off": "",
+            "concept": "",
+            "recommendation": {
+                "title": "",
+                "description": "",
+                "image": ""
+            },
+            "selling_point": {
+                "text": "",
+                "image": ""
+            },
+            "follower_handle_name": ["alice", "bob", "taro_yamada"]
+        },
+        {
+            "auth_id": "4E5Jby73IVRAypSDyV3IfFcQwXz4",
+            "handle_name": "coffee_mania",
+            "display_name": "COFFEE MANIA",
+            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon.jpg",
+            "address": "japan",
+            "map_url": "https://goo.gl/maps/YcDNryCUYUqe9zYP9",
+            "hp_url": "https://www.google.com/",
+            "instagram_url": "https://www.instagram.com/",
+            "opening_hours": "8:00~20:00",
+            "regular_day_off": "土曜日",
+            "concept": "おいしいですよ！！！！",
+            "recommendation": {
+                "title": "さっぱりしたコーヒー豆",
+                "description": "さっぱりで飲みやすいです！",
+                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee.jpg"
+            },
+            "selling_point": {
+                "text": "後味がさっぱりとおいしいです！",
+                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon.jpg"
+            },
+            "follower_handle_name": []
+        },
+        {
+            "auth_id": "4E5Jby73IVRAypSDyV3IfFcQwXz5",
+            "handle_name": "amazing_coffee",
+            "display_name": "驚きコーヒーショップ",
+            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon.jpg",
+            "address": "japan",
+            "map_url": "https://goo.gl/maps/YcDNryCUYUqe9zYP9",
+            "hp_url": "https://www.google.com/",
+            "instagram_url": "https://www.instagram.com/",
             "opening_hours": "8:00~20:00",
             "regular_day_off": "金曜日",
-            "concept": "こだわってます",
-            "recommendation": 
-                {
-                    "title": "アメリカンコーヒー",
-                    "description": "さっぱりで飲みやすい",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee.jpg"
-                },
-            "selling_point": 
-                {
-                    "text": "おしゃよ",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon.jpg"
-                },
-            "follower_handle_name": ["bob"]
+            "concept": "他店とは違う圧倒的なおいしさ！！",
+            "recommendation": {
+                "title": "圧倒的なおいしさ",
+                "description": "香りの素晴らしいコーヒーをたくさんご用意しております",
+                "image": ""
+            },
+            "selling_point": {
+                "text": "よろしければ、ぜひ！",
+                "image": ""
+            },
+            "follower_handle_name": ["emma"]
         }
     ]
 }
