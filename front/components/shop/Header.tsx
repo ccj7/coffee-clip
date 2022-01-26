@@ -21,7 +21,7 @@ function Header() {
     const auth = getAuth(firebase)
     signOut(auth)
       .then(() => {
-        router.push('/shop/signup')
+        router.push('/shop/signin')
       })
       .catch((error) => {
         const errorCode = error.code
