@@ -40,7 +40,8 @@ const shopTopPage: WithGetAccessControl<VFC> = () => {
     if (handle_name) {
       getShop(handle_name)
     }
-  }, [])
+    // TODO ハンドルネームいるか確認
+  }, [handle_name])
 
   const dammy = {
     auth_id: '',
@@ -168,7 +169,7 @@ const shopTopPage: WithGetAccessControl<VFC> = () => {
 shopTopPage.getAccessControl = async () => {
   // TODO return,destinationの後帰る
   return !(await isLoggedIn())
-    ? { type: 'replace', destination: '/user/signin' }
+    ? { type: 'replace', destination: '/shop/signin' }
     : null
 }
 

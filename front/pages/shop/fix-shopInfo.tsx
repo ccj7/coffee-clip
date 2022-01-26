@@ -12,12 +12,12 @@ import axios from 'axios'
 const FixShopInfo: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
   const dammy = {
-    auth_id: '1',
-    handle_name: 'arasuna_coffee',
-    display_name: 'Arasuna Coffee',
-    icon: 'image',
-    address: '東京都コードクリサリス',
-    map_url: 'googlemap URL',
+    auth_id: '',
+    handle_name: '',
+    display_name: '',
+    icon: '',
+    address: '',
+    map_url: '',
     hp_url: 'HPURL',
     instagram_url: 'instagram URL',
     opening_hours: '9:00~10:00',
@@ -49,28 +49,28 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
     }
   }, [])
 
+  const newData = {
+    handle_name: 'arasuna_coffee',
+    display_name: 'Arasuna Coffee',
+    icon: 'image',
+    address: '東京都コードクリサリス',
+    map_url: '',
+    hp_url: '',
+    instagram_url: '',
+    opening_hours: '',
+    regular_day_off: '',
+    concept: '',
+    recommendation: {
+      title: '',
+      description: '',
+      image: '',
+    },
+    selling_point: '',
+  }
+
   const onSubmit = (data: any) => {
-    console.log(data)
-    const newData = {
-      handle_name: 'arasuna_coffee',
-      display_name: 'Arasuna Coffee',
-      icon: 'image',
-      address: '東京都コードクリサリス',
-      map_url: 'googlemap URL',
-      hp_url: 'HPURL',
-      instagram_url: 'instagram URL',
-      opening_hours: '8:00~10:00',
-      regular_day_off: '月曜日',
-      concept: 'ひきたてのコーヒーをどうぞ',
-      recommendation: {
-        title: 'グリッチ',
-        description: '酸味が特徴！',
-        image: 'image',
-      },
-      selling_point: '駅から近いです！',
-    }
-    const put = () => {
-      axios.put('/:authId')
+    const putNewData = () => {
+      axios.put(`/${currentUser}`, data)
     }
   }
 
@@ -152,7 +152,7 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
 
 FixShopInfo.getAccessControl = async () => {
   return !(await isLoggedIn())
-    ? { type: 'replace', destination: '/user/signin' }
+    ? { type: 'replace', destination: '/shop/signin' }
     : null
 }
 export default FixShopInfo
