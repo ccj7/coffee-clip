@@ -5,11 +5,9 @@ function checkState(auth: Auth) {
   const check = new Promise((resolve, reject) => {
     onAuthStateChanged(auth, (user) => {
       if(user) {
-        console.log(user)
         resolve(user)
       } else {
-        console.log("falseだよ")
-        reject("error")
+        reject("error: not logged in")
       }
     })
   })
