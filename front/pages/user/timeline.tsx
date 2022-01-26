@@ -16,6 +16,11 @@ import { useEffect, useState } from 'react'
 import { FiCoffee } from 'react-icons/fi';
 import { useRouter } from 'next/router'
 
+import { VFC } from 'react'
+import { useAuthContext } from '../auth/AuthContext'
+
+let isLogin = false
+
 interface Review {
   image?: string
   description?: string
@@ -30,9 +35,12 @@ interface User {
   _id: string
 }
 
-function Timeline() {
+const Timeline: WithGetAccessControl<VFC> = (props) => {
+  const { currentUser } = useAuthContext()
+  if (currentUser) isLogin = true
   const router = useRouter()
   const [userInfo, setUserInfo] = useState<[User]>()
+
   // TODO paramsからハンドルネームを取得
   useEffect(() => {
     const getUser = async (authId: string) => {
@@ -76,6 +84,10 @@ function Timeline() {
       </Box>
     </div>
   )
+}
+
+Timeline.getAccessControl = () => {
+  return !isLogin ? { type: 'replace', destination: '/user/signin' } : null
 }
 
 export default Timeline
