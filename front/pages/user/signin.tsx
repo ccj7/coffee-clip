@@ -9,7 +9,7 @@ import { Button } from '@chakra-ui/react'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import firebase from '../../auth/firebaseConfig'
 import { VFC } from 'react'
-import { useAuthContext } from '../auth/AuthContext'
+import { useAuthContext } from '../../auth/AuthContext'
 
 let isLogin = false
 
