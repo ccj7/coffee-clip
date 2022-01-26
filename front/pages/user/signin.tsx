@@ -36,7 +36,7 @@ function Signin() {
     <div>
       <Head>
         <title>Sign-In</title>
-        <meta name="Sign-In" content="ユーザーログイン" />
+        <meta name="Sign-In" content="ユーザーサインイン" />
       </Head>
       <Header />
 
