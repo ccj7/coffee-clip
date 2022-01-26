@@ -1,10 +1,14 @@
 // TODO　U-003 github issue#21
 
 import Head from 'next/head'
+import { VFC } from 'react'
 
 import Header from '../../components/shop/Header'
+import { useAuthContext } from '../../auth/AuthContext'
+import { isLoggedIn } from '../../util'
 
-function FixProfile() {
+const FixProfile: WithGetAccessControl<VFC> = (props) => {
+  const { currentUser } = useAuthContext()
   return (
     <div>
       <Head>
@@ -14,6 +18,10 @@ function FixProfile() {
       <Header />
     </div>
   )
+}
+
+FixProfile.getAccessControl = async () => {
+  return ! await isLoggedIn() ? { type: 'replace', destination: '/user/signin' } : null
 }
 
 export default FixProfile

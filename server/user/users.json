@@ -23,7 +23,7 @@
             "auth_id": "FTbxuYF3NggkwRjP4f6woEY7RKB2",
             "handle_name": "bob",
             "display_name": "Bob",
-            "icon": "Bobのアイコン画像",
+            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee.jpg",
             "follower_handle_names": ["kaori_hikita", "alice"],
             "followee_handle_names": ["kaori_hikita"],
             "followee_shops_handle_names": [],
