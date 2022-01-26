@@ -9,12 +9,10 @@ import { Spacer } from '@chakra-ui/react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useAuthContext } from '../../auth/AuthContext'
-
-let isLogin = false
+import { isLoggedIn } from '../../util'
 
 const DashBoard: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
-  if (currentUser) isLogin = true
 
   const router = useRouter()
   // TODO: dammyデータ削除 & Interfaceをサーバー側のスキーマから流用して作成
@@ -78,9 +76,10 @@ const DashBoard: WithGetAccessControl<VFC> = () => {
   )
 }
 
-DashBoard.getAccessControl = () => {
-  // TODO return,destinationの後帰る
-  return !isLogin ? { type: 'replace', destination: '/user/signin' } : null
+DashBoard.getAccessControl = async () => {
+  return !(await isLoggedIn)
+    ? { type: 'replace', destination: '/user/signin' }
+    : null
 }
 
 export default DashBoard
