@@ -1,10 +1,12 @@
 import { Request, Response } from 'express'
 import userModel from '../schema/userSchema'
 import connectToDB from '../db-connection'
+import { s3Upload } from '../s3'
 
 export const getUsers = async (req: Request, res: Response): Promise<void> => {
     await connectToDB()
     const users = await userModel.find({})
+
     res.json(users)
 }
 
@@ -73,6 +75,14 @@ export const postUser = async (req: Request, res: Response): Promise<void> => {
     })
 
     if (!authIdCheck && !handleNameCheck) {
+        let iconData: String = ''
+
+        if (bodyData.icon) {
+            const imgFileName: string = `icon_user_${bodyData.auth_id}`
+            s3Upload(bodyData.icon, imgFileName)
+            iconData = await s3Upload(bodyData.icon, imgFileName)
+        }
+
         interface User {
             auth_id: String
             handle_name: String
@@ -88,7 +98,7 @@ export const postUser = async (req: Request, res: Response): Promise<void> => {
             auth_id: bodyData.auth_id,
             handle_name: bodyData.handle_name,
             display_name: bodyData.display_name,
-            icon: bodyData.icon,
+            icon: iconData,
             follower_handle_names: [],
             followee_handle_names: [],
             followee_shops_handle_names: [],
@@ -113,9 +123,23 @@ export const postReview = async (
 
     if (user) {
         const newReviews = user.reviews
+        const bodyData = req.body
+
+        let reviewImg: String = ''
+        if (bodyData.image) {
+            const time = Date.now()
+
+            const imgFileName: string = `review_user_${authId}_${time}`
+            reviewImg = await s3Upload(bodyData.image, imgFileName)
+        }
 
         if (newReviews) {
-            newReviews.push(req.body)
+            const newReview = {
+                image: reviewImg,
+                description: bodyData.description,
+            }
+
+            newReviews.push(newReview)
 
             await userModel.updateOne(
                 { auth_id: authId },
