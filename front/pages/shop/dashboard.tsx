@@ -33,7 +33,10 @@ const DashBoard: WithGetAccessControl<VFC> = () => {
       description: '',
       image: '',
     },
-    selling_point: '',
+    selling_point: {
+      text: '',
+      image: '',
+    },
     follower_handle_name: [''],
   }
 

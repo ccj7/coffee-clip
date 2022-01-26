@@ -60,7 +60,10 @@ const shopTopPage: WithGetAccessControl<VFC> = () => {
       description: '',
       image: '',
     },
-    selling_point: '',
+    selling_point: {
+      text: '',
+      image: '',
+    },
     follower_handle_name: [''],
   }
   const [shopInfo, setShopInfo] = useState<any>(dammy)
