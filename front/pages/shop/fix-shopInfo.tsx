@@ -8,9 +8,13 @@ import InputForm from '../../components/InputForm'
 import { useAuthContext } from '../../auth/AuthContext'
 import { isLoggedIn } from '../../util'
 import axios from 'axios'
+import { useRouter } from 'next/router'
 
 const FixShopInfo: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
+
+  const router = useRouter()
+
   const dammy = {
     auth_id: '',
     handle_name: '',
@@ -54,9 +58,11 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
 
   const onSubmit = (data: any) => {
     console.log(data)
-    const putNewData = () => {
-      axios.put(`/${currentUser}`, data)
+    const putNewData = async () => {
+      await axios.put(`/${currentUser}`, data)
     }
+    putNewData()
+    router.push('/shop/dashboard')
   }
 
   // TODO　画像処理とseeling POINTのinput追加
