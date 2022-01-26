@@ -8,7 +8,7 @@ import axios from 'axios'
 import { Spacer } from '@chakra-ui/react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useAuthContext } from '../auth/AuthContext'
+import { useAuthContext } from '../../auth/AuthContext'
 
 let isLogin = false
 

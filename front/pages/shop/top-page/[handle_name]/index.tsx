@@ -23,7 +23,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import axios from 'axios'
 import PostImage from '../../../../components/Image'
-import { useAuthContext } from '../../../auth/AuthContext'
+import { useAuthContext } from '../../../../auth/AuthContext'
 
 let isLogin = false
 

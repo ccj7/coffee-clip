@@ -17,7 +17,7 @@ import { FiCoffee } from 'react-icons/fi';
 import { useRouter } from 'next/router'
 
 import { VFC } from 'react'
-import { useAuthContext } from '../auth/AuthContext'
+import { useAuthContext } from '../../auth/AuthContext'
 
 let isLogin = false
 
