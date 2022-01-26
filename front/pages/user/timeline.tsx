@@ -18,8 +18,7 @@ import { useRouter } from 'next/router'
 
 import { VFC } from 'react'
 import { useAuthContext } from '../../auth/AuthContext'
-
-let isLogin = false
+import { isLoggedIn } from '../../util'
 
 interface Review {
   image?: string
@@ -37,7 +36,6 @@ interface User {
 
 const Timeline: WithGetAccessControl<VFC> = (props) => {
   const { currentUser } = useAuthContext()
-  if (currentUser) isLogin = true
   const router = useRouter()
   const [userInfo, setUserInfo] = useState<[User]>()
 
@@ -45,10 +43,13 @@ const Timeline: WithGetAccessControl<VFC> = (props) => {
   useEffect(() => {
     const getUser = async (authId: string) => {
       const res: any = await axios.get(`/api/users/${authId}/followee/reviews`)
+      console.log(res.data.reviewsOfFollowees)
       setUserInfo(res.data.reviewsOfFollowees)
     }
-    getUser('4E5Jby73IVRAypSDyV3IfFcQwXz1')
-  }, [])
+    if(currentUser) {
+      getUser(currentUser)
+    }
+  }, [currentUser])
 
   return (
     <div>
@@ -86,8 +87,8 @@ const Timeline: WithGetAccessControl<VFC> = (props) => {
   )
 }
 
-Timeline.getAccessControl = () => {
-  return !isLogin ? { type: 'replace', destination: '/user/signin' } : null
+Timeline.getAccessControl = async () => {
+  return ! await isLoggedIn() ? { type: 'replace', destination: '/user/signin' } : null
 }
 
 export default Timeline
