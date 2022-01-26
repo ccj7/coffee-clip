@@ -12,7 +12,14 @@ import {
 } from 'firebase/auth'
 import firebase from '../../auth/firebaseConfig'
 
-function Signin() {
+import { VFC } from 'react'
+import { useAuthContext } from '../auth/AuthContext'
+
+let isLogin = false
+
+const Signin: WithGetAccessControl<VFC> = () => {
+  const { currentUser } = useAuthContext()
+  if (currentUser) isLogin = true
 
   const methods = useForm()
   const router = useRouter()
@@ -57,6 +64,10 @@ function Signin() {
       </FormProvider>
     </div>
   )
+}
+
+Signin.getAccessControl = () => {
+  return isLogin ? { type: 'replace', destination: '/user/mypage' } : null
 }
 
 export default Signin
