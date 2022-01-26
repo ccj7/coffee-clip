@@ -40,8 +40,8 @@ const shopsDataSchema = new Schema<ShopsData, Model<ShopsData>>({
     opening_hours: String,
     regular_day_off: String,
     concept: String,
-    recommendation: [{ title: String, description: String, image: String }],
-    selling_point: [{ text: String, image: String }],
+    recommendation: { title: String, description: String, image: String },
+    selling_point: { text: String, image: String },
     follower_handle_name: [String],
 })
 
