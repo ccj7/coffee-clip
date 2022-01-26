@@ -13,16 +13,21 @@ import { HamburgerIcon, NotAllowedIcon } from '@chakra-ui/icons'
 import { getAuth, signOut } from 'firebase/auth'
 import Link from 'next/link'
 import firebase from '../../auth/firebaseConfig'
+import { useRouter } from 'next/router'
 
 function Header() {
+  const router = useRouter()
   const logout = async () => {
     const auth = getAuth(firebase)
-    try {
-      signOut(auth)
-      // history.push('/login')
-    } catch (error) {
-      alert(error)
-    }
+    signOut(auth)
+      .then(() => {
+        router.push('/shop/signup')
+      })
+      .catch((error) => {
+        const errorCode = error.code
+        const errorMessage = error.message
+        console.log(errorCode, errorMessage)
+      })
     console.log('ログアウト')
   }
   return (
