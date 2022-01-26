@@ -184,8 +184,8 @@ export const followShop = async (req: Request, res: Response): Promise<void> => 
         }
         await ShopsDataModel.updateOne({handle_name: req.body.handle_name}, {follower_handle_name: userList})
 
-        const newUser = await userModel.findOne({auth_id: req.params.authId})
-        res.json(newUser)
+        const newShop = await ShopsDataModel.findOne({handle_name: req.body.handle_name})
+        res.json(newShop)
     }
 }
 
@@ -223,9 +223,6 @@ export const unfollowShop = async (req: Request, res: Response): Promise<void> =
         await ShopsDataModel.updateOne({handle_name: req.body.handle_name}, {follower_handle_name: userList})
 
         const newShop = await ShopsDataModel.findOne({handle_name: req.body.handle_name})
-        console.log(newShop)
-
-        const newUser = await userModel.findOne({auth_id: req.params.authId})
-        res.json(newUser)
+        res.json(newShop)
     }
 }
