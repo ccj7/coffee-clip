@@ -53,9 +53,10 @@ const Signin: WithGetAccessControl<VFC> = () => {
   )
 }
 
-// FIXME: 無限にループしてしまうので書き方検討
 Signin.getAccessControl = async () => {
-  return await isLoggedIn ? null : null
+  return (await isLoggedIn())
+    ? { type: 'replace', destination: '/user/timeline' }
+    : null
 }
 
 export default Signin
