@@ -3,13 +3,19 @@ import Head from 'next/head'
 import Header from '../../components/shop/Header'
 import Profile from '../../components/Profile'
 import PrimaryButton from '../../components/Button'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, VFC } from 'react'
 import axios from 'axios'
 import { Spacer } from '@chakra-ui/react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useAuthContext } from '../../auth/AuthContext'
 
-function PhotoImage() {
+let isLogin = false
+
+const DashBoard: WithGetAccessControl<VFC> = () => {
+  const { currentUser } = useAuthContext()
+  if (currentUser) isLogin = true
+
   const router = useRouter()
   // TODO: dammyデータ削除 & Interfaceをサーバー側のスキーマから流用して作成
   const dammy = {
@@ -72,4 +78,9 @@ function PhotoImage() {
   )
 }
 
-export default PhotoImage
+DashBoard.getAccessControl = () => {
+  // TODO return,destinationの後帰る
+  return !isLogin ? { type: 'replace', destination: '/user/signin' } : null
+}
+
+export default DashBoard
