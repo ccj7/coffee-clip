@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Header from '../../components/shop/Header'
 import Profile from '../../components/Profile'
 import PrimaryButton from '../../components/Button'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, VFC } from 'react'
 import axios from 'axios'
 import { Spacer } from '@chakra-ui/react'
 import Link from 'next/link'
@@ -12,7 +12,7 @@ import { useAuthContext } from '../auth/AuthContext'
 
 let isLogin = false
 
-function DashBoard() {
+const DashBoard: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
   if (currentUser) isLogin = true
 
