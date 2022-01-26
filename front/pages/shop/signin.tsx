@@ -67,7 +67,7 @@ const Signin: WithGetAccessControl<VFC> = () => {
 }
 
 Signin.getAccessControl = () => {
-  return isLogin ? { type: 'replace', destination: '/user/mypage' } : null
+  return isLogin ? { type: 'replace', destination: '/shop/dashboard' } : null
 }
 
 export default Signin
