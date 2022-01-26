@@ -4,6 +4,7 @@ import Head from 'next/head'
 import axios from 'axios'
 import UserHeader from '../../components/user/UserHeader'
 import InputForm from '../../components/InputForm'
+import ImageUpload from '../../components/ImageUpload'
 import { useEffect, useState, VFC } from 'react'
 import { useForm, FormProvider } from 'react-hook-form' 
 import { Box, Button, Heading, Image } from '@chakra-ui/react'
@@ -25,36 +26,12 @@ const Setting: WithGetAccessControl<VFC> = (props) => {
     getUser("h1ERSr4qUNUoviCQlzZ0648p1cA2")
   }, [])
 
-  // アップロードされた画像のデータ
-  const [image, setImage] = useState("")
-  // base64に変換したもの
+  // base64に変換したもの（propsで渡す）
   const [base64Code, setBase64Code] = useState("")
   // getしてきたuser情報を入れておく予定
   const [displayName, setDisplayName] = useState<any>("")
 
   const methods = useForm()
-
-  // アップされた画像データをimageにセット
-  const handleChangeImage = (e: any) => {
-    setImage(e.target.files[0])
-  }
-
-  // base64を生成する関数
-  const encodeToBase64 = async (file: any) => {
-    const reader = new FileReader()
-    reader.readAsDataURL(file)
-    reader.onload = () => {
-      const base64 = reader.result as string
-      console.log(base64)
-
-      setBase64Code(base64)
-    }
-  }
-
-  // 画像をアップロードする関数
-  const uploadImage = () => {
-    encodeToBase64(image)
-  }
 
   // TODO: エンドポイントができたらサーバーに送る関数
   // const postUser = async (changeUserInfo: any) => {
@@ -88,11 +65,10 @@ const Setting: WithGetAccessControl<VFC> = (props) => {
             text="ユーザーネーム"
             defaultValue={displayName}
           />
-          <input type="file" accept="image/png, image/jpeg" onChange={handleChangeImage}/>
-          <Button type="submit" onClick={uploadImage}>アップロード</Button>
-          { base64Code &&
-            <Image w={"300px"} src={base64Code} />
-          }
+          <ImageUpload 
+            base64Code={base64Code}
+            setBase64Code={setBase64Code}
+            size={"300px"} />
           <Box><Button mt={4} type="submit">保存</Button></Box>
         </form>
       </FormProvider>
