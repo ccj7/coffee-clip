@@ -1,32 +1,18 @@
-import {
-  Box,
-  Center,
-  HStack,
-  Icon,
-  Spacer,
-  Stack,
-  Text,
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
-} from '@chakra-ui/react'
-import {
-  FormErrorMessage,
-  FormLabel,
-  FormControl,
-  Input,
-  Button,
-} from '@chakra-ui/react'
+import { Button } from '@chakra-ui/react'
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, VFC } from 'react'
 import { useForm, FormProvider, useFormContext } from 'react-hook-form'
 
 import Header from '../../components/shop/Header'
 import InputForm from '../../components/InputForm'
+import { useAuthContext } from '../auth/AuthContext'
 
-function FixShopInfo() {
+let isLogin = false
+
+const FixShopInfo: WithGetAccessControl<VFC> = () => {
+  const { currentUser } = useAuthContext()
+  if (currentUser) isLogin = true
+
   const dammy = {
     auth_id: '1',
     handle_name: 'arasuna_coffee',
@@ -131,4 +117,7 @@ function FixShopInfo() {
   )
 }
 
+FixShopInfo.getAccessControl = () => {
+  return !isLogin ? { type: 'replace', destination: '/user/signin' } : null
+}
 export default FixShopInfo
