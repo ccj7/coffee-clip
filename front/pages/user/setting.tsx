@@ -22,7 +22,7 @@ const Setting: WithGetAccessControl<VFC> = (props) => {
     }
 
     // TODO: 実際の値に変更
-    getUser("4E5Jby73IVRAypSDyV3IfFcQwXz1")
+    getUser("h1ERSr4qUNUoviCQlzZ0648p1cA2")
   }, [])
 
   // アップロードされた画像のデータ
@@ -30,7 +30,7 @@ const Setting: WithGetAccessControl<VFC> = (props) => {
   // base64に変換したもの
   const [base64Code, setBase64Code] = useState("")
   // getしてきたuser情報を入れておく予定
-  const [displayName, setDisplayName] = useState<any>()
+  const [displayName, setDisplayName] = useState<any>("")
 
   const methods = useForm()
 
@@ -56,11 +56,21 @@ const Setting: WithGetAccessControl<VFC> = (props) => {
     encodeToBase64(image)
   }
 
-  // サーバーに送る
+  // TODO: エンドポイントができたらサーバーに送る関数
+  // const postUser = async (changeUserInfo: any) => {
+  //   await axios.post(`/api/users`, changeUserInfo, {
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     }
+  //   })
+  // }
+
   const onSubmit = (changeUserInfo: any) => {
-    changeUserInfo.base64 = base64Code
+    changeUserInfo.icon = base64Code
     // TODO: changeUserInfoを送る
     console.log(changeUserInfo)
+
+    // postUser(changeUserInfo)
   }
 
   return (
