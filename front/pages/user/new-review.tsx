@@ -1,12 +1,13 @@
 // TODO　U-007 github issue#41
 
-import { Heading, Box, Button } from '@chakra-ui/react'
 import Head from 'next/head'
+import axios from 'axios'
 import UserHeader from '../../components/user/UserHeader'
 import InputForm from '../../components/InputForm'
 import ImageUpload from '../../components/ImageUpload'
 import { VFC, useState } from 'react'
 import { useForm, FormProvider } from 'react-hook-form' 
+import { Heading, Box, Button } from '@chakra-ui/react'
 import { useAuthContext } from '../../auth/AuthContext'
 import { isLoggedIn } from '../../util'
 
@@ -23,21 +24,24 @@ const NewReview: WithGetAccessControl<VFC> = (props) => {
 
   const methods = useForm()
 
-  // TODO: /api/users/:authId/reviewsにuserNewReviewを送る
-  // const postUser = async (changeUserInfo: any) => {
-  //   await axios.post(`/api/users`, changeUserInfo, {
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     }
-  //   })
-  // }
+  const postUser = async (userNewReview: Review, authId: string) => {
+    console.log(userNewReview)
+    console.log(authId)
+    // TODO: ここが動いていません！
+    // await axios.post(`/api/users/${authId}/reviews`, userNewReview, {
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   }
+    // })
+  }
 
   const onSubmit = (userNewReview: Review) => {
     userNewReview.image = base64Code
     console.log(userNewReview)
-
-    // TODO: postUserを書いたらコメントアウトを外す
-    // postUser(userNewReview)
+    
+    if (currentUser) {
+     postUser(userNewReview, currentUser)
+    }
   }
 
   return (
