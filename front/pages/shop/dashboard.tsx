@@ -84,8 +84,8 @@ const DashBoard: WithGetAccessControl<VFC> = () => {
 }
 
 DashBoard.getAccessControl = async () => {
-  return !(await isLoggedIn)
-    ? { type: 'replace', destination: '/user/signin' }
+  return !(await isLoggedIn())
+    ? { type: 'replace', destination: '/shop/signin' }
     : null
 }
 
