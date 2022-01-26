@@ -11,11 +11,9 @@ import firebase from '../../auth/firebaseConfig'
 import { VFC } from 'react'
 import { useAuthContext } from '../../auth/AuthContext'
 
-let isLogin = false
+import { isLoggedIn } from '../../util'
 
 const Signin: WithGetAccessControl<VFC> = () => {
-  const { currentUser } = useAuthContext()
-  if (currentUser) isLogin = true
 
   const methods = useForm()
   const router = useRouter()
@@ -25,8 +23,6 @@ const Signin: WithGetAccessControl<VFC> = () => {
 
     signInWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredential) => {
-        // const user = userCredential.user;
-        // console.log(user)
         router.push('/user/timeline')
       })
       .catch((error: any) => {
@@ -57,9 +53,9 @@ const Signin: WithGetAccessControl<VFC> = () => {
   )
 }
 
-Signin.getAccessControl = () => {
-  // TODO returnの後を帰る
-  return isLogin ? { type: 'replace', destination: '/user/mypage' } : null
+// FIXME: 無限にループしてしまうので書き方検討
+Signin.getAccessControl = async () => {
+  return await isLoggedIn ? null : null
 }
 
 export default Signin

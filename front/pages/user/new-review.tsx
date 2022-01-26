@@ -7,12 +7,10 @@ import Header from '../../components/shop/Header'
 
 import { VFC } from 'react'
 import { useAuthContext } from '../../auth/AuthContext'
-
-let isLogin = false
+import { isLoggedIn } from '../../util'
 
 const NewReview: WithGetAccessControl<VFC> = (props) => {
   const { currentUser } = useAuthContext()
-  if (currentUser) isLogin = true
   return (
     <div>
       <Head>
@@ -25,8 +23,9 @@ const NewReview: WithGetAccessControl<VFC> = (props) => {
   )
 }
 
-NewReview.getAccessControl = () => {
-  return !isLogin ? { type: 'replace', destination: '/user/signin' } : null
+NewReview.getAccessControl = async () => {
+  return ! await isLoggedIn() ? { type: 'replace', destination: '/user/signin' } : null
 }
+
 
 export default NewReview
