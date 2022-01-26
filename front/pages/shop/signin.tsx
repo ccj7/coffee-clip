@@ -6,8 +6,12 @@ import { useForm, FormProvider } from 'react-hook-form'
 import InputForm from '../../components/InputForm'
 import { Button } from '@chakra-ui/react'
 
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+} from 'firebase/auth'
 import firebase from '../../auth/firebaseConfig'
+
 import { VFC } from 'react'
 import { useAuthContext } from '../auth/AuthContext'
 
@@ -27,11 +31,10 @@ const Signin: WithGetAccessControl<VFC> = () => {
       .then((userCredential) => {
         // const user = userCredential.user;
         // console.log(user)
-        router.push('/user/timeline')
-      })
-      .catch((error: any) => {
-        const errorCode = error.code
-        const errorMessage = error.message
+        router.push('/shop/dashboard')
+      }).catch((error: any) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
         console.log(errorCode, errorMessage)
         router.push('/index')
       })
@@ -40,26 +43,31 @@ const Signin: WithGetAccessControl<VFC> = () => {
     <div>
       <Head>
         <title>Sign-In</title>
-        <meta name="Sign-In" content="ユーザーサインイン" />
+        <meta name="Sign-In" content="Shop サインイン" />
       </Head>
       <Header />
 
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
-          <InputForm thema="email" text="メールアドレス" />
-          <InputForm thema="password" text="パスワード" />
+          <InputForm
+            thema="email"
+            text="メールアドレス"
+          />
+          <InputForm
+            thema="password"
+            text="パスワード"
+          />
           <Button mt={4} type="submit">
             Submit
           </Button>
-        </form>
+          </form>
       </FormProvider>
     </div>
   )
 }
 
 Signin.getAccessControl = () => {
-  // TODO returnの後を帰る
-  return isLogin ? { type: 'replace', destination: '/user/mypage' } : null
+  return isLogin ? { type: 'replace', destination: '/shop/dashboard' } : null
 }
 
 export default Signin
