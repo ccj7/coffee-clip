@@ -10,7 +10,7 @@ export const getShops = async (req: Request, res: Response) => {
 
 export const getShop = async (req: Request, res: Response) => {
     await connectToDB()
-    const data = await ShopsDataModel.find({
+    const data = await ShopsDataModel.findOne({
         $or: [
             { auth_id: req.params.authId },
             { handle_name: req.params.handleName },
@@ -23,7 +23,7 @@ export const putShop = async (req: Request, res: Response) => {
     await connectToDB()
     await ShopsDataModel.updateOne({ auth_id: req.params.authId }, req.body)
     const data = await ShopsDataModel.findOne({ auth_id: req.params.authId })
-    res.send(data)
+    res.send(Object(data))
 }
 
 export const postShop = async (req: Request, res: Response): Promise<void> => {
