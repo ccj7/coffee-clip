@@ -9,7 +9,7 @@ import { Box, Flex } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 
 import { VFC } from 'react'
-import { useAuthContext } from '../auth/AuthContext'
+import { useAuthContext } from '../../auth/AuthContext'
 
 let isLogin = false
 
