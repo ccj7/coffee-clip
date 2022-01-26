@@ -14,7 +14,7 @@ import {
 } from '@chakra-ui/react'
 import { AiOutlineInstagram } from 'react-icons/ai'
 import Head from 'next/head'
-import { useEffect, useState, VFC } from 'react'
+import { useContext, useEffect, useState, VFC } from 'react'
 import PrimaryButton from '../../../../components/Button'
 import Profile from '../../../../components/Profile'
 
@@ -23,11 +23,11 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import axios from 'axios'
 import PostImage from '../../../../components/Image'
-import { useAuthContext } from '../../../../auth/AuthContext'
+import { AuthContext, useAuthContext } from '../../../../auth/AuthContext'
 import { isLoggedIn } from '../../../../util'
 
-const shopTopPage: WithGetAccessControl<VFC> = () => {
-  const { currentUser } = useAuthContext()
+const ShopTopPage: WithGetAccessControl<VFC> = () => {
+  const { currentUser } = useContext(AuthContext)
 
   const router = useRouter()
   const { handle_name } = router.query
@@ -169,11 +169,11 @@ const shopTopPage: WithGetAccessControl<VFC> = () => {
   )
 }
 
-shopTopPage.getAccessControl = async () => {
+ShopTopPage.getAccessControl = async () => {
   // TODO return,destinationの後帰る
   return !(await isLoggedIn())
     ? { type: 'replace', destination: '/shop/signin' }
     : null
 }
 
-export default shopTopPage
+export default ShopTopPage
