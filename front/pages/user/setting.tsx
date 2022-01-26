@@ -2,15 +2,17 @@
 
 import Head from 'next/head'
 import axios from 'axios'
-
 import UserHeader from '../../components/user/UserHeader'
-import { useEffect, useState } from 'react'
+import InputForm from '../../components/InputForm'
+import { useEffect, useState, VFC } from 'react'
 import { useForm, FormProvider } from 'react-hook-form' 
 import { Box, Button, Heading, Image } from '@chakra-ui/react'
-import InputForm from '../../components/InputForm'
+import { useAuthContext } from '../../auth/AuthContext'
+import { isLoggedIn } from '../../util'
 
 // TODO: 全体的に型をちゃんと定義する
-function Setting() {
+const Setting: WithGetAccessControl<VFC> = (props) => {
+  const { currentUser } = useAuthContext()
   
   // user情報を取得
   useEffect(() => {
@@ -72,10 +74,10 @@ function Setting() {
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
           <InputForm
-           thema="display_name"
-           text="ユーザーネーム"
-           defaultValue={displayName}
-           />
+            thema="display_name"
+            text="ユーザーネーム"
+            defaultValue={displayName}
+          />
           <input type="file" accept="image/png, image/jpeg" onChange={handleChangeImage}/>
           <Button type="submit" onClick={uploadImage}>アップロード</Button>
           { base64Code &&
@@ -86,6 +88,10 @@ function Setting() {
       </FormProvider>
     </Box>
   )
+}
+
+Setting.getAccessControl = async () => {
+  return ! await isLoggedIn() ? { type: 'replace', destination: '/user/signin' } : null
 }
 
 export default Setting
