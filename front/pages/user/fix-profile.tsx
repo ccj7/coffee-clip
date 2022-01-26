@@ -4,13 +4,11 @@ import Head from 'next/head'
 import { VFC } from 'react'
 
 import Header from '../../components/shop/Header'
-import { useAuthContext } from '../auth/AuthContext'
-
-let isLogin = false
+import { useAuthContext } from '../../auth/AuthContext'
+import { isLoggedIn } from '../../util'
 
 const FixProfile: WithGetAccessControl<VFC> = (props) => {
   const { currentUser } = useAuthContext()
-  if (currentUser) isLogin = true
   return (
     <div>
       <Head>
@@ -22,8 +20,8 @@ const FixProfile: WithGetAccessControl<VFC> = (props) => {
   )
 }
 
-FixProfile.getAccessControl = () => {
-  return !isLogin ? { type: 'replace', destination: '/user/signin' } : null
+FixProfile.getAccessControl = async () => {
+  return ! await isLoggedIn() ? { type: 'replace', destination: '/user/signin' } : null
 }
 
 export default FixProfile
