@@ -18,18 +18,21 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
     icon: '',
     address: '',
     map_url: '',
-    hp_url: 'HPURL',
-    instagram_url: 'instagram URL',
-    opening_hours: '9:00~10:00',
-    regular_day_off: '月曜日',
-    concept: '美味しいコーヒー提供してま〜す',
+    hp_url: '',
+    instagram_url: '',
+    opening_hours: '',
+    regular_day_off: '',
+    concept: '',
     recommendation: {
-      title: 'グリッチ',
-      description: '酸味が特徴！',
-      image: 'image',
+      title: '',
+      description: '',
+      image: '',
     },
-    selling_point: 'image',
-    follower_handle_name: ['ccmizki'],
+    selling_point: {
+      text: '',
+      image: '',
+    },
+    follower_handle_name: [''],
   }
   const [shopInfo, setShopInfo] = useState<any>(dammy)
 
@@ -49,26 +52,8 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
     }
   }, [])
 
-  const newData = {
-    handle_name: 'arasuna_coffee',
-    display_name: 'Arasuna Coffee',
-    icon: 'image',
-    address: '東京都コードクリサリス',
-    map_url: '',
-    hp_url: '',
-    instagram_url: '',
-    opening_hours: '',
-    regular_day_off: '',
-    concept: '',
-    recommendation: {
-      title: '',
-      description: '',
-      image: '',
-    },
-    selling_point: '',
-  }
-
   const onSubmit = (data: any) => {
+    console.log(data)
     const putNewData = () => {
       axios.put(`/${currentUser}`, data)
     }
@@ -94,8 +79,11 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
             text="お店の名前"
             defaultValue={shopInfo.display_name}
           />
-          {/* TODO イメージの変更*/}
-          <p> イメージの変更も加えます</p>
+          <InputForm
+            thema="icon"
+            text="アイコン"
+            defaultValue={shopInfo.image}
+          />
           <InputForm
             thema="address"
             text="住所"
@@ -140,6 +128,21 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
             thema="recommendation.description"
             text="おすすめのコーヒー 紹介文"
             defaultValue={shopInfo.recommendation.description}
+          />
+          <InputForm
+            thema="recommendation.description"
+            text="おすすめのコーヒー 写真"
+            defaultValue={shopInfo.recommendation.image}
+          />
+          <InputForm
+            thema="selling_point.text"
+            text="お店の魅力"
+            defaultValue={shopInfo.recommendation.image}
+          />
+          <InputForm
+            thema="selling_point.image"
+            text="お店の魅力　写真"
+            defaultValue={shopInfo.recommendation.image}
           />
           <Button mt={4} type="submit">
             Submit
