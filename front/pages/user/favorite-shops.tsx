@@ -4,8 +4,7 @@ import Head from 'next/head'
 import { useContext, VFC } from 'react'
 
 import Header from '../../components/shop/Header'
-import { useAuthContext } from '../auth/AuthContext'
-import { isLoggedIn } from '../auth/isLoggedIn'
+import { useAuthContext } from '../../auth/AuthContext'
 
 // 🌸１🌸
 let isLogin = false

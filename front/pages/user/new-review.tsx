@@ -6,7 +6,7 @@ import Head from 'next/head'
 import Header from '../../components/shop/Header'
 
 import { VFC } from 'react'
-import { useAuthContext } from '../auth/AuthContext'
+import { useAuthContext } from '../../auth/AuthContext'
 
 let isLogin = false
 

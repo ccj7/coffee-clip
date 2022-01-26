@@ -13,7 +13,7 @@ import {
 import firebase from '../../auth/firebaseConfig'
 
 import { VFC } from 'react'
-import { useAuthContext } from '../auth/AuthContext'
+import { useAuthContext } from '../../auth/AuthContext'
 
 let isLogin = false
 
