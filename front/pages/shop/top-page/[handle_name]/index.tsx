@@ -24,12 +24,10 @@ import { useRouter } from 'next/router'
 import axios from 'axios'
 import PostImage from '../../../../components/Image'
 import { useAuthContext } from '../../../../auth/AuthContext'
-
-let isLogin = false
+import { isLoggedIn } from '../../../../util'
 
 const shopTopPage: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
-  if (currentUser) isLogin = true
 
   const router = useRouter()
   const { handle_name } = router.query
@@ -37,12 +35,13 @@ const shopTopPage: WithGetAccessControl<VFC> = () => {
   useEffect(() => {
     const getShop = async (handle: string | string[]) => {
       const res: any = await axios.get(`/api/shops/details/${handle}`)
-      setShopInfo(res.data[0])
+      setShopInfo(res.data)
     }
-    if(handle_name) {
+    if (handle_name) {
       getShop(handle_name)
     }
-  }, [])
+    // TODO ハンドルネームいるか確認
+  }, [handle_name])
 
   const dammy = {
     auth_id: '',
@@ -61,7 +60,10 @@ const shopTopPage: WithGetAccessControl<VFC> = () => {
       description: '',
       image: '',
     },
-    selling_point: '',
+    selling_point: {
+      text: '',
+      image: '',
+    },
     follower_handle_name: [''],
   }
   const [shopInfo, setShopInfo] = useState<any>(dammy)
@@ -167,9 +169,11 @@ const shopTopPage: WithGetAccessControl<VFC> = () => {
   )
 }
 
-shopTopPage.getAccessControl = () => {
+shopTopPage.getAccessControl = async () => {
   // TODO return,destinationの後帰る
-  return !isLogin ? { type: 'replace', destination: '/user/signin' } : null
+  return !(await isLoggedIn())
+    ? { type: 'replace', destination: '/shop/signin' }
+    : null
 }
 
 export default shopTopPage
