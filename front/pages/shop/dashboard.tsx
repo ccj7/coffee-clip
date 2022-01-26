@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Header from '../../components/shop/Header'
 import Profile from '../../components/Profile'
 import PrimaryButton from '../../components/Button'
-import { useEffect, useState, VFC } from 'react'
+import { useEffect, useRef, useState, VFC } from 'react'
 import axios from 'axios'
 import { Spacer } from '@chakra-ui/react'
 import Link from 'next/link'
@@ -39,17 +39,23 @@ const DashBoard: WithGetAccessControl<VFC> = () => {
 
   const [shopInfo, setShopInfo] = useState<any>(dammy)
 
-  // console.log(shopInfo.display_name)
   //　user情報を取得
   useEffect(() => {
+    console.log(currentUser)
     const getShop = async (authId: string) => {
       // TODO: dammy変更してください
       const res: any = await axios.get(`/api/shops/${authId}`)
+      console.log(res.data)
       setShopInfo(res.data)
     }
+
     // TODO: 直接入力しているauthIDを変更
-    getShop('540PJipKIwXZUY422LmC2j3ZlvU2')
-  }, [])
+    if (currentUser) {
+      getShop(currentUser)
+    }
+
+    console.log(shopInfo)
+  }, [currentUser])
 
   return (
     <>
@@ -58,6 +64,7 @@ const DashBoard: WithGetAccessControl<VFC> = () => {
         <meta name="dashboard" content="ダッシュボード" />
       </Head>
       <Header />
+      {console.log(shopInfo.handle_name)}
       <Profile
         display_name={shopInfo.display_name}
         handle_name={shopInfo.handle_name}

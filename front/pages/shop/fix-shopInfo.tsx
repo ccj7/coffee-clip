@@ -7,10 +7,10 @@ import Header from '../../components/shop/Header'
 import InputForm from '../../components/InputForm'
 import { useAuthContext } from '../../auth/AuthContext'
 import { isLoggedIn } from '../../util'
+import axios from 'axios'
 
 const FixShopInfo: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
-
   const dammy = {
     auth_id: '1',
     handle_name: 'arasuna_coffee',
@@ -35,8 +35,43 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
 
   const methods = useForm()
 
+  useEffect(() => {
+    console.log(currentUser)
+
+    const getShop = async (authId: string) => {
+      // TODO: dammy変更してください
+      const res: any = await axios.get(`/api/shops/${authId}`)
+      setShopInfo(res.data)
+    }
+    // TODO: 直接入力しているauthIDを変更
+    if (currentUser) {
+      getShop(currentUser)
+    }
+  }, [])
+
   const onSubmit = (data: any) => {
     console.log(data)
+    const newData = {
+      handle_name: 'arasuna_coffee',
+      display_name: 'Arasuna Coffee',
+      icon: 'image',
+      address: '東京都コードクリサリス',
+      map_url: 'googlemap URL',
+      hp_url: 'HPURL',
+      instagram_url: 'instagram URL',
+      opening_hours: '8:00~10:00',
+      regular_day_off: '月曜日',
+      concept: 'ひきたてのコーヒーをどうぞ',
+      recommendation: {
+        title: 'グリッチ',
+        description: '酸味が特徴！',
+        image: 'image',
+      },
+      selling_point: '駅から近いです！',
+    }
+    const put = () => {
+      axios.put('/:authId')
+    }
   }
 
   // TODO　画像処理とseeling POINTのinput追加
