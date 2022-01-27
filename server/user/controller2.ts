@@ -68,3 +68,54 @@ export const putFollowUser = async (
         res.status(403).json('you already follow this users')
     }
 }
+
+export const unfollowUser = async (
+    req: Request,
+    res: Response
+): Promise<void> => {
+    await connectToDB()
+    const user = await userModel.findOne({
+        handle_name: req.params.handleName,
+    })
+
+    const currentUser = await userModel.findOne({
+        auth_id: req.body.auth_id,
+    })
+
+    if (!user || !currentUser) {
+        res.status(400).send({ error: '見つかりませんでした' })
+    } else if (!user.follower_handle_names?.includes(req.body.handle_name)) {
+        res.status(403).send({ error: '☆まだフォローしていません' })
+    } else if (!currentUser.followee_handle_names?.includes(user.handle_name)) {
+        res.status(403).send({ error: 'まだフォローしていません' })
+    } else {
+        const userList = user.follower_handle_names
+        for (let i = 0; i < userList.length; i++) {
+            if (userList[i] === currentUser.handle_name) {
+                userList.splice(i, 1)
+            }
+        }
+
+        await userModel.updateOne(
+            { handle_name: req.params.handleName },
+            { follower_handle_names: userList }
+        )
+
+        const currentUserList = currentUser.followee_handle_names
+        for (let i = 0; i < currentUserList.length; i++) {
+            if (currentUserList[i] === user.handle_name) {
+                currentUserList.splice(i, 1)
+            }
+        }
+
+        await userModel.updateOne(
+            { auth_id: req.body.auth_id },
+            { followee_handle_names: currentUserList }
+        )
+
+        const updateUser = await userModel.findOne({
+            handle_name: req.params.handleName,
+        })
+        res.json(updateUser)
+    }
+}
