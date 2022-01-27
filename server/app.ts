@@ -10,6 +10,7 @@ import { Request, Response } from 'express'
 // ここまで削除
 
 const app: express.Express = express();
+
 app.use(express.json({limit: '10mb'}));
 app.use(express.urlencoded({limit: '10mb'}));
 

@@ -144,6 +144,7 @@ export const postReview = async (
         const bodyData = req.body
 
         let reviewImg: String = ''
+
         const time = Date.now()
 
         if (bodyData.image) {
@@ -171,6 +172,7 @@ export const postReview = async (
         res.status(400).end()
     }
 }
+
 
 export const followShop = async (
     req: Request,
@@ -200,6 +202,7 @@ export const followShop = async (
         if (shopList) {
             shopList.push(shop.handle_name)
         }
+
         await userModel.updateOne(
             { auth_id: req.params.authId },
             { followee_shops_handle_names: shopList }
@@ -210,6 +213,7 @@ export const followShop = async (
         if (userList) {
             userList.push(user.handle_name)
         }
+
         await ShopsDataModel.updateOne(
             { handle_name: req.body.handle_name },
             { follower_handle_name: userList }
@@ -221,6 +225,7 @@ export const followShop = async (
         res.json(newShop)
     }
 }
+
 
 export const unfollowShop = async (
     req: Request,
@@ -274,3 +279,4 @@ export const unfollowShop = async (
         res.json(newShop)
     }
 }
+
