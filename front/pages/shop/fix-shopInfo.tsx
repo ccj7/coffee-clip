@@ -76,7 +76,7 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
       <Header />
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
-          {/* <InputForm
+          <InputForm
             thema="handle_name"
             text="shop ID"
             defaultValue={shopInfo.handle_name}
@@ -85,14 +85,9 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
             thema="display_name"
             text="お店の名前"
             defaultValue={shopInfo.display_name}
-          /> */}
-          {/* <InputForm
-            thema="icon"
-            text="アイコン"
-            defaultValue={shopInfo.image}
-          /> */}
-          <ImageUpload />
-          {/* <InputForm
+          />
+          <ImageUpload size="sm" thema="icon" text="アイコン画像" />
+          <InputForm
             thema="address"
             text="住所"
             defaultValue={shopInfo.address}
@@ -137,21 +132,24 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
             text="おすすめのコーヒー 紹介文"
             defaultValue={shopInfo.recommendation.description}
           />
-          <InputForm
-            thema="recommendation.description"
+
+          <ImageUpload
+            size="sm"
+            thema="recommendation.image"
             text="おすすめのコーヒー 写真"
-            defaultValue={shopInfo.recommendation.image}
           />
+
           <InputForm
             thema="selling_point.text"
             text="お店の魅力"
             defaultValue={shopInfo.recommendation.image}
           />
-          <InputForm
+
+          <ImageUpload
+            size="sm"
             thema="selling_point.image"
             text="お店の魅力　写真"
-            defaultValue={shopInfo.recommendation.image}
-          /> */}
+          />
           <Button mt={4} type="submit">
             Submit
           </Button>
