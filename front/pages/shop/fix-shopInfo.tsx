@@ -43,7 +43,7 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
   const [isSubmited, setIsSubmited] = useState<boolean>(false)
   const [isPublic, setIsPublic] = useState<string | null>(null)
 
-  const methods = useForm()
+  const methods = useForm({ shouldUnregister: false })
 
   useEffect(() => {
     console.log(currentUser)
@@ -159,14 +159,10 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
                 thema="selling_point.image"
                 text="お店の魅力　写真"
               />
-              <Button
-                type="submit"
-                mt={4}
-                // onclick={publish}
-              >
+              <Button type="submit" mt={4} onClick={publish}>
                 公開する
               </Button>
-              <Button mt={4} type="submit" onclick={draft}>
+              <Button mt={4} type="submit" onClick={draft}>
                 下書きに保存
               </Button>
             </form>
