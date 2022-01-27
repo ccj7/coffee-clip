@@ -5,19 +5,21 @@ import {
   Input,
   Button,
 } from '@chakra-ui/react'
+import { useEffect, useState } from 'react'
 import { useForm, useFormContext } from 'react-hook-form'
 
 function InputForm(props: any) {
   const { thema, text, defaultValue } = props
 
-  // const {
-  //   register,
-  //   formState: { errors, isSubmitting },
-  // } = useForm()
   const methods = useFormContext()
   const {
     formState: { errors },
+    setValue,
   } = useFormContext()
+
+  useEffect(() => {
+    setValue(thema, defaultValue)
+  }, [defaultValue])
 
   return (
     <>
@@ -25,7 +27,6 @@ function InputForm(props: any) {
         <FormLabel htmlFor={thema}>{text}</FormLabel>
         <Input
           id={thema}
-          defaultValue={defaultValue}
           {...methods.register(thema, {
             // required: true,
           })}
