@@ -7,9 +7,8 @@ import Tabs from '../../components/Tab'
 import { useEffect, useState } from 'react'
 
 import { VFC } from 'react'
-import { useAuthContext } from '../auth/AuthContext'
-
-let isLogin = false
+import { useAuthContext } from '../../auth/AuthContext'
+import { isLoggedIn } from '../../util'
 
 // TODO: 仮でInterfaceを入れているので、実際のデータ型に変更
 interface Review {
@@ -26,8 +25,6 @@ interface User {
 
 const Mypage: WithGetAccessControl<VFC> = (props) => {
   const { currentUser } = useAuthContext()
-  if (currentUser) isLogin = true
-
   const [userInfo, setUserInfo] = useState<User>()
   
   // TODO paramsからハンドルネームを取得
@@ -66,8 +63,8 @@ const Mypage: WithGetAccessControl<VFC> = (props) => {
   )
 }
 
-Mypage.getAccessControl = () => {
-  return !isLogin ? { type: 'replace', destination: '/user/signin' } : null
+Mypage.getAccessControl = async () => {
+  return ! await isLoggedIn() ? { type: 'replace', destination: '/user/signin' } : null
 }
 
 export default Mypage
