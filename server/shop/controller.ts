@@ -28,7 +28,7 @@ export const putShop = async (req: Request, res: Response) => {
 
 export const postShop = async (req: Request, res: Response): Promise<void> => {
     await connectToDB()
-    const { auth_id, handle_name, display_name, icon } = req.body
+    const { auth_id, handle_name, display_name } = req.body
 
     const authIdCheck = await ShopsDataModel.findOne({
         auth_id: auth_id,
@@ -52,13 +52,14 @@ export const postShop = async (req: Request, res: Response): Promise<void> => {
             regular_day_off: String
             concept: String
             follower_handle_name: Array<String>
+            publish_state: Boolean
         }
 
         const newShopUser: Shop = {
             auth_id: auth_id,
             handle_name: handle_name,
             display_name: display_name,
-            icon: icon,
+            icon: '',
             address: '',
             map_url: '',
             hp_url: '',
@@ -67,6 +68,7 @@ export const postShop = async (req: Request, res: Response): Promise<void> => {
             regular_day_off: '',
             concept: '',
             follower_handle_name: [],
+            publish_state: false
         }
 
         await ShopsDataModel.create(newShopUser)
