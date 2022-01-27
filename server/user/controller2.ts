@@ -86,7 +86,7 @@ export const unfollowUser = async (
     if (!user || !currentUser) {
         res.status(400).send({ error: '見つかりませんでした' })
     } else if (!user.follower_handle_names?.includes(currentUser.handle_name)) {
-        res.status(403).send({ error: '☆まだフォローしていません' })
+        res.status(403).send({ error: 'まだフォローしていません' })
     } else if (!currentUser.followee_handle_names?.includes(user.handle_name)) {
         res.status(403).send({ error: 'まだフォローしていません' })
     } else {
