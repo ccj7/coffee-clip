@@ -1,7 +1,6 @@
 import express from "express";
 import shopRoute from "./shop/route";
 import userRoute from "./user/route";
-import bodyParser from 'body-parser';
 
 // TODO: デプロイ時の接続確認用に読み込んでいます。あとで削除すること！
 import kittySchema from "./schema/sampleSchema";
