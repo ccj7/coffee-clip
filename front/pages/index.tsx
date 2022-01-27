@@ -3,9 +3,12 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { VFC } from 'react'
 import styles from '../styles/Home.module.css'
-import { Spacer, Text, HStack, Box } from '@chakra-ui/react'
+import { Spacer, Text, HStack, Box, Heading, VStack } from '@chakra-ui/react'
+import PrimaryButton from '../components/Button'
+import { useRouter } from 'next/router'
 
 const Home: WithGetAccessControl<VFC> = () => {
+  const router = useRouter()
   return (
     <div className={styles.container}>
       <Head>
@@ -21,7 +24,32 @@ const Home: WithGetAccessControl<VFC> = () => {
           </HStack>
         </Box>
 
-        <Text>Welcom to COFFEE CLIP</Text>
+        <Heading>Welcom to COFFEE CLIP</Heading>
+        <Text>COFFEE専門のSNSです☕️</Text>
+        <HStack>
+          <VStack>
+            <Text>USER</Text>
+            <PrimaryButton
+              text="signup"
+              onclick={() => router.push('/user/signup')}
+            />
+            <PrimaryButton
+              text="login"
+              onclick={() => router.push('/user/signin')}
+            />
+          </VStack>
+          <VStack>
+            <Text>shop</Text>
+            <PrimaryButton
+              text="signup"
+              onclick={() => router.push('/shop/signup')}
+            />
+            <PrimaryButton
+              text="login"
+              onclick={() => router.push('/shop/signin')}
+            />
+          </VStack>
+        </HStack>
       </main>
 
       <footer></footer>
