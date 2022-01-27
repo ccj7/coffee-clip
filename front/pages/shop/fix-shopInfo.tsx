@@ -6,39 +6,63 @@ import { useForm, FormProvider, useFormContext } from 'react-hook-form'
 import Header from '../../components/shop/Header'
 import InputForm from '../../components/InputForm'
 import { useAuthContext } from '../../auth/AuthContext'
-
-let isLogin = false
+import { isLoggedIn } from '../../util'
+import axios from 'axios'
+import { useRouter } from 'next/router'
 
 const FixShopInfo: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
-  if (currentUser) isLogin = true
+
+  const router = useRouter()
 
   const dammy = {
-    auth_id: '1',
-    handle_name: 'arasuna_coffee',
-    display_name: 'Arasuna Coffee',
-    icon: 'image',
-    address: '東京都コードクリサリス',
-    map_url: 'googlemap URL',
-    hp_url: 'HPURL',
-    instagram_url: 'instagram URL',
-    opening_hours: '9:00~10:00',
-    regular_day_off: '月曜日',
-    concept: '美味しいコーヒー提供してま〜す',
+    auth_id: '',
+    handle_name: '',
+    display_name: '',
+    icon: '',
+    address: '',
+    map_url: '',
+    hp_url: '',
+    instagram_url: '',
+    opening_hours: '',
+    regular_day_off: '',
+    concept: '',
     recommendation: {
-      title: 'グリッチ',
-      description: '酸味が特徴！',
-      image: 'image',
+      title: '',
+      description: '',
+      image: '',
     },
-    selling_point: 'image',
-    follower_handle_name: ['ccmizki'],
+    selling_point: {
+      text: '',
+      image: '',
+    },
+    follower_handle_name: [''],
   }
   const [shopInfo, setShopInfo] = useState<any>(dammy)
 
   const methods = useForm()
 
+  useEffect(() => {
+    console.log(currentUser)
+
+    const getShop = async (authId: string) => {
+      // TODO: dammy変更してください
+      const res: any = await axios.get(`/api/shops/${authId}`)
+      setShopInfo(res.data)
+    }
+    // TODO: 直接入力しているauthIDを変更
+    if (currentUser) {
+      getShop(currentUser)
+    }
+  }, [])
+
   const onSubmit = (data: any) => {
     console.log(data)
+    const putNewData = async () => {
+      await axios.put(`/${currentUser}`, data)
+    }
+    putNewData()
+    router.push('/shop/dashboard')
   }
 
   // TODO　画像処理とseeling POINTのinput追加
@@ -61,8 +85,11 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
             text="お店の名前"
             defaultValue={shopInfo.display_name}
           />
-          {/* TODO イメージの変更*/}
-          <p> イメージの変更も加えます</p>
+          <InputForm
+            thema="icon"
+            text="アイコン"
+            defaultValue={shopInfo.image}
+          />
           <InputForm
             thema="address"
             text="住所"
@@ -108,6 +135,21 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
             text="おすすめのコーヒー 紹介文"
             defaultValue={shopInfo.recommendation.description}
           />
+          <InputForm
+            thema="recommendation.description"
+            text="おすすめのコーヒー 写真"
+            defaultValue={shopInfo.recommendation.image}
+          />
+          <InputForm
+            thema="selling_point.text"
+            text="お店の魅力"
+            defaultValue={shopInfo.recommendation.image}
+          />
+          <InputForm
+            thema="selling_point.image"
+            text="お店の魅力　写真"
+            defaultValue={shopInfo.recommendation.image}
+          />
           <Button mt={4} type="submit">
             Submit
           </Button>
@@ -117,7 +159,9 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
   )
 }
 
-FixShopInfo.getAccessControl = () => {
-  return !isLogin ? { type: 'replace', destination: '/user/signin' } : null
+FixShopInfo.getAccessControl = async () => {
+  return !(await isLoggedIn())
+    ? { type: 'replace', destination: '/shop/signin' }
+    : null
 }
 export default FixShopInfo
