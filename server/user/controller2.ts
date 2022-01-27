@@ -69,6 +69,7 @@ export const putFollowUser = async (
     }
 }
 
+
 export const unfollowUser = async (
     req: Request,
     res: Response
