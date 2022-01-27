@@ -9,13 +9,11 @@ import { Button } from '@chakra-ui/react'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import firebase from '../../auth/firebaseConfig'
 import { VFC } from 'react'
-import { useAuthContext } from '../auth/AuthContext'
+import { useAuthContext } from '../../auth/AuthContext'
 
-let isLogin = false
+import { isLoggedIn } from '../../util'
 
 const Signin: WithGetAccessControl<VFC> = () => {
-  const { currentUser } = useAuthContext()
-  if (currentUser) isLogin = true
 
   const methods = useForm()
   const router = useRouter()
@@ -25,8 +23,6 @@ const Signin: WithGetAccessControl<VFC> = () => {
 
     signInWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredential) => {
-        // const user = userCredential.user;
-        // console.log(user)
         router.push('/user/timeline')
       })
       .catch((error: any) => {
@@ -57,9 +53,10 @@ const Signin: WithGetAccessControl<VFC> = () => {
   )
 }
 
-Signin.getAccessControl = () => {
-  // TODO returnの後を帰る
-  return isLogin ? { type: 'replace', destination: '/user/mypage' } : null
+Signin.getAccessControl = async () => {
+  return (await isLoggedIn())
+    ? { type: 'replace', destination: '/user/timeline' }
+    : null
 }
 
 export default Signin

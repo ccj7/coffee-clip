@@ -9,9 +9,8 @@ import { Box, Flex } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 
 import { VFC } from 'react'
-import { useAuthContext } from '../auth/AuthContext'
-
-let isLogin = false
+import { useAuthContext } from '../../auth/AuthContext'
+import { isLoggedIn } from '../../util'
 
 interface Shop {
   auth_id: string,
@@ -23,7 +22,6 @@ interface Shop {
 
 const Shoplist: WithGetAccessControl<VFC> = (props) => {
   const { currentUser } = useAuthContext()
-  if (currentUser) isLogin = true
   const [shopsInfo, setShopsInfo] = useState<[Shop]>();
 
   // shopの一覧情報を取得
@@ -60,8 +58,9 @@ const Shoplist: WithGetAccessControl<VFC> = (props) => {
   )
 }
 
-Shoplist.getAccessControl = () => {
-  return !isLogin ? { type: 'replace', destination: '/user/signin' } : null
+
+Shoplist.getAccessControl = async () => {
+  return ! await isLoggedIn() ? { type: 'replace', destination: '/user/signin' } : null
 }
 
 export default Shoplist
