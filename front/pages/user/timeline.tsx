@@ -18,7 +18,7 @@ import { isLoggedIn } from '../../util'
 interface Review {
   image?: string
   description?: string
-  created_at: number
+  created_at?: number
 }
 
 interface User {
