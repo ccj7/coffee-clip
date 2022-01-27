@@ -23,11 +23,15 @@ export const getReviewsOfFolloweesByAuthId = async (
         const result = []
 
         if (user.reviews.length > 0) {
+            let myHandleName = user.handle_name
+            let myDisplayName = user.display_name
+            let myIcon = user.icon
+
             for (const review of user.reviews) {
                 const myReview = {
-                    handle_name: user.handle_name,
-                    display_name: user.display_name,
-                    icon: user.icon,
+                    handle_name: myHandleName,
+                    display_name: myDisplayName,
+                    icon: myIcon,
                     review: review,
                 }
 
@@ -45,11 +49,15 @@ export const getReviewsOfFolloweesByAuthId = async (
 
                 if (followee) {
                     if (followee.reviews) {
+                        let followeeHandleName = followee.handle_name
+                        let followeeDisplayName = followee.display_name
+                        let followeeIcon = followee.icon
+
                         for (const review of followee.reviews) {
                             const reviews = {
-                                handle_name: followee.handle_name,
-                                display_name: followee.display_name,
-                                icon: followee.icon,
+                                handle_name: followeeHandleName,
+                                display_name: followeeDisplayName,
+                                icon: followeeIcon,
                                 review: review,
                             }
                             result.push(reviews)
