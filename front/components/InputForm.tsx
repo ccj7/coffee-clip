@@ -27,7 +27,7 @@ function InputForm(props: any) {
           id={thema}
           defaultValue={defaultValue}
           {...methods.register(thema, {
-            required: true,
+            // required: true,
           })}
         />
         <FormErrorMessage>

@@ -9,6 +9,7 @@ import { useAuthContext } from '../../auth/AuthContext'
 import { isLoggedIn } from '../../util'
 import axios from 'axios'
 import { useRouter } from 'next/router'
+import ImageUpload from '../../components/ImageUpload'
 
 const FixShopInfo: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
@@ -58,11 +59,11 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
 
   const onSubmit = (data: any) => {
     console.log(data)
-    const putNewData = async () => {
-      await axios.put(`/${currentUser}`, data)
-    }
-    putNewData()
-    router.push('/shop/dashboard')
+    // const putNewData = async () => {
+    //   await axios.put(`/${currentUser}`, data)
+    // }
+    // putNewData()
+    // router.push('/shop/dashboard')
   }
 
   // TODO　画像処理とseeling POINTのinput追加
@@ -85,11 +86,7 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
             text="お店の名前"
             defaultValue={shopInfo.display_name}
           />
-          <InputForm
-            thema="icon"
-            text="アイコン"
-            defaultValue={shopInfo.image}
-          />
+          <ImageUpload size="sm" thema="icon" text="アイコン画像" />
           <InputForm
             thema="address"
             text="住所"
@@ -135,20 +132,23 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
             text="おすすめのコーヒー 紹介文"
             defaultValue={shopInfo.recommendation.description}
           />
-          <InputForm
-            thema="recommendation.description"
+
+          <ImageUpload
+            size="sm"
+            thema="recommendation.image"
             text="おすすめのコーヒー 写真"
-            defaultValue={shopInfo.recommendation.image}
           />
+
           <InputForm
             thema="selling_point.text"
             text="お店の魅力"
             defaultValue={shopInfo.recommendation.image}
           />
-          <InputForm
+
+          <ImageUpload
+            size="sm"
             thema="selling_point.image"
             text="お店の魅力　写真"
-            defaultValue={shopInfo.recommendation.image}
           />
           <Button mt={4} type="submit">
             Submit
