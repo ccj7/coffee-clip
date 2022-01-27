@@ -1,4 +1,4 @@
-import e, { Request, Response } from 'express'
+import { Request, Response } from 'express'
 import userModel from '../schema/userSchema'
 import connectToDB from '../db-connection'
 import { s3Upload } from '../s3'
