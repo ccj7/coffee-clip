@@ -3,18 +3,16 @@ import Head from 'next/head'
 import Header from '../../components/shop/Header'
 import Profile from '../../components/Profile'
 import PrimaryButton from '../../components/Button'
-import { useEffect, useState, VFC } from 'react'
+import { useEffect, useRef, useState, VFC } from 'react'
 import axios from 'axios'
 import { Spacer } from '@chakra-ui/react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useAuthContext } from '../../auth/AuthContext'
-
-let isLogin = false
+import { isLoggedIn } from '../../util'
 
 const DashBoard: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
-  if (currentUser) isLogin = true
 
   const router = useRouter()
   // TODO: dammyデータ削除 & Interfaceをサーバー側のスキーマから流用して作成
@@ -35,23 +33,32 @@ const DashBoard: WithGetAccessControl<VFC> = () => {
       description: '',
       image: '',
     },
-    selling_point: '',
+    selling_point: {
+      text: '',
+      image: '',
+    },
     follower_handle_name: [''],
   }
 
   const [shopInfo, setShopInfo] = useState<any>(dammy)
 
-  // console.log(shopInfo.display_name)
   //　user情報を取得
   useEffect(() => {
+    console.log(currentUser)
     const getShop = async (authId: string) => {
       // TODO: dammy変更してください
       const res: any = await axios.get(`/api/shops/${authId}`)
+      console.log(res.data)
       setShopInfo(res.data)
     }
+
     // TODO: 直接入力しているauthIDを変更
-    getShop('540PJipKIwXZUY422LmC2j3ZlvU2')
-  }, [])
+    if (currentUser) {
+      getShop(currentUser)
+    }
+
+    console.log(shopInfo)
+  }, [currentUser])
 
   return (
     <>
@@ -60,6 +67,7 @@ const DashBoard: WithGetAccessControl<VFC> = () => {
         <meta name="dashboard" content="ダッシュボード" />
       </Head>
       <Header />
+      {console.log(shopInfo.handle_name)}
       <Profile
         display_name={shopInfo.display_name}
         handle_name={shopInfo.handle_name}
@@ -78,9 +86,10 @@ const DashBoard: WithGetAccessControl<VFC> = () => {
   )
 }
 
-DashBoard.getAccessControl = () => {
-  // TODO return,destinationの後帰る
-  return !isLogin ? { type: 'replace', destination: '/user/signin' } : null
+DashBoard.getAccessControl = async () => {
+  return !(await isLoggedIn())
+    ? { type: 'replace', destination: '/shop/signin' }
+    : null
 }
 
 export default DashBoard
