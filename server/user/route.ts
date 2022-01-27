@@ -9,12 +9,14 @@ import {
     unfollowShop,
 } from './controller'
 
+
 import {
     putUserProfile,
     getUser,
     putFollowUser,
     unfollowUser,
 } from './controller2'
+
 import { getFolloweeShops } from './controller3'
 
 const routes = Router()
@@ -31,7 +33,9 @@ routes.post('/:authId/reviews', postReview)
 
 routes.put('/:authId', putUserProfile)
 routes.put('/:handleName/following', putFollowUser)
+
 routes.put('/:handleName/unfollowing', unfollowUser)
+
 
 routes.put('/:authId/shops/following', followShop)
 routes.put('/:authId/shops/unfollowing', unfollowShop)
