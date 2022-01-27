@@ -1,6 +1,5 @@
 import { Request, Response } from 'express'
 import connectToDB from '../db-connection'
-import { s3Upload } from '../s3'
 import userModel from '../schema/userSchema'
 import ShopsDataModel from '../schema/shopSchema'
 
