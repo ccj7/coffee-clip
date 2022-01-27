@@ -9,6 +9,7 @@ import { useAuthContext } from '../../auth/AuthContext'
 import { isLoggedIn } from '../../util'
 import axios from 'axios'
 import { useRouter } from 'next/router'
+import ImageUpload from '../../components/ImageUpload'
 
 const FixShopInfo: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
@@ -58,11 +59,11 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
 
   const onSubmit = (data: any) => {
     console.log(data)
-    const putNewData = async () => {
-      await axios.put(`/${currentUser}`, data)
-    }
-    putNewData()
-    router.push('/shop/dashboard')
+    // const putNewData = async () => {
+    //   await axios.put(`/${currentUser}`, data)
+    // }
+    // putNewData()
+    // router.push('/shop/dashboard')
   }
 
   // TODO　画像処理とseeling POINTのinput追加
@@ -75,7 +76,7 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
       <Header />
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
-          <InputForm
+          {/* <InputForm
             thema="handle_name"
             text="shop ID"
             defaultValue={shopInfo.handle_name}
@@ -84,13 +85,14 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
             thema="display_name"
             text="お店の名前"
             defaultValue={shopInfo.display_name}
-          />
-          <InputForm
+          /> */}
+          {/* <InputForm
             thema="icon"
             text="アイコン"
             defaultValue={shopInfo.image}
-          />
-          <InputForm
+          /> */}
+          <ImageUpload />
+          {/* <InputForm
             thema="address"
             text="住所"
             defaultValue={shopInfo.address}
@@ -149,7 +151,7 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
             thema="selling_point.image"
             text="お店の魅力　写真"
             defaultValue={shopInfo.recommendation.image}
-          />
+          /> */}
           <Button mt={4} type="submit">
             Submit
           </Button>
