@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { VFC } from 'react'
 import styles from '../styles/Home.module.css'
+import { Spacer, Text, HStack, Box } from '@chakra-ui/react'
 
 const Home: WithGetAccessControl<VFC> = () => {
   return (
@@ -12,20 +13,18 @@ const Home: WithGetAccessControl<VFC> = () => {
         <meta name="COFFEE CLIP" content="COFFEE CLIPのトップページです" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main></main>
+      <main>
+        <Box w={'100%'}>
+          <HStack p="2" bg="gray.800" color="white">
+            <Text fontSize="3xl">COFFEE CLIP</Text>
+            <Spacer></Spacer>
+          </HStack>
+        </Box>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+        <Text>Welcom to COFFEE CLIP</Text>
+      </main>
+
+      <footer></footer>
     </div>
   )
 }
