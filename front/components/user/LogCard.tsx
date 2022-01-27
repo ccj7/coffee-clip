@@ -19,14 +19,20 @@ function LogCard(props: any) {
         </Box>
       </HStack>
       <HStack>
+        {review &&
+        
+        <Box>
         {review.image && 
           <Image
             boxSize='250px'
             objectFit='cover'
             src={review.image}
-            alt={review.description} />
+            alt={review.description} />    
         }
         <Text>{review.description}</Text>
+        </Box>
+  
+        }
       </HStack>
       </Box>
     </Link>
