@@ -1,7 +1,6 @@
 import express from "express";
 import shopRoute from "./shop/route";
 import userRoute from "./user/route";
-import bodyParser from 'body-parser';
 
 // TODO: デプロイ時の接続確認用に読み込んでいます。あとで削除すること！
 import kittySchema from "./schema/sampleSchema";
@@ -11,9 +10,8 @@ import { Request, Response } from 'express'
 // ここまで削除
 
 const app: express.Express = express();
-app.use(express.json());
-app.use(bodyParser.json({ limit: '10mb' }));
-app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
+app.use(express.json({limit: '10mb'}));
+app.use(express.urlencoded({limit: '10mb'}));
 
 // ToDo: CROS対応 要検討（以下は本番環境ではだめ絶対）
 // app.use(
