@@ -26,6 +26,7 @@ interface ShopsData {
     recommendation?: Types.DocumentArray<Recommendation>
     selling_point?: Types.DocumentArray<Selling_point>
     follower_handle_name?: Types.Array<string>
+    publish_state: boolean
 }
 
 const shopsDataSchema = new Schema<ShopsData, Model<ShopsData>>({
@@ -43,6 +44,7 @@ const shopsDataSchema = new Schema<ShopsData, Model<ShopsData>>({
     recommendation: { title: String, description: String, image: String },
     selling_point: { text: String, image: String },
     follower_handle_name: [String],
+    publish_state: Boolean
 })
 
 const ShopsDataModel = model<ShopsData>('ShopData', shopsDataSchema)
