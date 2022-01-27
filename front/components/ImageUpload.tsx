@@ -14,7 +14,7 @@ import { FiFile } from 'react-icons/fi'
 import { async } from '@firebase/util'
 
 function ImageUpload(props: any) {
-  const { size, thema } = props
+  const { size, thema, text } = props
 
   const {
     formState: { errors },
@@ -25,7 +25,7 @@ function ImageUpload(props: any) {
   const [image, setImage] = useState('')
 
   const inputRef = useRef<HTMLInputElement | null>(null)
-  const { ref, ...rest } = register('image')
+  const { ref, ...rest } = register(thema)
 
   const validateFiles = (value: FileList | null) => {
     if (value) {
@@ -60,20 +60,20 @@ function ImageUpload(props: any) {
       const base64 = reader.result as string
       console.log(base64)
       setImage(base64)
-      setValue('image', base64)
+      setValue(thema, base64)
     }
   }
   const handleClick = () => inputRef.current?.click()
 
   return (
     <>
-      <FormControl isInvalid={!!errors.file_} isRequired>
-        <FormLabel>{'File input'}</FormLabel>
+      <FormControl isInvalid={!!errors.file_}>
+        <FormLabel>{text}</FormLabel>
         <InputGroup onClick={handleClick}>
           <input
-            id="image"
+            id={thema}
             type="text"
-            {...register('image')}
+            {...register(thema)}
             hidden
             onChange={(e) => console.log(e.target.value)}
           ></input>
@@ -82,11 +82,6 @@ function ImageUpload(props: any) {
             multiple={false}
             hidden
             accept="image/*"
-            // {...register(
-            //   // 'image1'
-            //   { validate: validateFiles }
-            // )}
-
             ref={(e) => {
               ref(e)
               inputRef.current = e
@@ -99,7 +94,7 @@ function ImageUpload(props: any) {
           <Button leftIcon={<Icon as={FiFile} />}>Upload</Button>
         </InputGroup>
         <FormErrorMessage>
-          {errors.file_ && errors?.file_.message}
+          {errors.thema && errors?.thema.message}
         </FormErrorMessage>
       </FormControl>
       {image && <Image w={size} src={image} />}
