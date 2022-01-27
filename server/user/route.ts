@@ -5,6 +5,8 @@ import {
     postUser,
     getReviewsOfFolloweesByAuthId,
     postReview,
+    followShop,
+    unfollowShop
 } from './controller'
 import { putUserProfile } from './controller2'
 import { getFolloweeShops } from './controller3'
@@ -20,5 +22,7 @@ routes.post('/', postUser)
 routes.post('/:authId/reviews', postReview)
 
 routes.put('/:authId', putUserProfile)
+routes.put('/:authId/shops/following', followShop)
+routes.put('/:authId/shops/unfollowing', unfollowShop)
 
 export default routes
