@@ -13,6 +13,7 @@ import {
   BreadcrumbLink,
   BreadcrumbSeparator,
 } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
 import { HamburgerIcon, NotAllowedIcon, SettingsIcon } from '@chakra-ui/icons'
 import { getAuth, signOut } from 'firebase/auth'
 import firebase from '../../auth/firebaseConfig'
@@ -20,14 +21,18 @@ import firebase from '../../auth/firebaseConfig'
 import React from 'react'
 
 function UserHeader() {
+  const router = useRouter()
   const logout = async () => {
     const auth = getAuth(firebase)
-    try {
-      signOut(auth)
-      // history.push('/login')
-    } catch (error) {
-      alert(error)
-    }
+    signOut(auth)
+      .then(() => {
+        router.push('/shop/signin')
+      })
+      .catch((error) => {
+        const errorCode = error.code
+        const errorMessage = error.message
+        console.log(errorCode, errorMessage)
+      })
     console.log('ログアウト')
   }
   return (
