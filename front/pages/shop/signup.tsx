@@ -6,16 +6,21 @@ import { useForm, FormProvider } from 'react-hook-form'
 import InputForm from '../../components/InputForm'
 import { Button } from '@chakra-ui/react'
 
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithEmailAndPassword,
+} from 'firebase/auth'
 import firebase from '../../auth/firebaseConfig'
 
 import { VFC } from 'react'
 import { useAuthContext } from '../../auth/AuthContext'
 import { isLoggedIn } from '../../util'
+import axios from 'axios'
 
 let isLogin = false
 
-const Signin: WithGetAccessControl<VFC> = () => {
+const Signup: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
   if (currentUser) isLogin = true
 
@@ -24,12 +29,26 @@ const Signin: WithGetAccessControl<VFC> = () => {
 
   const onSubmit = async (data: any) => {
     const auth = getAuth(firebase)
+    console.log(data)
 
-    signInWithEmailAndPassword(auth, data.email, data.password)
+    createUserWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredential) => {
-        // const user = userCredential.user;
-        // console.log(user)
-        router.push('/shop/dashboard')
+        const user = userCredential.user
+        console.log(user)
+
+        if (userCredential) {
+          const postShopInfo = () => {
+            const newShopInfo = {
+              auth_id: userCredential.user.uid,
+              handle_name: data.handle_name,
+              display_name: data.display_name,
+            }
+            console.log(newShopInfo)
+            axios.post('/shop', newShopInfo)
+          }
+          postShopInfo()
+          router.push('/shop/signin')
+        }
       })
       .catch((error: any) => {
         const errorCode = error.code
@@ -40,13 +59,15 @@ const Signin: WithGetAccessControl<VFC> = () => {
   return (
     <div>
       <Head>
-        <title>Sign-In</title>
-        <meta name="Sign-In" content="Shop サインイン" />
+        <title>Sign-Up</title>
+        <meta name="Sign-Up" content="Shop サインアップ" />
       </Head>
       <Header />
 
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
+          <InputForm thema="display_name" text="shop name" />
+          <InputForm thema="handle_name" text="shop id" />
           <InputForm thema="email" text="メールアドレス" />
           <InputForm thema="password" text="パスワード" />
           <Button mt={4} type="submit">
@@ -58,10 +79,10 @@ const Signin: WithGetAccessControl<VFC> = () => {
   )
 }
 
-Signin.getAccessControl = async () => {
+Signup.getAccessControl = async () => {
   return (await isLoggedIn())
     ? { type: 'replace', destination: '/shop/dashboard' }
     : null
 }
 
-export default Signin
+export default Signup
