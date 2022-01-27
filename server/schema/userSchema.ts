@@ -3,6 +3,7 @@ import { Schema, Types, Model, model } from 'mongoose'
 interface Review {
     image?: string
     description?: string
+    created_at: number
 }
 
 interface User {
@@ -10,10 +11,10 @@ interface User {
     handle_name: string
     display_name: string
     icon?: string
-    follower_handle_names?: Types.Array<string>
-    followee_handle_names?: Types.Array<string>
-    followee_shops_handle_names?: Types.Array<string>
-    reviews?: Types.DocumentArray<Review>
+    follower_handle_names: Types.Array<string>
+    followee_handle_names: Types.Array<string>
+    followee_shops_handle_names: Types.Array<string>
+    reviews: Types.DocumentArray<Review> | Types.Array<undefined>
 }
 
 const userSchema = new Schema<User, Model<User>>({
@@ -28,6 +29,7 @@ const userSchema = new Schema<User, Model<User>>({
         {
             image: String,
             description: String,
+            created_at: Number,
         },
     ],
 })
