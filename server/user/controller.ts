@@ -11,17 +11,6 @@ export const getUsers = async (req: Request, res: Response): Promise<void> => {
     res.json(users)
 }
 
-export const getUserByAuthId = async (
-    req: Request,
-    res: Response
-): Promise<void> => {
-    await connectToDB()
-    const authId: String = req.params.authId
-    const user = await userModel.findOne({ auth_id: authId })
-
-    res.json(user)
-}
-
 export const getReviewsOfFolloweesByAuthId = async (
     req: Request,
     res: Response
@@ -130,6 +119,38 @@ export const postUser = async (req: Request, res: Response): Promise<void> => {
     }
 }
 
+export const search = async (req: Request, res: Response): Promise<void> => {
+    await connectToDB()
+    const keyword = req.query.keyword
+
+    const usersResult = await userModel.find(
+        {
+            $or: [
+                { handle_name: new RegExp('.*' + keyword + '.*', 'i') },
+                { display_name: new RegExp('.*' + keyword + '.*', 'i') },
+            ],
+        },
+        { _id: 0, handle_name: 1, display_name: 1, icon: 1 }
+    )
+
+    const shopsResult = await ShopsDataModel.find(
+        {
+            $or: [
+                { handle_name: new RegExp('.*' + keyword + '.*', 'i') },
+                { display_name: new RegExp('.*' + keyword + '.*', 'i') },
+            ],
+        },
+        { _id: 0, handle_name: 1, display_name: 1, icon: 1, concept: 1 }
+    )
+
+    const result = {
+        users: usersResult,
+        shops: shopsResult,
+    }
+
+    res.json(result)
+}
+
 export const postReview = async (
     req: Request,
     res: Response
@@ -172,7 +193,6 @@ export const postReview = async (
         res.status(400).end()
     }
 }
-
 
 export const followShop = async (
     req: Request,
@@ -226,7 +246,6 @@ export const followShop = async (
     }
 }
 
-
 export const unfollowShop = async (
     req: Request,
     res: Response
@@ -279,4 +298,3 @@ export const unfollowShop = async (
         res.json(newShop)
     }
 }
-
