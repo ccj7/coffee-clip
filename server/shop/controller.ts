@@ -4,7 +4,7 @@ import ShopsDataModel from '../schema/shopSchema'
 
 export const getShops = async (req: Request, res: Response) => {
     await connectToDB()
-    const data = await ShopsDataModel.find()
+    const data = await ShopsDataModel.find({publish_state: true})
     res.send(data)
 }
 
