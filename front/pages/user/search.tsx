@@ -4,6 +4,7 @@ import { VFC } from 'react'
 import Header from '../../components/shop/Header'
 import { useAuthContext } from '../../auth/AuthContext'
 import { isLoggedIn } from '../../util'
+import UserHeader from '../../components/user/UserHeader'
 
 const Search: WithGetAccessControl<VFC> = (props) => {
   const { currentUser } = useAuthContext()
@@ -13,7 +14,7 @@ const Search: WithGetAccessControl<VFC> = (props) => {
         <title>検索結果</title>
         <meta name="Search" content="Search" />
       </Head>
-      <Header />
+      <UserHeader />
     </div>
   )
 }
