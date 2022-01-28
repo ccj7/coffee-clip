@@ -1,4 +1,4 @@
-import { Button } from '@chakra-ui/react'
+import { Button, Text } from '@chakra-ui/react'
 import Head from 'next/head'
 import { useEffect, useState, VFC } from 'react'
 import { useForm, FormProvider, useFormContext } from 'react-hook-form'
@@ -40,18 +40,18 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
     follower_handle_name: [''],
   }
   const [shopInfo, setShopInfo] = useState<any>(dammy)
+  const [isSubmited, setIsSubmited] = useState<boolean>(false)
+  const [isPublic, setIsPublic] = useState<string | null>(null)
 
-  const methods = useForm()
+  const methods = useForm({ shouldUnregister: false })
 
   useEffect(() => {
     console.log(currentUser)
 
     const getShop = async (authId: string) => {
-      // TODO: dammy変更してください
       const res: any = await axios.get(`/api/shops/${authId}`)
       setShopInfo(res.data)
     }
-    // TODO: 直接入力しているauthIDを変更
     if (currentUser) {
       getShop(currentUser)
     }
@@ -66,7 +66,14 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
     // router.push('/shop/dashboard')
   }
 
-  // TODO　画像処理とseeling POINTのinput追加
+  const publish = () => {
+    setIsSubmited(true)
+    setIsPublic('published')
+  }
+  const draft = () => {
+    setIsSubmited(true)
+    setIsPublic('drafted')
+  }
   return (
     <div>
       <Head>
@@ -74,87 +81,105 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
         <meta name="shopTopPage" content="shop Top Page" />
       </Head>
       <Header />
-      <FormProvider {...methods}>
-        <form onSubmit={methods.handleSubmit(onSubmit)}>
-          <InputForm
-            thema="handle_name"
-            text="shop ID"
-            defaultValue={shopInfo.handle_name}
-          />
-          <InputForm
-            thema="display_name"
-            text="お店の名前"
-            defaultValue={shopInfo.display_name}
-          />
-          <ImageUpload size="sm" thema="icon" text="アイコン画像" />
-          <InputForm
-            thema="address"
-            text="住所"
-            defaultValue={shopInfo.address}
-          />
-          <InputForm
-            thema="map_url"
-            text="googlemap URL"
-            defaultValue={shopInfo.map_url}
-          />
-          <InputForm
-            thema="hp_url"
-            text="HP URL"
-            defaultValue={shopInfo.hp_url}
-          />
-          <InputForm
-            thema="instagram_url"
-            text="instagram URL"
-            defaultValue={shopInfo.instagram_url}
-          />
-          <InputForm
-            thema="opening_hours"
-            text="営業時間"
-            defaultValue={shopInfo.opening_hours}
-          />
-          <InputForm
-            thema="regular_day_off"
-            text="定休日"
-            defaultValue={shopInfo.regular_day_off}
-          />
-          <InputForm
-            thema="concept"
-            text="お店のプロフィール文"
-            defaultValue={shopInfo.concept}
-          />
-          <InputForm
-            thema="recommendation.title"
-            text="おすすめのコーヒー 名前"
-            defaultValue={shopInfo.recommendation.title}
-          />
-          <InputForm
-            thema="recommendation.description"
-            text="おすすめのコーヒー 紹介文"
-            defaultValue={shopInfo.recommendation.description}
-          />
+      {!isSubmited && (
+        <>
+          <FormProvider {...methods}>
+            <form onSubmit={methods.handleSubmit(onSubmit)}>
+              <InputForm
+                thema="handle_name"
+                text="shop ID"
+                defaultValue={shopInfo.handle_name}
+              />
+              <InputForm
+                thema="display_name"
+                text="お店の名前"
+                defaultValue={shopInfo.display_name}
+              />
+              <ImageUpload size="sm" thema="icon" text="アイコン画像" />
+              <InputForm
+                thema="address"
+                text="住所"
+                defaultValue={shopInfo.address}
+              />
+              <InputForm
+                thema="map_url"
+                text="googlemap URL"
+                defaultValue={shopInfo.map_url}
+              />
+              <InputForm
+                thema="hp_url"
+                text="HP URL"
+                defaultValue={shopInfo.hp_url}
+              />
+              <InputForm
+                thema="instagram_url"
+                text="instagram URL"
+                defaultValue={shopInfo.instagram_url}
+              />
+              <InputForm
+                thema="opening_hours"
+                text="営業時間"
+                defaultValue={shopInfo.opening_hours}
+              />
+              <InputForm
+                thema="regular_day_off"
+                text="定休日"
+                defaultValue={shopInfo.regular_day_off}
+              />
+              <InputForm
+                thema="concept"
+                text="お店のプロフィール文"
+                defaultValue={shopInfo.concept}
+              />
+              <InputForm
+                thema="recommendation.title"
+                text="おすすめのコーヒー 名前"
+                defaultValue={shopInfo.recommendation.title}
+              />
+              <InputForm
+                thema="recommendation.description"
+                text="おすすめのコーヒー 紹介文"
+                defaultValue={shopInfo.recommendation.description}
+              />
 
-          <ImageUpload
-            size="sm"
-            thema="recommendation.image"
-            text="おすすめのコーヒー 写真"
-          />
+              <ImageUpload
+                size="sm"
+                thema="recommendation.image"
+                text="おすすめのコーヒー 写真"
+              />
 
-          <InputForm
-            thema="selling_point.text"
-            text="お店の魅力"
-            defaultValue={shopInfo.recommendation.image}
-          />
+              <InputForm
+                thema="selling_point.text"
+                text="お店の魅力"
+                defaultValue={shopInfo.recommendation.image}
+              />
 
-          <ImageUpload
-            size="sm"
-            thema="selling_point.image"
-            text="お店の魅力　写真"
-          />
-          <Button mt={4} type="submit">
-            Submit
-          </Button>
-        </form>
-      </FormProvider>
+              <ImageUpload
+                size="sm"
+                thema="selling_point.image"
+                text="お店の魅力　写真"
+              />
+              <Button type="submit" mt={4} onClick={publish}>
+                公開する
+              </Button>
+              <Button mt={4} type="submit" onClick={draft}>
+                下書きに保存
+              </Button>
+            </form>
+          </FormProvider>
+        </>
+      )}
+      {isPublic === 'published' && (
+        <>
+          <Text>ユーザーにショップ情報を公開しました</Text>
+        </>
+      )}
+      {isPublic === 'drafted' && (
+        <>
+          <Text>下書きに保存しました</Text>
+          <Text>ユーザーにはまだショップ情報は公開されていません</Text>
+        </>
+      )}
     </div>
   )
 }
