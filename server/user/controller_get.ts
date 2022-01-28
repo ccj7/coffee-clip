@@ -134,6 +134,7 @@ export const getFolloweeShops = async (
             const shop = await ShopsDataModel.findOne(
                 {
                     handle_name: shopHandleName,
+                    publish_state: true,
                 },
                 {
                     handle_name: 1,
