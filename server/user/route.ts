@@ -1,30 +1,28 @@
 import { Router } from 'express'
 import {
     getUsers,
-    getUserByAuthId,
-    postUser,
+    search,
+    getUser,
     getReviewsOfFolloweesByAuthId,
-    postReview,
-    followShop,
-    unfollowShop,
-} from './controller'
+    getFolloweeShops,
+} from './controller_get'
 
+import { postUser, postReview } from './controller_post'
 
 import {
     putUserProfile,
-    getUser,
     putFollowUser,
     unfollowUser,
-} from './controller2'
-
-import { getFolloweeShops } from './controller3'
+    followShop,
+    unfollowShop,
+} from './controller_put'
 
 const routes = Router()
 
 routes.get('/', getUsers)
-routes.get('/:authId', getUser)
+routes.get('/search', search)
 routes.get('/details/:handleName', getUser)
-routes.get('/:authId', getUserByAuthId)
+routes.get('/:authId', getUser)
 routes.get('/:authId/followee/reviews', getReviewsOfFolloweesByAuthId)
 routes.get('/:authId/followee/shops', getFolloweeShops)
 
@@ -33,10 +31,7 @@ routes.post('/:authId/reviews', postReview)
 
 routes.put('/:authId', putUserProfile)
 routes.put('/:handleName/following', putFollowUser)
-
 routes.put('/:handleName/unfollowing', unfollowUser)
-
-
 routes.put('/:authId/shops/following', followShop)
 routes.put('/:authId/shops/unfollowing', unfollowShop)
 
