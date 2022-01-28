@@ -57,6 +57,7 @@ export const search = async (req: Request, res: Response): Promise<void> => {
                 users: usersResult,
                 shops: shopsResult,
             }
+
             res.json(result)
         } else {
             const result = {
@@ -93,69 +94,75 @@ export const getUser = async (req: Request, res: Response): Promise<void> => {
     }
 }
 
-export const getReviewsOfFolloweesByAuthId = async (
+export const getFolloweeReviews = async (
     req: Request,
     res: Response
 ): Promise<void> => {
-    await connectToDB()
-    const authId: String = req.params.authId
-    const user = await userModel.findOne({ auth_id: authId })
+    try {
+        await connectToDB()
+        const authId: String = req.params.authId
+        const user = await userModel.findOne({ auth_id: authId })
 
-    if (user) {
-        const result = []
+        if (user) {
+            const result = []
 
-        if (user.reviews.length > 0) {
-            let myHandleName = user.handle_name
-            let myDisplayName = user.display_name
-            let myIcon = user.icon
+            if (user.reviews.length > 0) {
+                let myHandleName = user.handle_name
+                let myDisplayName = user.display_name
+                let myIcon = user.icon
 
-            for (const review of user.reviews) {
-                const myReview = {
-                    handle_name: myHandleName,
-                    display_name: myDisplayName,
-                    icon: myIcon,
-                    review: review,
+                for (const review of user.reviews) {
+                    const myReview = {
+                        handle_name: myHandleName,
+                        display_name: myDisplayName,
+                        icon: myIcon,
+                        review: review,
+                    }
+
+                    result.push(myReview)
                 }
-
-                result.push(myReview)
             }
-        }
 
-        const followeeHandleNames = user.followee_handle_names
+            const followeeHandleNames = user.followee_handle_names
 
-        if (followeeHandleNames) {
-            for (const followeeHandleName of followeeHandleNames) {
-                const followee = await userModel.findOne({
-                    handle_name: followeeHandleName,
-                })
+            if (followeeHandleNames) {
+                for (const followeeHandleName of followeeHandleNames) {
+                    const followee = await userModel.findOne({
+                        handle_name: followeeHandleName,
+                    })
 
-                if (followee) {
-                    if (followee.reviews) {
-                        let followeeHandleName = followee.handle_name
-                        let followeeDisplayName = followee.display_name
-                        let followeeIcon = followee.icon
+                    if (followee) {
+                        if (followee.reviews) {
+                            let followeeHandleName = followee.handle_name
+                            let followeeDisplayName = followee.display_name
+                            let followeeIcon = followee.icon
 
-                        for (const review of followee.reviews) {
-                            const reviews = {
-                                handle_name: followeeHandleName,
-                                display_name: followeeDisplayName,
-                                icon: followeeIcon,
-                                review: review,
+                            for (const review of followee.reviews) {
+                                const reviews = {
+                                    handle_name: followeeHandleName,
+                                    display_name: followeeDisplayName,
+                                    icon: followeeIcon,
+                                    review: review,
+                                }
+                                result.push(reviews)
                             }
-                            result.push(reviews)
                         }
                     }
                 }
             }
-        }
 
-        if (result.length > 0) {
-            result.sort((a, b) => b.review!.created_at - a.review!.created_at)
-        }
+            if (result.length > 0) {
+                result.sort(
+                    (a, b) => b.review!.created_at - a.review!.created_at
+                )
+            }
 
-        res.json({ reviews: result })
-    } else {
-        res.status(400).end()
+            res.json({ reviews: result })
+        } else {
+            res.status(400).json({ error: 'userが見つかりません' })
+        }
+    } catch (err) {
+        res.status(400).send(err)
     }
 }
 
