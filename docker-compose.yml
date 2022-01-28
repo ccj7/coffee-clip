@@ -9,6 +9,9 @@ services:
       dockerfile: Dockerfile
     ports:
       - '80:80'
+    depends_on:
+      - client
+      - api
   mongo:
     image: mongo
     container_name: mongo_coffee_clip
