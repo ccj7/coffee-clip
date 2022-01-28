@@ -28,9 +28,18 @@ import { getAuth, signOut } from 'firebase/auth'
 import firebase from '../../auth/firebaseConfig'
 
 import React from 'react'
+import { ssrEntries } from 'next/dist/build/webpack/plugins/middleware-plugin'
+import { useForm } from 'react-hook-form'
+import axios from 'axios'
 
 function UserHeader() {
   const router = useRouter()
+  const {
+    handleSubmit,
+    register,
+    formState: { errors, isSubmitting },
+  } = useForm()
+
   const logout = async () => {
     const auth = getAuth(firebase)
     signOut(auth)
@@ -45,8 +54,9 @@ function UserHeader() {
     console.log('ログアウト')
   }
 
-  const serch = () => {
-    router.push(``)
+  const onSubmit = async (data: any) => {
+    console.log(data.keyword)
+    router.push(`/user/search?about=${data.keyword}`)
   }
 
   return (
@@ -57,13 +67,22 @@ function UserHeader() {
             <Text fontSize="3xl">COFFEE CLIP</Text>
           </Link>
           <Spacer></Spacer>
-
-          <InputGroup size="md">
-            <Input pr="4.5rem" placeholder="Enter password" />
-            <InputRightElement width="4.5rem">
-              <IconButton aria-label="Search database" icon={<SearchIcon />} />{' '}
-            </InputRightElement>
-          </InputGroup>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <InputGroup size="md">
+              <Input
+                pr="4.5rem"
+                placeholder="Search"
+                {...register('keyword')}
+              />
+              <InputRightElement width="4.5rem">
+                <IconButton
+                  type="submit"
+                  aria-label="Search database"
+                  icon={<SearchIcon />}
+                />
+              </InputRightElement>
+            </InputGroup>
+          </form>
           <Breadcrumb separator="|">
             <BreadcrumbItem>
               <BreadcrumbLink href="/user/timeline">TimeLiine</BreadcrumbLink>
