@@ -23,6 +23,8 @@ export const putUserProfile = async (
         }
         if(iconData !== '') {
             dataBody.icon = iconData
+        } else {
+            delete dataBody.icon
         }
 
         await userModel.updateOne({ auth_id: req.params.authId }, dataBody)
