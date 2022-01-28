@@ -45,8 +45,8 @@ const LikeShops: WithGetAccessControl<VFC> = (props) => {
   return (
     <Box>
       <Head>
-        <title>ショップ一覧</title>
-        <meta name="shopslist" content="ショップ一覧" />
+        <title>お気に入りのshop</title>
+        <meta name="favorite shops" content="お気に入りのショップ一覧" />
       </Head>
       <UserHeader />
       <Flex>
