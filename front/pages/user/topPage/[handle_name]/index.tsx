@@ -45,7 +45,7 @@ const UserTopPage: WithGetAccessControl<VFC> = (props) => {
     if (handle_name && currentUser) {
       getUser(handle_name, currentUser)
     }
-  }, [handle_name])
+  }, [handle_name, currentUser])
 
   const unfollow = () => {
     const putUser = async (authId: string) => {
