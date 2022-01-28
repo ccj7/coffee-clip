@@ -71,14 +71,21 @@ export const search = async (req: Request, res: Response): Promise<void> => {
 }
 
 export const getUser = async (req: Request, res: Response): Promise<void> => {
-    await connectToDB()
-    const data = await userModel.findOne({
-        $or: [
-            { auth_id: req.params.authId },
-            { handle_name: req.params.handleName },
-        ],
-    })
-    res.json(data)
+    try {
+        await connectToDB()
+        const data = await userModel.findOne(
+            {
+                $or: [
+                    { auth_id: req.params.authId },
+                    { handle_name: req.params.handleName },
+                ],
+            },
+            { _id: 0, __v: 0 }
+        )
+        res.json(data)
+    } catch (err) {
+        res.status(400).send(err)
+    }
 }
 
 export const getReviewsOfFolloweesByAuthId = async (
