@@ -12,7 +12,7 @@ import { postUser, postReview } from './controller_post'
 
 import {
     putUserProfile,
-    putFollowUser,
+    followUser,
     unfollowUser,
     followShop,
     unfollowShop,
@@ -31,8 +31,8 @@ routes.post('/', postUser)
 routes.post('/:authId/reviews', postReview)
 
 routes.put('/:authId', putUserProfile)
-routes.put('/:handleName/following', putFollowUser)
-routes.put('/:handleName/unfollowing', unfollowUser)
+routes.put('/:authId/users/following', followUser)
+routes.put('/:authId/users/unfollowing', unfollowUser)
 routes.put('/:authId/shops/following', followShop)
 routes.put('/:authId/shops/unfollowing', unfollowShop)
 
