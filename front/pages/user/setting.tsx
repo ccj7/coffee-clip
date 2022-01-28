@@ -1,13 +1,12 @@
-// TODO　U-003 github issue#21
-
 import Head from 'next/head'
 import axios from 'axios'
 import UserHeader from '../../components/user/UserHeader'
 import InputForm from '../../components/InputForm'
 import ImageUpload from '../../components/ImageUpload'
+import Message from '../../components/Message'
 import { useEffect, useState, VFC } from 'react'
 import { useForm, FormProvider } from 'react-hook-form' 
-import { Box, Button, Heading, Image } from '@chakra-ui/react'
+import { Box, Button, Heading } from '@chakra-ui/react'
 import { useAuthContext } from '../../auth/AuthContext'
 import { isLoggedIn } from '../../util'
 
@@ -17,37 +16,34 @@ const Setting: WithGetAccessControl<VFC> = (props) => {
   
   // user情報を取得
   useEffect(() => {
-    const getUser = async (authId: string) => {
-      const res: any = await axios.get(`/api/users/${authId}`)
+    const getUser = async () => {
+      const res: any = await axios.get(`/api/users/${currentUser}`)
       setDisplayName(res.data.display_name)
     }
+    if(currentUser) {
+      getUser()
+    }
+  }, [currentUser])
 
-    // TODO: 実際の値に変更
-    getUser("h1ERSr4qUNUoviCQlzZ0648p1cA2")
-  }, [])
-
-  // base64に変換したもの（propsで渡す）
-  const [base64Code, setBase64Code] = useState("")
   // getしてきたuser情報を入れておく予定
-  const [displayName, setDisplayName] = useState<any>("")
-
+  const [displayName, setDisplayName] = useState<any>('')
+  const [message, setMessage] = useState<String>('')
   const methods = useForm()
 
-  // TODO: エンドポイントができたらサーバーに送る関数
-  // const postUser = async (changeUserInfo: any) => {
-  //   await axios.post(`/api/users`, changeUserInfo, {
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     }
-  //   })
-  // }
+  const postUser = async (changeUserInfo: any) => {
+    await axios.put(`/api/users/${currentUser}`, changeUserInfo, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => {
+      if(res.status === 200) {
+        setMessage('保存しました')
+      }
+    })
+  }
 
   const onSubmit = (changeUserInfo: any) => {
-    changeUserInfo.icon = base64Code
-    // TODO: changeUserInfoを送る
-    console.log(changeUserInfo)
-
-    // postUser(changeUserInfo)
+    postUser(changeUserInfo)
   }
 
   return (
@@ -58,6 +54,7 @@ const Setting: WithGetAccessControl<VFC> = (props) => {
       </Head>
       <UserHeader />
       <Heading size='md' m={'16px'}>ユーザープロフィール</Heading>
+      {message && <Message message={message} />}
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
           <InputForm
@@ -65,10 +62,7 @@ const Setting: WithGetAccessControl<VFC> = (props) => {
             text="ユーザーネーム"
             defaultValue={displayName}
           />
-          <ImageUpload 
-            base64Code={base64Code}
-            setBase64Code={setBase64Code}
-            size={"300px"} />
+          <ImageUpload size="sm" thema="icon" text="アイコン画像" />
           <Box><Button mt={4} type="submit">保存</Button></Box>
         </form>
       </FormProvider>
