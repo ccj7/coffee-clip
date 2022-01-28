@@ -164,17 +164,7 @@ export const followShop = async (
                 { $addToSet: { follower_handle_name: user.handle_name } }
             )
 
-            const newShop = await ShopsDataModel.findOne(
-                {
-                    handle_name: req.body.handle_name,
-                },
-                {
-                    _id: 0,
-                    __v: 0,
-                }
-            )
-
-            res.status(200).json(newShop)
+            res.status(200).json({ message: 'フォローしました' })
         }
     } catch (err) {
         res.status(400).send(err)
@@ -198,7 +188,7 @@ export const unfollowShop = async (
                 error: '対象のユーザー、または、お店がありません',
             })
         } else {
-            // ユーザー側のfollowee_shops_handle_namesから削除
+            // ユーザー側のfollowee_shops_handle_namesに存在した場合は削除
             await userModel.updateOne(
                 { auth_id: req.params.authId },
                 {
@@ -208,7 +198,7 @@ export const unfollowShop = async (
                 }
             )
 
-            // Shop側のfollower_handle_namesから削除
+            // Shop側のfollower_handle_namesに存在した場合は削除
             await ShopsDataModel.updateOne(
                 { handle_name: req.body.handle_name },
                 {
@@ -218,16 +208,7 @@ export const unfollowShop = async (
                 }
             )
 
-            const newShop = await ShopsDataModel.findOne(
-                {
-                    handle_name: req.body.handle_name,
-                },
-                {
-                    _id: 0,
-                    __v: 0,
-                }
-            )
-            res.json(newShop)
+            res.status(200).json({ message: 'アンフォローしました' })
         }
     } catch (err) {
         res.send(err)
