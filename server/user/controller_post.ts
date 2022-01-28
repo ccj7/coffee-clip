@@ -51,7 +51,7 @@ export const postUser = async (req: Request, res: Response): Promise<void> => {
             res.status(200).json({ message: '新規ユーザーを作成しました' })
         } else if (authIdCheck) {
             res.status(400).json({
-                error: '既に存在す認証IDです',
+                error: '既に存在する認証IDです',
             })
         } else if (handleNameCheck) {
             res.status(400).json({
