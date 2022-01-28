@@ -13,7 +13,6 @@ import {
   TabPanel,
 } from '@chakra-ui/react'
 import { AiOutlineInstagram } from 'react-icons/ai'
-import Head from 'next/head'
 import { useContext, useEffect, useState, VFC } from 'react'
 import PrimaryButton from './Button'
 import Profile from './Profile'
@@ -23,8 +22,6 @@ import { useRouter } from 'next/router'
 import axios from 'axios'
 import PostImage from './Image'
 import { AuthContext, useAuthContext } from '../auth/AuthContext'
-import { isLoggedIn } from '../util'
-import UserHeader from './user/UserHeader'
 
 const ShopTopPage = (props: any) => {
   const { handle_name, isUser } = props
@@ -67,10 +64,31 @@ const ShopTopPage = (props: any) => {
   const [isfavorite, setIsfavorite] = useState<boolean>(false)
 
   const registerFavarite = () => {
+    console.log(isfavorite)
     if (isfavorite) {
       setIsfavorite(false)
+      const unfollow = async () => {
+        const res = await axios.put(
+          `/api/users/${currentUser}/shops/unfollowing`,
+          {
+            handle_name: handle_name,
+          }
+        )
+        setShopInfo(res.data)
+      }
+      unfollow()
     } else {
       setIsfavorite(true)
+      const follow = async () => {
+        const res = await axios.put(
+          `/api/users/${currentUser}/shops/following`,
+          {
+            handle_name: handle_name,
+          }
+        )
+        setShopInfo(res.data)
+      }
+      follow()
     }
   }
 
@@ -85,9 +103,14 @@ const ShopTopPage = (props: any) => {
           />
           <Spacer></Spacer>
 
-          <Link href={shopInfo.instagram_url}>
-            <Icon as={AiOutlineInstagram} w={7} h={7} />
-          </Link>
+          <Icon
+            as={AiOutlineInstagram}
+            w={7}
+            h={7}
+            onClick={() => {
+              window.location.href = shopInfo.instagram_url
+            }}
+          />
           <Spacer></Spacer>
           <Box>
             <Center>

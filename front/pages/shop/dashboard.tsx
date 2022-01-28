@@ -46,13 +46,11 @@ const DashBoard: WithGetAccessControl<VFC> = () => {
   useEffect(() => {
     console.log(currentUser)
     const getShop = async (authId: string) => {
-      // TODO: dammy変更してください
       const res: any = await axios.get(`/api/shops/${authId}`)
       console.log(res.data)
       setShopInfo(res.data)
     }
 
-    // TODO: 直接入力しているauthIDを変更
     if (currentUser) {
       getShop(currentUser)
     }
@@ -81,7 +79,7 @@ const DashBoard: WithGetAccessControl<VFC> = () => {
       />
       <Spacer></Spacer>
       <PrimaryButton
-        text="公開ページを作成"
+        text="店舗ページを確認"
         onclick={() => router.push(`/shop/top-page/${shopInfo.handle_name}`)}
       />
     </>
