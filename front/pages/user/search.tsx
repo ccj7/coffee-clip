@@ -5,9 +5,15 @@ import Header from '../../components/shop/Header'
 import { useAuthContext } from '../../auth/AuthContext'
 import { isLoggedIn } from '../../util'
 import UserHeader from '../../components/user/UserHeader'
+import { useRouter } from 'next/router'
 
 const Search: WithGetAccessControl<VFC> = (props) => {
   const { currentUser } = useAuthContext()
+  const router = useRouter()
+
+  const keyword = router.query.about
+
+  console.log(keyword)
   return (
     <div>
       <Head>
