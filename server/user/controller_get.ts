@@ -82,7 +82,12 @@ export const getUser = async (req: Request, res: Response): Promise<void> => {
             },
             { _id: 0, __v: 0 }
         )
-        res.json(data)
+
+        if (data) {
+            res.json(data)
+        } else {
+            res.status(400).json({ error: 'userが見つかりません' })
+        }
     } catch (err) {
         res.status(400).send(err)
     }
