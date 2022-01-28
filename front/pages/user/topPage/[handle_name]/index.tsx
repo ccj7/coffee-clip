@@ -3,15 +3,14 @@
 import { Box, Text, Stack, Spacer, Flex } from '@chakra-ui/react'
 
 import Head from 'next/head'
-import { useContext, useEffect, useState, VFC } from 'react'
+import { useEffect, useState, VFC } from 'react'
 import PrimaryButton from '../../../../components/Button'
 import Profile from '../../../../components/Profile'
 import LogCard from '../../../../components/user/LogCard'
 import UserHeader from '../../../../components/user/UserHeader'
 import { useRouter } from 'next/router'
 import axios from 'axios'
-import PostImage from '../../../../components/Image'
-import { AuthContext, useAuthContext } from '../../../../auth/AuthContext'
+import { useAuthContext } from '../../../../auth/AuthContext'
 import { isLoggedIn } from '../../../../util'
 import Link from 'next/link'
 
@@ -33,31 +32,70 @@ const UserTopPage: WithGetAccessControl<VFC> = (props) => {
     reviews: [''],
   }
   
-  // ユーザー情報
   const [userInfo, setUserInfo] = useState(initial)
-  // フォローしているかどうか
   const [isFollow, setIsFollow] = useState<boolean>(false)
+  
+  const getUser = async (handle: string | string[], authId: string) => {
+    const res: any = await axios.get(`/api/users/${authId}/${handle}`)
+    setUserInfo(res.data)
+    setIsFollow(res.data.is_following)
+  }
 
   useEffect(() => {
-    const getUser = async (handle: string | string[]) => {
-      const res: any = await axios.get(`/api/users/details/${handle}`)
-      setUserInfo(res.data)
-      console.log(res.data)
+    if (handle_name && currentUser) {
+      getUser(handle_name, currentUser)
+    }
+  }, [handle_name])
+
+  const unfollow = () => {
+    const putUser = async (authId: string) => {
+      await axios.put(`/api/users/${authId}/users/unfollowing`,{
+        handle_name: userInfo.handle_name,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+
+      if (handle_name && currentUser){
+        getUser(handle_name, currentUser)
+      }
+    }
+    
+    if (currentUser) {
+      putUser(currentUser)
+    }
+  }
+
+  const follow = () => {
+    const putUser = async (authId: string) => {
+      await axios.put(`/api/users/${authId}/users/following`, {
+        handle_name: userInfo.handle_name,
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      
+      if (handle_name && currentUser){
+        getUser(handle_name, currentUser)
+      }
     }
 
-    if (handle_name) {
-      getUser(handle_name)
+    if (currentUser) {
+      putUser(currentUser)
     }
-    // TODO ハンドルネームいるか確認
-  }, [handle_name])
+  }
 
   const orFollow = () => {
     if (isFollow) {
       setIsFollow(false)
-      // 
+      unfollow()
     } else {
       setIsFollow(true)
-      // ハンドルネームを送る?
+      follow()
     }
   }
 
@@ -97,7 +135,7 @@ const UserTopPage: WithGetAccessControl<VFC> = (props) => {
       {userInfo && (
       <Flex>
         {isFollow && (
-        <Box>フォロー中</Box>
+        <Box m='20px'>フォロー中</Box>
         )}
           <PrimaryButton
            text={isFollow ? 'フォローを外す' : 'フォローする'}
@@ -121,7 +159,6 @@ const UserTopPage: WithGetAccessControl<VFC> = (props) => {
         </Box>
         }
       </Stack>
-
     </Box>
   )
 }
