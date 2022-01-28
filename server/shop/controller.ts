@@ -5,7 +5,7 @@ import ShopsDataModel from '../schema/shopSchema'
 
 export const getShops = async (req: Request, res: Response) => {
     await connectToDB()
-    const data = await ShopsDataModel.find({publish_state: true})
+    const data = await ShopsDataModel.find({ publish_state: true })
     res.send(data)
 }
 
@@ -23,21 +23,29 @@ export const getShop = async (req: Request, res: Response) => {
 export const putShop = async (req: Request, res: Response) => {
     await connectToDB()
     const dataBody = req.body
-    const authIdCheck = await ShopsDataModel.findOne({auth_id: req.params.authId})
+    const authIdCheck = await ShopsDataModel.findOne({
+        auth_id: req.params.authId,
+    })
 
     if (!authIdCheck) {
-        res.status(400).send({error: 'ショップのアカウントがありません'})
+        res.status(400).send({ error: 'ショップのアカウントがありません' })
     } else {
         let iconData: String = ''
 
-        if(dataBody?.icon) {
+        if (dataBody?.icon) {
             const imgFileName = `icon_shop_${req.params.authId}`
             iconData = await s3Upload(dataBody.icon, imgFileName)
         }
-        dataBody.icon = iconData
+        if (iconData !== '') {
+            dataBody.icon = iconData
+        } else {
+            delete dataBody.icon
+        }
 
         await ShopsDataModel.updateOne({ auth_id: req.params.authId }, dataBody)
-        const data = await ShopsDataModel.findOne({ auth_id: req.params.authId })
+        const data = await ShopsDataModel.findOne({
+            auth_id: req.params.authId,
+        })
         res.send(Object(data))
     }
 }
@@ -84,7 +92,7 @@ export const postShop = async (req: Request, res: Response): Promise<void> => {
             regular_day_off: '',
             concept: '',
             follower_handle_name: [],
-            publish_state: false
+            publish_state: false,
         }
 
         await ShopsDataModel.create(newShopUser)
