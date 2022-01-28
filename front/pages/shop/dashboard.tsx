@@ -75,7 +75,9 @@ const DashBoard: WithGetAccessControl<VFC> = () => {
       />
       <PrimaryButton
         text="編集"
-        onclick={() => router.push('/shop/fix-shopInfo')}
+        onclick={() =>
+          router.push(`/shop/fix-shopinfo/${shopInfo.handle_name}`)
+        }
       />
       <Spacer></Spacer>
       <PrimaryButton
