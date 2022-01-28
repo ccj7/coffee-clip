@@ -39,48 +39,41 @@ export const putUserProfile = async (
     }
 }
 
-export const putFollowUser = async (
+export const followUser = async (
     req: Request,
     res: Response
 ): Promise<void> => {
-    await connectToDB()
-    const user = await userModel.findOne({
-        handle_name: req.params.handleName,
-    })
+    try {
+        await connectToDB()
+        const myAuthId = req.params.authId
+        const otherHandleName = req.body.handle_name
 
-    const currentUser = await userModel.findOne({
-        auth_id: req.body.auth_id,
-    })
-
-    if (!user || !currentUser) {
-        res.status(400).send({ error: '見つかりませんでした' })
-    } else if (!user.follower_handle_names?.includes(req.body.handle_name)) {
-        const userList = user.follower_handle_names
-        const currentUserList = currentUser.followee_handle_names
-
-        if (userList) {
-            userList.push(currentUser.handle_name)
-        }
-        if (currentUserList) {
-            currentUserList.push(user.handle_name)
-        }
-
-        await userModel.updateOne(
-            { handle_name: req.params.handleName },
-            { follower_handle_names: userList }
-        )
-
-        await userModel.updateOne(
-            { auth_id: req.body.auth_id },
-            { followee_handle_names: currentUserList }
-        )
-
-        const updateUser = await userModel.findOne({
-            handle_name: req.params.handleName,
+        const myUser = await userModel.findOne({ auth_id: myAuthId })
+        const otherUser = await userModel.findOne({
+            handle_name: otherHandleName,
         })
-        res.json(updateUser)
-    } else {
-        res.status(403).json({ error: 'you already follow this users' })
+
+        if (!myUser || !otherUser) {
+            res.status(400).json({
+                error: 'userが見つかりません',
+            })
+        } else {
+            // ログイン中のユーザー側のfollowee_handle_names更新
+            await userModel.updateOne(
+                { auth_id: myAuthId },
+                { $addToSet: { followee_handle_names: otherUser.handle_name } }
+            )
+
+            // フォローする相手側のfollower_handle_names更新
+            await userModel.updateOne(
+                { handle_name: otherHandleName },
+                { $addToSet: { follower_handle_names: myUser.handle_name } }
+            )
+
+            res.status(200).json({ message: 'フォローしました' })
+        }
+    } catch (err) {
+        res.status(400).send(err)
     }
 }
 
