@@ -51,11 +51,11 @@ export const postUser = async (req: Request, res: Response): Promise<void> => {
             res.status(200).json({ message: '新規ユーザーを作成しました' })
         } else if (authIdCheck) {
             res.status(400).json({
-                error: '既に同じ認証IDが存在するため無効です',
+                error: '既に存在す認証IDです',
             })
-        } else if (authIdCheck) {
+        } else if (handleNameCheck) {
             res.status(400).json({
-                error: '既に同じユーザーIDが存在するため無効です',
+                error: '既に存在するユーザーIDです',
             })
         } else {
             res.status(400).json({ error: 'エラーです' })
@@ -69,41 +69,45 @@ export const postReview = async (
     req: Request,
     res: Response
 ): Promise<void> => {
-    await connectToDB()
+    try {
+        await connectToDB()
 
-    const authId: String = req.params.authId
-    const user = await userModel.findOne({ auth_id: authId })
+        const authId: String = req.params.authId
+        const user = await userModel.findOne({ auth_id: authId })
 
-    if (user) {
-        const newReviews = user.reviews
-        const bodyData = req.body
+        if (user) {
+            const newReviews = user.reviews
+            const bodyData = req.body
 
-        let reviewImg: String = ''
+            let reviewImg: String = ''
 
-        const time = Date.now()
+            const time = Date.now()
 
-        if (bodyData.image) {
-            const imgFileName: string = `review_user_${authId}_${time}`
-            reviewImg = await s3Upload(bodyData.image, imgFileName)
-        }
-
-        if (newReviews) {
-            const newReview = {
-                image: reviewImg,
-                description: bodyData.description,
-                created_at: Number(time),
+            if (bodyData.image) {
+                const imgFileName: string = `review_user_${authId}_${time}`
+                reviewImg = await s3Upload(bodyData.image, imgFileName)
             }
 
-            newReviews.push(newReview)
+            if (newReviews) {
+                const newReview = {
+                    image: reviewImg,
+                    description: bodyData.description,
+                    created_at: Number(time),
+                }
 
-            await userModel.updateOne(
-                { auth_id: authId },
-                { reviews: newReviews }
-            )
+                newReviews.push(newReview)
+
+                await userModel.updateOne(
+                    { auth_id: authId },
+                    { reviews: newReviews }
+                )
+            }
+
+            res.status(200).end()
+        } else {
+            res.status(400).end()
         }
-
-        res.status(200).end()
-    } else {
-        res.status(400).end()
+    } catch (err) {
+        res.status(400).send(err)
     }
 }
