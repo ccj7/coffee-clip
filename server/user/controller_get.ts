@@ -71,16 +71,62 @@ export const search = async (req: Request, res: Response): Promise<void> => {
     }
 }
 
+export const getOtherUser = async (
+    req: Request,
+    res: Response
+): Promise<void> => {
+    try {
+        await connectToDB()
+
+        const authId: String = req.params.authId
+        const handleName: String = req.params.handleName
+
+        const myUser = await userModel.findOne({ auth_id: authId })
+
+        if (myUser) {
+            let otherUser = await userModel.findOne(
+                { handle_name: handleName },
+                { _id: 0, __v: 0 }
+            )
+
+            if (otherUser) {
+                let isFollowing: boolean = false
+                if (
+                    otherUser.follower_handle_names.includes(myUser.handle_name)
+                ) {
+                    isFollowing = true
+                }
+
+                const resData = {
+                    auth_id: otherUser.auth_id,
+                    handle_name: otherUser.handle_name,
+                    display_name: otherUser.display_name,
+                    icon: otherUser.icon,
+                    follower_handle_names: otherUser.follower_handle_names,
+                    followee_handle_names: otherUser.followee_handle_names,
+                    followee_shops_handle_names:
+                        otherUser.followee_shops_handle_names,
+                    reviews: otherUser.reviews,
+                    is_following: isFollowing,
+                }
+
+                res.json(resData)
+            } else {
+                res.status(400).json({ error: '選択したuserが見つかりません' })
+            }
+        } else {
+            res.status(400).json({ error: 'ログイン中のuserが見つかりません' })
+        }
+    } catch (err) {
+        res.status(400).send(err)
+    }
+}
+
 export const getUser = async (req: Request, res: Response): Promise<void> => {
     try {
         await connectToDB()
         const data = await userModel.findOne(
-            {
-                $or: [
-                    { auth_id: req.params.authId },
-                    { handle_name: req.params.handleName },
-                ],
-            },
+            { auth_id: req.params.authId },
             { _id: 0, __v: 0 }
         )
 
