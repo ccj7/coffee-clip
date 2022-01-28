@@ -135,9 +135,12 @@ export const followShop = async (
     try {
         await connectToDB()
 
-        const user = await userModel.findOne({ auth_id: req.params.authId })
+        const myAuthId = req.params.authId
+        const shopHandleName = req.body.handle_name
+
+        const user = await userModel.findOne({ auth_id: myAuthId })
         const shop = await ShopsDataModel.findOne({
-            handle_name: req.body.handle_name,
+            handle_name: shopHandleName,
         })
 
         if (!user || !shop) {
@@ -147,13 +150,13 @@ export const followShop = async (
         } else {
             // ユーザー側のfollowee_shops_handle_names更新
             await userModel.updateOne(
-                { auth_id: req.params.authId },
+                { auth_id: myAuthId },
                 { $addToSet: { followee_shops_handle_names: shop.handle_name } }
             )
 
             // Shop側のfollower_handle_names更新
             await ShopsDataModel.updateOne(
-                { handle_name: req.body.handle_name },
+                { handle_name: shopHandleName },
                 { $addToSet: { follower_handle_name: user.handle_name } }
             )
 
@@ -171,9 +174,12 @@ export const unfollowShop = async (
     try {
         await connectToDB()
 
-        const user = await userModel.findOne({ auth_id: req.params.authId })
+        const myAuthId = req.params.authId
+        const shopHandleName = req.body.handle_name
+
+        const user = await userModel.findOne({ auth_id: myAuthId })
         const shop = await ShopsDataModel.findOne({
-            handle_name: req.body.handle_name,
+            handle_name: shopHandleName,
         })
 
         if (!user || !shop) {
@@ -183,7 +189,7 @@ export const unfollowShop = async (
         } else {
             // ユーザー側のfollowee_shops_handle_namesに存在した場合は削除
             await userModel.updateOne(
-                { auth_id: req.params.authId },
+                { auth_id: myAuthId },
                 {
                     $pull: {
                         followee_shops_handle_names: shop.handle_name,
@@ -193,7 +199,7 @@ export const unfollowShop = async (
 
             // Shop側のfollower_handle_namesに存在した場合は削除
             await ShopsDataModel.updateOne(
-                { handle_name: req.body.handle_name },
+                { handle_name: shopHandleName },
                 {
                     $pull: {
                         follower_handle_name: user.handle_name,
