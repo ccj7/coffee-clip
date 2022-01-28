@@ -76,11 +76,9 @@ export const postReview = async (
         const user = await userModel.findOne({ auth_id: authId })
 
         if (user) {
-            const newReviews = user.reviews
             const bodyData = req.body
 
             let reviewImg: String = ''
-
             const time = Date.now()
 
             if (bodyData.image) {
@@ -88,24 +86,26 @@ export const postReview = async (
                 reviewImg = await s3Upload(bodyData.image, imgFileName)
             }
 
-            if (newReviews) {
+            if (reviewImg || bodyData.description) {
                 const newReview = {
                     image: reviewImg,
                     description: bodyData.description,
                     created_at: Number(time),
                 }
 
-                newReviews.push(newReview)
-
                 await userModel.updateOne(
                     { auth_id: authId },
-                    { reviews: newReviews }
+                    { $push: { reviews: newReview } }
                 )
-            }
 
-            res.status(200).end()
+                res.status(200).json({ message: '新規レビューを作成しました' })
+            } else {
+                res.status(400).json({
+                    error: '送信されたデータが無いため作成できません',
+                })
+            }
         } else {
-            res.status(400).end()
+            res.status(400).json({ error: 'userが見つかりません' })
         }
     } catch (err) {
         res.status(400).send(err)
