@@ -18,6 +18,7 @@ import {
 import { async } from '@firebase/util'
 import axios from 'axios'
 import ShopCard from '../../components/user/ShopCard'
+import Profile from '../../components/Profile'
 
 interface Shop {
   auth_id: string
@@ -26,6 +27,11 @@ interface Shop {
   icon?: string
   selling_point?: string
 }
+interface User {
+  handle_name: string
+  display_name: string
+  icon: string
+}
 
 const Search: WithGetAccessControl<VFC> = (props) => {
   const { currentUser } = useAuthContext()
@@ -33,11 +39,12 @@ const Search: WithGetAccessControl<VFC> = (props) => {
   const keyword = router.query.about
 
   const [shopsInfo, setShopsInfo] = useState<Shop[]>([])
+  const [usersInfo, setUsersInfo] = useState<User[]>([])
 
   useEffect(() => {
     const getSearchResult = async () => {
       const res = await axios.get(`/api/users/search?keyword=${keyword}`)
-      console.log(res.data.users)
+      setUsersInfo(res.data.users)
       setShopsInfo(res.data.shops)
     }
     getSearchResult()
@@ -60,7 +67,22 @@ const Search: WithGetAccessControl<VFC> = (props) => {
 
         <TabPanels>
           <TabPanel>
-            <p>one!</p>
+            {usersInfo &&
+              usersInfo.map((user: any, key: any) => {
+                return (
+                  <Profile
+                    key={key}
+                    display_name={user.display_name}
+                    handle_name={user.handle_name}
+                    icon={user.icon}
+                  />
+                )
+              })}
+            {!usersInfo.length && (
+              <>
+                <Text>検索結果：なし</Text>
+              </>
+            )}
           </TabPanel>
           <TabPanel>
             {shopsInfo &&
