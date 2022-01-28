@@ -2,6 +2,7 @@ import { Router } from 'express'
 import {
     getUsers,
     search,
+    getOtherUser,
     getUser,
     getFolloweeReviews,
     getFolloweeShops,
@@ -21,10 +22,10 @@ const routes = Router()
 
 routes.get('/', getUsers)
 routes.get('/search', search)
-routes.get('/details/:handleName', getUser)
 routes.get('/:authId', getUser)
 routes.get('/:authId/followee/reviews', getFolloweeReviews)
 routes.get('/:authId/followee/shops', getFolloweeShops)
+routes.get('/:authId/:handleName', getOtherUser)
 
 routes.post('/', postUser)
 routes.post('/:authId/reviews', postReview)
