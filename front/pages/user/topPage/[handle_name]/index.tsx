@@ -12,7 +12,6 @@ import { useRouter } from 'next/router'
 import axios from 'axios'
 import { useAuthContext } from '../../../../auth/AuthContext'
 import { isLoggedIn } from '../../../../util'
-import Link from 'next/link'
 
 // TODO: 全体的に型定義
 const UserTopPage: WithGetAccessControl<VFC> = (props) => {
@@ -123,12 +122,10 @@ const UserTopPage: WithGetAccessControl<VFC> = (props) => {
           <Text>{userInfo.follower_handle_names.length}</Text>
           <Text>フォロワー</Text>
         </Box>
-        <Link href='/favorite-shops'>
           <Box>
             <Text>{userInfo.followee_shops_handle_names.length}</Text>
             <Text>お気に入りShop</Text>
           </Box>
-        </Link>
       </Flex>
       )}
 

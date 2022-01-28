@@ -17,21 +17,20 @@ import { useContext, useEffect, useState, VFC } from 'react'
 import PrimaryButton from './Button'
 import Profile from './Profile'
 
-import Link from 'next/link'
-import { useRouter } from 'next/router'
 import axios from 'axios'
 import PostImage from './Image'
-import { AuthContext, useAuthContext } from '../auth/AuthContext'
+import { AuthContext } from '../auth/AuthContext'
 
 const ShopTopPage = (props: any) => {
   const { handle_name, isUser } = props
   const { currentUser } = useContext(AuthContext)
 
+  const getShop = async (handle: string | string[]) => {
+    const res: any = await axios.get(`/api/shops/details/${handle}`)
+    setShopInfo(res.data)
+  }
+
   useEffect(() => {
-    const getShop = async (handle: string | string[]) => {
-      const res: any = await axios.get(`/api/shops/details/${handle}`)
-      setShopInfo(res.data)
-    }
     if (handle_name) {
       getShop(handle_name)
     }
@@ -74,7 +73,9 @@ const ShopTopPage = (props: any) => {
             handle_name: handle_name,
           }
         )
-        setShopInfo(res.data)
+        if (handle_name) {
+          getShop(handle_name)
+        }
       }
       unfollow()
     } else {
@@ -86,7 +87,9 @@ const ShopTopPage = (props: any) => {
             handle_name: handle_name,
           }
         )
-        setShopInfo(res.data)
+        if (handle_name) {
+          getShop(handle_name)
+        }
       }
       follow()
     }
@@ -121,13 +124,13 @@ const ShopTopPage = (props: any) => {
             </Center>
             {isUser && (
               <PrimaryButton
-                text={isfavorite ? 'お気に入り' : 'お気に入りに登録する'}
+                text={isfavorite ? 'お気に入りに登録済み' : 'お気に入りに登録する'}
                 onclick={registerFavarite}
               />
             )}
             {!isUser && (
               <PrimaryButton
-                text={isfavorite ? 'お気に入り' : 'お気に入りに登録する'}
+                text={isfavorite ? 'お気に入りに登録済み' : 'お気に入りに登録する'}
               />
             )}
           </Box>
