@@ -6,7 +6,7 @@ import ShopsDataModel from '../schema/shopSchema'
 export const getUsers = async (req: Request, res: Response): Promise<void> => {
     try {
         await connectToDB()
-        const users = await userModel.find({})
+        const users = await userModel.find({}, { _id: 0, __v: 0 })
         res.json(users)
     } catch (err) {
         res.status(400).send(err)
