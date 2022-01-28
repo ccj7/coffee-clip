@@ -26,7 +26,7 @@ function UserHeader() {
     const auth = getAuth(firebase)
     signOut(auth)
       .then(() => {
-        router.push('/shop/signin')
+        router.push('/user/signin')
       })
       .catch((error) => {
         const errorCode = error.code
