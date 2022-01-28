@@ -8,20 +8,38 @@ import {
   MenuList,
   Spacer,
   Text,
+  Button,
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbSeparator,
+  Input,
+  InputRightElement,
+  InputGroup,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import { HamburgerIcon, NotAllowedIcon, SettingsIcon } from '@chakra-ui/icons'
+import {
+  HamburgerIcon,
+  NotAllowedIcon,
+  SearchIcon,
+  SettingsIcon,
+} from '@chakra-ui/icons'
 import { getAuth, signOut } from 'firebase/auth'
 import firebase from '../../auth/firebaseConfig'
 
 import React from 'react'
+import { ssrEntries } from 'next/dist/build/webpack/plugins/middleware-plugin'
+import { useForm } from 'react-hook-form'
+import axios from 'axios'
 
 function UserHeader() {
   const router = useRouter()
+  const {
+    handleSubmit,
+    register,
+    formState: { errors, isSubmitting },
+  } = useForm()
+
   const logout = async () => {
     const auth = getAuth(firebase)
     signOut(auth)
@@ -35,15 +53,36 @@ function UserHeader() {
       })
     console.log('ログアウト')
   }
+
+  const onSubmit = async (data: any) => {
+    console.log(data.keyword)
+    router.push(`/user/search?about=${data.keyword}`)
+  }
+
   return (
     <>
       <div>
         <HStack p="2" bg="gray.800" color="white">
-          <Link href="/">
+          <Link href="/user/timeline">
             <Text fontSize="3xl">COFFEE CLIP</Text>
           </Link>
           <Spacer></Spacer>
-
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <InputGroup size="md">
+              <Input
+                pr="4.5rem"
+                placeholder="Search"
+                {...register('keyword')}
+              />
+              <InputRightElement width="4.5rem">
+                <IconButton
+                  type="submit"
+                  aria-label="Search database"
+                  icon={<SearchIcon />}
+                />
+              </InputRightElement>
+            </InputGroup>
+          </form>
           <Breadcrumb separator="|">
             <BreadcrumbItem>
               <BreadcrumbLink href="/user/timeline">TimeLiine</BreadcrumbLink>
@@ -53,7 +92,7 @@ function UserHeader() {
               <BreadcrumbLink href="/user/shoplist">ShopList</BreadcrumbLink>
             </BreadcrumbItem>
 
-            <BreadcrumbItem isCurrentPage>
+            <BreadcrumbItem>
               <BreadcrumbLink href="/user/mypage">MyPage</BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>
