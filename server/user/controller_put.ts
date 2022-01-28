@@ -2,15 +2,35 @@ import { Request, Response } from 'express'
 import connectToDB from '../db-connection'
 import userModel from '../schema/userSchema'
 import ShopsDataModel from '../schema/shopSchema'
+import { s3Upload } from '../s3'
 
 export const putUserProfile = async (
     req: Request,
     res: Response
 ): Promise<void> => {
+    const dataBody = req.body
     await connectToDB()
-    await userModel.updateOne({ auth_id: req.params.authId }, req.body)
-    const data = await userModel.findOne({ auth_id: req.params.authId })
-    res.send(data)
+    const authIdCheck = await userModel.findOne({ auth_id: req.params.authId })
+
+    if(!authIdCheck) {
+        res.status(400).send({error: 'ユーザーのアカウントがありません'})
+    } else {
+        let iconData: String = ''
+
+        if(dataBody?.icon) {
+            const imgFileName = `icon_shop_${req.params.authId}`
+            iconData = await s3Upload(dataBody.icon, imgFileName)
+        }
+        if(iconData !== '') {
+            dataBody.icon = iconData
+        } else {
+            delete dataBody.icon
+        }
+
+        await userModel.updateOne({ auth_id: req.params.authId }, dataBody)
+        const data = await userModel.findOne({ auth_id: req.params.authId })
+        res.send(data)
+    }
 }
 
 export const putFollowUser = async (
