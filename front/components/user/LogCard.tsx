@@ -4,7 +4,7 @@ import { Box, Heading, Image, Text, HStack } from '@chakra-ui/react'
 function LogCard(props: any) {
   const { display_name, handle_name, icon, review } = props;
   return (
-    <Link href={"test"}>
+    <Link href={{ pathname: `/user/topPage/${handle_name}` }}>
       <Box mb="10">
       <HStack>
         <Image
