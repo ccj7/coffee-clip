@@ -4,10 +4,13 @@ import userModel from '../schema/userSchema'
 import ShopsDataModel from '../schema/shopSchema'
 
 export const getUsers = async (req: Request, res: Response): Promise<void> => {
-    await connectToDB()
-    const users = await userModel.find({})
-
-    res.json(users)
+    try {
+        await connectToDB()
+        const users = await userModel.find({})
+        res.json(users)
+    } catch (err) {
+        res.status(400).send(err)
+    }
 }
 
 export const search = async (req: Request, res: Response): Promise<void> => {
@@ -27,8 +30,12 @@ export const search = async (req: Request, res: Response): Promise<void> => {
     const shopsResult = await ShopsDataModel.find(
         {
             $or: [
-                { handle_name: new RegExp('.*' + keyword + '.*', 'i') },
-                { display_name: new RegExp('.*' + keyword + '.*', 'i') },
+                {
+                    handle_name: new RegExp('.*' + keyword + '.*', 'i'),
+                },
+                {
+                    display_name: new RegExp('.*' + keyword + '.*', 'i'),
+                },
             ],
         },
         { _id: 0, handle_name: 1, display_name: 1, icon: 1, concept: 1 }
