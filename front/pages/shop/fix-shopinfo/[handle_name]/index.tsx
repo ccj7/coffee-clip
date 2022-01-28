@@ -57,14 +57,13 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
 
   const onSubmit = (data: any) => {
     console.log(data)
-    // const putNewData = async () => {
-    //   await axios.put(`/${currentUser}`, data)
-    // }
-    // putNewData()
-    // router.push('/shop/dashboard')
+    const putNewData = async () => {
+      await axios.put(`/${currentUser}`, data)
+    }
+    putNewData()
+    router.push('/shop/dashboard')
   }
 
-  // TODO　画像処理とseeling POINTのinput追加
   return (
     <div>
       <Head>
