@@ -3,7 +3,7 @@ import {
     getUsers,
     search,
     getUser,
-    getReviewsOfFolloweesByAuthId,
+    getFolloweeReviews,
     getFolloweeShops,
 } from './controller_get'
 
@@ -23,7 +23,7 @@ routes.get('/', getUsers)
 routes.get('/search', search)
 routes.get('/details/:handleName', getUser)
 routes.get('/:authId', getUser)
-routes.get('/:authId/followee/reviews', getReviewsOfFolloweesByAuthId)
+routes.get('/:authId/followee/reviews', getFolloweeReviews)
 routes.get('/:authId/followee/shops', getFolloweeShops)
 
 routes.post('/', postUser)
