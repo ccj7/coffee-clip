@@ -27,7 +27,6 @@ interface User {
   display_name: string
   icon: string
   review: [Review]
-  _id: string
 }
 
 const Timeline: WithGetAccessControl<VFC> = (props) => {
