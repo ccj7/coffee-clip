@@ -1,7 +1,7 @@
-import { Button } from '@chakra-ui/react'
+import { Box, Button, Radio, Stack, RadioGroup, FormLabel } from '@chakra-ui/react'
 import Head from 'next/head'
 import { useEffect, useState, VFC } from 'react'
-import { useForm, FormProvider, useFormContext } from 'react-hook-form'
+import { useForm, FormProvider } from 'react-hook-form'
 
 import Header from '../../../../components/shop/Header'
 import InputForm from '../../../../components/InputForm'
@@ -10,6 +10,7 @@ import { isLoggedIn } from '../../../../util'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import ImageUpload from '../../../../components/ImageUpload'
+import Message from '../../../../components/Message'
 
 const FixShopInfo: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
@@ -17,7 +18,7 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
   const router = useRouter()
   const { handle_name } = router.query
 
-  const dammy = {
+  const init = {
     auth_id: '',
     handle_name: '',
     display_name: '',
@@ -39,33 +40,48 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
       image: '',
     },
     follower_handle_name: [''],
+    publish_state: ''
   }
-  const [shopInfo, setShopInfo] = useState<any>(dammy)
+  const [shopInfo, setShopInfo] = useState<any>(init)
+  const [publishState, setPublishState] = useState<string>()
+  const [message, setMessage] = useState<string>()
 
-  const methods = useForm()
+  const methods = useForm({ shouldUnregister: false })
 
   useEffect(() => {
     const getShop = async (handle: string | string[]) => {
       const res: any = await axios.get(`/api/shops/details/${handle}`)
       setShopInfo(res.data)
+      if (res.data.publish_state) {
+        setPublishState('0')
+      } else {
+        setPublishState('1')
+      }
     }
     if (handle_name) {
       getShop(handle_name)
     }
-    // TODO ハンドルネームいるか確認
   }, [handle_name])
 
   const onSubmit = (data: any) => {
-    console.log(data)
     const putNewData = async () => {
-      await axios.put(`/${currentUser}`, data)
+      if(data.publish_state === '0') {
+        data.publish_state = true
+      } else {
+        data.publish_state = false
+      }
+      console.log(data)
+      axios.put(`/api/shops/${currentUser}`, data)
+        .then(res => {
+          if(res.status === 200){
+            setMessage('保存しました！')
+          }})
     }
     putNewData()
-    router.push('/shop/dashboard')
   }
 
   return (
-    <div>
+    <Box>
       <Head>
         <title>shop Top Page</title>
         <meta name="shopTopPage" content="shop Top Page" />
@@ -139,7 +155,7 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
           <InputForm
             thema="selling_point.text"
             text="お店の魅力"
-            defaultValue={shopInfo.recommendation.image}
+            defaultValue={shopInfo.selling_point.text}
           />
 
           <ImageUpload
@@ -147,12 +163,20 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
             thema="selling_point.image"
             text="お店の魅力　写真"
           />
-          <Button mt={4} type="submit">
-            Submit
+          <RadioGroup onChange={setPublishState} value={publishState}>
+            <FormLabel htmlFor='publish_state'>公開ステータス</FormLabel>
+            <Stack spacing={4} direction='row'>
+              <Radio value='0' {...methods.register('publish_state')}>公開する</Radio>
+              <Radio value='1' {...methods.register('publish_state')}>非公開にする</Radio>
+            </Stack>
+          </RadioGroup>
+          <Button type="submit" mt={4}>
+            保存する
           </Button>
         </form>
       </FormProvider>
-    </div>
+      {message && <Message message={message} />}
+    </Box>
   )
 }
 
