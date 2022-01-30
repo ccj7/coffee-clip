@@ -33,3 +33,11 @@ type ShopData = {
   __v: string
   _id: string
 }
+
+type PartOfShopData = {
+  auth_id: string
+  display_name: string
+  handle_name: string
+  icon?: string
+  selling_point?: string
+}
