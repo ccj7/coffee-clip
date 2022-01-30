@@ -4,12 +4,14 @@ import connectToDB from '../../db-connection'
 import server from '../../app'
 import mongoose from 'mongoose'
 import usersData from '../../user/users.json'
+import runSeedUser from '../../user/seed'
 
 chai.use(chaiHttp)
 
 describe('Users Get Request Tests', () => {
     before(async () => {
         await connectToDB()
+        await runSeedUser()
     })
 
     after(async () => {
