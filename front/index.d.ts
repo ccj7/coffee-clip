@@ -8,6 +8,21 @@ type WithGetAccessControl<P> = P & {
   getAccessControl?: GetAccessControl
 }
 
+type UserData = {
+  auth_id: string
+  handle_name: string
+  display_name: string
+  icon?: string
+  follower_handle_names: string[]
+  followee_handle_names: string[]
+  followee_shops_handle_names: string[]
+  reviews: {
+    image?: string
+    description?: string
+  }[]
+  _id: string
+}
+
 type ShopData = {
   auth_id: string
   handle_name: string
