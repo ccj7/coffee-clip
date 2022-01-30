@@ -22,6 +22,7 @@ export const getShop = async (req: Request, res: Response) => {
 
 export const putShop = async (req: Request, res: Response) => {
     await connectToDB()
+    console.log('hello')
     const dataBody = req.body
     const authIdCheck = await ShopsDataModel.findOne({
         auth_id: req.params.authId,
@@ -31,15 +32,46 @@ export const putShop = async (req: Request, res: Response) => {
         res.status(400).send({ error: 'ショップのアカウントがありません' })
     } else {
         let iconData: String = ''
+        let sellingPointData: String = ''
+        let recommendationData: String = ''
 
         if (dataBody?.icon) {
             const imgFileName = `icon_shop_${req.params.authId}`
             iconData = await s3Upload(dataBody.icon, imgFileName)
         }
+
+        if (dataBody?.selling_point.image) {
+            const imgFileName = `sellingpoint_shop_${req.params.authId}`
+            sellingPointData = await s3Upload(
+                dataBody.selling_point.image,
+                imgFileName
+            )
+        }
+
+        if (dataBody?.recommendation.image) {
+            const imgFileName = `recommendation_shop_${req.params.authId}`
+            recommendationData = await s3Upload(
+                dataBody.recommendation.image,
+                imgFileName
+            )
+        }
+
         if (iconData !== '') {
             dataBody.icon = iconData
         } else {
             delete dataBody.icon
+        }
+
+        if (sellingPointData !== '') {
+            dataBody.selling_point.image = sellingPointData
+        } else {
+            delete dataBody.selling_point.image
+        }
+
+        if (recommendationData !== '') {
+            dataBody.recommendation.image = recommendationData
+        } else {
+            delete dataBody.recommendation.image
         }
 
         await ShopsDataModel.updateOne({ auth_id: req.params.authId }, dataBody)
