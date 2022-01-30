@@ -1,49 +1,42 @@
-import Head from 'next/head'
-
-import Header from '../../components/shop/Header'
-import { useRouter } from 'next/router'
-import { useForm, FormProvider } from 'react-hook-form'
-import InputForm from '../../components/InputForm'
-import { Button } from '@chakra-ui/react'
-
-import {
-  createUserWithEmailAndPassword,
-  getAuth,
-  signInWithEmailAndPassword,
-} from 'firebase/auth'
-import firebase from '../../auth/firebaseConfig'
-
 import { VFC } from 'react'
-import { useAuthContext } from '../../auth/AuthContext'
-import { isLoggedIn } from '../../util'
+import { useRouter } from 'next/router'
+import Head from 'next/head'
+import { useForm, FormProvider } from 'react-hook-form'
 import axios from 'axios'
 
-let isLogin = false
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth'
+import firebase from '../../auth/firebaseConfig'
+import { useAuthContext } from '../../auth/AuthContext'
+import { isLoggedIn } from '../../util'
+
+import Header from '../../components/shop/Header'
+import InputForm from '../../components/InputForm'
+
+import { Button } from '@chakra-ui/react'
+import { type } from 'os'
+
+type newShopInfo = {
+  auth_id: string
+  handle_name: string
+  display_name: string
+}
 
 const Signup: WithGetAccessControl<VFC> = () => {
-  const { currentUser } = useAuthContext()
-  if (currentUser) isLogin = true
-
   const methods = useForm()
   const router = useRouter()
 
   const onSubmit = async (data: any) => {
     const auth = getAuth(firebase)
-    console.log(data)
 
     createUserWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredential) => {
-        const user = userCredential.user
-        console.log(user)
-
         if (userCredential) {
           const postShopInfo = () => {
-            const newShopInfo = {
+            const newShopInfo: newShopInfo = {
               auth_id: userCredential.user.uid,
               handle_name: data.handle_name,
               display_name: data.display_name,
             }
-            console.log(newShopInfo)
             axios.post('/shop', newShopInfo)
           }
           postShopInfo()
