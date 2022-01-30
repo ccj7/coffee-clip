@@ -8,6 +8,11 @@ type WithGetAccessControl<P> = P & {
   getAccessControl?: GetAccessControl
 }
 
+type Review = {
+  image?: string
+  description?: string
+}
+
 type UserData = {
   auth_id: string
   handle_name: string
@@ -16,10 +21,7 @@ type UserData = {
   follower_handle_names: string[]
   followee_handle_names: string[]
   followee_shops_handle_names: string[]
-  reviews: {
-    image?: string
-    description?: string
-  }[]
+  reviews: Review[]
   _id: string
 }
 
