@@ -59,5 +59,55 @@ describe('Users Post Request Tests', () => {
             expect(res.status).to.equal(400)
             expect(afterUsers.body.length).to.equal(beforeUsers.body.length)
         })
+
+        it('POST /api/users/:authId/reviews', async () => {
+            const beforeUser = await chai
+                .request(server)
+                .get('/api/users/h1ERSr4qUNUoviCQlzZ0648p1cA2')
+
+            const newReview = {
+                image: '',
+                description: 'test comment',
+            }
+
+            const res = await chai
+                .request(server)
+                .post('/api/users/h1ERSr4qUNUoviCQlzZ0648p1cA2/reviews')
+                .send(newReview)
+
+            const res2 = await chai
+                .request(server)
+                .post('/api/users/h1ERSr4qUNUoviCQlzZ0648p1cA2/reviews')
+                .send(newReview)
+
+            const afterUser = await chai
+                .request(server)
+                .get('/api/users/h1ERSr4qUNUoviCQlzZ0648p1cA2')
+
+            expect(res.status).to.equal(200)
+            expect(res2.status).to.equal(200)
+            expect(afterUser.body.reviews.length).to.equal(
+                beforeUser.body.reviews.length + 2
+            )
+        })
+
+        it('POST /api/users/:authId/reviews 2', async () => {
+            const res = await chai
+                .request(server)
+                .post('/api/users/h1ERSr4qUNUoviCQlzZ0648p1cA2/reviews')
+                .send({})
+
+            const newReview = {
+                image: '',
+                description: 'test comment',
+            }
+
+            const res2 = await chai
+                .request(server)
+                .post('/api/users/TestId/reviews')
+                .send(newReview)
+
+            expect(res.status).to.equal(400)
+        })
     })
 })
