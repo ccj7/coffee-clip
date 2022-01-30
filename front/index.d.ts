@@ -64,3 +64,10 @@ type PartOfShopData = {
   icon?: string
   concept: string
 }
+
+type UserSignUpInfo = {
+  display_name: string
+  handle_name: string
+  auth_id: string
+  icon: string
+}
