@@ -85,5 +85,18 @@ describe('Users Get Request Tests', () => {
             const handleName = usersData.users[0].followee_shops_handle_names[0]
             expect(res.body.followeeShops[0].handle_name).to.equal(handleName)
         })
+
+        it('GET /api/users/:authId/:handleName', async () => {
+            const res = await chai
+                .request(server)
+                .get('/api/users/h1ERSr4qUNUoviCQlzZ0648p1cA2/bob')
+
+            expect(res.body.handle_name).to.equal('bob')
+            expect(res.body.follower_handle_names).to.deep.equal([
+                'kaori_hikita',
+                'alice',
+            ])
+            expect(res.body.is_following).to.equal(true)
+        })
     })
 })
