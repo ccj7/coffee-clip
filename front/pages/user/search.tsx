@@ -1,10 +1,13 @@
-import Head from 'next/head'
 import { useEffect, useState, VFC } from 'react'
+import Head from 'next/head'
+import { useRouter } from 'next/router'
+import axios from 'axios'
 
 import { useAuthContext } from '../../auth/AuthContext'
 import { isLoggedIn } from '../../util'
 import UserHeader from '../../components/user/UserHeader'
-import { useRouter } from 'next/router'
+import ShopCard from '../../components/user/ShopCard'
+import Profile from '../../components/Profile'
 import {
   Box,
   Heading,
@@ -15,31 +18,14 @@ import {
   TabPanel,
   Text,
 } from '@chakra-ui/react'
-import { async } from '@firebase/util'
-import axios from 'axios'
-import ShopCard from '../../components/user/ShopCard'
-import Profile from '../../components/Profile'
-
-interface Shop {
-  auth_id: string
-  display_name: string
-  handle_name: string
-  icon?: string
-  selling_point?: string
-}
-interface User {
-  handle_name: string
-  display_name: string
-  icon: string
-}
 
 const Search: WithGetAccessControl<VFC> = (props) => {
   const { currentUser } = useAuthContext()
   const router = useRouter()
   const keyword = router.query.about
 
-  const [shopsInfo, setShopsInfo] = useState<Shop[]>([])
-  const [usersInfo, setUsersInfo] = useState<User[]>([])
+  const [shopsInfo, setShopsInfo] = useState<PartOfShopData[]>([])
+  const [usersInfo, setUsersInfo] = useState<PartOfUserData[]>([])
 
   useEffect(() => {
     const getSearchResult = async () => {
@@ -86,14 +72,14 @@ const Search: WithGetAccessControl<VFC> = (props) => {
           </TabPanel>
           <TabPanel>
             {shopsInfo &&
-              shopsInfo.map((shop: any, key: any) => {
+              shopsInfo.map((shop: PartOfShopData, key: any) => {
                 return (
                   <ShopCard
                     key={key}
                     display_name={shop.display_name}
                     handle_name={shop.handle_name}
                     icon={shop.icon}
-                    concept={shop.concept}
+                    concept={shop.selling_point?.text}
                   />
                 )
               })}

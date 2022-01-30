@@ -51,10 +51,19 @@ type ShopData = {
   _id: string
 }
 
+type PartOfUserData = {
+  handle_name: string
+  display_name: string
+  icon: string
+}
+
 type PartOfShopData = {
   auth_id: string
   display_name: string
   handle_name: string
   icon?: string
-  selling_point?: string
+  selling_point?: {
+    text: string
+    image: string
+  }
 }
