@@ -79,7 +79,7 @@ const Search: WithGetAccessControl<VFC> = (props) => {
                     display_name={shop.display_name}
                     handle_name={shop.handle_name}
                     icon={shop.icon}
-                    concept={shop.selling_point?.text}
+                    concept={shop.concept}
                   />
                 )
               })}

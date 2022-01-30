@@ -62,8 +62,5 @@ type PartOfShopData = {
   display_name: string
   handle_name: string
   icon?: string
-  selling_point?: {
-    text: string
-    image: string
-  }
+  concept: string
 }
