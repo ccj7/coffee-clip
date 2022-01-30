@@ -11,6 +11,32 @@ import axios from 'axios'
 import { useRouter } from 'next/router'
 import ImageUpload from '../../../../components/ImageUpload'
 
+type Data = {
+  auth_id: string
+  handle_name: string
+  display_name: string
+  icon: string
+  address: string
+  map_url: string
+  hp_url: string
+  instagram_url: string
+  opening_hours: string
+  regular_day_off: string
+  concept: string
+  recommendation: {
+    title: string
+    description: string
+    image: string
+  }
+  selling_point: {
+    text: string
+    image: string
+  }
+  follower_handle_name: string[]
+  __v: string
+  _id: string
+}
+
 const FixShopInfo: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
 
@@ -39,8 +65,10 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
       image: '',
     },
     follower_handle_name: [''],
+    __v: '',
+    _id: '',
   }
-  const [shopInfo, setShopInfo] = useState<any>(dammy)
+  const [shopInfo, setShopInfo] = useState<Data>(dammy)
 
   const methods = useForm()
 
@@ -52,7 +80,6 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
     if (handle_name) {
       getShop(handle_name)
     }
-    // TODO ハンドルネームいるか確認
   }, [handle_name])
 
   const onSubmit = (data: any) => {
