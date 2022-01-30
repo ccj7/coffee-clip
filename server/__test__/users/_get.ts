@@ -2,7 +2,6 @@ import chai, { expect } from 'chai'
 import chaiHttp from 'chai-http'
 import connectToDB from '../../db-connection'
 import server from '../../app'
-import runSeedShop from '../../shop/seed'
 import mongoose from 'mongoose'
 import usersData from '../../user/users.json'
 
@@ -11,7 +10,6 @@ chai.use(chaiHttp)
 describe('Users Get Request Tests', () => {
     before(async () => {
         await connectToDB()
-        await runSeedShop()
     })
 
     after(async () => {
@@ -77,6 +75,15 @@ describe('Users Get Request Tests', () => {
             expect(res.body.reviews[1].review.created_at).to.equal(
                 reviewCreatedAt
             )
+        })
+
+        it('GET /api/users/:authId/followee/shops', async () => {
+            const res = await chai
+                .request(server)
+                .get('/api/users/h1ERSr4qUNUoviCQlzZ0648p1cA2/followee/shops')
+
+            const handleName = usersData.users[0].followee_shops_handle_names[0]
+            expect(res.body.followeeShops[0].handle_name).to.equal(handleName)
         })
     })
 })
