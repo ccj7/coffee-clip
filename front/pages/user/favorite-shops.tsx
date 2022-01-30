@@ -33,7 +33,7 @@ const LikeShops: WithGetAccessControl<VFC> = (props) => {
       <UserHeader />
       <Flex>
         {shopsInfo &&
-          shopsInfo.map((shop: any, key: any) => {
+          shopsInfo.map((shop: PartOfShopData, key: any) => {
             return (
               <ShopCard
                 key={key}
