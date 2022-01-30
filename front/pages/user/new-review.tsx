@@ -1,35 +1,35 @@
-// TODO　U-007 github issue#41
-
+import { VFC, useState } from 'react'
 import Head from 'next/head'
 import axios from 'axios'
-import UserHeader from '../../components/user/UserHeader'
-import InputForm from '../../components/InputForm'
-import ImageUpload from '../../components/ImageUpload'
-import { VFC, useState } from 'react'
-import { useForm, FormProvider } from 'react-hook-form'
-import { Heading, Box, Button } from '@chakra-ui/react'
+
 import { useAuthContext } from '../../auth/AuthContext'
 import { isLoggedIn } from '../../util'
 
-interface Review {
-  image?: string
-  description?: string
-}
+import UserHeader from '../../components/user/UserHeader'
+import InputForm from '../../components/InputForm'
+import ImageUpload from '../../components/ImageUpload'
+import Message from '../../components/Message'
+import { useForm, FormProvider } from 'react-hook-form'
+import { Heading, Box, Button } from '@chakra-ui/react'
 
 const NewReview: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
 
   const methods = useForm()
+  const [message, setMessage] = useState<string>()
 
   const postUser = async (userNewReview: Review, authId: string) => {
-    console.log(userNewReview)
-    console.log(authId)
-    // TODO: ここが動いていません！
-    // await axios.post(`/api/users/${authId}/reviews`, userNewReview, {
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   }
-    // })
+    axios
+      .post(`/api/users/${authId}/reviews`, userNewReview, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          setMessage('保存しました')
+        }
+      })
   }
 
   const onSubmit = (userNewReview: Review) => {
@@ -68,6 +68,7 @@ const NewReview: WithGetAccessControl<VFC> = () => {
           </Box>
         </form>
       </FormProvider>
+      {message && <Message message={message} />}
     </Box>
   )
 }
