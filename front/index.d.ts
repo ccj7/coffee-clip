@@ -47,6 +47,7 @@ type ShopData = {
     image: string
   }
   follower_handle_name: string[]
+  publish_state: string
   __v: string
   _id: string
 }
