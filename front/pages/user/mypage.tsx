@@ -49,7 +49,6 @@ const Mypage: WithGetAccessControl<VFC> = (props) => {
   // ユーザー情報
   const [userInfo, setUserInfo] = useState(initial)
 
-  
   // TODO paramsからハンドルネームを取得
 
   //　user情報を取得
@@ -62,9 +61,8 @@ const Mypage: WithGetAccessControl<VFC> = (props) => {
         setUserInfo(res.data)
       }
     }
-  
+
     getUser()
-    
   }, [currentUser])
 
   // TODO: typescriptのuserInfo用のinterfaceをサーバー側から流用して作成
@@ -77,51 +75,55 @@ const Mypage: WithGetAccessControl<VFC> = (props) => {
       <UserHeader />
 
       {userInfo && (
-      <Flex>
-        <Profile
-          display_name={userInfo.display_name}
-          handle_name={userInfo.handle_name}
-          icon={userInfo.icon}
-        />
-        <Spacer/>
-        <Box>
-          <Text>{userInfo.followee_handle_names.length}</Text>
-          <Text>フォロー</Text>
-          </Box>
-        <Box>
-          <Text>{userInfo.follower_handle_names.length}</Text>
-          <Text>フォロワー</Text>
-        </Box>
-        <Link href='/favorite-shops'>
+        <Flex>
+          <Profile
+            display_name={userInfo.display_name}
+            handle_name={userInfo.handle_name}
+            icon={userInfo.icon}
+          />
+          <Spacer />
           <Box>
-            <Text>{userInfo.followee_shops_handle_names.length}</Text>
-            <Text>お気に入りShop</Text>
+            <Text>{userInfo.followee_handle_names.length}</Text>
+            <Text>フォロー</Text>
           </Box>
-        </Link>
-      </Flex>
+          <Box>
+            <Text>{userInfo.follower_handle_names.length}</Text>
+            <Text>フォロワー</Text>
+          </Box>
+          <Link href="/user/favorite-shops">
+            <Box>
+              <Text>{userInfo.followee_shops_handle_names.length}</Text>
+              <Text>お気に入りShop</Text>
+            </Box>
+          </Link>
+        </Flex>
       )}
-      
+
       <Stack>
-        {userInfo &&
-        <Box>
-          {userInfo.reviews.map((data: any, key: any) => {
-            return <LogCard 
-              key={key}
-              display_name={userInfo.display_name}
-              handle_name={userInfo.handle_name}
-              icon={userInfo.icon}
-              review={data}/>
-            }
-          )}
-        </Box>
-        }
+        {userInfo && (
+          <Box>
+            {userInfo.reviews.map((data: any, key: any) => {
+              return (
+                <LogCard
+                  key={key}
+                  display_name={userInfo.display_name}
+                  handle_name={userInfo.handle_name}
+                  icon={userInfo.icon}
+                  review={data}
+                />
+              )
+            })}
+          </Box>
+        )}
       </Stack>
     </Box>
   )
 }
 
 Mypage.getAccessControl = async () => {
-  return ! await isLoggedIn() ? { type: 'replace', destination: '/user/signin' } : null
+  return !(await isLoggedIn())
+    ? { type: 'replace', destination: '/user/signin' }
+    : null
 }
 
 export default Mypage
