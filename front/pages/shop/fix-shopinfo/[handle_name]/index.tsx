@@ -9,6 +9,7 @@ import { isLoggedIn } from '../../../../util'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import ImageUpload from '../../../../components/ImageUpload'
+import Message from '../../../../components/Message'
 
 import {
   Box,
