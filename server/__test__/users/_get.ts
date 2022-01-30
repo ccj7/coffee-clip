@@ -28,7 +28,8 @@ describe('Users Get Request Tests', () => {
         it('GET /api/users/search', async () => {
             const res = await chai
                 .request(server)
-                .get('/api/users/search?keyword=ma')
+                .get('/api/users/search')
+                .query({ keyword: 'ma' })
 
             expect(res.body.users.length).to.equal(2)
             expect(res.body.shops.length).to.equal(2)
@@ -37,7 +38,9 @@ describe('Users Get Request Tests', () => {
         it('GET /api/users/search 2', async () => {
             const res = await chai
                 .request(server)
-                .get('/api/users/search?keyword=foo')
+                .get('/api/users/search')
+                .query({ keyword: 'foo' })
+
             const expectedData = {
                 users: [],
                 shops: [],
