@@ -58,5 +58,25 @@ describe('Users Get Request Tests', () => {
                 userFollowerHandleName
             )
         })
+
+        it('GET /api/users/:authId/followee/reviews', async () => {
+            const res = await chai
+                .request(server)
+                .get('/api/users/h1ERSr4qUNUoviCQlzZ0648p1cA2/followee/reviews')
+
+            const handleName = usersData.users[0].handle_name
+            const reviewImage = usersData.users[0].reviews[1].image
+            const reviewDescription = usersData.users[0].reviews[1].description
+            const reviewCreatedAt = usersData.users[0].reviews[1].created_at
+
+            expect(res.body.reviews[1].handle_name).to.equal(handleName)
+            expect(res.body.reviews[1].review.image).to.equal(reviewImage)
+            expect(res.body.reviews[1].review.description).to.equal(
+                reviewDescription
+            )
+            expect(res.body.reviews[1].review.created_at).to.equal(
+                reviewCreatedAt
+            )
+        })
     })
 })
