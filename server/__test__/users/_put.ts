@@ -125,5 +125,34 @@ describe('Users Post Request Tests', () => {
                 'kaori_hikita',
             ])
         })
+
+        it('PUT /api/users/:authId/shops/unfollowing', async () => {
+            const removeFollowee = {
+                handle_name: 'coffeeeeen',
+            }
+
+            await chai
+                .request(server)
+                .put(
+                    '/api/users/h1ERSr4qUNUoviCQlzZ0648p1cA2/shops/unfollowing'
+                )
+                .send(removeFollowee)
+
+            const afterUser = await chai
+                .request(server)
+                .get('/api/users/h1ERSr4qUNUoviCQlzZ0648p1cA2')
+
+            const afterFollower = await chai
+                .request(server)
+                .get('/api/shops/540PJipKIwXZUY422LmC2j3ZlvU2')
+
+            expect(
+                afterUser.body.followee_shops_handle_names
+            ).to.not.have.members(['coffeeeeen'])
+
+            expect(afterFollower.body.follower_handle_name).to.not.have.members(
+                ['kaori_hikita']
+            )
+        })
     })
 })
