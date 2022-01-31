@@ -22,15 +22,31 @@ describe('Shop Get Request Tests', () => {
     it('should update information of the shop', async () => {
       const updateData = {
         display_name: "new coffee",
-        concept: "コーヒに自信がとってもありあます",
-        icon: ''
+        concept: "コーヒーに自信がとってもあります",
+        icon: '',
+        selling_point: {
+          image: ''
+        },
+        recommendation: {
+          image: ''
+        }
       }
       const res = await chai.request(server).put('/api/shops/540PJipKIwXZUY422LmC2j3ZlvU2').send(updateData)
       expect(res.body).to.deep.include({
         display_name: "new coffee",
-        concept: "コーヒに自信がとってもありあます",
+        concept: "コーヒーに自信がとってもあります",
       })
       expect(res.body).not.to.deep.include({icon: ''})
+      expect(res.body).not.to.deep.include(
+        {selling_point: {
+          image: ''
+        }}
+      )
+      expect(res.body).not.to.deep.include(
+        {recommendation: {
+        image: ''
+        }}
+      )
     })
 
     it('should not update if request auth id is invalid', async () => {
