@@ -1,51 +1,53 @@
+import { VFC } from 'react'
 import Head from 'next/head'
-
-import Header from '../../components/shop/Header'
 import { useRouter } from 'next/router'
 import { useForm, FormProvider } from 'react-hook-form'
-import InputForm from '../../components/InputForm'
-import { Button } from '@chakra-ui/react'
+import axios from 'axios'
 
-import {
-  createUserWithEmailAndPassword,
-  getAuth,
-} from 'firebase/auth'
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth'
 import firebase from '../../auth/firebaseConfig'
-
-import { VFC } from 'react'
 import { useAuthContext } from '../../auth/AuthContext'
 import { isLoggedIn } from '../../util'
-import axios from 'axios'
+
+import Header from '../../components/shop/Header'
+import InputForm from '../../components/InputForm'
 import ImageUpload from '../../components/ImageUpload'
 
-const Signup: WithGetAccessControl<VFC> = () => {
-  const { currentUser } = useAuthContext()
+import { Button } from '@chakra-ui/react'
 
+const Signup: WithGetAccessControl<VFC> = () => {
   const methods = useForm()
   const router = useRouter()
 
-  function userPost(data: any, uid: string) {
-    axios.post('/api/users', {
-      display_name: data.display_name,
-      handle_name: data.handle_name,
-      auth_id: uid,
-      icon: data.icon
-    }, {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }).then(res => console.log(res)).catch(res => console.log(res))
+  function userPost(data: UserSignUpInfo, uid: string) {
+    axios
+      .post(
+        '/api/users',
+        {
+          display_name: data.display_name,
+          handle_name: data.handle_name,
+          auth_id: uid,
+          icon: data.icon,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      )
+      .then((res) => console.log(res))
+      .catch((res) => console.log(res))
   }
 
   const onSubmit = async (data: any) => {
     const auth = getAuth(firebase)
     createUserWithEmailAndPassword(auth, data.email, data.password)
-    .then((userCredential) => {
-      if(userCredential) {
-        const user = userCredential.user
-        userPost(data, user.uid)
-        router.push('/user/timeline')
-      }
+      .then((userCredential) => {
+        if (userCredential) {
+          const user = userCredential.user
+          userPost(data, user.uid)
+          router.push('/user/timeline')
+        }
       })
       .catch((error: any) => {
         const errorCode = error.code
@@ -83,4 +85,3 @@ Signup.getAccessControl = async () => {
 }
 
 export default Signup
-

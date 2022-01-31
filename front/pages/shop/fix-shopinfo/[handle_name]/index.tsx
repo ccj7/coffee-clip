@@ -1,7 +1,6 @@
-import { Button } from '@chakra-ui/react'
 import Head from 'next/head'
 import { useEffect, useState, VFC } from 'react'
-import { useForm, FormProvider, useFormContext } from 'react-hook-form'
+import { useForm, FormProvider } from 'react-hook-form'
 
 import Header from '../../../../components/shop/Header'
 import InputForm from '../../../../components/InputForm'
@@ -10,6 +9,16 @@ import { isLoggedIn } from '../../../../util'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import ImageUpload from '../../../../components/ImageUpload'
+import Message from '../../../../components/Message'
+
+import {
+  Box,
+  Button,
+  Radio,
+  Stack,
+  RadioGroup,
+  FormLabel,
+} from '@chakra-ui/react'
 
 const FixShopInfo: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
@@ -17,142 +26,150 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
   const router = useRouter()
   const { handle_name } = router.query
 
-  const dammy = {
-    auth_id: '',
-    handle_name: '',
-    display_name: '',
-    icon: '',
-    address: '',
-    map_url: '',
-    hp_url: '',
-    instagram_url: '',
-    opening_hours: '',
-    regular_day_off: '',
-    concept: '',
-    recommendation: {
-      title: '',
-      description: '',
-      image: '',
-    },
-    selling_point: {
-      text: '',
-      image: '',
-    },
-    follower_handle_name: [''],
-  }
-  const [shopInfo, setShopInfo] = useState<any>(dammy)
+  const [shopInfo, setShopInfo] = useState<ShopData | null>(null)
+  const [publishState, setPublishState] = useState<string>()
+  const [message, setMessage] = useState<string>()
 
-  const methods = useForm()
+  const methods = useForm({ shouldUnregister: false })
 
   useEffect(() => {
     const getShop = async (handle: string | string[]) => {
       const res: any = await axios.get(`/api/shops/details/${handle}`)
       setShopInfo(res.data)
+      if (res.data.publish_state) {
+        setPublishState('0')
+      } else {
+        setPublishState('1')
+      }
     }
     if (handle_name) {
       getShop(handle_name)
     }
-    // TODO ハンドルネームいるか確認
   }, [handle_name])
 
   const onSubmit = (data: any) => {
     console.log(data)
     const putNewData = async () => {
-      await axios.put(`/${currentUser}`, data)
+      if (data.publish_state === '0') {
+        data.publish_state = true
+      } else {
+        data.publish_state = false
+      }
+      console.log(data)
+      axios.put(`/api/shops/${currentUser}`, data).then((res) => {
+        if (res.status === 200) {
+          setMessage('保存しました！')
+        }
+      })
     }
     putNewData()
+
     router.push('/shop/dashboard')
   }
 
   return (
-    <div>
+    <Box>
       <Head>
         <title>shop Top Page</title>
         <meta name="shopTopPage" content="shop Top Page" />
       </Head>
       <Header />
-      <FormProvider {...methods}>
-        <form onSubmit={methods.handleSubmit(onSubmit)}>
-          <InputForm
-            thema="handle_name"
-            text="shop ID"
-            defaultValue={shopInfo.handle_name}
-          />
-          <InputForm
-            thema="display_name"
-            text="お店の名前"
-            defaultValue={shopInfo.display_name}
-          />
-          <ImageUpload size="sm" thema="icon" text="アイコン画像" />
-          <InputForm
-            thema="address"
-            text="住所"
-            defaultValue={shopInfo.address}
-          />
-          <InputForm
-            thema="map_url"
-            text="googlemap URL"
-            defaultValue={shopInfo.map_url}
-          />
-          <InputForm
-            thema="hp_url"
-            text="HP URL"
-            defaultValue={shopInfo.hp_url}
-          />
-          <InputForm
-            thema="instagram_url"
-            text="instagram URL"
-            defaultValue={shopInfo.instagram_url}
-          />
-          <InputForm
-            thema="opening_hours"
-            text="営業時間"
-            defaultValue={shopInfo.opening_hours}
-          />
-          <InputForm
-            thema="regular_day_off"
-            text="定休日"
-            defaultValue={shopInfo.regular_day_off}
-          />
-          <InputForm
-            thema="concept"
-            text="お店のプロフィール文"
-            defaultValue={shopInfo.concept}
-          />
-          <InputForm
-            thema="recommendation.title"
-            text="おすすめのコーヒー 名前"
-            defaultValue={shopInfo.recommendation.title}
-          />
-          <InputForm
-            thema="recommendation.description"
-            text="おすすめのコーヒー 紹介文"
-            defaultValue={shopInfo.recommendation.description}
-          />
+      {shopInfo && (
+        <FormProvider {...methods}>
+          <form onSubmit={methods.handleSubmit(onSubmit)}>
+            <InputForm
+              thema="handle_name"
+              text="shop ID"
+              defaultValue={shopInfo.handle_name}
+            />
+            <InputForm
+              thema="display_name"
+              text="お店の名前"
+              defaultValue={shopInfo.display_name}
+            />
+            <ImageUpload size="sm" thema="icon" text="アイコン画像" />
+            <InputForm
+              thema="address"
+              text="住所"
+              defaultValue={shopInfo.address}
+            />
+            <InputForm
+              thema="map_url"
+              text="googlemap URL"
+              defaultValue={shopInfo.map_url}
+            />
+            <InputForm
+              thema="hp_url"
+              text="HP URL"
+              defaultValue={shopInfo.hp_url}
+            />
+            <InputForm
+              thema="instagram_url"
+              text="instagram URL"
+              defaultValue={shopInfo.instagram_url}
+            />
+            <InputForm
+              thema="opening_hours"
+              text="営業時間"
+              defaultValue={shopInfo.opening_hours}
+            />
+            <InputForm
+              thema="regular_day_off"
+              text="定休日"
+              defaultValue={shopInfo.regular_day_off}
+            />
+            <InputForm
+              thema="concept"
+              text="お店のプロフィール文"
+              defaultValue={shopInfo.concept}
+            />
+            <InputForm
+              thema="recommendation.title"
+              text="おすすめのコーヒー 名前"
+              defaultValue={shopInfo.recommendation.title}
+            />
+            <InputForm
+              thema="recommendation.description"
+              text="おすすめのコーヒー 紹介文"
+              defaultValue={shopInfo.recommendation.description}
+            />
 
-          <ImageUpload
-            size="sm"
-            thema="recommendation.image"
-            text="おすすめのコーヒー 写真"
-          />
+            <ImageUpload
+              size="sm"
+              thema="recommendation.image"
+              text="おすすめのコーヒー 写真"
+            />
 
-          <InputForm
-            thema="selling_point.text"
-            text="お店の魅力"
-            defaultValue={shopInfo.recommendation.image}
-          />
+            <InputForm
+              thema="selling_point.text"
+              text="お店の魅力"
+              defaultValue={shopInfo.selling_point.text}
+            />
 
-          <ImageUpload
-            size="sm"
-            thema="selling_point.image"
-            text="お店の魅力　写真"
-          />
-          <Button mt={4} type="submit">
-            Submit
-          </Button>
-        </form>
-      </FormProvider>
-    </div>
+            <ImageUpload
+              size="sm"
+              thema="selling_point.image"
+              text="お店の魅力　写真"
+            />
+            <RadioGroup onChange={setPublishState} value={publishState}>
+              <FormLabel htmlFor="publish_state">公開ステータス</FormLabel>
+              <Stack spacing={4} direction="row">
+                <Radio value="0" {...methods.register('publish_state')}>
+                  公開する
+                </Radio>
+                <Radio value="1" {...methods.register('publish_state')}>
+                  非公開にする
+                </Radio>
+              </Stack>
+            </RadioGroup>
+            <Button mt={4} type="submit">
+              Submit
+            </Button>
+          </form>
+          {message && <Message message={message} />}
+        </FormProvider>
+      )}
+    </Box>
   )
 }
 
