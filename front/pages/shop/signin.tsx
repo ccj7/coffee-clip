@@ -1,24 +1,19 @@
-import Head from 'next/head'
-
-import Header from '../../components/shop/Header'
+import { VFC } from 'react'
 import { useRouter } from 'next/router'
-import { useForm, FormProvider } from 'react-hook-form'
-import InputForm from '../../components/InputForm'
-import { Button } from '@chakra-ui/react'
+import Head from 'next/head'
 
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import firebase from '../../auth/firebaseConfig'
-
-import { VFC } from 'react'
-import { useAuthContext } from '../../auth/AuthContext'
 import { isLoggedIn } from '../../util'
 
-let isLogin = false
+import { useForm, FormProvider } from 'react-hook-form'
+import InputForm from '../../components/InputForm'
+
+import Header from '../../components/shop/Header'
+
+import { Button } from '@chakra-ui/react'
 
 const Signin: WithGetAccessControl<VFC> = () => {
-  const { currentUser } = useAuthContext()
-  if (currentUser) isLogin = true
-
   const methods = useForm()
   const router = useRouter()
 
@@ -27,8 +22,6 @@ const Signin: WithGetAccessControl<VFC> = () => {
 
     signInWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredential) => {
-        // const user = userCredential.user;
-        // console.log(user)
         router.push('/shop/dashboard')
       })
       .catch((error: any) => {
