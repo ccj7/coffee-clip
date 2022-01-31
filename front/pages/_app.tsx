@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import { ChakraProvider } from '@chakra-ui/react'
+import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { AuthProvider } from '../auth/AuthContext'
@@ -27,12 +27,30 @@ type Props = AppProps & {
   }
 }
 
+
+const theme = extendTheme({
+  styles: {
+    global: {
+      "body": {
+        background: '#fcf6ed',
+        letterSpacing: "1px",
+      }
+    }
+  },
+  colors: {
+    brand: {
+      main: '#988d83',
+      mark: '#7C998F',
+    }
+  }
+})
+
 function MyApp({ Component, pageProps }: Props) {
   const { getAccessControl = accessControl } = Component
   useAccessControll(getAccessControl)
   return (
     <AuthProvider>
-      <ChakraProvider>
+      <ChakraProvider theme={theme}>
         <Component {...pageProps} />
       </ChakraProvider>
     </AuthProvider>
