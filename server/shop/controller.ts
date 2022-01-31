@@ -32,9 +32,8 @@ export const getShopFromUser = async (req: Request, res: Response) => {
     if(!user || !shop) {
         res.status(400).json({ error: '対象のデータがありません' })
     } else {
-        let isFollowing = shop.follower_handle_name?.includes(user.handle_name);
         const resData = JSON.parse(JSON.stringify(shop))
-        resData.is_following = isFollowing
+        resData.is_following = shop.follower_handle_name?.includes(user.handle_name)
         res.json(resData)
     }
 }
