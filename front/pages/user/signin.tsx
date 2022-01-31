@@ -1,20 +1,19 @@
+import { VFC } from 'react'
 import Head from 'next/head'
-
-import Header from '../../components/shop/Header'
 import { useRouter } from 'next/router'
 import { useForm, FormProvider } from 'react-hook-form'
-import InputForm from '../../components/InputForm'
-import { Button } from '@chakra-ui/react'
 
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import firebase from '../../auth/firebaseConfig'
-import { VFC } from 'react'
-import { useAuthContext } from '../../auth/AuthContext'
 
 import { isLoggedIn } from '../../util'
 
-const Signin: WithGetAccessControl<VFC> = () => {
+import Header from '../../components/shop/Header'
+import InputForm from '../../components/InputForm'
 
+import { Button } from '@chakra-ui/react'
+
+const Signin: WithGetAccessControl<VFC> = () => {
   const methods = useForm()
   const router = useRouter()
 

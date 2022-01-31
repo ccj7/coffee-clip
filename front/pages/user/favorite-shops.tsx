@@ -1,35 +1,17 @@
-// TODO　U-005 github issue#25
-
-import Head from 'next/head'
 import { useEffect, useState, VFC } from 'react'
-
-import Header from '../../components/shop/Header'
-import ShopCard from '../../components/user/ShopCard'
-import UserHeader from '../../components/user/UserHeader'
-import { useAuthContext } from '../../auth/AuthContext'
-import { isLoggedIn } from '../../util'
-import { Box, Flex } from '@chakra-ui/react'
+import Head from 'next/head'
 import axios from 'axios'
 
-interface Shop {
-  auth_id: string
-  display_name: string
-  handle_name: string
-  icon?: string
-  selling_point?: string
-}
+import { useAuthContext } from '../../auth/AuthContext'
+import { isLoggedIn } from '../../util'
+
+import ShopCard from '../../components/user/ShopCard'
+import UserHeader from '../../components/user/UserHeader'
+import { Box, Flex } from '@chakra-ui/react'
 
 const LikeShops: WithGetAccessControl<VFC> = (props) => {
   const { currentUser } = useAuthContext()
-  const [shopsInfo, setShopsInfo] = useState<Shop[]>([
-    {
-      auth_id: '',
-      display_name: '',
-      handle_name: '',
-      icon: '',
-      selling_point: '',
-    },
-  ])
+  const [shopsInfo, setShopsInfo] = useState<PartOfShopData[] | null>(null)
 
   useEffect(() => {
     const getShopsInfo = async (authId: string) => {
@@ -51,7 +33,7 @@ const LikeShops: WithGetAccessControl<VFC> = (props) => {
       <UserHeader />
       <Flex>
         {shopsInfo &&
-          shopsInfo.map((shop: any, key: any) => {
+          shopsInfo.map((shop: PartOfShopData, key: any) => {
             return (
               <ShopCard
                 key={key}
