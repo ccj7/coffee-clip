@@ -11,6 +11,7 @@ import {
   TabPanels,
   Tab,
   TabPanel,
+  Link
 } from '@chakra-ui/react'
 import { AiOutlineInstagram } from 'react-icons/ai'
 import { useContext, useEffect, useState, VFC } from 'react'
@@ -105,15 +106,13 @@ const ShopTopPage = (props: any) => {
             icon={shopInfo.icon}
           />
           <Spacer></Spacer>
-
-          <Icon
-            as={AiOutlineInstagram}
-            w={7}
-            h={7}
-            onClick={() => {
-              window.location.href = shopInfo.instagram_url
-            }}
-          />
+          <Link href={shopInfo.instagram_url} isExternal>
+            <Icon
+              as={AiOutlineInstagram}
+              w={7}
+              h={7}
+            />
+          </Link>
           <Spacer></Spacer>
           <Box>
             <Center>
@@ -139,12 +138,16 @@ const ShopTopPage = (props: any) => {
 
         <HStack spacing="40px">
           <Stack>
-            <Text>住所：{shopInfo.address}</Text>
-            <Text>HP：{shopInfo.hp_url}</Text>
+            <Link href={shopInfo.map_url} isExternal>
+              住所: {shopInfo.address}
+            </Link>
+            <Link href={shopInfo.hp_url} isExternal>
+              HP: {shopInfo.hp_url}
+            </Link>
           </Stack>
           <Stack>
-            <Text>営業時間:{shopInfo.opening_hours}</Text>
-            <Text>定休日:{shopInfo.regular_day_off}</Text>
+            <Text>営業時間: {shopInfo.opening_hours}</Text>
+            <Text>定休日: {shopInfo.regular_day_off}</Text>
           </Stack>
         </HStack>
 
