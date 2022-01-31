@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import connectToDB from '../db-connection'
 import { s3Upload } from '../s3'
 import ShopsDataModel from '../schema/shopSchema'
+import userModel from '../schema/userSchema'
 
 export const getShops = async (req: Request, res: Response) => {
     await connectToDB()
@@ -18,6 +19,23 @@ export const getShop = async (req: Request, res: Response) => {
         ],
     })
     res.json(data)
+}
+
+export const getShopFromUser = async (req: Request, res: Response) => {
+    await connectToDB()
+    const authId: string = req.params.authId
+    const handleName: string = req.params.handleName
+
+    const user = await userModel.findOne({auth_id: authId})
+    const shop = await ShopsDataModel.findOne({handle_name: handleName})
+
+    if(!user || !shop) {
+        res.status(400).json({ error: '対象のデータがありません' })
+    } else {
+        const resData = JSON.parse(JSON.stringify(shop))
+        resData.is_following = shop.follower_handle_name?.includes(user.handle_name)
+        res.json(resData)
+    }
 }
 
 export const putShop = async (req: Request, res: Response) => {
