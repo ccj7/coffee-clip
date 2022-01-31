@@ -38,6 +38,18 @@ describe('Shop Get Request Tests', () => {
       expect(res.body.address).to.equal(shops[1].address)
     })
 
+    it('should return the given handle name shop with following', async () => {
+      const res = await chai.request(server).get('/api/shops/KwXrR15NeFhXUgPbUWfmj03qt0T2/coffeeeeen')
+      expect(res.body.handle_name).to.equal('coffeeeeen')
+      expect(res.body.is_following).to.be.false
+    })
+
+    it('should return the given handle name shop with following', async () => {
+      const res = await chai.request(server).get('/api/shops/FTbxuYF3NggkwRjP4f6woEY7RKB2/arasuna')
+      expect(res.body.handle_name).to.equal('arasuna')
+      expect(res.body.is_following).to.be.true
+    })
+
   })
 
 })
