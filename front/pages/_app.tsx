@@ -40,7 +40,8 @@ const theme = extendTheme({
   colors: {
     brand: {
       main: '#988d83',
-      mark: '#7C998F',
+      sub1: '#3A5C4F',
+      sub2: '#E6D5C5',
     }
   }
 })
