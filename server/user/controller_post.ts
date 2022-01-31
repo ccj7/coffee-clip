@@ -95,7 +95,14 @@ export const postReview = async (
 
                 await userModel.updateOne(
                     { auth_id: authId },
-                    { $push: { reviews: newReview } }
+                    {
+                        $push: {
+                            reviews: {
+                                $each: [newReview],
+                                $position: 0,
+                            },
+                        },
+                    }
                 )
 
                 res.status(200).json({ message: '新規レビューを作成しました' })
