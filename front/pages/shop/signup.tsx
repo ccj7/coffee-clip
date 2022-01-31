@@ -1,4 +1,4 @@
-import { VFC } from 'react'
+import { useState, VFC } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 import { useForm, FormProvider } from 'react-hook-form'
@@ -6,14 +6,13 @@ import axios from 'axios'
 
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth'
 import firebase from '../../auth/firebaseConfig'
-import { useAuthContext } from '../../auth/AuthContext'
 import { isLoggedIn } from '../../util'
 
 import Header from '../../components/shop/Header'
 import InputForm from '../../components/InputForm'
+import Message from '../../components/Message'
 
 import { Button } from '@chakra-ui/react'
-import { type } from 'os'
 
 type newShopInfo = {
   auth_id: string
@@ -22,6 +21,8 @@ type newShopInfo = {
 }
 
 const Signup: WithGetAccessControl<VFC> = () => {
+  const [message, setMessage] = useState<string>()
+
   const methods = useForm()
   const router = useRouter()
 
@@ -37,15 +38,18 @@ const Signup: WithGetAccessControl<VFC> = () => {
               handle_name: data.handle_name,
               display_name: data.display_name,
             }
-            axios.post('/shop', newShopInfo)
+            axios.post('/api/shops', newShopInfo)
           }
           postShopInfo()
-          router.push('/shop/signin')
+          router.push('/shop/dashboard')
         }
       })
       .catch((error: any) => {
         const errorCode = error.code
         const errorMessage = error.message
+        if(errorCode === 'auth/email-already-in-use') {
+          setMessage('そのアドレスはすでに登録されています')
+        }
         console.log(errorCode, errorMessage)
       })
   }
@@ -56,7 +60,7 @@ const Signup: WithGetAccessControl<VFC> = () => {
         <meta name="Sign-Up" content="Shop サインアップ" />
       </Head>
       <Header />
-
+      { message && <Message message={message} /> }
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
           <InputForm thema="display_name" text="shop name" />
