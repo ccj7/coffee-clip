@@ -98,5 +98,32 @@ describe('Users Post Request Tests', () => {
                 afterFollower.body.follower_handle_names
             ).to.not.have.members(['kaori_hikita'])
         })
+
+        it('PUT /api/users/:authId/shops/following', async () => {
+            const addFollowee = {
+                handle_name: 'amazing_coffee',
+            }
+
+            await chai
+                .request(server)
+                .put('/api/users/h1ERSr4qUNUoviCQlzZ0648p1cA2/shops/following')
+                .send(addFollowee)
+
+            const afterUser = await chai
+                .request(server)
+                .get('/api/users/h1ERSr4qUNUoviCQlzZ0648p1cA2')
+
+            const afterFollower = await chai
+                .request(server)
+                .get('/api/shops/4E5Jby73IVRAypSDyV3IfFcQwXz5')
+
+            expect(
+                afterUser.body.followee_shops_handle_names
+            ).to.include.members(['amazing_coffee'])
+
+            expect(afterFollower.body.follower_handle_name).to.include.members([
+                'kaori_hikita',
+            ])
+        })
     })
 })
