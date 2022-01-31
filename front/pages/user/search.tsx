@@ -7,7 +7,7 @@ import { useAuthContext } from '../../auth/AuthContext'
 import { isLoggedIn } from '../../util'
 import UserHeader from '../../components/user/UserHeader'
 import ShopCard from '../../components/user/ShopCard'
-import Profile from '../../components/Profile'
+import UserResultCard from '../../components/user/UserResultCard'
 import {
   Box,
   Heading,
@@ -56,7 +56,7 @@ const Search: WithGetAccessControl<VFC> = (props) => {
             {usersInfo &&
               usersInfo.map((user: any, key: any) => {
                 return (
-                  <Profile
+                  <UserResultCard
                     key={key}
                     display_name={user.display_name}
                     handle_name={user.handle_name}
