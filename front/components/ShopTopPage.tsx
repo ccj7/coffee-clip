@@ -155,12 +155,13 @@ const ShopTopPage = (props: any) => {
           </TabList>
           <TabPanels>
             <TabPanel>
-              {/* <Image boxSize="200px" /> */}
               <HStack>
-                <PostImage
-                  src={shopInfo.recommendation.image}
-                  alt="おすすめの一杯の写真"
-                />
+                {shopInfo.recommendation.image &&
+                  <PostImage
+                    src={shopInfo.recommendation.image}
+                    alt="おすすめの一杯の写真"
+                  />
+                }
                 <Stack>
                   <Text>おすすめの一杯</Text>
                   <Text>{shopInfo.recommendation.title}</Text>
@@ -168,10 +169,12 @@ const ShopTopPage = (props: any) => {
                 </Stack>
               </HStack>
               <HStack>
-                <PostImage
-                  src={shopInfo.recommendation.image}
-                  alt="お店の魅力を表す写真"
-                />
+                {shopInfo.recommendation.image &&
+                  <PostImage
+                    src={shopInfo.selling_point.image}
+                    alt="お店の魅力を表す写真"
+                  />
+                }
                 <Stack>
                   <Text>お店の魅力</Text>
                   <Text>{shopInfo.selling_point.text}</Text>
