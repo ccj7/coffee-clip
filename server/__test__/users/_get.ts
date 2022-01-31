@@ -2,9 +2,9 @@ import chai, { expect } from 'chai'
 import chaiHttp from 'chai-http'
 import connectToDB from '../../db-connection'
 import server from '../../app'
-import mongoose from 'mongoose'
-import usersData from '../../user/users.json'
 import runSeedUser from '../../user/seed'
+import usersData from '../../user/users.json'
+import mongoose from 'mongoose'
 
 chai.use(chaiHttp)
 
@@ -68,17 +68,13 @@ describe('Users Get Request Tests', () => {
                 .get('/api/users/h1ERSr4qUNUoviCQlzZ0648p1cA2/followee/reviews')
 
             const handleName = usersData.users[0].handle_name
-            const reviewImage = usersData.users[0].reviews[1].image
-            const reviewDescription = usersData.users[0].reviews[1].description
-            const reviewCreatedAt = usersData.users[0].reviews[1].created_at
+            const reviewImage = usersData.users[0].reviews[0].image
+            const reviewDescription = usersData.users[0].reviews[0].description
 
-            expect(res.body.reviews[1].handle_name).to.equal(handleName)
-            expect(res.body.reviews[1].review.image).to.equal(reviewImage)
-            expect(res.body.reviews[1].review.description).to.equal(
+            expect(res.body.reviews[0].handle_name).to.equal(handleName)
+            expect(res.body.reviews[0].review.image).to.equal(reviewImage)
+            expect(res.body.reviews[0].review.description).to.equal(
                 reviewDescription
-            )
-            expect(res.body.reviews[1].review.created_at).to.equal(
-                reviewCreatedAt
             )
         })
 
