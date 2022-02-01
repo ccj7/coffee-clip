@@ -50,6 +50,11 @@ const NewReview: WithGetAccessControl<VFC> = () => {
       </Heading>
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
+          <InputForm
+            thema="coffee_name"
+            text="飲んだコーヒー"
+            defaultValue=""
+          />
           <ImageUpload
             // TODO thema textを修正
             thema="image"
