@@ -11,7 +11,7 @@ import LogCard from '../../components/user/LogCard'
 import PrimaryButton from '../../components/Button'
 
 import { FiCoffee } from 'react-icons/fi'
-import { Box, HStack, Spacer, Stack } from '@chakra-ui/react'
+import { Box, HStack, Spacer, Stack, Heading } from '@chakra-ui/react'
 
 interface User {
   auth_id: string
@@ -45,9 +45,12 @@ const Timeline: WithGetAccessControl<VFC> = (props) => {
         <meta name="Timeline" content="タイムライン" />
       </Head>
       <UserHeader />
-      <Box m="3">
+      <Box w={{base:'80%', md:'65%'}} my='0' mr='auto' ml='auto' mt='30px'>
         <HStack p="2">
-          <FiCoffee />
+          <HStack color='brand.color1'>
+            <FiCoffee /> 
+            <Heading as='h2' size='md'>Time Line</Heading>
+          </HStack>
           <Spacer></Spacer>
           <PrimaryButton
             text={'新しい投稿をする'}
