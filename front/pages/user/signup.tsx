@@ -60,7 +60,7 @@ const Signup: WithGetAccessControl<VFC> = () => {
     <Box
       background="#988d83"
       backgroundImage="linear-gradient(62deg, #988d83 0%, #f7dcae 100%)"
-      pb='20px'>
+      pb='90px'>
       <Head>
         <title>ユーザー Sign-Up</title>
         <meta name="Sign-Up" content="ユーザー サインアップ" />
@@ -70,7 +70,7 @@ const Signup: WithGetAccessControl<VFC> = () => {
         w={{ base: '80%', md: '65%' }}
         ml="auto" mr="auto">
         <Box
-          my={12} p={8}
+          my={12} p={8} mt='70px'
           borderRadius='16px'
           backgroundColor='orange.50'
           boxShadow='0px 2px 6px rgba(0, 0, 0, 0.3)'>
