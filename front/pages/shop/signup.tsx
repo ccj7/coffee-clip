@@ -67,7 +67,6 @@ const Signup: WithGetAccessControl<VFC> = () => {
       <Box
         w={{ base: '80%', md: '65%' }}
         ml="auto" mr="auto">
-        { message && <Message message={message} /> }
         <Box
           my={12} p={8} mt='70px'
           borderRadius='16px'
@@ -79,6 +78,7 @@ const Signup: WithGetAccessControl<VFC> = () => {
               <Heading as='h2' size='md'>Welcome to COFFEE CLIP</Heading>
             </HStack>
           </Center>
+          { message && <Message message={message} /> }
           <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(onSubmit)}>
               <InputForm thema="display_name" text="店舗名" />
