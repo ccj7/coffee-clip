@@ -48,7 +48,7 @@ const Mypage: WithGetAccessControl<VFC> = () => {
          h='500px'
          background="#988d83" 
          backgroundImage='linear-gradient(62deg, #988d83 0%, #f7dcae 100%)'
-         borderBottomRadius='46px' mb='-120px'>
+         borderBottomRadius='46px' mb='-120px' pt='20px'>
           <Profile
             display_name={userInfo.display_name}
             handle_name={userInfo.handle_name}
@@ -95,8 +95,7 @@ const Mypage: WithGetAccessControl<VFC> = () => {
               <Box>
                 <Text 
                   ml='40%' 
-                  fontSize='20px' f
-                  ontWeight="bold"
+                  fontSize='20px' fontWeight="bold"
                 >
                   {userInfo.followee_shops_handle_names.length}
                 </Text>
