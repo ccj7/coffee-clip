@@ -8,6 +8,7 @@ import {
   FormLabel,
   Icon,
   InputGroup,
+  Box
 } from '@chakra-ui/react'
 import { useFormContext } from 'react-hook-form'
 import { FiFile } from 'react-icons/fi'
@@ -66,9 +67,9 @@ function ImageUpload(props: any) {
   const handleClick = () => inputRef.current?.click()
 
   return (
-    <>
+    <Box mb='20px'>
       <FormControl isInvalid={!!errors.file_}>
-        <FormLabel>{text}</FormLabel>
+        <FormLabel fontSize='sm'>{text}</FormLabel>
         <InputGroup onClick={handleClick}>
           <input
             id={thema}
@@ -93,6 +94,7 @@ function ImageUpload(props: any) {
           />
           <Button
             backgroundColor='brand.color4'
+            _hover={{ backgroundColor: '#b8b1aa' }}
             color='white'
             leftIcon={<Icon as={FiFile} />}>Upload</Button>
         </InputGroup>
@@ -101,7 +103,7 @@ function ImageUpload(props: any) {
         </FormErrorMessage>
       </FormControl>
       {image && <Image w={size} src={image} />}
-    </>
+    </Box>
   )
 }
 
