@@ -91,6 +91,7 @@ const Signup: WithGetAccessControl<VFC> = () => {
                 <Button
                   backgroundColor='brand.color2'
                   color='white'
+                  _hover={{background: '#c58573'}}
                   mt={4}
                   type="submit">
                   アカウントを作成
