@@ -78,11 +78,6 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(onSubmit)}>
             <InputForm
-              thema="handle_name"
-              text="shop ID"
-              defaultValue={shopInfo.handle_name}
-            />
-            <InputForm
               thema="display_name"
               text="お店の名前"
               defaultValue={shopInfo.display_name}
