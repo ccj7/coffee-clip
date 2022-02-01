@@ -32,16 +32,20 @@ const theme = extendTheme({
   styles: {
     global: {
       "body": {
-        background: '#fcf6ed',
+        background: '#f2eadf',
         letterSpacing: "1px",
+        color: "#414042"
       }
     }
   },
   colors: {
     brand: {
-      main: '#988d83',
-      sub1: '#3A5C4F',
-      sub2: '#E6D5C5',
+      color1: '#414042',
+      color2: '#ad5138',
+      color3: '#af6938',
+      color4: '#988d83',
+      color5: '#a2b29b',
+      color6: '#f2eadf',
     }
   }
 })
