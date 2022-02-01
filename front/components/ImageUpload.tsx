@@ -91,7 +91,10 @@ function ImageUpload(props: any) {
               handleChangeImage(e.target.files)
             }}
           />
-          <Button leftIcon={<Icon as={FiFile} />}>Upload</Button>
+          <Button
+            backgroundColor='brand.color4'
+            color='white'
+            leftIcon={<Icon as={FiFile} />}>Upload</Button>
         </InputGroup>
         <FormErrorMessage>
           {errors.thema && errors?.thema.message}
