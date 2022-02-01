@@ -2,122 +2,257 @@
     "shops": [
         {
             "auth_id": "540PJipKIwXZUY422LmC2j3ZlvU2",
+            "handle_name": "arasuna",
+            "display_name": "Arasuna Kiyosumi",
+            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_shop_arasuna.jpeg",
+            "address": "〒106-0046 東京都港区元麻布3丁目1-35 VORT 元麻布 B2F",
+            "map_url": "https://g.page/codechrysalis?share",
+            "hp_url": "https://www.google.com/",
+            "instagram_url": "https://www.instagram.com/",
+            "opening_hours": "8:00~21:00",
+            "regular_day_off": "月曜・水曜",
+            "concept": "伝説のコーヒー豆を使用",
+            "recommendation": {
+                "title": "Arasuna Kiyosumiプレミアムコーヒー",
+                "description": "コーヒー豆の香りに自信があります。一度飲んだら忘れられない、伝説のコーヒーであること間違いなし！",
+                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee15.jpeg"
+            },
+            "selling_point": {
+                "text": "Arasuna Kiyosumiで扱うコーヒーは、世界中でもここでしか飲めないものばかりです。ぜひ一度お試しください。絶対に後悔はさせません！",
+                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee14.jpeg"
+            },
+            "follower_handle_name": [
+                "kaori_hikita",
+                "bob_brown",
+                "paddy_p",
+                "ana",
+                "wesley",
+                "brian"
+            ],
+            "publish_state": true
+        },
+        {
+            "auth_id": "testAuthShopIdCoffeeeeen",
             "handle_name": "coffeeeeen",
             "display_name": "coffeeeeen",
-            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee.jpg",
-            "address": "japan",
-            "map_url": "https://goo.gl/maps/YcDNryCUYUqe9zYP9",
+            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_shop_coffeeeeen.jpeg",
+            "address": "〒099-4356 北海道斜里郡斜里町遠音別村",
+            "map_url": "https://goo.gl/maps/AT7GoHds5vtvdwGu7",
             "hp_url": "https://www.google.com/",
             "instagram_url": "https://www.instagram.com/",
             "opening_hours": "8:00~20:00",
             "regular_day_off": "金曜日",
-            "concept": "こだわってます",
+            "concept": "こだわりの一杯がここにあります",
             "recommendation": {
-                "title": "エチオピア産豆",
-                "description": "酸味が効いてます",
-                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee.jpg"
+                "title": "coffeeeeenブレンドコーヒー",
+                "description": "上質なコクと香りを楽しめる一杯",
+                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee13.jpeg"
             },
             "selling_point": {
-                "text": "おしゃよ",
-                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon.jpg"
+                "text": "一度飲むと忘れられない、コーヒー豆の違いを感じてください",
+                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee12.jpeg"
             },
-            "follower_handle_name": ["kaori_hikita", "bob"],
+            "follower_handle_name": [
+                "kaori_hikita",
+                "bob_brown",
+                "alice_white",
+                "mizki",
+                "nao",
+                "mei_o"
+            ],
             "publish_state": true
         },
+
         {
-            "auth_id": "4E5Jby73IVRAypSDyV3IfFcQwXz1",
-            "handle_name": "arasuna",
-            "display_name": "arasuna_kiyosumi",
-            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon.jpg",
-            "address": "japan",
-            "map_url": "https://goo.gl/maps/YcDNryCUYUqe9zYP9",
+            "auth_id": "testAuthShopIdMoonBucks",
+            "handle_name": "moon_bucks",
+            "display_name": "MoonBucks",
+            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_shop_moonbucks.jpeg",
+            "address": "〒891-4207 鹿児島県熊毛郡屋久島町小瀬田849-20",
+            "map_url": "https://goo.gl/maps/y2WLzmswPWvvLNV6A",
             "hp_url": "https://www.google.com/",
             "instagram_url": "https://www.instagram.com/",
-            "opening_hours": "8:00~21:00",
-            "regular_day_off": "",
-            "concept": "伝説のコーヒー豆を使用",
+            "opening_hours": "8:00~20:00",
+            "regular_day_off": "金曜日",
+            "concept": "マスターのこだわりと愛情がたっぷり詰まっています",
             "recommendation": {
-                "title": "アメリカンコーヒー",
-                "description": "さっぱりで飲みやすい",
-                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee.jpg"
+                "title": "MoonBucksブレンドコーヒー",
+                "description": "当店いちおしの愛情コーヒー",
+                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee11.jpeg"
             },
             "selling_point": {
-                "text": "おしゃよ",
-                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon.jpg"
+                "text": "一杯一杯、心を込めて丁寧につくっています。ぜひ一度お試しあれ！",
+                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee10.jpeg"
             },
-            "follower_handle_name": ["bob"],
+            "follower_handle_name": ["kaori_hikita", "mei_o", "ana", "wesley"],
             "publish_state": true
         },
         {
-            "auth_id": "4E5Jby73IVRAypSDyV3IfFcQwXz3",
-            "handle_name": "cafe_sweet",
-            "display_name": "Cafe Sweet",
-            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_user_1111.jpeg",
-            "address": "",
-            "map_url": "",
-            "hp_url": "",
-            "instagram_url": "",
-            "opening_hours": "",
-            "regular_day_off": "",
-            "concept": "",
-            "recommendation": {
-                "title": "",
-                "description": "",
-                "image": ""
-            },
-            "selling_point": {
-                "text": "",
-                "image": ""
-            },
-            "follower_handle_name": ["alice", "bob", "taro_yamada"],
-            "publish_state": false
-        },
-        {
-            "auth_id": "4E5Jby73IVRAypSDyV3IfFcQwXz4",
-            "handle_name": "coffee_mania",
-            "display_name": "COFFEE MANIA",
-            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon.jpg",
-            "address": "japan",
-            "map_url": "https://goo.gl/maps/YcDNryCUYUqe9zYP9",
+            "auth_id": "testAuthShopIdToutor",
+            "handle_name": "toutor",
+            "display_name": "TOUTOR",
+            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_shop_toutor.jpeg",
+            "address": "〒689-0105 鳥取県鳥取市福部町湯山2164-661",
+            "map_url": "https://goo.gl/maps/xkYBzd5nTjvTa4R69",
             "hp_url": "https://www.google.com/",
             "instagram_url": "https://www.instagram.com/",
             "opening_hours": "8:00~20:00",
             "regular_day_off": "土曜日",
-            "concept": "おいしいですよ！！！！",
+            "concept": "どの年代の方にも楽しんでいただける商品を多数取り揃えております",
             "recommendation": {
-                "title": "さっぱりしたコーヒー豆",
-                "description": "さっぱりで飲みやすいです！",
-                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee.jpg"
+                "title": "TOUTORオリジナルコーヒー",
+                "description": "毎日飲んでも飽きない！当店一番の人気商品",
+                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee9.jpeg"
             },
             "selling_point": {
-                "text": "後味がさっぱりとおいしいです！",
-                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon.jpg"
+                "text": "日々の生活に寄り添うコーヒーを目指しています",
+                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee8.jpeg"
             },
-            "follower_handle_name": [],
+            "follower_handle_name": ["alice_white", "take_a_walk"],
             "publish_state": true
         },
         {
-            "auth_id": "4E5Jby73IVRAypSDyV3IfFcQwXz5",
-            "handle_name": "amazing_coffee",
-            "display_name": "驚きコーヒーショップ",
-            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon.jpg",
-            "address": "japan",
-            "map_url": "https://goo.gl/maps/YcDNryCUYUqe9zYP9",
+            "auth_id": "testAuthShopIdHarries",
+            "handle_name": "harries",
+            "display_name": "Harries",
+            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_shop_harries.jpeg",
+            "address": "〒282-0004 千葉県成田市古込1-1",
+            "map_url": "https://goo.gl/maps/UAQyo6CjQvVPJW1S6",
             "hp_url": "https://www.google.com/",
             "instagram_url": "https://www.instagram.com/",
             "opening_hours": "8:00~20:00",
             "regular_day_off": "金曜日",
-            "concept": "他店とは違う圧倒的なおいしさ！！",
+            "concept": "フルーティーなコーヒーが得意です",
             "recommendation": {
-                "title": "圧倒的なおいしさ",
-                "description": "香りの素晴らしいコーヒーをたくさんご用意しております",
-                "image": ""
+                "title": "Harriesスペシャルコーヒー",
+                "description": "果実感あふれるさわやかな一杯",
+                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee7.jpeg"
             },
             "selling_point": {
-                "text": "よろしければ、ぜひ！",
-                "image": ""
+                "text": "さわやかな目覚めは一杯のコーヒーから！フルーティーなコーヒーをぜひ一度味わいください",
+                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee6.jpeg"
             },
-            "follower_handle_name": ["emma"],
+            "follower_handle_name": ["roman"],
+            "publish_state": true
+        },
+        {
+            "auth_id": "testAuthShopIdGreenBottleCoffee",
+            "handle_name": "green_bottle_coffee",
+            "display_name": "Green Bottle Coffee",
+            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_shop_green.jpeg",
+            "address": "〒111-0032 東京都台東区浅草2丁目3-1",
+            "map_url": "https://goo.gl/maps/zn1rTcDSFPmwVgAE9",
+            "hp_url": "https://www.google.com/",
+            "instagram_url": "https://www.instagram.com/",
+            "opening_hours": "8:00~20:00",
+            "regular_day_off": "火曜日",
+            "concept": "一度飲んだらクセになる！生涯忘れられない味を提供します",
+            "recommendation": {
+                "title": "GreenBottleCoffeeのブレンドコーヒー",
+                "description": "とにかくクセになる！忘れられない味であること間違いなし",
+                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee5.jpeg"
+            },
+            "selling_point": {
+                "text": "お客様の印象に残るコーヒーを日々研究しています",
+                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee4.jpeg"
+            },
+            "follower_handle_name": ["bob_brown", "brian"],
+            "publish_state": true
+        },
+        {
+            "auth_id": "testAuthShopId4thCoffee",
+            "handle_name": "4th_coffee",
+            "display_name": "4th COFFEE",
+            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_shop_4th.jpeg",
+            "address": "〒630-8211 奈良県奈良市雑司町406-1",
+            "map_url": "https://goo.gl/maps/86RKPUEcAazsLrZr6",
+            "hp_url": "https://www.google.com/",
+            "instagram_url": "https://www.instagram.com/",
+            "opening_hours": "8:00~20:00",
+            "regular_day_off": "金曜日",
+            "concept": "コスパ抜群",
+            "recommendation": {
+                "title": "4th coffeeのブレンドコーヒー",
+                "description": "安い、早い、おいしい、三拍子揃った当店自慢のコーヒーです",
+                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee3.jpeg"
+            },
+            "selling_point": {
+                "text": "おいしいコーヒーを手の届きやすい値段で提供しております",
+                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee2.jpeg"
+            },
+            "follower_handle_name": ["mizki", "richard"],
+            "publish_state": true
+        },
+        {
+            "auth_id": "testAuthShopIdYonedaCoffee",
+            "handle_name": "yoneda_coffee",
+            "display_name": "米田コーヒー",
+            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_shop_yoneda.jpeg",
+            "address": "〒603-8361 京都府京都市北区金閣寺町1",
+            "map_url": "https://goo.gl/maps/vpf3Z35HZ4tkCvoD9",
+            "hp_url": "https://www.google.com/",
+            "instagram_url": "https://www.instagram.com/",
+            "opening_hours": "8:00~20:00",
+            "regular_day_off": "金曜日",
+            "concept": "この道50年〜味には絶対の自信があります〜",
+            "recommendation": {
+                "title": "米田スペシャルコーヒー",
+                "description": "この一杯のコーヒーに人生を懸けています",
+                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee1.jpeg"
+            },
+            "selling_point": {
+                "text": "全ての経験が一杯のコーヒーに出ます。悩む前にまずは一度お試しください",
+                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee15.jpeg"
+            },
+            "follower_handle_name": ["alice_white", "mizki", "nao", "mei_o"],
+            "publish_state": true
+        },
+        {
+            "auth_id": "testAuthShopIdInutahikoCoffee",
+            "handle_name": "inutahiko_coffee",
+            "display_name": "犬田彦コーヒー",
+            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_shop_inutahiko.jpeg",
+            "address": "〒151-0052 東京都渋谷区代々木神園町2-1",
+            "map_url": "https://goo.gl/maps/ibuV8VkLv9QgXeeq8",
+            "hp_url": "https://www.google.com/",
+            "instagram_url": "https://www.instagram.com/",
+            "opening_hours": "8:00~20:00",
+            "regular_day_off": "金曜日",
+            "concept": "一流の名店で修行を積んだ本場の味",
+            "recommendation": {
+                "title": "犬田彦アメリカンコーヒー",
+                "description": "リピーター続出のアメリカンコーヒー",
+                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee14.jpeg"
+            },
+            "selling_point": {
+                "text": "日本にいながら本場の味を楽しめます",
+                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee13.jpeg"
+            },
+            "follower_handle_name": ["kaori_hikita", "richard"],
+            "publish_state": true
+        },
+        {
+            "auth_id": "testAuthShopIdPrintemps",
+            "handle_name": "printemps",
+            "display_name": "プランタン",
+            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_shop_printemps.jpeg",
+            "address": "〒160-0022 東京都新宿区新宿3丁目38-1",
+            "map_url": "https://goo.gl/maps/ePT9gnPtWVuJuALS7",
+            "hp_url": "https://www.google.com/",
+            "instagram_url": "https://www.instagram.com/",
+            "opening_hours": "8:00~20:00",
+            "regular_day_off": "金曜日",
+            "concept": "インスタ映え間違いなし！おしゃれなコーヒー勢揃い",
+            "recommendation": {
+                "title": "プランタンコーヒー",
+                "description": "見た目だけでなくコーヒーの風味も楽しんでみてください",
+                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee12.jpeg"
+            },
+            "selling_point": {
+                "text": "インスタ映え間違いなしのオシャレなコーヒーを多数取り揃えております",
+                "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee11.jpeg"
+            },
+            "follower_handle_name": [],
             "publish_state": true
         }
     ]
