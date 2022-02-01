@@ -17,8 +17,8 @@ const ShopTopPageOfUser: WithGetAccessControl<VFC> = () => {
   return (
     <>
       <Head>
-        <title>shop Top Page</title>
-        <meta name="shopTopPage" content="shop Top Page" />
+        <title>ショップ　トップページ</title>
+        <meta name="shop top page" content="ショップ トップページ" />
       </Head>
       <UserHeader />
 
