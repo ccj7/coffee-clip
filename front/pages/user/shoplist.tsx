@@ -29,7 +29,8 @@ const Shoplist: WithGetAccessControl<VFC> = (props) => {
         <meta name="shopslist" content="ショップ一覧" />
       </Head>
       <UserHeader />
-      <Flex>
+
+      <Flex >
         {shopsInfo &&
           shopsInfo.map((shop: PartOfShopData, key: any) => {
             return (
