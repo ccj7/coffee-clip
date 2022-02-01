@@ -8,11 +8,10 @@ import {
   MenuList,
   Spacer,
   Text,
-  Button,
+  Box,
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
-  BreadcrumbSeparator,
   Input,
   InputRightElement,
   InputGroup,
@@ -61,38 +60,44 @@ function UserHeader() {
 
   return (
     <>
-      <div>
-        <HStack p="2" bg="gray.800" color="white">
+      <Box top={0} position="sticky" zIndex={"sticky"}>
+        <HStack p="2" bg="brand.color1" color="brand.color6">
           <Link href="/user/timeline">
-            <Text fontSize="3xl">COFFEE CLIP</Text>
+            <Text ml='10px' fontSize={{base:"lg", md:"3xl"}}>COFFEE CLIP</Text>
           </Link>
-          <Spacer></Spacer>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <InputGroup size="md">
+          <Spacer/>
+
+          <form onSubmit={handleSubmit(onSubmit)} >
+            <InputGroup w={{main:"100px", md:"300px"}} pr="10px">
               <Input
                 pr="4.5rem"
                 placeholder="Search"
                 {...register('keyword')}
               />
-              <InputRightElement width="4.5rem">
+              <InputRightElement>
                 <IconButton
                   type="submit"
                   aria-label="Search database"
+                  backgroundColor={'brand.color3'}
+                  _hover={{backgroundColor: '#cc8756'}}
+                  boxSize='93%'
+                  mr='21px'
                   icon={<SearchIcon />}
                 />
               </InputRightElement>
             </InputGroup>
           </form>
+
           <Breadcrumb separator="|">
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/user/timeline">TimeLiine</BreadcrumbLink>
+            <BreadcrumbItem fontSize={{base:'12px', md:'16px'}}>
+              <BreadcrumbLink href="/user/timeline">TimeLine</BreadcrumbLink>
             </BreadcrumbItem>
 
-            <BreadcrumbItem>
+            <BreadcrumbItem fontSize={{base:'12px', md:'16px'}}>
               <BreadcrumbLink href="/user/shoplist">ShopList</BreadcrumbLink>
             </BreadcrumbItem>
 
-            <BreadcrumbItem>
+            <BreadcrumbItem fontSize={{base:'12px', md:'16px'}}>
               <BreadcrumbLink href="/user/mypage">MyPage</BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>
@@ -114,7 +119,7 @@ function UserHeader() {
             </MenuList>
           </Menu>
         </HStack>
-      </div>
+      </Box>
       {/* // TODO  検索ボタンと関数を作成*/}
     </>
   )
