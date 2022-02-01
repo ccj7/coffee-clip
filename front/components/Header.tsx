@@ -9,7 +9,7 @@ import {
 function Header() {
   return (
     <Box>
-        <HStack p="2" bg="gray.800" color="white">
+        <HStack p="2" bg="brand.color1" color="white">
           <Center w='100%'>
             <Link
               href="/" 
