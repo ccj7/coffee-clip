@@ -44,11 +44,14 @@ const Mypage: WithGetAccessControl<VFC> = () => {
 
       {userInfo && (
         <Box
-         w='100%'
-         h='500px'
-         background="#988d83" 
-         backgroundImage='linear-gradient(62deg, #988d83 0%, #f7dcae 100%)'
-         borderBottomRadius='46px' mb='-120px' pt='20px'>
+          w="100%"
+          h="500px"
+          background="#988d83"
+          backgroundImage="linear-gradient(62deg, #988d83 0%, #f7dcae 100%)"
+          borderBottomRadius="46px"
+          mb="-120px"
+          pt="20px"
+        >
           <Profile
             display_name={userInfo.display_name}
             handle_name={userInfo.handle_name}
@@ -56,50 +59,37 @@ const Mypage: WithGetAccessControl<VFC> = () => {
           />
 
           <HStack
-           w={{ base:'300px', md:'350px' }}
-           borderRadius='15px' 
-           backgroundColor='rgba(245, 239, 235, 0.25)' backdropFilter='blur(4px)' 
-           webkit-backdropFilter='blur(4px)' 
-           border='1px solid rgba(255, 255, 255, 0.18)' 
-           ml='auto' 
-           mr='auto' 
-           my='0' 
-           padding='20px'>
+            w={{ base: '300px', md: '350px' }}
+            borderRadius="15px"
+            backgroundColor="rgba(245, 239, 235, 0.25)"
+            backdropFilter="blur(4px)"
+            webkit-backdropfilter="blur(4px)"
+            border="1px solid rgba(255, 255, 255, 0.18)"
+            ml="auto"
+            mr="auto"
+            my="0"
+            padding="20px"
+          >
             <Box>
-              <Text 
-                ml='40%' 
-                fontSize='20px' 
-                fontWeight="bold"
-              >
+              <Text ml="40%" fontSize="20px" fontWeight="bold">
                 {userInfo.followee_handle_names.length}
               </Text>
-              <Text fontSize={{ base:'10px', md:'14px' }}>
-                フォロー
-              </Text>
+              <Text fontSize={{ base: '10px', md: '14px' }}>フォロー</Text>
             </Box>
-            <Spacer/>
+            <Spacer />
             <Box>
-              <Text 
-                ml='40%' 
-                fontSize='20px' 
-                fontWeight="bold"
-              >
+              <Text ml="40%" fontSize="20px" fontWeight="bold">
                 {userInfo.follower_handle_names.length}
               </Text>
-              <Text fontSize={{ base:'10px', md:'14px' }}>
-                フォロワー
-              </Text>
+              <Text fontSize={{ base: '10px', md: '14px' }}>フォロワー</Text>
             </Box>
-            <Spacer/>
+            <Spacer />
             <Link href="/user/favorite-shops">
               <Box>
-                <Text 
-                  ml='40%' 
-                  fontSize='20px' fontWeight="bold"
-                >
+                <Text ml="40%" fontSize="20px" fontWeight="bold">
                   {userInfo.followee_shops_handle_names.length}
                 </Text>
-                <Text fontSize={{ base:'8px', md:'12px' }} as='ins'>
+                <Text fontSize={{ base: '8px', md: '12px' }} as="ins">
                   お気に入りShop
                 </Text>
               </Box>
@@ -110,7 +100,7 @@ const Mypage: WithGetAccessControl<VFC> = () => {
 
       <Stack>
         {userInfo && (
-          <Box w={{base:'80%', md:'65%'}} my='0' ml='auto' mr='auto'>
+          <Box w={{ base: '80%', md: '65%' }} my="0" ml="auto" mr="auto">
             {userInfo.reviews.map((data: any, key: any) => {
               return (
                 <LogCard
