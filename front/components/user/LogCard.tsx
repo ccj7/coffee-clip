@@ -28,11 +28,12 @@ function LogCard(props: any) {
         <HStack>
           {review && (
             <Box>
-              <Text pt={4} letterSpacing="0.8px" fontSize="16px">
+              <Text fontWeight='bold' pt={4} letterSpacing="0.8px" fontSize="16px">
                 {review.coffee_name}
               </Text>
               {review.image && (
                 <Image
+                  mt='10px'
                   boxSize="250px"
                   objectFit="cover"
                   src={review.image}
