@@ -22,7 +22,6 @@ type UserData = {
   followee_handle_names: string[]
   followee_shops_handle_names: string[]
   reviews: Review[]
-  _id: string
 }
 
 type ShopData = {
@@ -48,8 +47,7 @@ type ShopData = {
   }
   follower_handle_name: string[]
   publish_state: string
-  __v: string
-  _id: string
+  is_following: boolean
 }
 
 type PartOfUserData = {
