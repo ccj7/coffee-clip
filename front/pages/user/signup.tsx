@@ -12,9 +12,8 @@ import Header from '../../components/Header'
 import InputForm from '../../components/InputForm'
 import ImageUpload from '../../components/ImageUpload'
 
-import { Box, Button, Heading, Center, HStack } from '@chakra-ui/react'
+import { Box, Button, Heading, Center, HStack, Link } from '@chakra-ui/react'
 import { FiCoffee } from 'react-icons/fi'
-import Link from 'next/link'
 
 const Signup: WithGetAccessControl<VFC> = () => {
   const methods = useForm()
