@@ -1,5 +1,6 @@
 import { VFC, useEffect, useState } from 'react'
 import Head from 'next/head'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 import axios from 'axios'
 
@@ -9,9 +10,10 @@ import { isLoggedIn } from '../../util'
 import UserHeader from '../../components/user/UserHeader'
 import LogCard from '../../components/user/LogCard'
 import PrimaryButton from '../../components/Button'
+import coffeeImg from '../../img/coffee.png'
 
 import { FiCoffee } from 'react-icons/fi'
-import { Box, HStack, Spacer, Stack, Heading } from '@chakra-ui/react'
+import { Box, Center, Heading, HStack, Spacer, Stack, Text, VStack } from '@chakra-ui/react'
 
 interface User {
   auth_id: string
@@ -60,7 +62,7 @@ const Timeline: WithGetAccessControl<VFC> = (props) => {
           />
         </HStack>
         <Stack>
-          {userInfo && (
+          { userInfo && userInfo.length > 0 && (
             <Box>
               {userInfo.map((data, key) => {
                 return (
@@ -73,6 +75,31 @@ const Timeline: WithGetAccessControl<VFC> = (props) => {
                   />
                 )
               })}
+            </Box>
+          )}
+          {userInfo && userInfo.length === 0 && (
+            <Box
+              w={{ base: '80%', md: '65%' }}
+              ml="auto" mr="auto">
+              <Box
+              my={12} p={8} mt='70px'
+              borderRadius='16px'
+              backgroundColor='orange.50'
+              boxShadow='0px 2px 6px rgba(0, 0, 0, 0.3)'>
+                <Center mt='20px'>
+                  <VStack>
+                    <Heading size='md'>
+                      まだタイムラインに表示する情報がありません。
+                    </Heading>
+                  <Text>お気に入りのお店や気になるユーザーを探してみましょう！</Text>
+                  </VStack>
+                </Center>
+                <Center mt='15px'>
+                  <Box w='50%'>
+                    <Image src={coffeeImg} alt='Coffee' />
+                  </Box>
+                </Center>
+              </Box>
             </Box>
           )}
         </Stack>
