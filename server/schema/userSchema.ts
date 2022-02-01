@@ -1,6 +1,7 @@
 import { Schema, Types, Model, model } from 'mongoose'
 
 interface Review {
+    coffee_name?: string
     image?: string
     description?: string
     created_at: number
@@ -27,6 +28,7 @@ const userSchema = new Schema<User, Model<User>>({
     followee_shops_handle_names: [String],
     reviews: [
         {
+            coffee_name: String,
             image: String,
             description: String,
             created_at: Number,

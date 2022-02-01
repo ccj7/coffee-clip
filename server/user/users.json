@@ -5,21 +5,54 @@
             "handle_name": "kaori_hikita",
             "display_name": "Kaori",
             "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon.jpg",
-            "follower_handle_names": ["bob", "alice"],
-            "followee_handle_names": ["bob", "alice"],
+            "follower_handle_names": [
+                "bob_brown",
+                "alice_white",
+                "mizki",
+                "roman"
+            ],
+            "followee_handle_names": [
+                "bob_brown",
+                "alice_white",
+                "mizki",
+                "mei_o",
+                "richard",
+                "brian"
+            ],
             "followee_shops_handle_names": ["coffeeeeen"],
             "reviews": [
                 {
+                    "coffee_name": "Arasuna Kiyosumiオリジナルコーヒー",
+                    "image": "",
+                    "description": "実際に飲んでみた感想は、普通に美味しいコーヒー。鮮度のことも考えると、100g単位でのパッケージはありがたいです。本当はグアテマラ目当てで購入したのですが、普段ではあまり自分で選ばないブラジルが良かったです。ブラジルのイメージは酸味が少なく軽い飲み口で、どちらかというと他の豆とブレンドしていただくイメージだったのですが、今回購入して単品で飲んでみた時に非常に美味しかったです。今後もブラジルを積極的に選択肢に加えるきっかけとなった豆かもしれません。",
+                    "created_at": 1643251652844
+                },
+                {
+                    "coffee_name": "coffeeeeenブレンドコーヒー",
                     "image": "",
                     "description": "最高です！",
                     "created_at": 1643251451480
                 },
                 {
+                    "coffee_name": "MoonBucksブレンドコーヒー",
+                    "image": "",
+                    "description": "実際に飲んでみた感想は、普通に美味しいコーヒー。鮮度のことも考えると、100g単位でのパッケージはありがたいです。本当はグアテマラ目当てで購入したのですが、普段ではあまり自分で選ばないブラジルが良かったです。ブラジルのイメージは酸味が少なく軽い飲み口で、どちらかというと他の豆とブレンドしていただくイメージだったのですが、今回購入して単品で飲んでみた時に非常に美味しかったです。今後もブラジルを積極的に選択肢に加えるきっかけとなった豆かもしれません。",
+                    "created_at": 1643251352844
+                },
+                {
+                    "coffee_name": "Arasuna Kiyosumiプレミアムコーヒー",
+                    "image": "",
+                    "description": "実際に飲んでみた感想は、普通に美味しいコーヒー。鮮度のことも考えると、100g単位でのパッケージはありがたいです。本当はグアテマラ目当てで購入したのですが、普段ではあまり自分で選ばないブラジルが良かったです。ブラジルのイメージは酸味が少なく軽い飲み口で、どちらかというと他の豆とブレンドしていただくイメージだったのですが、今回購入して単品で飲んでみた時に非常に美味しかったです。今後もブラジルを積極的に選択肢に加えるきっかけとなった豆かもしれません。",
+                    "created_at": 1643251438470
+                },
+                {
+                    "coffee_name": "犬田彦アメリカンコーヒー",
                     "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon.jpg",
                     "description": "もっと味に深みがほしい",
                     "created_at": 1643251438466
                 },
                 {
+                    "coffee_name": "Arasuna Kiyosumiエスプレッソコーヒー",
                     "image": "",
                     "description": "実際に飲んでみた感想は、普通に美味しいコーヒー。鮮度のことも考えると、100g単位でのパッケージはありがたいです。本当はグアテマラ目当てで購入したのですが、普段ではあまり自分で選ばないブラジルが良かったです。ブラジルのイメージは酸味が少なく軽い飲み口で、どちらかというと他の豆とブレンドしていただくイメージだったのですが、今回購入して単品で飲んでみた時に非常に美味しかったです。今後もブラジルを積極的に選択肢に加えるきっかけとなった豆かもしれません。",
                     "created_at": 1643251352844
@@ -27,11 +60,11 @@
             ]
         },
         {
-            "auth_id": "FTbxuYF3NggkwRjP4f6woEY7RKB2",
-            "handle_name": "bob",
+            "auth_id": "testAuthIdBob",
+            "handle_name": "bob_brown",
             "display_name": "Bob",
             "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee.jpg",
-            "follower_handle_names": ["kaori_hikita", "alice"],
+            "follower_handle_names": ["kaori_hikita", "alice_white"],
             "followee_handle_names": ["kaori_hikita"],
             "followee_shops_handle_names": [
                 "coffeeeeen",
@@ -40,27 +73,42 @@
             ],
             "reviews": [
                 {
+                    "coffee_name": "Arasuna Kiyosumiプレミアムコーヒー",
+                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon.jpg",
+                    "description": "素晴らしい！！",
+                    "created_at": 1643251652850
+                },
+                {
+                    "coffee_name": "coffeeeeenブレンドコーヒー",
                     "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon.jpg",
                     "description": "最高！！",
-                    "created_at": 1643251356941
+                    "created_at": 1643251451480
+                },
+                {
+                    "coffee_name": "GreenBottleアメリカンコーヒー",
+                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon.jpg",
+                    "description": "おすすめです",
+                    "created_at": 1643251352850
                 }
             ]
         },
         {
-            "auth_id": "KwXrR15NeFhXUgPbUWfmj03qt0T2",
-            "handle_name": "alice",
+            "auth_id": "testAuthIdAlice",
+            "handle_name": "alice_white",
             "display_name": "Alice",
             "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon.jpg",
-            "follower_handle_names": ["kaori_hikita", "bob"],
+            "follower_handle_names": ["kaori_hikita", "bob_brown", "richard"],
             "followee_handle_names": ["kaori_hikita"],
             "followee_shops_handle_names": ["cafe_sweet"],
             "reviews": [
                 {
+                    "coffee_name": "coffeeeeenブレンドコーヒー",
                     "image": "",
                     "description": "実際に飲んでみた感想は、普通に美味しいコーヒー。鮮度のことも考えると、100g単位でのパッケージはありがたいです。本当はグアテマラ目当てで購入したのですが、普段ではあまり自分で選ばないブラジルが良かったです。ブラジルのイメージは酸味が少なく軽い飲み口で、どちらかというと他の豆とブレンドしていただくイメージだったのですが、今回購入して単品で飲んでみた時に非常に美味しかったです。今後もブラジルを積極的に選択肢に加えるきっかけとなった豆かもしれません。",
                     "created_at": 1643251451472
                 },
                 {
+                    "coffee_name": "Arasuna Kiyosumiカフェ・オ・レ",
                     "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee.jpg",
                     "description": "さっぱりしていた",
                     "created_at": 1643251425542
@@ -68,33 +116,103 @@
             ]
         },
         {
-            "auth_id": "zwXdROKXONZfOvTpExlHvDy3PEZ2",
-            "handle_name": "harry",
-            "display_name": "Harry",
-            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee.jpg",
-            "follower_handle_names": [],
+            "auth_id": "testAuthIdMizki",
+            "handle_name": "mizki",
+            "display_name": "Mizki",
+            "icon": "",
+            "follower_handle_names": ["kaori_hikita"],
+            "followee_handle_names": ["kaori_hikita", "mei_o"],
+            "followee_shops_handle_names": [],
+            "reviews": []
+        },
+        {
+            "auth_id": "testAuthIdNao",
+            "handle_name": "nao",
+            "display_name": "Nao",
+            "icon": "",
+            "follower_handle_names": ["paddy_p"],
             "followee_handle_names": [],
             "followee_shops_handle_names": [],
             "reviews": []
         },
         {
-            "auth_id": "OMEv4PkUyWXsDBtPYp15Da1ihjr2",
-            "handle_name": "taro_yamada",
-            "display_name": "山田　太郎",
-            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee.jpg",
-            "follower_handle_names": [],
-            "followee_handle_names": ["emma"],
-            "followee_shops_handle_names": ["cafe_sweet"],
+            "auth_id": "testAuthIdMei",
+            "handle_name": "mei_o",
+            "display_name": "mei",
+            "icon": "",
+            "follower_handle_names": ["kaori_hikita", "mizki"],
+            "followee_handle_names": [],
+            "followee_shops_handle_names": [],
             "reviews": []
         },
         {
-            "auth_id": "5tTbzII9mQPuJ9ZuI4JUH7CEeja2",
-            "handle_name": "emma",
-            "display_name": "Emma",
-            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee.jpg",
-            "follower_handle_names": ["taro_yamada"],
+            "auth_id": "testAuthIdPaddy",
+            "handle_name": "paddy_p",
+            "display_name": "Paddy",
+            "icon": "",
+            "follower_handle_names": ["take_a_walk"],
+            "followee_handle_names": ["take_a_walk", "nao"],
+            "followee_shops_handle_names": [],
+            "reviews": []
+        },
+        {
+            "auth_id": "testAuthIdWalk",
+            "handle_name": "take_a_walk",
+            "display_name": "Walk",
+            "icon": "",
+            "follower_handle_names": ["paddy_p"],
+            "followee_handle_names": ["paddy_p"],
+            "followee_shops_handle_names": [],
+            "reviews": []
+        },
+        {
+            "auth_id": "testAuthIdRoman",
+            "handle_name": "roman",
+            "display_name": "Roman",
+            "icon": "",
+            "follower_handle_names": [],
+            "followee_handle_names": ["kaori_hikita"],
+            "followee_shops_handle_names": [],
+            "reviews": []
+        },
+        {
+            "auth_id": "testAuthIdRichard",
+            "handle_name": "richard",
+            "display_name": "Richard",
+            "icon": "",
+            "follower_handle_names": ["kaori_hikita"],
+            "followee_handle_names": ["alice_white"],
+            "followee_shops_handle_names": [],
+            "reviews": []
+        },
+        {
+            "auth_id": "testAuthIdAna",
+            "handle_name": "ana",
+            "display_name": "ana",
+            "icon": "",
+            "follower_handle_names": ["wesley", "brian"],
             "followee_handle_names": [],
-            "followee_shops_handle_names": ["yay"],
+            "followee_shops_handle_names": [],
+            "reviews": []
+        },
+        {
+            "auth_id": "testAuthIdWesley",
+            "handle_name": "wesley",
+            "display_name": "Wesley",
+            "icon": "",
+            "follower_handle_names": [],
+            "followee_handle_names": ["ana"],
+            "followee_shops_handle_names": [],
+            "reviews": []
+        },
+        {
+            "auth_id": "testAuthIdBrian",
+            "handle_name": "brian",
+            "display_name": "Brian",
+            "icon": "",
+            "follower_handle_names": ["kaori_hikita"],
+            "followee_handle_names": ["ana"],
+            "followee_shops_handle_names": [],
             "reviews": []
         }
     ]
