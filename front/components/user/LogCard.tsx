@@ -5,8 +5,8 @@ function LogCard(props: any) {
   const { display_name, handle_name, icon, review } = props;
   return (
     <Link href={{ pathname: `/user/topPage/${handle_name}` }}>
-      <Box mb="10">
-      <HStack>
+      <Box  my={12} p={8} borderRadius='16px' backgroundColor='orange.50' boxShadow='0px 2px 6px rgba(0, 0, 0, 0.3)'>
+      <HStack mb={2}>
         <Image
           borderRadius='full'
           boxSize='70px'
@@ -15,7 +15,7 @@ function LogCard(props: any) {
           alt={display_name} />
         <Box>
           <Heading size="lg">{display_name}</Heading>
-          <Text>{handle_name}</Text>
+          <Text>@{handle_name}</Text>
         </Box>
       </HStack>
       <HStack>
@@ -29,7 +29,7 @@ function LogCard(props: any) {
             src={review.image}
             alt={review.description} />    
         }
-        <Text>{review.description}</Text>
+        <Text pt={4} letterSpacing='0.8px' fontSize='16px'>{review.description}</Text>
         </Box>
   
         }
