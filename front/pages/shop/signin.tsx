@@ -10,9 +10,8 @@ import { useForm, FormProvider } from 'react-hook-form'
 import InputForm from '../../components/InputForm'
 import Header from '../../components/Header'
 
-import { Box, Button, Heading, Center, HStack, Text } from '@chakra-ui/react'
+import { Box, Button, Heading, Center, HStack, Text, Link } from '@chakra-ui/react'
 import { FiCoffee } from 'react-icons/fi'
-import Link from 'next/link'
 
 const Signin: WithGetAccessControl<VFC> = () => {
   const methods = useForm()
