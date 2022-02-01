@@ -21,52 +21,29 @@ import Profile from './Profile'
 import axios from 'axios'
 import PostImage from './Image'
 import { AuthContext } from '../auth/AuthContext'
+import { shopInitialData } from '../initial_data/shopInitialDdata'
 
 const ShopTopPage = (props: any) => {
   const { handle_name, isUser } = props
   const { currentUser } = useContext(AuthContext)
 
   const getShop = async (handle: string | string[]) => {
-    const res: any = await axios.get(`/api/shops/details/${handle}`)
-    setShopInfo(res.data)
+     if(currentUser) {
+       const res: any = await axios.get(`/api/shops/${currentUser}/${handle}`)
+       setShopInfo(res.data)
+     }
   }
 
   useEffect(() => {
     if (handle_name) {
       getShop(handle_name)
     }
-  }, [handle_name])
+  }, [handle_name, currentUser])
 
-  const dammy = {
-    auth_id: '',
-    handle_name: '',
-    display_name: '',
-    icon: '',
-    address: '',
-    map_url: '',
-    hp_url: '',
-    instagram_url: '',
-    opening_hours: '',
-    regular_day_off: '',
-    concept: '',
-    recommendation: {
-      title: '',
-      description: '',
-      image: '',
-    },
-    selling_point: {
-      text: '',
-      image: '',
-    },
-    follower_handle_name: [''],
-  }
-  const [shopInfo, setShopInfo] = useState<any>(dammy)
-  const [isfavorite, setIsfavorite] = useState<boolean>(false)
+  const [shopInfo, setShopInfo] = useState<ShopData>(shopInitialData)
 
   const registerFavarite = () => {
-    console.log(isfavorite)
-    if (isfavorite) {
-      setIsfavorite(false)
+    if (shopInfo.is_following) {
       const unfollow = async () => {
         const res = await axios.put(
           `/api/users/${currentUser}/shops/unfollowing`,
@@ -80,7 +57,6 @@ const ShopTopPage = (props: any) => {
       }
       unfollow()
     } else {
-      setIsfavorite(true)
       const follow = async () => {
         const res = await axios.put(
           `/api/users/${currentUser}/shops/following`,
@@ -123,13 +99,13 @@ const ShopTopPage = (props: any) => {
             </Center>
             {isUser && (
               <PrimaryButton
-                text={isfavorite ? 'お気に入りに登録済み' : 'お気に入りに登録する'}
+                text={shopInfo.is_following ? 'お気に入りに登録済み' : 'お気に入りに登録する'}
                 onclick={registerFavarite}
               />
             )}
             {!isUser && (
               <PrimaryButton
-                text={isfavorite ? 'お気に入りに登録済み' : 'お気に入りに登録する'}
+                text={shopInfo.is_following ? 'お気に入りに登録済み' : 'お気に入りに登録する'}
               />
             )}
           </Box>
