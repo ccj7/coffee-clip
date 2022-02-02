@@ -31,7 +31,7 @@ routes.post('/checkout_sessions', async (req, res) => {
             line_items: [
                 {
                     // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                    price: 'price_1KOZ4vCy4RvxOO5USpU3UUaC',
+                    price: req.body.price_ID,
                     quantity: 1,
                 },
             ],
