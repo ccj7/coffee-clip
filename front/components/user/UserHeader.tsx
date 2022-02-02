@@ -86,7 +86,7 @@ function UserHeader() {
             </InputGroup>
           </form>
 
-          <Breadcrumb separator="|">
+          <Breadcrumb separator="|" display={{base: "none", md: "block"}}>
             <BreadcrumbItem fontSize={{base:'12px', md:'16px'}}>
               <BreadcrumbLink href="/user/timeline">TimeLine</BreadcrumbLink>
             </BreadcrumbItem>
@@ -112,6 +112,20 @@ function UserHeader() {
               variant="outline"
             />
             <MenuList color="black">
+              <Box display={{base: "block", md: "none"}}>
+                <Link href="/user/timeline">
+                  <MenuItem>TimeLine</MenuItem>
+                </Link>
+                <Link href="/user/shoplist">
+                  <MenuItem>ShopList</MenuItem>
+                </Link>
+                <Link href="/user/mypage">
+                  <MenuItem>MyPage</MenuItem>
+                </Link>
+                <Link href="/user/onlineShop">
+                <MenuItem>OnlineShop</MenuItem>
+              </Link>
+              </Box>
               <Link href="/user/setting">
                 <MenuItem icon={<SettingsIcon />}>Setting</MenuItem>
               </Link>
