@@ -8,14 +8,14 @@ import {
   FormLabel,
   Icon,
   InputGroup,
-  Box
+  Box,
 } from '@chakra-ui/react'
 import { useFormContext } from 'react-hook-form'
 import { FiFile } from 'react-icons/fi'
 import { async } from '@firebase/util'
 
 function ImageUpload(props: any) {
-  const { size, thema, text } = props
+  const { size, theme, text } = props
 
   const {
     formState: { errors },
@@ -26,7 +26,7 @@ function ImageUpload(props: any) {
   const [image, setImage] = useState('')
 
   const inputRef = useRef<HTMLInputElement | null>(null)
-  const { ref, ...rest } = register(thema)
+  const { ref, ...rest } = register(theme)
 
   const validateFiles = (value: FileList | null) => {
     if (value) {
@@ -61,20 +61,20 @@ function ImageUpload(props: any) {
       const base64 = reader.result as string
       console.log(base64)
       setImage(base64)
-      setValue(thema, base64)
+      setValue(theme, base64)
     }
   }
   const handleClick = () => inputRef.current?.click()
 
   return (
-    <Box mb='20px'>
+    <Box mb="20px">
       <FormControl isInvalid={!!errors.file_}>
-        <FormLabel fontSize='sm'>{text}</FormLabel>
+        <FormLabel fontSize="sm">{text}</FormLabel>
         <InputGroup onClick={handleClick}>
           <input
-            id={thema}
+            id={theme}
             type="text"
-            {...register(thema)}
+            {...register(theme)}
             hidden
             onChange={(e) => console.log(e.target.value)}
           ></input>
@@ -93,13 +93,16 @@ function ImageUpload(props: any) {
             }}
           />
           <Button
-            backgroundColor='brand.color4'
+            backgroundColor="brand.color4"
             _hover={{ backgroundColor: '#b8b1aa' }}
-            color='white'
-            leftIcon={<Icon as={FiFile} />}>Upload</Button>
+            color="white"
+            leftIcon={<Icon as={FiFile} />}
+          >
+            Upload
+          </Button>
         </InputGroup>
         <FormErrorMessage>
-          {errors.thema && errors?.thema.message}
+          {errors.theme && errors?.theme.message}
         </FormErrorMessage>
       </FormControl>
       {image && <Image w={size} src={image} />}

@@ -66,11 +66,11 @@ const Setting: WithGetAccessControl<VFC> = () => {
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
           <InputForm
-            thema="display_name"
+            theme="display_name"
             text="ユーザーネーム"
             defaultValue={displayName}
           />
-          <ImageUpload size="sm" thema="icon" text="アイコン画像" />
+          <ImageUpload size="sm" theme="icon" text="アイコン画像" />
           <Box>
             <Button mt={4} type="submit">
               保存
