@@ -25,7 +25,7 @@ export const PreviewPage: WithGetAccessControl<VFC> = () => {
 
   return (
     <form
-      action="http://ec2-18-183-145-70.ap-northeast-1.compute.amazonaws.com/api/checkout_sessions"
+      action="http://ec2-18-183-145-70.ap-northeast-1.compute.amazonaws.com/api/stripe/checkout_sessions"
       method="POST"
     >
       <section>
