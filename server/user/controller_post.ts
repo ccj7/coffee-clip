@@ -88,6 +88,7 @@ export const postReview = async (
 
             if (reviewImg || bodyData.description) {
                 const newReview = {
+                    coffee_name: bodyData.coffee_name,
                     image: reviewImg,
                     description: bodyData.description,
                     created_at: Number(time),

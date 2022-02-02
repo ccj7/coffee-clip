@@ -24,8 +24,11 @@ function InputForm(props: any) {
   return (
     <>
       <FormControl isInvalid={errors[thema]}>
-        <FormLabel htmlFor={thema}>{text}</FormLabel>
+        <FormLabel fontSize='sm' htmlFor={thema}>{text}</FormLabel>
         <Input
+          mb='25px'
+          bg='#FCFAF8'
+          borderColor='brand.color6'
           id={thema}
           {...methods.register(thema, {
             // required: true,

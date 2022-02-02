@@ -35,8 +35,15 @@ const UserTopPage: WithGetAccessControl<VFC> = () => {
 
   const getUser = async (handle: string | string[], authId: string) => {
     const res: any = await axios.get(`/api/users/${authId}/${handle}`)
-    setUserInfo(res.data)
-    setIsFollow(res.data.is_following)
+
+    const myUser = await axios.get(`/api/users/${currentUser}`)
+
+    if (myUser.data.handle_name === handle_name) {
+      router.replace('/user/mypage')
+    } else {
+      setUserInfo(res.data)
+      setIsFollow(res.data.is_following)
+    }
   }
 
   useEffect(() => {

@@ -7,7 +7,7 @@ import { isLoggedIn } from '../../util'
 import ShopCard from '../../components/user/ShopCard'
 import UserHeader from '../../components/user/UserHeader'
 
-import { Box, Flex } from '@chakra-ui/react'
+import { Box, Flex, Heading, Center, SimpleGrid } from '@chakra-ui/react'
 
 const Shoplist: WithGetAccessControl<VFC> = (props) => {
   const [shopsInfo, setShopsInfo] = useState<PartOfShopData[]>()
@@ -29,20 +29,26 @@ const Shoplist: WithGetAccessControl<VFC> = (props) => {
         <meta name="shopslist" content="ショップ一覧" />
       </Head>
       <UserHeader />
-      <Flex>
-        {shopsInfo &&
-          shopsInfo.map((shop: PartOfShopData, key: any) => {
-            return (
-              <ShopCard
-                key={key}
-                display_name={shop.display_name}
-                handle_name={shop.handle_name}
-                icon={shop.icon}
-                concept={shop.concept}
-              />
-            )
-          })}
-      </Flex>
+      <Center>
+        <Heading size='md' mt='50px' >ショップ一覧</Heading>
+      </Center>
+
+      <Box w={{base:'80%', md:'65%'}} my='0' mx='auto'>
+        <SimpleGrid columns={{md:2}}>
+          {shopsInfo &&
+            shopsInfo.map((shop: PartOfShopData, key: any) => {
+              return (
+                <ShopCard
+                  key={key}
+                  display_name={shop.display_name}
+                  handle_name={shop.handle_name}
+                  icon={shop.icon}
+                  concept={shop.concept}
+                />
+              )
+              })}
+        </SimpleGrid>
+      </Box>
     </Box>
   )
 }
