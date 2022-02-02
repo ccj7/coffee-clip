@@ -59,7 +59,7 @@ const Mypage: WithGetAccessControl<VFC> = () => {
           />
 
           <HStack
-            w={{ base: '300px', md: '350px' }}
+            w={{ base: '320px', md: '350px' }}
             borderRadius="15px"
             backgroundColor="rgba(245, 239, 235, 0.25)"
             backdropFilter="blur(4px)"
@@ -68,7 +68,7 @@ const Mypage: WithGetAccessControl<VFC> = () => {
             ml="auto"
             mr="auto"
             my="0"
-            padding="20px"
+            p="10px 20px 10px 20px"
           >
             <Box>
               <Text ml="40%" fontSize="20px" fontWeight="bold">
