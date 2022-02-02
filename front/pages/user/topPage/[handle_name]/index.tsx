@@ -11,7 +11,7 @@ import Profile from '../../../../components/Profile'
 import LogCard from '../../../../components/user/LogCard'
 import UserHeader from '../../../../components/user/UserHeader'
 
-import { Box, Text, Stack, Spacer, Flex, HStack, Center } from '@chakra-ui/react'
+import { Box, Text, Stack, Spacer, HStack, Center } from '@chakra-ui/react'
 
 const UserTopPage: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
