@@ -4,6 +4,7 @@ import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { AuthProvider } from '../auth/AuthContext'
+import { CustomerProvider } from '../stripe/CustomerContext'
 
 const useAccessControll = (getAccessControll: GetAccessControl) => {
   const router = useRouter()
@@ -55,9 +56,11 @@ function MyApp({ Component, pageProps }: Props) {
   useAccessControll(getAccessControl)
   return (
     <AuthProvider>
+
       <ChakraProvider theme={theme}>
         <Component {...pageProps} />
       </ChakraProvider>
+
     </AuthProvider>
   )
 }
