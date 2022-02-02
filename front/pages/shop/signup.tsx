@@ -27,22 +27,29 @@ const Signup: WithGetAccessControl<VFC> = () => {
   const methods = useForm()
   const router = useRouter()
 
+  const postShopInfo = (authId: string, data: any) => {
+    const newShopInfo: newShopInfo = {
+      auth_id: authId,
+      handle_name: data.handle_name,
+      display_name: data.display_name,
+    }
+    axios
+      .post('/api/shops', newShopInfo)
+      .then(() => {
+        router.push('/shop/dashboard')
+      })
+      .catch((err: any) => {
+        console.error(err)
+      })
+  }
+
   const onSubmit = async (data: any) => {
     const auth = getAuth(firebase)
 
     createUserWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredential) => {
         if (userCredential) {
-          const postShopInfo = () => {
-            const newShopInfo: newShopInfo = {
-              auth_id: userCredential.user.uid,
-              handle_name: data.handle_name,
-              display_name: data.display_name,
-            }
-            axios.post('/api/shops', newShopInfo)
-          }
-          postShopInfo()
-          router.push('/shop/dashboard')
+          postShopInfo(userCredential.user.uid, data)
         }
       })
       .catch((error: any) => {
@@ -85,10 +92,41 @@ const Signup: WithGetAccessControl<VFC> = () => {
           {message && <Message message={message} />}
           <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(onSubmit)}>
-              <InputForm theme="display_name" text="店舗名" />
-              <InputForm theme="handle_name" text="店舗のID名" />
-              <InputForm theme="email" text="メールアドレス" />
-              <InputForm theme="password" text="パスワード" />
+              <InputForm
+                theme="display_name"
+                text="店舗名"
+                validation={{
+                  required: true,
+                }}
+                errorMessage="必須項目です"
+              />
+              <InputForm
+                theme="handle_name"
+                text="店舗のID名"
+                validation={{
+                  required: true,
+                }}
+                errorMessage="必須項目です"
+              />
+              <InputForm
+                theme="email"
+                text="メールアドレス"
+                type="email"
+                validation={{
+                  required: true,
+                }}
+                errorMessage="必須項目です"
+              />
+              <InputForm
+                theme="password"
+                text="パスワード"
+                type="password"
+                validation={{
+                  required: true,
+                  minLength: 6,
+                }}
+                errorMessage="6文字以上入力してください"
+              />
               <Center mt="10px">
                 <Button
                   backgroundColor="brand.color2"

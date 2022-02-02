@@ -9,8 +9,10 @@ type WithGetAccessControl<P> = P & {
 }
 
 type Review = {
+  coffee_name?: string
   image?: string
   description?: string
+  created_at?: number
 }
 
 type UserData = {
@@ -22,6 +24,13 @@ type UserData = {
   followee_handle_names: string[]
   followee_shops_handle_names: string[]
   reviews: Review[]
+}
+
+type UserDataForTimeline = {
+  handle_name: string
+  display_name: string
+  icon: string
+  review: Review
 }
 
 type ShopData = {
