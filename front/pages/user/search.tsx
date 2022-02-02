@@ -17,6 +17,8 @@ import {
   Tab,
   TabPanel,
   Text,
+  Center,
+  SimpleGrid
 } from '@chakra-ui/react'
 
 const Search: WithGetAccessControl<VFC> = (props) => {
@@ -43,54 +45,88 @@ const Search: WithGetAccessControl<VFC> = (props) => {
         <meta name="Search" content="Search" />
       </Head>
       <UserHeader />
-      <Heading>検索結果</Heading>
+      <Center mb='40px'>
+        <Heading size='md' mt='50px' >検索結果</Heading>
+      </Center>
+      <Box
+        w={{base:'98%', md:'65%'}}
+        my='0' mx='auto'>
+        <Tabs isFitted p='20px'>
+          <TabList borderBottom='none'>
+            <Tab
+              pt='13px' pb='13px'
+              fontWeight='bold'
+              borderBottom='2px solid'
+              borderColor='brand.color4'
+              _selected={{
+                color: 'white',
+                bg: 'brand.color4',
+                borderTopRadius: '16px',
+                boxShadow: '-1px -1px 6px rgba(0, 0, 0, 0.3)'
+               }}>
+              ユーザー
+            </Tab>
+            <Tab
+              pt='13px' pb='13px'
+              fontWeight='bold'
+              borderBottom='2px solid'
+              borderColor='brand.color4'
+              _selected={{ 
+                color: 'white',
+                bg: 'brand.color4',
+                borderTopRadius: '16px',
+                boxShadow: '-1px -1px 6px rgba(0, 0, 0, 0.3)'
+                }}>
+              ショップ
+            </Tab>
+          </TabList>
 
-      <Tabs>
-        <TabList>
-          <Tab>Users</Tab>
-          <Tab>Shops</Tab>
-        </TabList>
-
-        <TabPanels>
-          <TabPanel>
-            {usersInfo &&
-              usersInfo.map((user: any, key: any) => {
-                return (
-                  <UserResultCard
-                    key={key}
-                    display_name={user.display_name}
-                    handle_name={user.handle_name}
-                    icon={user.icon}
-                  />
-                )
-              })}
-            {!usersInfo.length && (
-              <>
-                <Text>検索結果：なし</Text>
-              </>
-            )}
-          </TabPanel>
-          <TabPanel>
-            {shopsInfo &&
-              shopsInfo.map((shop: PartOfShopData, key: any) => {
-                return (
-                  <ShopCard
-                    key={key}
-                    display_name={shop.display_name}
-                    handle_name={shop.handle_name}
-                    icon={shop.icon}
-                    concept={shop.concept}
-                  />
-                )
-              })}
-            {!shopsInfo.length && (
-              <>
-                <Text>検索結果：なし</Text>
-              </>
-            )}
-          </TabPanel>
-        </TabPanels>
-      </Tabs>
+          <TabPanels
+            borderBottomRadius='16px'
+            backgroundColor='orange.50'
+            boxShadow='0px 2px 6px rgba(0, 0, 0, 0.3)'>
+            <TabPanel>
+              {usersInfo &&
+                usersInfo.map((user: any, key: any) => {
+                  return (
+                    <UserResultCard
+                      key={key}
+                      display_name={user.display_name}
+                      handle_name={user.handle_name}
+                      icon={user.icon}
+                    />
+                  )
+                })}
+              {!usersInfo.length && (
+                <>
+                  <Text>検索結果がありません</Text>
+                </>
+              )}
+            </TabPanel>
+            <TabPanel>
+            <SimpleGrid columns={{md:2}}>
+              {shopsInfo &&
+                shopsInfo.map((shop: PartOfShopData, key: any) => {
+                  return (
+                    <ShopCard
+                      key={key}
+                      display_name={shop.display_name}
+                      handle_name={shop.handle_name}
+                      icon={shop.icon}
+                      concept={shop.concept}
+                    />
+                  )
+                })}
+              {!shopsInfo.length && (
+                <>
+                  <Text>検索結果がありません</Text>
+                </>
+              )}
+              </SimpleGrid>
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
+      </Box>
     </Box>
   )
 }
