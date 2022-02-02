@@ -45,36 +45,36 @@ const NewReview: WithGetAccessControl<VFC> = () => {
         <meta name="NewReview" content="プロフィール編集" />
       </Head>
       <UserHeader />
-      <Box w={{base:'80%', md:'65%'}} my='0' mx='auto'>
-      <Heading size="md" m={'16px'}>
-        新規投稿
-      </Heading>
-      <FormProvider {...methods}>
-        <form onSubmit={methods.handleSubmit(onSubmit)}>
-          <InputForm
-            thema="coffee_name"
-            text="飲んだコーヒー"
-            defaultValue=""
-          />
-          <ImageUpload
-            // TODO thema textを修正
-            thema="image"
-            text="画像"
-            size={'500px'}
-          />
-          <InputForm
-            thema="description"
-            text="感想やおすすめポイント"
-            defaultValue=""
-          />
-          <Box>
-            <Button mt={4} type="submit">
-              投稿
-            </Button>
-          </Box>
-        </form>
-      </FormProvider>
-      {message && <Message message={message} />}
+      <Box w={{ base: '80%', md: '65%' }} my="0" mx="auto">
+        <Heading size="md" m={'16px'}>
+          新規投稿
+        </Heading>
+        <FormProvider {...methods}>
+          <form onSubmit={methods.handleSubmit(onSubmit)}>
+            <InputForm
+              theme="coffee_name"
+              text="飲んだコーヒー"
+              defaultValue=""
+            />
+            <ImageUpload
+              // TODO theme textを修正
+              theme="image"
+              text="画像"
+              size={'500px'}
+            />
+            <InputForm
+              theme="description"
+              text="感想やおすすめポイント"
+              defaultValue=""
+            />
+            <Box>
+              <Button mt={4} type="submit">
+                投稿
+              </Button>
+            </Box>
+          </form>
+        </FormProvider>
+        {message && <Message message={message} />}
       </Box>
     </Box>
   )
