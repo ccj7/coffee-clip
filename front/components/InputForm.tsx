@@ -3,13 +3,19 @@ import {
   FormLabel,
   FormControl,
   Input,
-  Button,
 } from '@chakra-ui/react'
-import { useEffect, useState } from 'react'
-import { useForm, useFormContext } from 'react-hook-form'
+import { useEffect } from 'react'
+import { useFormContext } from 'react-hook-form'
 
 function InputForm(props: any) {
-  const { theme, text, defaultValue } = props
+  const { theme, text, defaultValue, type, validation, errorMessage } = props
+
+  let inputType = ''
+  if (type) {
+    inputType = type
+  } else {
+    inputType = 'text'
+  }
 
   const methods = useFormContext()
   const {
@@ -27,18 +33,17 @@ function InputForm(props: any) {
         <FormLabel fontSize="sm" htmlFor={theme}>
           {text}
         </FormLabel>
-        <Input
-          mb="25px"
-          bg="#FCFAF8"
-          borderColor="brand.color6"
-          id={theme}
-          {...methods.register(theme, {
-            // required: true,
-          })}
-        />
-        <FormErrorMessage>
-          {errors[theme] && 'This is required'}
-        </FormErrorMessage>
+        <>
+          <Input
+            mb="25px"
+            bg="#FCFAF8"
+            borderColor="brand.color6"
+            id={theme}
+            type={inputType}
+            {...methods.register(theme, validation)}
+          />
+          <FormErrorMessage>{errors[theme] && errorMessage}</FormErrorMessage>
+        </>
       </FormControl>
     </>
   )
