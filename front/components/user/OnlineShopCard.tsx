@@ -103,20 +103,22 @@ function OnlineShopCard(props: any) {
           </form>
         </Box>
 
-        <Box ml='60%'>
+        <Box ml={{base:'75%', md:'70%'}}>
           <Button 
             onClick={goToShopTopPage}
             fontSize='xs'
             color="brand.color1"
+            boxSize='40%'
             backgroundColor="#fcf7f0"
+            _hover={{backgroundColor: '#fcf7f0'}}
           >
-            <Text 
+            <Text
+              // ml='120px'
               mr="5px"
               _hover={{ borderBottom: "1px solid", borderColor: "brand.color2" }}
             >
                 販売店を見る</Text> <ArrowRightIcon/>
           </Button>
-          {/* <PrimaryButton text="販売店を見る" onclick={goToShopTopPage} /> */}
         </Box>
 
       </Box>

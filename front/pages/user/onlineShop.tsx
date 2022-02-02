@@ -18,7 +18,7 @@ const onlineShop: WithGetAccessControl<VFC> = (props) => {
       handle_name: 'cafe_sweet',
       name: 'コロンビア',
       price: '1,100',
-      price_id: 'price_1KOcaMCy4RvxOO5U34poYyvy',
+      price_ID: 'price_1KOcaMCy4RvxOO5U34poYyvy',
       image: cafe_sweet_001,
       concept: '酸味と甘味が重厚だが突出せずバランスが良い。',
     },
@@ -33,7 +33,7 @@ const onlineShop: WithGetAccessControl<VFC> = (props) => {
     {
       handle_name: 'moon_bucks',
       name: 'ブルーマウンテン',
-      price: '1400',
+      price: '1,400',
       price_ID: 'price_1KOcYBCy4RvxOO5UYJuMT4Lt',
       image: moon_bucks_001,
       concept: '軽い口当りと滑らかな咽越しが特徴。',
