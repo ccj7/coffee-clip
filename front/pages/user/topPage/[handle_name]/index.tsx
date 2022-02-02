@@ -11,7 +11,7 @@ import Profile from '../../../../components/Profile'
 import LogCard from '../../../../components/user/LogCard'
 import UserHeader from '../../../../components/user/UserHeader'
 
-import { Box, Text, Stack, Spacer, Flex } from '@chakra-ui/react'
+import { Box, Text, Stack, Spacer, Flex, HStack, Center } from '@chakra-ui/react'
 
 const UserTopPage: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
@@ -119,41 +119,76 @@ const UserTopPage: WithGetAccessControl<VFC> = () => {
       <UserHeader />
 
       {userInfo && (
-        <Flex>
+        <Box
+          w="100%"
+          h="550px"
+          background="#988d83"
+          backgroundImage="linear-gradient(62deg, #988d83 0%, #f7dcae 100%)"
+          borderBottomRadius="46px"
+          mb="-120px"
+          pt="20px"
+        >
           <Profile
             display_name={userInfo.display_name}
             handle_name={userInfo.handle_name}
             icon={userInfo.icon}
           />
+
+           {userInfo && (
+           <Box
+              w={{ base: '300px', md: '350px' }} 
+              mx='auto' 
+              mb='30px'
+              mt='-20px'>
+            <Center>
+              <PrimaryButton
+                text={isFollow ? 'フォロー中' : 'フォローする'}
+                onclick={orFollow}
+              />
+            </Center>
+          </Box>
+          )}
+
+          <HStack
+            w={{ base: '320px', md: '350px' }}
+            borderRadius="15px"
+            backgroundColor="rgba(245, 239, 235, 0.25)"
+            backdropFilter="blur(4px)"
+            webkit-backdropfilter="blur(4px)"
+            border="1px solid rgba(255, 255, 255, 0.18)"
+            mx="auto"
+            my="0"
+            p="10px 20px 10px 20px"
+          >
+          <Box>
+            <Text ml="40%" fontSize="20px" fontWeight="bold">
+              {userInfo.followee_handle_names.length}
+            </Text>
+            <Text fontSize={{ base: '10px', md: '14px' }}>フォロー</Text>
+          </Box>
           <Spacer />
           <Box>
-            <Text>{userInfo.followee_handle_names.length}</Text>
-            <Text>フォロー</Text>
+            <Text ml="40%" fontSize="20px" fontWeight="bold">
+              {userInfo.follower_handle_names.length}
+            </Text>
+            <Text fontSize={{ base: '10px', md: '14px' }}>フォロワー</Text>
           </Box>
+          <Spacer />
           <Box>
-            <Text>{userInfo.follower_handle_names.length}</Text>
-            <Text>フォロワー</Text>
+            <Text ml="40%" fontSize="20px" fontWeight="bold">
+              {userInfo.followee_shops_handle_names.length}
+            </Text>
+            <Text fontSize={{ base: '8px', md: '12px' }} >
+              お気に入りShop
+            </Text>
           </Box>
-          <Box>
-            <Text>{userInfo.followee_shops_handle_names.length}</Text>
-            <Text>お気に入りShop</Text>
-          </Box>
-        </Flex>
-      )}
-
-      {userInfo && (
-        <Flex>
-          {isFollow && <Box m="20px">フォロー中</Box>}
-          <PrimaryButton
-            text={isFollow ? 'フォローを外す' : 'フォローする'}
-            onclick={orFollow}
-          />
-        </Flex>
+          </HStack>
+        </Box>
       )}
 
       <Stack>
         {userInfo && (
-          <Box>
+          <Box w={{ base: '80%', md: '65%' }} my="0" ml="auto" mr="auto">
             {userInfo.reviews.map((data: any, key: any) => {
               return (
                 <LogCard
@@ -168,7 +203,7 @@ const UserTopPage: WithGetAccessControl<VFC> = () => {
           </Box>
         )}
       </Stack>
-    </Box>
+      </Box>
   )
 }
 
