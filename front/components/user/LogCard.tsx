@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Box, Heading, Image, Text, HStack } from '@chakra-ui/react'
+import { Box, Heading, Image, Text, HStack, Avatar } from '@chakra-ui/react'
 
 function LogCard(props: any) {
   const { display_name, handle_name, icon, review } = props
@@ -13,7 +13,7 @@ function LogCard(props: any) {
         boxShadow="0px 2px 6px rgba(0, 0, 0, 0.3)"
       >
         <HStack mb={2}>
-          <Image
+          <Avatar
             borderRadius="full"
             boxSize="70px"
             objectFit="cover"

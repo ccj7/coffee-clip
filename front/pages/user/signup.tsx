@@ -35,7 +35,7 @@ const Signup: WithGetAccessControl<VFC> = () => {
           },
         }
       )
-      .then((res) => console.log(res))
+      .then(() => router.push('/user/timeline'))
       .catch((res) => console.log(res))
   }
 
@@ -46,7 +46,6 @@ const Signup: WithGetAccessControl<VFC> = () => {
         if (userCredential) {
           const user = userCredential.user
           userPost(data, user.uid)
-          router.push('/user/timeline')
         }
       })
       .catch((error: any) => {
