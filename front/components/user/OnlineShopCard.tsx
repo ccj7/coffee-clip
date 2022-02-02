@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { loadStripe } from '@stripe/stripe-js'
 
 import { Box, Heading, Text, Center, Button } from '@chakra-ui/react'
+import { ArrowRightIcon } from '@chakra-ui/icons'
 import PrimaryButton from '../Button'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
@@ -47,58 +48,77 @@ function OnlineShopCard(props: any) {
       m="40px"
       backgroundColor="#fcf7f0"
       border="0.2px"
-      borderRadius="24px"
       borderColor="gray.100"
-      textAlign="center"
       padding="24px"
       boxShadow="0px 2px 6px rgba(0, 0, 0, 0.3)"
       transition="0.3s"
-      _hover={{
-        transform: 'translate3d(1px, 3px, 1px)',
-        backgroundColor: 'rgba(252, 247, 240, 0.5)',
-      }}
     >
       <Box
-        borderRadius="10px"
-        backgroundColor="brand.color2"
+        borderBottom='3px solid'
+        borderColor='brand.color1'
         mb="20px"
-        color="brand.color6"
       >
         <Heading
-          size="md"
-          pt="16px"
+          size="sm"
+          p="10px 10px 4px 0px"
           mb="2px"
-          mx="2px"
-          _hover={{ textDecoration: 'underline' }}
         >
           {name}
         </Heading>
       </Box>
       <Center>
-        <Box mb="20px" borderRadius="5px">
+        <Box borderRadius="5px">
           <Image src={image} />
         </Box>
       </Center>
-      <Box mx="auto" borderRadius="5px" py="8px">
-        <Text fontSize="13px" fontWeight="bold">
+
+      <Box py="8px">
+        <Text fontSize="15px" mb='10px' fontWeight="bold">
           ¥ {price}
         </Text>
-        <Text fontSize="13px" fontWeight="bold">
+        <Text fontSize="13px">
           {concept}
         </Text>
+      </Box>
 
-        <form action="/api/stripe/checkout_sessions" method="POST">
-          <input
-            id="price_ID"
-            name="price_ID"
-            type="hidden"
-            value={price_ID}
-          ></input>
-          <section>
-            <Button type="submit">Checkout</Button>
-          </section>
-        </form>
-        <PrimaryButton text="販売店" onclick={goToShopTopPage} />
+      <Box>
+        <Box>
+          <form action="/api/stripe/checkout_sessions" method="POST">
+            <input
+              id="price_ID"
+              name="price_ID"
+              type="hidden"
+              value={price_ID}
+            ></input>
+            <section>
+              <Button
+                boxSize='40%'
+                py='6px'
+                backgroundColor="brand.color3"
+                color="brand.color6"
+                _hover={{ background: '#c58573' }}
+                mt={2}
+                type="submit">購入する</Button>
+            </section>
+          </form>
+        </Box>
+
+        <Box ml='60%'>
+          <Button 
+            onClick={goToShopTopPage}
+            fontSize='xs'
+            color="brand.color1"
+            backgroundColor="#fcf7f0"
+          >
+            <Text 
+              mr="5px"
+              _hover={{ borderBottom: "1px solid", borderColor: "brand.color2" }}
+            >
+                販売店を見る</Text> <ArrowRightIcon/>
+          </Button>
+          {/* <PrimaryButton text="販売店を見る" onclick={goToShopTopPage} /> */}
+        </Box>
+
       </Box>
     </Box>
   )
