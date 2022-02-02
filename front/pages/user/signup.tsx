@@ -84,10 +84,41 @@ const Signup: WithGetAccessControl<VFC> = () => {
           </Center>
           <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(onSubmit)}>
-              <InputForm theme="display_name" text="ユーザーネーム" />
-              <InputForm theme="handle_name" text="ユーザーID" />
-              <InputForm theme="email" text="メールアドレス" />
-              <InputForm theme="password" text="パスワード" />
+              <InputForm
+                theme="display_name"
+                text="ユーザーネーム"
+                validation={{
+                  required: true,
+                }}
+                errorMessage="必須項目です"
+              />
+              <InputForm
+                theme="handle_name"
+                text="ユーザーID"
+                validation={{
+                  required: true,
+                }}
+                errorMessage="必須項目です"
+              />
+              <InputForm
+                theme="email"
+                text="メールアドレス"
+                type="email"
+                validation={{
+                  required: true,
+                }}
+                errorMessage="必須項目です"
+              />
+              <InputForm
+                theme="password"
+                text="パスワード"
+                type="password"
+                validation={{
+                  required: true,
+                  minLength: 6,
+                }}
+                errorMessage="6文字以上入力してください"
+              />
               <ImageUpload size="sm" theme="icon" text="アイコン画像" />
               <Center mt="10px">
                 <Button
