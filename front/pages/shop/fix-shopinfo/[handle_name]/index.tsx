@@ -78,72 +78,72 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(onSubmit)}>
             <InputForm
-              thema="display_name"
+              theme="display_name"
               text="お店の名前"
               defaultValue={shopInfo.display_name}
             />
-            <ImageUpload size="sm" thema="icon" text="アイコン画像" />
+            <ImageUpload size="sm" theme="icon" text="アイコン画像" />
             <InputForm
-              thema="address"
+              theme="address"
               text="住所"
               defaultValue={shopInfo.address}
             />
             <InputForm
-              thema="map_url"
+              theme="map_url"
               text="googlemap URL"
               defaultValue={shopInfo.map_url}
             />
             <InputForm
-              thema="hp_url"
+              theme="hp_url"
               text="HP URL"
               defaultValue={shopInfo.hp_url}
             />
             <InputForm
-              thema="instagram_url"
+              theme="instagram_url"
               text="instagram URL"
               defaultValue={shopInfo.instagram_url}
             />
             <InputForm
-              thema="opening_hours"
+              theme="opening_hours"
               text="営業時間"
               defaultValue={shopInfo.opening_hours}
             />
             <InputForm
-              thema="regular_day_off"
+              theme="regular_day_off"
               text="定休日"
               defaultValue={shopInfo.regular_day_off}
             />
             <InputForm
-              thema="concept"
+              theme="concept"
               text="お店のプロフィール文"
               defaultValue={shopInfo.concept}
             />
             <InputForm
-              thema="recommendation.title"
+              theme="recommendation.title"
               text="おすすめのコーヒー 名前"
               defaultValue={shopInfo.recommendation.title}
             />
             <InputForm
-              thema="recommendation.description"
+              theme="recommendation.description"
               text="おすすめのコーヒー 紹介文"
               defaultValue={shopInfo.recommendation.description}
             />
 
             <ImageUpload
               size="sm"
-              thema="recommendation.image"
+              theme="recommendation.image"
               text="おすすめのコーヒー 写真"
             />
 
             <InputForm
-              thema="selling_point.text"
+              theme="selling_point.text"
               text="お店の魅力"
               defaultValue={shopInfo.selling_point.text}
             />
 
             <ImageUpload
               size="sm"
-              thema="selling_point.image"
+              theme="selling_point.image"
               text="お店の魅力　写真"
             />
             <RadioGroup onChange={setPublishState} value={publishState}>
