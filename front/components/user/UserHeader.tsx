@@ -27,9 +27,7 @@ import { getAuth, signOut } from 'firebase/auth'
 import firebase from '../../auth/firebaseConfig'
 
 import React from 'react'
-import { ssrEntries } from 'next/dist/build/webpack/plugins/middleware-plugin'
 import { useForm } from 'react-hook-form'
-import axios from 'axios'
 
 function UserHeader() {
   const router = useRouter()
@@ -81,7 +79,7 @@ function UserHeader() {
                   backgroundColor={'brand.color3'}
                   _hover={{backgroundColor: '#cc8756'}}
                   boxSize='93%'
-                  mr='21px'
+                  mr='22px'
                   icon={<SearchIcon />}
                 />
               </InputRightElement>
@@ -99,6 +97,10 @@ function UserHeader() {
 
             <BreadcrumbItem fontSize={{base:'12px', md:'16px'}}>
               <BreadcrumbLink href="/user/mypage">MyPage</BreadcrumbLink>
+            </BreadcrumbItem>
+
+            <BreadcrumbItem fontSize={{base:'12px', md:'16px'}}>
+              <BreadcrumbLink href="/user/onlineShop">OnlineShop</BreadcrumbLink>
             </BreadcrumbItem>
           </Breadcrumb>
 
