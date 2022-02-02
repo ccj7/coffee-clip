@@ -45,7 +45,7 @@ describe('Users Post Request Tests', () => {
 
         it('PUT /api/users/:authId/users/following', async () => {
             const addFollowee = {
-                handle_name: 'taro_yamada',
+                handle_name: 'ana',
             }
 
             await chai
@@ -59,10 +59,10 @@ describe('Users Post Request Tests', () => {
 
             const afterFollowee = await chai
                 .request(server)
-                .get('/api/users/OMEv4PkUyWXsDBtPYp15Da1ihjr2')
+                .get('/api/users/testAuthUserIdAna')
 
             expect(afterUser.body.followee_handle_names).to.include.members([
-                'taro_yamada',
+                'ana',
             ])
 
             expect(afterFollowee.body.follower_handle_names).to.include.members(
@@ -72,7 +72,7 @@ describe('Users Post Request Tests', () => {
 
         it('PUT /api/users/:authId/users/unfollowing', async () => {
             const removeFollowee = {
-                handle_name: 'bob',
+                handle_name: 'bob_brown',
             }
 
             await chai
@@ -88,10 +88,10 @@ describe('Users Post Request Tests', () => {
 
             const afterFollower = await chai
                 .request(server)
-                .get('/api/users/FTbxuYF3NggkwRjP4f6woEY7RKB2')
+                .get('/api/users/testAuthUserIdBob')
 
             expect(afterUser.body.followee_handle_names).to.not.have.members([
-                'bob',
+                'bob_brown',
             ])
 
             expect(
@@ -101,7 +101,7 @@ describe('Users Post Request Tests', () => {
 
         it('PUT /api/users/:authId/shops/following', async () => {
             const addFollowee = {
-                handle_name: 'amazing_coffee',
+                handle_name: 'toutor',
             }
 
             await chai
@@ -115,11 +115,11 @@ describe('Users Post Request Tests', () => {
 
             const afterFollower = await chai
                 .request(server)
-                .get('/api/shops/4E5Jby73IVRAypSDyV3IfFcQwXz5')
+                .get('/api/shops/testAuthShopIdToutor')
 
             expect(
                 afterUser.body.followee_shops_handle_names
-            ).to.include.members(['amazing_coffee'])
+            ).to.include.members(['toutor'])
 
             expect(afterFollower.body.follower_handle_name).to.include.members([
                 'kaori_hikita',
