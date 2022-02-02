@@ -36,8 +36,8 @@ routes.post('/checkout_sessions', async (req, res) => {
                 },
             ],
             mode: 'payment',
-            success_url: `${req.headers.origin}/?success=true`,
-            cancel_url: `${req.headers.origin}/?canceled=true`,
+            success_url: `${req.headers.origin}/user/payment-success?success=true`,
+            cancel_url: `${req.headers.origin}/user/onlineShop?canceled=true`,
         })
         res.redirect(303, session.url)
     } catch (err: any) {
