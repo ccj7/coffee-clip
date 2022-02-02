@@ -1,7 +1,7 @@
 import { useEffect, useState, VFC } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import axios from 'axios'
+import axios, { AxiosResponse, AxiosError } from 'axios'
 
 import { useAuthContext } from '../../../../auth/AuthContext'
 import { isLoggedIn } from '../../../../util'
@@ -19,30 +19,24 @@ const UserTopPage: WithGetAccessControl<VFC> = () => {
   const router = useRouter()
   const { handle_name } = router.query
 
-  const initial = {
-    auth_id: '',
-    handle_name: '',
-    display_name: '',
-    icon: '',
-    follower_handle_names: [''],
-    followee_handle_names: [''],
-    followee_shops_handle_names: [''],
-    reviews: [''],
-  }
-
   const [userInfo, setUserInfo] = useState<UserData | null>(null)
   const [isFollow, setIsFollow] = useState<boolean>(false)
 
   const getUser = async (handle: string | string[], authId: string) => {
-    const res: any = await axios.get(`/api/users/${authId}/${handle}`)
 
-    const myUser = await axios.get(`/api/users/${currentUser}`)
+    try {
+      const res: AxiosResponse = await axios.get(`/api/users/${authId}/${handle}`)
+      const myUser: AxiosResponse = await axios.get(`/api/users/${currentUser}`)
+  
+      if (myUser.data.handle_name === handle_name) {
+        router.replace('/user/mypage')
+      } else {
+        setUserInfo(res.data)
+        setIsFollow(res.data.is_following)
+      }
 
-    if (myUser.data.handle_name === handle_name) {
-      router.replace('/user/mypage')
-    } else {
-      setUserInfo(res.data)
-      setIsFollow(res.data.is_following)
+    } catch (error) {
+      console.error(error)
     }
   }
 
