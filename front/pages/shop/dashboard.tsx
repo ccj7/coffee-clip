@@ -1,7 +1,7 @@
 import { useEffect, useState, VFC } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 
 import { useAuthContext } from '../../auth/AuthContext'
 import { isLoggedIn } from '../../util'
@@ -9,6 +9,7 @@ import { isLoggedIn } from '../../util'
 import Header from '../../components/shop/Header'
 import Profile from '../../components/Profile'
 import PrimaryButton from '../../components/Button'
+import { shopInitialData } from '../../initial_data/shopInitialDdata'
 
 import { Spacer } from '@chakra-ui/react'
 
@@ -16,16 +17,17 @@ const DashBoard: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
 
   const router = useRouter()
-
-  const [shopInfo, setShopInfo] = useState<ShopData | any>(null)
-
-  //　user情報を取得
-  useEffect(() => {
-    const getShop = async (authId: string) => {
-      const res: any = await axios.get(`/api/shops/${authId}`)
-      setShopInfo(res.data)
+  const [shopInfo, setShopInfo] = useState<ShopData>(shopInitialData)
+  const getShop = async (authId: string) => {
+    try {
+      const res: AxiosResponse = await axios.get(`/api/shops/${authId}`)
+      setShopInfo(res.data)       
+    } catch (error) {
+      console.error(error)
     }
+  }
 
+  useEffect(() => {
     if (currentUser) {
       getShop(currentUser)
     }
