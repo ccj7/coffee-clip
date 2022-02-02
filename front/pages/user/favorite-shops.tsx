@@ -7,7 +7,7 @@ import { isLoggedIn } from '../../util'
 
 import ShopCard from '../../components/user/ShopCard'
 import UserHeader from '../../components/user/UserHeader'
-import { Box, Flex } from '@chakra-ui/react'
+import { Box, Center, Heading, SimpleGrid } from '@chakra-ui/react'
 
 const LikeShops: WithGetAccessControl<VFC> = (props) => {
   const { currentUser } = useAuthContext()
@@ -27,11 +27,16 @@ const LikeShops: WithGetAccessControl<VFC> = (props) => {
   return (
     <Box>
       <Head>
-        <title>お気に入りのshop</title>
-        <meta name="favorite shops" content="お気に入りのショップ一覧" />
+        <title>お気に入りショップ</title>
+        <meta name="favorite shops" content="お気に入りショップ" />
       </Head>
       <UserHeader />
-      <Flex>
+      <Center>
+        <Heading size='md' mt='50px' >お気に入りショップ</Heading>
+      </Center>
+
+      <Box w={{base:'80%', md:'65%'}} my='0' mx='auto'>
+        <SimpleGrid columns={{md:2}}>
         {shopsInfo &&
           shopsInfo.map((shop: PartOfShopData, key: any) => {
             return (
@@ -44,7 +49,8 @@ const LikeShops: WithGetAccessControl<VFC> = (props) => {
               />
             )
           })}
-      </Flex>
+        </SimpleGrid>  
+      </Box>
     </Box>
   )
 }
