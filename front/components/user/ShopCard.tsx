@@ -7,7 +7,7 @@ function ShopCard(props: any) {
   return (
     <Link href={{ pathname: `/user/shop-top-page/${handle_name}` }}>
       <Box 
-        w={{ base:'80%', md:'80%' }}
+        w='80%'
         h='auto'
         m='40px'
         backgroundColor='#fcf7f0'
@@ -29,7 +29,7 @@ function ShopCard(props: any) {
           <Text fontSize='14px' pb='16px'>@{handle_name}</Text>
         </Box>
           <Center>
-            <Image w='70%' mb='20px' borderRadius='5px' src={icon} />
+            <Image mb='20px' borderRadius='5px' src={icon} />
           </Center>
           <Box mx='auto' borderRadius='5px' py='8px'>
             <Text fontSize='13px' fontWeight='bold'>{concept}</Text>
