@@ -11,24 +11,16 @@ import UserHeader from '../../components/user/UserHeader'
 import LogCard from '../../components/user/LogCard'
 import PrimaryButton from '../../components/Button'
 import coffeeImg from '../../img/coffee.png'
+import { UserInitialDataForTimeline } from '../../initial_data/userInitialData'
 
 import { FiCoffee } from 'react-icons/fi'
 import { Box, Center, Heading, HStack, Spacer, Stack, Text, VStack } from '@chakra-ui/react'
 
-interface User {
-  auth_id: string
-  handle_name: string
-  display_name: string
-  icon: string
-  review: Review[]
-}
-
 const Timeline: WithGetAccessControl<VFC> = (props) => {
   const { currentUser } = useAuthContext()
   const router = useRouter()
-  const [userInfo, setUserInfo] = useState<User[]>()
+  const [userInfo, setUserInfo] = useState<UserDataForTimeline[]>([UserInitialDataForTimeline])
 
-  // TODO paramsからハンドルネームを取得
   useEffect(() => {
     const getUser = async (authId: string) => {
       const res: any = await axios.get(`/api/users/${authId}/followee/reviews`)
