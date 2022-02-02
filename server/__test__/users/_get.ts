@@ -31,8 +31,8 @@ describe('Users Get Request Tests', () => {
                 .get('/api/users/search')
                 .query({ keyword: 'ma' })
 
-            expect(res.body.users.length).to.equal(2)
-            expect(res.body.shops.length).to.equal(2)
+            expect(res.body.users.length).to.equal(1)
+            expect(res.body.shops.length).to.equal(0)
         })
 
         it('GET /api/users/search 2', async () => {
@@ -67,14 +67,9 @@ describe('Users Get Request Tests', () => {
                 .request(server)
                 .get('/api/users/h1ERSr4qUNUoviCQlzZ0648p1cA2/followee/reviews')
 
-            const handleName = usersData.users[0].handle_name
-            const reviewImage = usersData.users[0].reviews[0].image
-            const reviewDescription = usersData.users[0].reviews[0].description
-
-            expect(res.body.reviews[0].handle_name).to.equal(handleName)
-            expect(res.body.reviews[0].review.image).to.equal(reviewImage)
-            expect(res.body.reviews[0].review.description).to.equal(
-                reviewDescription
+            expect(res.body.reviews[0].handle_name).to.equal('bob_brown')
+            expect(res.body.reviews[0].review.coffee_name).to.equal(
+                'Arasuna Kiyosumiプレミアムコーヒー'
             )
         })
 
@@ -90,12 +85,12 @@ describe('Users Get Request Tests', () => {
         it('GET /api/users/:authId/:handleName', async () => {
             const res = await chai
                 .request(server)
-                .get('/api/users/h1ERSr4qUNUoviCQlzZ0648p1cA2/bob')
+                .get('/api/users/h1ERSr4qUNUoviCQlzZ0648p1cA2/bob_brown')
 
-            expect(res.body.handle_name).to.equal('bob')
+            expect(res.body.handle_name).to.equal('bob_brown')
             expect(res.body.follower_handle_names).to.deep.equal([
                 'kaori_hikita',
-                'alice',
+                'alice_white',
             ])
             expect(res.body.is_following).to.equal(true)
         })
