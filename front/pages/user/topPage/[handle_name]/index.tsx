@@ -1,7 +1,7 @@
 import { useEffect, useState, VFC } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
-import axios, { AxiosResponse, AxiosError } from 'axios'
+import axios, { AxiosResponse } from 'axios'
 
 import { useAuthContext } from '../../../../auth/AuthContext'
 import { isLoggedIn } from '../../../../util'
