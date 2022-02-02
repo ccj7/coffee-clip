@@ -15,8 +15,8 @@ const ShopTopPageOfShop: WithGetAccessControl<VFC> = () => {
   return (
     <div>
       <Head>
-        <title>shop Top Page</title>
-        <meta name="shopTopPage" content="shop Top Page" />
+        <title>店舗向けプレビュー</title>
+        <meta name="shopTopPage" content="店舗向けプレビュー" />
       </Head>
       <Header />
       <Box backgroundColor="brand.color1" >
