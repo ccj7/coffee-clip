@@ -1,16 +1,17 @@
-const express = require('express')
+import { Router } from 'express'
+import { Request, Response } from 'express'
 require('dotenv').config()
 
-const app = express()
+const routes = Router()
 
-app.use(express.static('public'))
+// app.use(express.static('public'))
 
 const YOUR_DOMAIN =
     'http://ec2-18-183-145-70.ap-northeast-1.compute.amazonaws.com/'
 
 const Stripe = require('stripe')(`${process.env.STRIPE_SECRET_KEY}`)
 
-app.post('/api/test', async (req, res) => {
+routes.post('/api/test', async (req: Request, res: Response) => {
     const account = await Stripe.accounts.create({ type: 'standard' })
 
     const accountLink = await Stripe.accountLinks.create({
@@ -23,7 +24,7 @@ app.post('/api/test', async (req, res) => {
     res.json(accountLink.url)
 })
 
-app.post('/api/checkout_sessions', async (req, res) => {
+routes.post('/checkout_sessions', async (req, res) => {
     try {
         // Create Checkout Sessions from body params.
         const session = await Stripe.checkout.sessions.create({
@@ -39,9 +40,9 @@ app.post('/api/checkout_sessions', async (req, res) => {
             cancel_url: `${req.headers.origin}/?canceled=true`,
         })
         res.redirect(303, session.url)
-    } catch (err) {
+    } catch (err: any) {
         res.status(err.statusCode || 500).json(err.message)
     }
 })
 
-app.listen(4242, () => console.log('Running on port 4242'))
+export default routes
