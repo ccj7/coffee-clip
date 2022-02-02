@@ -48,7 +48,7 @@ const Signup: WithGetAccessControl<VFC> = () => {
       .catch((error: any) => {
         const errorCode = error.code
         const errorMessage = error.message
-        if(errorCode === 'auth/email-already-in-use') {
+        if (errorCode === 'auth/email-already-in-use') {
           setMessage('そのアドレスはすでに登録されています')
         }
         console.log(errorCode, errorMessage)
@@ -58,47 +58,54 @@ const Signup: WithGetAccessControl<VFC> = () => {
     <Box
       background="#988d83"
       backgroundImage="linear-gradient(62deg, #988d83 0%, #f7dcae 100%)"
-      pb='135px'>
+      pb="135px"
+    >
       <Head>
         <title>Sign-Up</title>
         <meta name="Sign-Up" content="Shop サインアップ" />
       </Head>
       <Header />
-      <Box
-        w={{ base: '80%', md: '65%' }}
-        ml="auto" mr="auto">
+      <Box w={{ base: '80%', md: '65%' }} ml="auto" mr="auto">
         <Box
-          my={12} p={8} mt='70px'
-          borderRadius='16px'
-          backgroundColor='orange.50'
-          boxShadow='0px 2px 6px rgba(0, 0, 0, 0.3)'>
-          <Center h='50px' mb='25px'>
-            <HStack color='brand.color1'>
-              <FiCoffee /> 
-              <Heading as='h2' size='md'>Welcome to COFFEE CLIP</Heading>
+          my={12}
+          p={8}
+          mt="70px"
+          borderRadius="16px"
+          backgroundColor="orange.50"
+          boxShadow="0px 2px 6px rgba(0, 0, 0, 0.3)"
+        >
+          <Center h="50px" mb="25px">
+            <HStack color="brand.color1">
+              <FiCoffee />
+              <Heading as="h2" size="md">
+                Welcome to COFFEE CLIP
+              </Heading>
             </HStack>
           </Center>
-          { message && <Message message={message} /> }
+          {message && <Message message={message} />}
           <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(onSubmit)}>
-              <InputForm thema="display_name" text="店舗名" />
-              <InputForm thema="handle_name" text="店舗のID名" />
-              <InputForm thema="email" text="メールアドレス" />
-              <InputForm thema="password" text="パスワード" />
-              <Center mt='10px'>
+              <InputForm theme="display_name" text="店舗名" />
+              <InputForm theme="handle_name" text="店舗のID名" />
+              <InputForm theme="email" text="メールアドレス" />
+              <InputForm theme="password" text="パスワード" />
+              <Center mt="10px">
                 <Button
-                  backgroundColor='brand.color2'
-                  color='white'
-                  _hover={{background: '#c58573'}}
+                  backgroundColor="brand.color2"
+                  color="white"
+                  _hover={{ background: '#c58573' }}
                   mt={4}
-                  type="submit">
+                  type="submit"
+                >
                   店舗アカウントを作成
                 </Button>
               </Center>
             </form>
           </FormProvider>
-          <Center mt='30px' fontSize='sm'>
-            <Link href='/shop/signin'>COFFEE CLIPの店舗アカウントをお持ちですか？ログインはこちら</Link>
+          <Center mt="30px" fontSize="sm">
+            <Link href="/shop/signin">
+              COFFEE CLIPの店舗アカウントをお持ちですか？ログインはこちら
+            </Link>
           </Center>
         </Box>
       </Box>

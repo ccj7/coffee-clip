@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react'
 import { useForm, useFormContext } from 'react-hook-form'
 
 function InputForm(props: any) {
-  const { thema, text, defaultValue } = props
+  const { theme, text, defaultValue } = props
 
   const methods = useFormContext()
   const {
@@ -18,24 +18,26 @@ function InputForm(props: any) {
   } = useFormContext()
 
   useEffect(() => {
-    setValue(thema, defaultValue)
+    setValue(theme, defaultValue)
   }, [defaultValue])
 
   return (
     <>
-      <FormControl isInvalid={errors[thema]}>
-        <FormLabel fontSize='sm' htmlFor={thema}>{text}</FormLabel>
+      <FormControl isInvalid={errors[theme]}>
+        <FormLabel fontSize="sm" htmlFor={theme}>
+          {text}
+        </FormLabel>
         <Input
-          mb='25px'
-          bg='#FCFAF8'
-          borderColor='brand.color6'
-          id={thema}
-          {...methods.register(thema, {
+          mb="25px"
+          bg="#FCFAF8"
+          borderColor="brand.color6"
+          id={theme}
+          {...methods.register(theme, {
             // required: true,
           })}
         />
         <FormErrorMessage>
-          {errors[thema] && 'This is required'}
+          {errors[theme] && 'This is required'}
         </FormErrorMessage>
       </FormControl>
     </>
