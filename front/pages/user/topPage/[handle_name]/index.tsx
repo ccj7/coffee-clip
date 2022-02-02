@@ -134,19 +134,6 @@ const UserTopPage: WithGetAccessControl<VFC> = () => {
             icon={userInfo.icon}
           />
 
-          {/* <HStack w={{ base: '300px', md: '350px' }}>
-          {isFollow &&
-           <Box 
-             w={{ base: '90px', md: '100px' }} 
-             mx="auto"
-             mt="-20px"
-             mb="20px"
-             borderRadius='20px'
-             backgroundColor='brand.color5'
-             color='brand.color6'>
-             <Text fontSize={'sm'} textAlign='center'>フォロー中</Text>
-           </Box>
-          } */}
            {userInfo && (
            <Box
               w={{ base: '300px', md: '350px' }} 
@@ -161,7 +148,6 @@ const UserTopPage: WithGetAccessControl<VFC> = () => {
             </Center>
           </Box>
           )}
-          {/* </HStack> */}
 
           <HStack
             w={{ base: '320px', md: '350px' }}
