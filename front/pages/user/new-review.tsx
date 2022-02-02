@@ -56,12 +56,7 @@ const NewReview: WithGetAccessControl<VFC> = () => {
               text="飲んだコーヒー"
               defaultValue=""
             />
-            <ImageUpload
-              // TODO theme textを修正
-              theme="image"
-              text="画像"
-              size={'500px'}
-            />
+            <ImageUpload theme="image" text="画像" size={'500px'} />
             <InputForm
               theme="description"
               text="感想やおすすめポイント"
