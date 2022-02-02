@@ -5,8 +5,6 @@ import arasuna_001 from '../../img/arasuna_001.jpg'
 import moon_bucks_001 from '../../img/moon_bucks_001.jpg'
 import fourth_coffee_001 from '../../img/4th_coffee_001.jpg'
 
-import axios from 'axios'
-
 import { isLoggedIn } from '../../util'
 
 import OnlineShopCard from '../../components/user/OnlineShopCard'
@@ -71,13 +69,14 @@ const onlineShop: WithGetAccessControl<VFC> = (props) => {
         <meta name="onlineShop" content="オンラインショップ" />
       </Head>
       <UserHeader />
+
       <Center>
         <Heading size="md" mt="50px">
           オンラインショップ
         </Heading>
       </Center>
-      <Center>
-        <Text>
+      <Center w={{base:'80%', md:'65%'}} mx='auto' my='0'>
+        <Text mt='14px' fontSize={'sm'}>
           このオンラインショップでは、COFFEE CLIPが厳選した豆を販売しています
         </Text>
       </Center>
