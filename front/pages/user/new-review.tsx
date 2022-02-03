@@ -11,12 +11,16 @@ import ImageUpload from '../../components/ImageUpload'
 import Message from '../../components/Message'
 import TextArea from '../../components/TextArea'
 import { useForm, FormProvider } from 'react-hook-form'
-import { Heading, Box, Button } from '@chakra-ui/react'
+import { Heading, Box, Button, Center, Spacer } from '@chakra-ui/react'
+import PrimaryButton from '../../components/Button'
+import { useRouter } from 'next/router'
 
 const NewReview: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
 
   const methods = useForm()
+  const router = useRouter()
+
   const [message, setMessage] = useState<string>()
 
   const postUser = async (userNewReview: Review, authId: string) => {
@@ -28,7 +32,7 @@ const NewReview: WithGetAccessControl<VFC> = () => {
       })
       .then((res) => {
         if (res.status === 200) {
-          setMessage('保存しました')
+          setMessage('投稿しました')
         }
       })
   }
@@ -40,6 +44,7 @@ const NewReview: WithGetAccessControl<VFC> = () => {
   }
 
   return (
+    <>
     <Box>
       <Head>
         <title>新規投稿</title>
@@ -50,6 +55,9 @@ const NewReview: WithGetAccessControl<VFC> = () => {
         <Heading size="md" m={'16px'}>
           新規投稿
         </Heading>
+        
+           {!message && (
+            <>
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(onSubmit)}>
             <InputForm
@@ -73,9 +81,23 @@ const NewReview: WithGetAccessControl<VFC> = () => {
             </Box>
           </form>
         </FormProvider>
-        {message && <Message message={message} />}
-      </Box>
-    </Box>
+             </>
+          )}
+        {message && (
+            <>
+              <Message message={message} />
+              <Center>
+                <PrimaryButton
+                  text="timelineに戻る"
+                  onclick={() => {
+                    router.push('/user/timeline')
+                  }}
+                />
+              </Center>
+            </>
+          )}
+        </Box>
+    </>
   )
 }
 
