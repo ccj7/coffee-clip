@@ -8,20 +8,15 @@ import { isLoggedIn } from '../../util'
 import UserHeader from '../../components/user/UserHeader'
 import InputForm from '../../components/InputForm'
 import ImageUpload from '../../components/ImageUpload'
-import Message from '../../components/Message'
 import TextArea from '../../components/TextArea'
 import { useForm, FormProvider } from 'react-hook-form'
-import { Heading, Box, Button, Center, Spacer } from '@chakra-ui/react'
-import PrimaryButton from '../../components/Button'
-import { useRouter } from 'next/router'
+import { Heading, Box, Button, Center } from '@chakra-ui/react'
 import BoxMessage from '../../components/BoxMessage'
 
 const NewReview: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
 
   const methods = useForm()
-  const router = useRouter()
-
   const [message, setMessage] = useState<string>()
 
   const postUser = async (userNewReview: Review, authId: string) => {
