@@ -1,4 +1,4 @@
-import { VFC } from 'react'
+import { useState, VFC } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useForm, FormProvider } from 'react-hook-form'
@@ -10,11 +10,15 @@ import { isLoggedIn } from '../../util'
 
 import Header from '../../components/Header'
 import InputForm from '../../components/InputForm'
+import Alert from '../../components/Alert'
 
 import { Box, Button, Heading, Center, HStack, Link } from '@chakra-ui/react'
 import { FiCoffee } from 'react-icons/fi'
 
 const Signin: WithGetAccessControl<VFC> = () => {
+  const [alert, setAlert] = useState<boolean>(false)
+  const [message, setMessage] = useState<string>('')
+
   const methods = useForm()
   const router = useRouter()
 
@@ -27,9 +31,20 @@ const Signin: WithGetAccessControl<VFC> = () => {
       })
       .catch((error: any) => {
         const errorCode = error.code
-        const errorMessage = error.message
-        console.log(errorCode, errorMessage)
-        router.push('/index')
+        console.log(errorCode)
+        if (
+          String(errorCode) === 'auth/user-not-found' ||
+          String(errorCode) === 'auth/wrong-password'
+        ) {
+          setAlert(true)
+          setMessage(
+            'ご入力いただいたメールアドレスまたはパスワードは間違っています'
+          )
+        }
+        if (String(errorCode) === 'auth/too-many-requests') {
+          setAlert(true)
+          setMessage('しばらくしてからログインしてください')
+        }
       })
   }
   return (
@@ -43,6 +58,8 @@ const Signin: WithGetAccessControl<VFC> = () => {
         <meta name="Sign-In" content="ユーザーサインイン" />
       </Head>
       <Header />
+      <Alert alert={alert} setAlert={setAlert} message={message} />
+
       <Box w={{ base: '80%', md: '65%' }} ml="auto" mr="auto">
         <Box
           my={12}
