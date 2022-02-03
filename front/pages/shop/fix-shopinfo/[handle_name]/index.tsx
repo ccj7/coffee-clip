@@ -74,8 +74,7 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
   return (
     <Box>
       <Head>
-        <title>shop Top Page</title>
-        <meta name="shopTopPage" content="shop Top Page" />
+        <title>店舗ページ 編集</title>
       </Head>
       <Header />
       <Box w={{ base: '80%', md: '65%' }} my="0" mx="auto" mb="50px">
