@@ -11,6 +11,7 @@ import { useRouter } from 'next/router'
 import ImageUpload from '../../../../components/ImageUpload'
 import Message from '../../../../components/Message'
 import TextArea from '../../../../components/TextArea'
+import PrimaryButton from '../../../../components/Button'
 
 import {
   Box,
@@ -22,7 +23,6 @@ import {
   Center,
   Heading
 } from '@chakra-ui/react'
-import PrimaryButton from '../../../../components/Button'
 
 const FixShopInfo: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
@@ -169,12 +169,17 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
             </RadioGroup>
             <Center mt="40px">
               <Button
-                mt={4} type="submit"
+                type="submit" mr="15px" 
                 backgroundColor="brand.color4"
                 _hover={{ backgroundColor: '#b8b1aa' }}
                 color="white"
               >
                 保存
+              </Button>
+              <Button onClick={() => {
+                router.push("/shop/dashboard")
+              }} >
+                キャンセル
               </Button>
             </Center>
           </form>
