@@ -58,5 +58,16 @@ describe('Shop Get Request Tests', () => {
             expect(res.body.handle_name).to.equal('arasuna')
             expect(res.body.is_following).to.be.true
         })
+
+        it('GET /api/shops/handle/:handleName', async () => {
+            const res1 = await chai
+                .request(server)
+                .get('/api/shops/handle/arasuna')
+
+            const res2 = await chai.request(server).get('/api/users/handle/foo')
+
+            expect(res1.body).to.be.true
+            expect(res2.body).to.be.false
+        })
     })
 })
