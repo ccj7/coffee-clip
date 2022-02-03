@@ -1,4 +1,4 @@
-import { useState, VFC } from 'react'
+import { useRef, useState, VFC } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useForm, FormProvider } from 'react-hook-form'
@@ -15,15 +15,24 @@ import Alert from '../../components/Alert'
 
 import { Box, Button, Heading, Center, HStack, Link } from '@chakra-ui/react'
 import { FiCoffee } from 'react-icons/fi'
+import { async } from '@firebase/util'
 
 const Signup: WithGetAccessControl<VFC> = () => {
   const [alert, setAlert] = useState<boolean>(false)
   const [message, setMessage] = useState<string>('')
 
+  const alertRef = useRef(false)
+
   const methods = useForm()
   const router = useRouter()
 
-  function userPost(data: UserSignUpInfo, uid: string) {
+  const checkHandleName = async (handleName: string) => {
+    const res = await axios.get(`/api/users/handle/${handleName}`)
+
+    return res.data
+  }
+
+  const userPost = (data: UserSignUpInfo, uid: string) => {
     axios
       .post(
         '/api/users',
@@ -44,19 +53,29 @@ const Signup: WithGetAccessControl<VFC> = () => {
   }
 
   const onSubmit = async (data: any) => {
-    const auth = getAuth(firebase)
-    createUserWithEmailAndPassword(auth, data.email, data.password)
-      .then((userCredential) => {
-        if (userCredential) {
-          const user = userCredential.user
-          userPost(data, user.uid)
-        }
-      })
-      .catch((error: any) => {
-        const errorCode = error.code
-        const errorMessage = error.message
-        console.log(errorCode, errorMessage)
-      })
+    if (await checkHandleName(data.handle_name)) {
+      setAlert(true)
+      setMessage('ご記入いただいたユーザーIDは既に使用されています')
+    }
+    if (!(await checkHandleName(data.handle_name))) {
+      const auth = getAuth(firebase)
+      createUserWithEmailAndPassword(auth, data.email, data.password)
+        .then((userCredential) => {
+          if (userCredential) {
+            const user = userCredential.user
+            userPost(data, user.uid)
+          }
+        })
+        .catch((error: any) => {
+          const errorCode = error.code
+          const errorMessage = error.message
+          console.log('🌸', errorCode)
+          if (String(errorCode) === 'auth/email-already-in-use') {
+            setAlert(true)
+            setMessage('ご記入いただいたメールアドレスは既に使用されています')
+          }
+        })
+    }
   }
   return (
     <Box
@@ -69,6 +88,8 @@ const Signup: WithGetAccessControl<VFC> = () => {
         <meta name="Sign-Up" content="ユーザー サインアップ" />
       </Head>
       <Header />
+      <Alert alert={alert} setAlert={setAlert} message={message} />
+
       <Box w={{ base: '80%', md: '65%' }} ml="auto" mr="auto">
         <Box
           my={12}
@@ -145,7 +166,6 @@ const Signup: WithGetAccessControl<VFC> = () => {
           </Center>
         </Box>
       </Box>
-      <Alert alert={true} message={message} />
     </Box>
   )
 }

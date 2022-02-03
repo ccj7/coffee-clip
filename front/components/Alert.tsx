@@ -12,7 +12,7 @@ import {
 import { useEffect, useRef } from 'react'
 
 function Alert(props: any) {
-  const { alert, message } = props
+  const { alert, setAlert, message } = props
 
   const { isOpen, onOpen, onClose } = useDisclosure()
   const cancelRef = useRef(null)
@@ -21,7 +21,10 @@ function Alert(props: any) {
     if (alert) {
       onOpen()
     }
-  }, [])
+    if (!isOpen) {
+      setAlert(false)
+    }
+  }, [alert])
 
   return (
     <>
