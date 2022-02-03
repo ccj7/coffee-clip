@@ -20,7 +20,7 @@ const onlineShop: WithGetAccessControl<VFC> = (props) => {
       handle_name: 'cafe_sweet',
       name: 'コロンビア',
       price: '1,100',
-      price_id: 'price_1KOcaMCy4RvxOO5U34poYyvy',
+      price_ID: 'price_1KOcaMCy4RvxOO5U34poYyvy',
       image: cafe_sweet_001,
       concept: '酸味と甘味が重厚だが突出せずバランスが良い。',
     },
