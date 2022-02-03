@@ -143,7 +143,7 @@ const Signup: WithGetAccessControl<VFC> = () => {
                 }}
                 errorMessage="必須項目です・6文字以上のの半角英数記号(_と-)で入力してください"
               />
-              <ImageUpload size="sm" theme="icon" text="アイコン画像" />
+              <ImageUpload theme="icon" text="アイコン画像" />
               <Center mt="10px">
                 <Button
                   backgroundColor="brand.color2"
