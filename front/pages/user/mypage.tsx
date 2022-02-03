@@ -1,6 +1,7 @@
 import { VFC, useEffect, useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import axios from 'axios'
 
 import { useAuthContext } from '../../auth/AuthContext'
@@ -9,11 +10,14 @@ import { isLoggedIn } from '../../util'
 import UserHeader from '../../components/user/UserHeader'
 import Profile from '../../components/Profile'
 import LogCard from '../../components/user/LogCard'
+// import MyLogCard from '../../components/user/MyLogCard'
+import PrimaryButton from '../../components/Button'
 
-import { Box, Text, Spacer, Stack, HStack } from '@chakra-ui/react'
+import { Box, Text, Spacer, Stack, HStack, Flex } from '@chakra-ui/react'
 
 const Mypage: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
+  const router = useRouter()
 
   // ユーザー情報
   const [userInfo, setUserInfo] = useState<UserData | null>(null)
@@ -45,11 +49,11 @@ const Mypage: WithGetAccessControl<VFC> = () => {
       {userInfo && (
         <Box
           w="100%"
-          h="500px"
+          h="520px"
           background="#988d83"
           backgroundImage="linear-gradient(62deg, #988d83 0%, #f7dcae 100%)"
           borderBottomRadius="46px"
-          mb="-120px"
+          mb="-140px"
           pt="20px"
         >
           <Profile
@@ -89,7 +93,7 @@ const Mypage: WithGetAccessControl<VFC> = () => {
                 <Text ml="40%" fontSize="20px" fontWeight="bold">
                   {userInfo.followee_shops_handle_names.length}
                 </Text>
-                <Text fontSize={{ base: '8px', md: '12px' }} as="ins">
+                <Text fontSize={{ base: '8px', md: '12px' }}>
                   お気に入りShop
                 </Text>
               </Box>
@@ -98,12 +102,28 @@ const Mypage: WithGetAccessControl<VFC> = () => {
         </Box>
       )}
 
+      <Box 
+        w={{ base: '80%', md: '65%' }}
+        my="0" 
+        mx="auto"
+      >
+        <Box mb='-20px' mt="20px" textAlign='right'>
+        <PrimaryButton
+            text={'新しい投稿をする'}
+            onclick={() => {
+              router.push('/user/new-review')
+            }}
+        />
+        </Box>
+      </Box>
+
       <Stack>
         {userInfo && (
           <Box w={{ base: '80%', md: '65%' }} my="0" ml="auto" mr="auto">
             {userInfo.reviews.map((data: any, key: any) => {
               return (
                 <LogCard
+                // <MyLogCard
                   key={key}
                   display_name={userInfo.display_name}
                   handle_name={userInfo.handle_name}
