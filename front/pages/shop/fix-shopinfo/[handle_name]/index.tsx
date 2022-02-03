@@ -23,6 +23,7 @@ import {
   Center,
   Heading
 } from '@chakra-ui/react'
+import BoxMessage from '../../../../components/BoxMessage'
 
 const FixShopInfo: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
@@ -186,14 +187,7 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
         </FormProvider>
       )}
       {message && (
-        <Center>
-          <Stack>
-            <Message message={message} />
-            <PrimaryButton text="ダッシュボードに戻る" onclick={() => {
-              router.push("/shop/dashboard")
-            }} />
-          </Stack>
-        </Center>
+        <BoxMessage heading={message} buttonLabel="ダッシュボードに戻る" path="/shop/dashboard" />
       )}
       </Box>
     </Box>

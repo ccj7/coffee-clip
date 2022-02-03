@@ -14,6 +14,7 @@ import { useForm, FormProvider } from 'react-hook-form'
 import { Heading, Box, Button, Center, Spacer } from '@chakra-ui/react'
 import PrimaryButton from '../../components/Button'
 import { useRouter } from 'next/router'
+import BoxMessage from '../../components/BoxMessage'
 
 const NewReview: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
@@ -84,17 +85,7 @@ const NewReview: WithGetAccessControl<VFC> = () => {
             </>
           )}
           {message && (
-            <>
-              <Message message={message} />
-              <Center>
-                <PrimaryButton
-                  text="timelineに戻る"
-                  onclick={() => {
-                    router.push('/user/timeline')
-                  }}
-                />
-              </Center>
-            </>
+            <BoxMessage heading={message} buttonLabel="Time Lineに戻る" path="/user/timeline" />
           )}
         </Box>
       </Box>
