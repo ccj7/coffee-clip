@@ -45,45 +45,45 @@ const NewReview: WithGetAccessControl<VFC> = () => {
 
   return (
     <>
-    <Box>
-      <Head>
-        <title>新規投稿</title>
-        <meta name="NewReview" content="プロフィール編集" />
-      </Head>
-      <UserHeader />
-      <Box w={{ base: '80%', md: '65%' }} my="0" mx="auto">
-        <Heading size="md" m={'16px'}>
-          新規投稿
-        </Heading>
-        
-           {!message && (
+      <Box>
+        <Head>
+          <title>新規投稿</title>
+          <meta name="NewReview" content="プロフィール編集" />
+        </Head>
+        <UserHeader />
+        <Box w={{ base: '80%', md: '65%' }} my="0" mx="auto">
+          <Heading size="md" m={'16px'}>
+            新規投稿
+          </Heading>
+
+          {!message && (
             <>
-        <FormProvider {...methods}>
-          <form onSubmit={methods.handleSubmit(onSubmit)}>
-            <InputForm
-              theme="coffee_name"
-              text="飲んだコーヒー"
-              defaultValue=""
-            />
-            <ImageUpload theme="image" text="画像" size={'500px'} />
-            <TextArea 
-              theme="description"
-              text="感想やおすすめポイント"
-              validation={{
-                required: true,
-              }}
-              errorMessage="必須項目です"
-            />
-            <Box>
-              <Button mt={4} type="submit">
-                投稿
-              </Button>
-            </Box>
-          </form>
-        </FormProvider>
-             </>
+              <FormProvider {...methods}>
+                <form onSubmit={methods.handleSubmit(onSubmit)}>
+                  <InputForm
+                    theme="coffee_name"
+                    text="飲んだコーヒー"
+                    defaultValue=""
+                  />
+                  <ImageUpload theme="image" text="画像" size={'500px'} />
+                  <TextArea
+                    theme="description"
+                    text="感想やおすすめポイント"
+                    validation={{
+                      required: true,
+                    }}
+                    errorMessage="必須項目です"
+                  />
+                  <Box>
+                    <Button mt={4} type="submit">
+                      投稿
+                    </Button>
+                  </Box>
+                </form>
+              </FormProvider>
+            </>
           )}
-        {message && (
+          {message && (
             <>
               <Message message={message} />
               <Center>
@@ -97,6 +97,7 @@ const NewReview: WithGetAccessControl<VFC> = () => {
             </>
           )}
         </Box>
+      </Box>
     </>
   )
 }
