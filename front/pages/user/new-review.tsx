@@ -10,12 +10,16 @@ import InputForm from '../../components/InputForm'
 import ImageUpload from '../../components/ImageUpload'
 import Message from '../../components/Message'
 import { useForm, FormProvider } from 'react-hook-form'
-import { Heading, Box, Button } from '@chakra-ui/react'
+import { Heading, Box, Button, Center, Spacer } from '@chakra-ui/react'
+import PrimaryButton from '../../components/Button'
+import { useRouter } from 'next/router'
 
 const NewReview: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
 
   const methods = useForm()
+  const router = useRouter()
+
   const [message, setMessage] = useState<string>()
 
   const postUser = async (userNewReview: Review, authId: string) => {
@@ -39,39 +43,60 @@ const NewReview: WithGetAccessControl<VFC> = () => {
   }
 
   return (
-    <Box>
-      <Head>
-        <title>新規投稿</title>
-        <meta name="NewReview" content="プロフィール編集" />
-      </Head>
-      <UserHeader />
-      <Box w={{ base: '80%', md: '65%' }} my="0" mx="auto">
-        <Heading size="md" m={'16px'}>
-          新規投稿
-        </Heading>
-        <FormProvider {...methods}>
-          <form onSubmit={methods.handleSubmit(onSubmit)}>
-            <InputForm
-              theme="coffee_name"
-              text="飲んだコーヒー"
-              defaultValue=""
-            />
-            <ImageUpload theme="image" text="画像" size={'500px'} />
-            <InputForm
-              theme="description"
-              text="感想やおすすめポイント"
-              defaultValue=""
-            />
-            <Box>
-              <Button mt={4} type="submit">
-                投稿
-              </Button>
-            </Box>
-          </form>
-        </FormProvider>
-        {message && <Message message={message} />}
+    <>
+      <Box>
+        <Head>
+          <title>新規投稿</title>
+          <meta name="NewReview" content="プロフィール編集" />
+        </Head>
+        <UserHeader />
+        <Box w={{ base: '80%', md: '65%' }} my="0" mx="auto">
+          <Center>
+            <Heading size="md" m={'16px'}>
+              新規投稿
+            </Heading>
+          </Center>
+          {!message && (
+            <>
+              <FormProvider {...methods}>
+                <form onSubmit={methods.handleSubmit(onSubmit)}>
+                  <InputForm
+                    theme="coffee_name"
+                    text="飲んだコーヒー"
+                    defaultValue=""
+                  />
+                  <ImageUpload theme="image" text="画像" size={'500px'} />
+                  <InputForm
+                    theme="description"
+                    text="感想やおすすめポイント"
+                    defaultValue=""
+                  />
+                  <Box>
+                    <Button mt={4} type="submit">
+                      投稿
+                    </Button>
+                  </Box>
+                </form>
+              </FormProvider>
+            </>
+          )}
+
+          {message && (
+            <>
+              <Message message={message} />
+              <Center>
+                <PrimaryButton
+                  text="timelineに戻る"
+                  onclick={() => {
+                    router.push('/user/timeline')
+                  }}
+                />
+              </Center>
+            </>
+          )}
+        </Box>
       </Box>
-    </Box>
+    </>
   )
 }
 
