@@ -11,7 +11,7 @@ import Profile from '../../components/Profile'
 import PrimaryButton from '../../components/Button'
 import { shopInitialData } from '../../initial_data/shopInitialDdata'
 
-import { Spacer } from '@chakra-ui/react'
+import { Spacer, Box, HStack, Stack, Center } from '@chakra-ui/react'
 
 const DashBoard: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
@@ -34,9 +34,9 @@ const DashBoard: WithGetAccessControl<VFC> = () => {
   }, [currentUser])
 
   return (
-    <>
+    <Box>
       <Head>
-        <title>Dashboard</title>
+        <title>ダッシュボード</title>
         <meta name="dashboard" content="ダッシュボード" />
       </Head>
       <Header />
@@ -47,18 +47,24 @@ const DashBoard: WithGetAccessControl<VFC> = () => {
           icon={shopInfo.icon}
         />
       )}
-      <PrimaryButton
-        text="編集"
-        onclick={() =>
-          router.push(`/shop/fix-shopinfo/${shopInfo.handle_name}`)
-        }
-      />
-      <Spacer></Spacer>
-      <PrimaryButton
-        text="店舗ページを確認"
-        onclick={() => router.push(`/shop/top-page/${shopInfo.handle_name}`)}
-      />
-    </>
+      <HStack w={{base:'70%', md:'40%'}} my='0' mx='auto'>
+        <Box>
+          <PrimaryButton
+            text="ページを編集"
+            onclick={() =>
+              router.push(`/shop/fix-shopinfo/${shopInfo.handle_name}`)
+            }
+          />
+        </Box>
+        <Spacer />
+        <Box>
+          <PrimaryButton
+            text="ページを確認"
+            onclick={() => router.push(`/shop/top-page/${shopInfo.handle_name}`)}
+          />
+        </Box>
+      </HStack>
+    </Box>
   )
 }
 
