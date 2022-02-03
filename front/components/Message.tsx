@@ -1,4 +1,4 @@
-import { Box, Text } from '@chakra-ui/react'
+import { Center, Text } from '@chakra-ui/react'
 
 interface Message {
   message: String
@@ -7,9 +7,9 @@ interface Message {
 function Message(props: Message) {
   const { message } = props
   return (
-    <Box borderRadius="sm" background="#423b36" boxShadow="md">
-      <Text fontSize='2xl' color='#fff'>{message}</Text>
-    </Box>
+    <Center mt="20px" mb="15px">
+      <Text fontSize='2xl'>{message}</Text>
+    </Center>
   )
 }
 
