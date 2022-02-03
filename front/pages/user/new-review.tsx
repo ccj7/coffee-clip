@@ -63,7 +63,7 @@ const NewReview: WithGetAccessControl<VFC> = () => {
                     text="飲んだコーヒー"
                     defaultValue=""
                   />
-                  <ImageUpload theme="image" text="画像" size={'500px'} />
+                  <ImageUpload theme="image" text="画像" />
                   <TextArea
                     theme="description"
                     text="感想やおすすめポイント"
@@ -89,7 +89,11 @@ const NewReview: WithGetAccessControl<VFC> = () => {
             </>
           )}
           {message && (
-            <BoxMessage heading={message} buttonLabel="Time Lineに戻る" path="/user/timeline" />
+            <BoxMessage
+              heading={message}
+              buttonLabel="Time Lineに戻る"
+              path="/user/timeline"
+            />
           )}
         </Box>
       </Box>
