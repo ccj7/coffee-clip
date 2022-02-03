@@ -32,6 +32,24 @@ export const getShop = async (req: Request, res: Response) => {
     }
 }
 
+export const getShopHandleNameCheck = async (
+    req: Request,
+    res: Response
+): Promise<void> => {
+    try {
+        const handleName: String = req.params.handleName
+        const shop = await ShopsDataModel.findOne({ handle_name: handleName })
+
+        if (!shop) {
+            res.status(200).send(false)
+        } else {
+            res.status(400).send(true)
+        }
+    } catch (err) {
+        res.status(400).send(err)
+    }
+}
+
 export const getShopFromUser = async (req: Request, res: Response) => {
     try {
         const authId: string = req.params.authId
