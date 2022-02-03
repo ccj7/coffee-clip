@@ -68,6 +68,24 @@ export const search = async (req: Request, res: Response): Promise<void> => {
     }
 }
 
+export const getUserHandleNameCheck = async (
+    req: Request,
+    res: Response
+): Promise<void> => {
+    try {
+        const handleName: String = req.params.handleName
+        const user = await userModel.findOne({ handle_name: handleName })
+
+        if (!user) {
+            res.status(200).send(false)
+        } else {
+            res.status(400).send(true)
+        }
+    } catch (err) {
+        res.status(400).send(err)
+    }
+}
+
 export const getOtherUser = async (
     req: Request,
     res: Response

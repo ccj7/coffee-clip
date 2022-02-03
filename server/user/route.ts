@@ -2,6 +2,7 @@ import { Router } from 'express'
 import {
     getUsers,
     search,
+    getUserHandleNameCheck,
     getOtherUser,
     getUser,
     getFolloweeReviews,
@@ -22,6 +23,7 @@ const routes = Router()
 
 routes.get('/', getUsers)
 routes.get('/search', search)
+routes.get('/handle/:handleName', getUserHandleNameCheck)
 routes.get('/:authId', getUser)
 routes.get('/:authId/followee/reviews', getFolloweeReviews)
 routes.get('/:authId/followee/shops', getFolloweeShops)
