@@ -12,7 +12,6 @@ import {
 } from '@chakra-ui/react'
 import { useFormContext } from 'react-hook-form'
 import { FiFile } from 'react-icons/fi'
-import { async } from '@firebase/util'
 
 function ImageUpload(props: any) {
   const { size, theme, text } = props
@@ -46,7 +45,6 @@ function ImageUpload(props: any) {
 
   // アップされた画像データをimageにセット
   const handleChangeImage = (files: any) => {
-    console.log(files)
     if (files) {
       encodeToBase64(files[0])
     }
@@ -54,12 +52,10 @@ function ImageUpload(props: any) {
 
   // base64を生成する関数
   const encodeToBase64 = async (file: any) => {
-    console.log(file)
     const reader = new FileReader()
     reader.readAsDataURL(file)
     reader.onload = () => {
       const base64 = reader.result as string
-      console.log(base64)
       setImage(base64)
       setValue(theme, base64)
     }
@@ -70,13 +66,13 @@ function ImageUpload(props: any) {
     <Box mb="20px">
       <FormControl isInvalid={!!errors.file_}>
         <FormLabel fontSize="sm">{text}</FormLabel>
-        <InputGroup onClick={handleClick}>
+        <InputGroup onClick={handleClick} w={'100px'}>
           <input
             id={theme}
             type="text"
             {...register(theme)}
             hidden
-            onChange={(e) => console.log(e.target.value)}
+            onChange={(e) => {}}
           ></input>
           <input
             type={'file'}
