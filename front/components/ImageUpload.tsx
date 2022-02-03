@@ -101,7 +101,9 @@ function ImageUpload(props: any) {
           {errors.theme && errors?.theme.message}
         </FormErrorMessage>
       </FormControl>
-      {image && <Image w={size} src={image} />}
+      {image && (
+        <Image boxSize="250px" objectFit="cover" src={image} mt={2} b />
+      )}
     </Box>
   )
 }
