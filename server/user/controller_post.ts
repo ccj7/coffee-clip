@@ -1,11 +1,9 @@
 import { Request, Response } from 'express'
-import connectToDB from '../db-connection'
 import { s3Upload } from '../s3'
 import userModel from '../schema/userSchema'
 
 export const postUser = async (req: Request, res: Response): Promise<void> => {
     try {
-        await connectToDB()
         const bodyData = req.body
 
         const authIdCheck = await userModel.findOne({
@@ -70,8 +68,6 @@ export const postReview = async (
     res: Response
 ): Promise<void> => {
     try {
-        await connectToDB()
-
         const authId: String = req.params.authId
         const user = await userModel.findOne({ auth_id: authId })
 

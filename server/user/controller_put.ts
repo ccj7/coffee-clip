@@ -1,5 +1,4 @@
 import { Request, Response } from 'express'
-import connectToDB from '../db-connection'
 import userModel from '../schema/userSchema'
 import ShopsDataModel from '../schema/shopSchema'
 import { s3Upload } from '../s3'
@@ -10,7 +9,7 @@ export const putUserProfile = async (
 ): Promise<void> => {
     try {
         const dataBody = req.body
-        await connectToDB()
+
         const authIdCheck = await userModel.findOne({
             auth_id: req.params.authId,
         })
@@ -44,7 +43,6 @@ export const followUser = async (
     res: Response
 ): Promise<void> => {
     try {
-        await connectToDB()
         const myAuthId = req.params.authId
         const otherHandleName = req.body.handle_name
 
@@ -82,8 +80,6 @@ export const unfollowUser = async (
     res: Response
 ): Promise<void> => {
     try {
-        await connectToDB()
-
         const myAuthId = req.params.authId
         const otherHandleName = req.body.handle_name
 
@@ -129,8 +125,6 @@ export const followShop = async (
     res: Response
 ): Promise<void> => {
     try {
-        await connectToDB()
-
         const myAuthId = req.params.authId
         const shopHandleName = req.body.handle_name
 
@@ -168,8 +162,6 @@ export const unfollowShop = async (
     res: Response
 ): Promise<void> => {
     try {
-        await connectToDB()
-
         const myAuthId = req.params.authId
         const shopHandleName = req.body.handle_name
 
