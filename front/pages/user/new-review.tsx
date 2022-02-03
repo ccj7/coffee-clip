@@ -27,7 +27,7 @@ const NewReview: WithGetAccessControl<VFC> = () => {
       })
       .then((res) => {
         if (res.status === 200) {
-          setMessage('保存しました')
+          setMessage('投稿しました')
         }
       })
   }
