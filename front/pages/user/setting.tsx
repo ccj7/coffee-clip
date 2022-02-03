@@ -69,6 +69,10 @@ const Setting: WithGetAccessControl<VFC> = () => {
             theme="display_name"
             text="ユーザーネーム"
             defaultValue={displayName}
+            validation={{
+              required: true,
+            }}
+            errorMessage="必須項目です"
           />
           <ImageUpload size="sm" theme="icon" text="アイコン画像" />
           <Box>

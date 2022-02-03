@@ -73,8 +73,25 @@ const Signin: WithGetAccessControl<VFC> = () => {
           </Box>
           <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(onSubmit)}>
-              <InputForm theme="email" text="メールアドレス" />
-              <InputForm theme="password" text="パスワード" />
+              <InputForm
+                theme="email"
+                text="メールアドレス"
+                type="email"
+                validation={{
+                  required: true,
+                }}
+                errorMessage="必須項目です"
+              />
+              <InputForm
+                theme="password"
+                text="パスワード"
+                type="password"
+                validation={{
+                  required: true,
+                  minLength: 6,
+                }}
+                errorMessage="必須項目です・6文字以上入力してください"
+              />
               <Center mt="10px">
                 <Button
                   backgroundColor="brand.color2"
