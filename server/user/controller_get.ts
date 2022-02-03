@@ -77,9 +77,9 @@ export const getUserHandleNameCheck = async (
         const user = await userModel.findOne({ handle_name: handleName })
 
         if (!user) {
-            res.status(200).send(false)
+            res.send(false)
         } else {
-            res.status(400).send(true)
+            res.send(true)
         }
     } catch (err) {
         res.status(400).send(err)
