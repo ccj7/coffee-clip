@@ -8,19 +8,15 @@ import { isLoggedIn } from '../../util'
 import UserHeader from '../../components/user/UserHeader'
 import InputForm from '../../components/InputForm'
 import ImageUpload from '../../components/ImageUpload'
-import Message from '../../components/Message'
 import TextArea from '../../components/TextArea'
 import { useForm, FormProvider } from 'react-hook-form'
-import { Heading, Box, Button, Center, Spacer } from '@chakra-ui/react'
-import PrimaryButton from '../../components/Button'
-import { useRouter } from 'next/router'
+import { Heading, Box, Button, Center } from '@chakra-ui/react'
+import BoxMessage from '../../components/BoxMessage'
 
 const NewReview: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
 
   const methods = useForm()
-  const router = useRouter()
-
   const [message, setMessage] = useState<string>()
 
   const postUser = async (userNewReview: Review, authId: string) => {
@@ -52,9 +48,11 @@ const NewReview: WithGetAccessControl<VFC> = () => {
         </Head>
         <UserHeader />
         <Box w={{ base: '80%', md: '65%' }} my="0" mx="auto">
-          <Heading size="md" m={'16px'}>
-            新規投稿
-          </Heading>
+          <Center mb="50px">
+            <Heading size="md" mt="50px">
+              新規投稿
+            </Heading>
+          </Center>
 
           {!message && (
             <>
@@ -75,26 +73,23 @@ const NewReview: WithGetAccessControl<VFC> = () => {
                     errorMessage="必須項目です"
                   />
                   <Box>
-                    <Button mt={4} type="submit">
-                      投稿
-                    </Button>
+                    <Center>
+                      <Button
+                        type="submit"
+                        backgroundColor="brand.color4"
+                        _hover={{ backgroundColor: '#b8b1aa' }}
+                        color="white"
+                      >
+                        投稿
+                      </Button>
+                    </Center>
                   </Box>
                 </form>
               </FormProvider>
             </>
           )}
           {message && (
-            <>
-              <Message message={message} />
-              <Center>
-                <PrimaryButton
-                  text="timelineに戻る"
-                  onclick={() => {
-                    router.push('/user/timeline')
-                  }}
-                />
-              </Center>
-            </>
+            <BoxMessage heading={message} buttonLabel="Time Lineに戻る" path="/user/timeline" />
           )}
         </Box>
       </Box>
