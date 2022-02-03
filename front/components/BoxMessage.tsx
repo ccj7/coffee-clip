@@ -39,7 +39,7 @@ const BoxMessage = (props: any) => {
               <Image src={coffeeImg} alt="Coffee" />
             </Box>
         </Center>
-        <Center mt="-40px">
+        <Center mt={{md: "-40px"}}>
           { buttonLabel &&
             <PrimaryButton
             text={buttonLabel}
