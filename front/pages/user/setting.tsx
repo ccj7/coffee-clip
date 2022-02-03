@@ -1,6 +1,6 @@
 import { useEffect, useState, VFC } from 'react'
 import Head from 'next/head'
-import axios from 'axios'
+import axios, { AxiosResponse } from 'axios'
 import { useForm, FormProvider } from 'react-hook-form'
 
 import { useAuthContext } from '../../auth/AuthContext'
@@ -11,25 +11,27 @@ import InputForm from '../../components/InputForm'
 import ImageUpload from '../../components/ImageUpload'
 import Message from '../../components/Message'
 
-import { Box, Button, Heading } from '@chakra-ui/react'
-import PrimaryButton from '../../components/Button'
+import { Box, Button, Center, Heading } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 
-// TODO: 全体的に型をちゃんと定義する
 const Setting: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
 
   const methods = useForm()
   const router = useRouter()
 
-  // getしてきたuser情報を入れておく予定
-  const [displayName, setDisplayName] = useState<any>('')
-  const [message, setMessage] = useState<String>('')
+  const [displayName, setDisplayName] = useState<string>('')
+  const [message, setMessage] = useState<string>('')
+  
+  type UserPostData = {
+    display_name?: string
+    icon?: string
+  }
 
   // user情報を取得
   useEffect(() => {
     const getUser = async () => {
-      const res: any = await axios.get(`/api/users/${currentUser}`)
+      const res: AxiosResponse = await axios.get(`/api/users/${currentUser}`)
       setDisplayName(res.data.display_name)
     }
     if (currentUser) {
@@ -37,7 +39,7 @@ const Setting: WithGetAccessControl<VFC> = () => {
     }
   }, [currentUser])
 
-  const postUser = async (changeUserInfo: any) => {
+  const postUser = async (changeUserInfo: UserPostData) => {
     await axios
       .put(`/api/users/${currentUser}`, changeUserInfo, {
         headers: {
@@ -51,7 +53,7 @@ const Setting: WithGetAccessControl<VFC> = () => {
       })
   }
 
-  const onSubmit = (changeUserInfo: any) => {
+  const onSubmit = (changeUserInfo: UserPostData) => {
     postUser(changeUserInfo)
   }
 
@@ -62,35 +64,43 @@ const Setting: WithGetAccessControl<VFC> = () => {
         <meta name="Setting" content="ユーザープロフィール編集" />
       </Head>
       <UserHeader />
-      <Heading size="md" m={'16px'}>
-        ユーザープロフィール
-      </Heading>
-      {message && <Message message={message} />}
-      <FormProvider {...methods}>
-        <form onSubmit={methods.handleSubmit(onSubmit)}>
-          <InputForm
-            theme="display_name"
-            text="ユーザーネーム"
-            defaultValue={displayName}
-            validation={{
-              required: true,
-            }}
-            errorMessage="必須項目です"
-          />
-          <ImageUpload size="sm" theme="icon" text="アイコン画像" />
-          <Box>
-            <Button mt={4} type="submit">
-              保存
-            </Button>
-            <PrimaryButton
-              text="キャンセル"
-              onclick={() => {
-                router.push('/user/mypage')
+      <Box w={{ base: '80%', md: '65%' }} my="0" mx="auto" mb="50px">
+        <Center mb="50px">
+          <Heading size="md" mt="50px">
+            ユーザープロフィール
+          </Heading>
+        </Center>
+        {message && <Message message={message} />}
+        <FormProvider {...methods}>
+          <form onSubmit={methods.handleSubmit(onSubmit)}>
+            <InputForm
+              theme="display_name"
+              text="ユーザーネーム"
+              defaultValue={displayName}
+              validation={{
+                required: true,
               }}
+              errorMessage="必須項目です"
             />
-          </Box>
-        </form>
-      </FormProvider>
+            <ImageUpload size="sm" theme="icon" text="アイコン画像" />
+            <Center>
+              <Button
+                type="submit" mr="15px" 
+                backgroundColor="brand.color4"
+                _hover={{ backgroundColor: '#b8b1aa' }}
+                color="white"
+              >
+                保存
+              </Button>
+              <Button onClick={() => {
+                  router.push("/user/mypage")
+                }} >
+                  キャンセル
+                </Button>
+            </Center>
+          </form>
+        </FormProvider>
+      </Box>
     </Box>
   )
 }
