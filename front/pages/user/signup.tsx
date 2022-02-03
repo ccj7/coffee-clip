@@ -1,4 +1,4 @@
-import { VFC } from 'react'
+import { useState, VFC } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useForm, FormProvider } from 'react-hook-form'
@@ -11,11 +11,15 @@ import { isLoggedIn } from '../../util'
 import Header from '../../components/Header'
 import InputForm from '../../components/InputForm'
 import ImageUpload from '../../components/ImageUpload'
+import Alert from '../../components/Alert'
 
 import { Box, Button, Heading, Center, HStack, Link } from '@chakra-ui/react'
 import { FiCoffee } from 'react-icons/fi'
 
 const Signup: WithGetAccessControl<VFC> = () => {
+  const [alert, setAlert] = useState<boolean>(false)
+  const [message, setMessage] = useState<string>('')
+
   const methods = useForm()
   const router = useRouter()
 
@@ -141,6 +145,7 @@ const Signup: WithGetAccessControl<VFC> = () => {
           </Center>
         </Box>
       </Box>
+      <Alert alert={true} message={message} />
     </Box>
   )
 }
