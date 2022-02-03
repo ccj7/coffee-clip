@@ -9,9 +9,7 @@ import { isLoggedIn } from '../../../../util'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import ImageUpload from '../../../../components/ImageUpload'
-import Message from '../../../../components/Message'
 import TextArea from '../../../../components/TextArea'
-import PrimaryButton from '../../../../components/Button'
 
 import {
   Box,
@@ -54,14 +52,12 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
   }, [handle_name])
 
   const onSubmit = (data: any) => {
-    console.log(data)
     const putNewData = async () => {
       if (data.publish_state === '0') {
         data.publish_state = true
       } else {
         data.publish_state = false
       }
-      console.log(data)
       axios.put(`/api/shops/${currentUser}`, data).then((res) => {
         if (res.status === 200) {
           setDisplayFormState(false)
