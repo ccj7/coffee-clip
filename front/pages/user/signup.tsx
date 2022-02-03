@@ -119,8 +119,9 @@ const Signup: WithGetAccessControl<VFC> = () => {
                 validation={{
                   required: true,
                   maxLength: 20,
+                  pattern: /^[a-zA-Z0-9_\-]*$/,
                 }}
-                errorMessage="必須項目です・20文字以内で入力してください"
+                errorMessage="必須項目です・20文字以内の半角英数記号(_と-)で入力してください"
               />
               <InputForm
                 theme="email"
@@ -138,8 +139,9 @@ const Signup: WithGetAccessControl<VFC> = () => {
                 validation={{
                   required: true,
                   minLength: 6,
+                  pattern: /^[a-zA-Z0-9_\-]*$/,
                 }}
-                errorMessage="必須項目です・6文字以上入力してください"
+                errorMessage="必須項目です・6文字以上のの半角英数記号(_と-)で入力してください"
               />
               <ImageUpload size="sm" theme="icon" text="アイコン画像" />
               <Center mt="10px">
