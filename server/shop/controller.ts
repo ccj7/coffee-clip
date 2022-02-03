@@ -1,12 +1,10 @@
 import { Request, Response } from 'express'
-import connectToDB from '../db-connection'
 import { s3Upload } from '../s3'
 import ShopsDataModel from '../schema/shopSchema'
 import userModel from '../schema/userSchema'
 
 export const getShops = async (req: Request, res: Response) => {
     try {
-        await connectToDB()
         const data = await ShopsDataModel.find(
             { publish_state: true },
             { _id: 0, __v: 0 }
@@ -19,7 +17,6 @@ export const getShops = async (req: Request, res: Response) => {
 
 export const getShop = async (req: Request, res: Response) => {
     try {
-        await connectToDB()
         const data = await ShopsDataModel.findOne(
             {
                 $or: [
@@ -37,12 +34,14 @@ export const getShop = async (req: Request, res: Response) => {
 
 export const getShopFromUser = async (req: Request, res: Response) => {
     try {
-        await connectToDB()
         const authId: string = req.params.authId
         const handleName: string = req.params.handleName
 
         const user = await userModel.findOne({ auth_id: authId })
-        const shop = await ShopsDataModel.findOne({ handle_name: handleName },{ _id: 0, __v: 0 })
+        const shop = await ShopsDataModel.findOne(
+            { handle_name: handleName },
+            { _id: 0, __v: 0 }
+        )
 
         if (!user || !shop) {
             res.status(400).json({ error: '対象のデータがありません' })
@@ -60,7 +59,6 @@ export const getShopFromUser = async (req: Request, res: Response) => {
 
 export const putShop = async (req: Request, res: Response) => {
     try {
-        await connectToDB()
         const dataBody = req.body
         const authIdCheck = await ShopsDataModel.findOne({
             auth_id: req.params.authId,
@@ -128,9 +126,7 @@ export const putShop = async (req: Request, res: Response) => {
 
 export const postShop = async (req: Request, res: Response): Promise<void> => {
     try {
-        await connectToDB()
         const { auth_id, handle_name, display_name } = req.body
-
         const authIdCheck = await ShopsDataModel.findOne({
             auth_id: auth_id,
         })
