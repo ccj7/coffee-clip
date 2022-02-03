@@ -12,12 +12,15 @@ import ImageUpload from '../../components/ImageUpload'
 import Message from '../../components/Message'
 
 import { Box, Button, Heading } from '@chakra-ui/react'
+import PrimaryButton from '../../components/Button'
+import { useRouter } from 'next/router'
 
 // TODO: 全体的に型をちゃんと定義する
 const Setting: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
 
   const methods = useForm()
+  const router = useRouter()
 
   // getしてきたuser情報を入れておく予定
   const [displayName, setDisplayName] = useState<any>('')
@@ -79,6 +82,12 @@ const Setting: WithGetAccessControl<VFC> = () => {
             <Button mt={4} type="submit">
               保存
             </Button>
+            <PrimaryButton
+              text="キャンセル"
+              onclick={() => {
+                router.push('/user/mypage')
+              }}
+            />
           </Box>
         </form>
       </FormProvider>
