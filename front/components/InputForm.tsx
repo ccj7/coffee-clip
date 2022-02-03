@@ -3,6 +3,7 @@ import {
   FormLabel,
   FormControl,
   Input,
+  Box,
 } from '@chakra-ui/react'
 import { useEffect } from 'react'
 import { useFormContext } from 'react-hook-form'
@@ -28,14 +29,13 @@ function InputForm(props: any) {
   }, [defaultValue])
 
   return (
-    <>
+    <Box mb="25px">
       <FormControl isInvalid={errors[theme]}>
         <FormLabel fontSize="sm" htmlFor={theme}>
           {text}
         </FormLabel>
         <>
           <Input
-            mb="25px"
             bg="#FCFAF8"
             borderColor="brand.color6"
             id={theme}
@@ -45,7 +45,7 @@ function InputForm(props: any) {
           <FormErrorMessage>{errors[theme] && errorMessage}</FormErrorMessage>
         </>
       </FormControl>
-    </>
+    </Box>
   )
 }
 
