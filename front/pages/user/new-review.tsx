@@ -9,6 +9,7 @@ import UserHeader from '../../components/user/UserHeader'
 import InputForm from '../../components/InputForm'
 import ImageUpload from '../../components/ImageUpload'
 import Message from '../../components/Message'
+import TextArea from '../../components/TextArea'
 import { useForm, FormProvider } from 'react-hook-form'
 import { Heading, Box, Button } from '@chakra-ui/react'
 
@@ -57,10 +58,13 @@ const NewReview: WithGetAccessControl<VFC> = () => {
               defaultValue=""
             />
             <ImageUpload theme="image" text="画像" size={'500px'} />
-            <InputForm
+            <TextArea 
               theme="description"
               text="感想やおすすめポイント"
-              defaultValue=""
+              validation={{
+                required: true,
+              }}
+              errorMessage="必須項目です"
             />
             <Box>
               <Button mt={4} type="submit">
