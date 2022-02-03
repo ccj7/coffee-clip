@@ -26,18 +26,16 @@ routes.post('/api/test', async (req: Request, res: Response) => {
 
 routes.post('/checkout_sessions', async (req, res) => {
     try {
-        // Create Checkout Sessions from body params.
         const session = await Stripe.checkout.sessions.create({
             line_items: [
                 {
-                    // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
                     price: req.body.price_ID,
                     quantity: 1,
                 },
             ],
             mode: 'payment',
-            success_url: `${req.headers.origin}/?success=true`,
-            cancel_url: `${req.headers.origin}/?canceled=true`,
+            success_url: `${req.headers.origin}/user/payment-success?success=true`,
+            cancel_url: `${req.headers.origin}/user/onlineShop?canceled=true`,
         })
         res.redirect(303, session.url)
     } catch (err: any) {
