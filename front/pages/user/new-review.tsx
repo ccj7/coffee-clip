@@ -53,9 +53,11 @@ const NewReview: WithGetAccessControl<VFC> = () => {
         </Head>
         <UserHeader />
         <Box w={{ base: '80%', md: '65%' }} my="0" mx="auto">
-          <Heading size="md" m={'16px'}>
-            新規投稿
-          </Heading>
+          <Center mb="50px">
+            <Heading size="md" mt="50px">
+              新規投稿
+            </Heading>
+          </Center>
 
           {!message && (
             <>
@@ -76,9 +78,16 @@ const NewReview: WithGetAccessControl<VFC> = () => {
                     errorMessage="必須項目です"
                   />
                   <Box>
-                    <Button mt={4} type="submit">
-                      投稿
-                    </Button>
+                    <Center>
+                      <Button
+                        type="submit"
+                        backgroundColor="brand.color4"
+                        _hover={{ backgroundColor: '#b8b1aa' }}
+                        color="white"
+                      >
+                        投稿
+                      </Button>
+                    </Center>
                   </Box>
                 </form>
               </FormProvider>
