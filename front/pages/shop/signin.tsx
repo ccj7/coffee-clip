@@ -1,4 +1,4 @@
-import { VFC } from 'react'
+import { useState, VFC } from 'react'
 import { useRouter } from 'next/router'
 import Head from 'next/head'
 
@@ -22,6 +22,8 @@ import {
 import { FiCoffee } from 'react-icons/fi'
 
 const Signin: WithGetAccessControl<VFC> = () => {
+  const [message, setMessage] = useState<string>()
+
   const methods = useForm()
   const router = useRouter()
 
@@ -35,6 +37,10 @@ const Signin: WithGetAccessControl<VFC> = () => {
       .catch((error: any) => {
         const errorCode = error.code
         const errorMessage = error.message
+        console.log(errorCode, errorMessage)
+        if (errorCode === 'auth/email-already-in-use') {
+          setMessage('そのアドレスはすでに登録されています')
+        }
         console.log(errorCode, errorMessage)
       })
   }
