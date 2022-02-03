@@ -9,10 +9,10 @@ import { isLoggedIn } from '../../util'
 import UserHeader from '../../components/user/UserHeader'
 import InputForm from '../../components/InputForm'
 import ImageUpload from '../../components/ImageUpload'
-import Message from '../../components/Message'
 
 import { Box, Button, Center, Heading } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
+import BoxMessage from '../../components/BoxMessage'
 
 const Setting: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
@@ -70,7 +70,7 @@ const Setting: WithGetAccessControl<VFC> = () => {
             ユーザープロフィール
           </Heading>
         </Center>
-        {message && <Message message={message} />}
+        {!message &&
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(onSubmit)}>
             <InputForm
@@ -100,6 +100,10 @@ const Setting: WithGetAccessControl<VFC> = () => {
             </Center>
           </form>
         </FormProvider>
+        }
+        {message && (
+          <BoxMessage heading={message} buttonLabel="マイページへ戻る" path="/user/mypage" />
+        )}
       </Box>
     </Box>
   )
