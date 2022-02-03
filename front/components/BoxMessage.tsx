@@ -20,7 +20,7 @@ const BoxMessage = (props: any) => {
         backgroundColor="orange.50"
         boxShadow="0px 2px 6px rgba(0, 0, 0, 0.3)"
       >
-        <Center mt="20px">
+        <Center>
           <VStack>
             { heading &&
               <Heading size="md">
