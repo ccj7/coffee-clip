@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import {
   HStack,
   IconButton,
@@ -15,6 +14,7 @@ import {
   Input,
   InputRightElement,
   InputGroup,
+  Link
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import {
@@ -60,7 +60,7 @@ function UserHeader() {
     <>
       <Box top={0} position="sticky" zIndex={"sticky"}>
         <HStack p="2" bg="brand.color1" color="brand.color6">
-          <Link href="/user/timeline">
+          <Link href="/user/timeline" _hover={{textDecoration: "none"}}>
             <Text ml='10px' fontSize={{base:"lg", md:"3xl"}}>COFFEE CLIP</Text>
           </Link>
           <Spacer/>
