@@ -7,6 +7,7 @@ import {
   MenuList,
   Spacer,
   Text,
+  Box,
 } from '@chakra-ui/react'
 import { HamburgerIcon, NotAllowedIcon } from '@chakra-ui/icons'
 
@@ -31,29 +32,32 @@ function Header() {
     console.log('ログアウト')
   }
   return (
-    // TODO　色変更
-    <div>
-      <HStack p="2" bg="gray.800" color="white">
-        <Link href="/shop/dashboard">
-          <Text fontSize="3xl">COFFEE CLIP</Text>
-        </Link>
-        <Spacer></Spacer>
+    <>
+      <Box top={0} position="sticky" zIndex={'sticky'}>
+        <HStack p="2" bg="brand.color1" color="brand.color6">
+          <Link href="/shop/dashboard">
+            <Text ml="10px" fontSize={{ base: 'lg', md: '3xl' }}>
+              COFFEE CLIP
+            </Text>
+          </Link>
+          <Spacer></Spacer>
 
-        <Menu>
-          <MenuButton
-            as={IconButton}
-            aria-label="Options"
-            icon={<HamburgerIcon />}
-            variant="outline"
-          />
-          <MenuList color="black">
-            <MenuItem icon={<NotAllowedIcon />} onClick={logout}>
-              Logout
-            </MenuItem>
-          </MenuList>
-        </Menu>
-      </HStack>
-    </div>
+          <Menu>
+            <MenuButton
+              as={IconButton}
+              aria-label="Options"
+              icon={<HamburgerIcon />}
+              variant="outline"
+            />
+            <MenuList color="black">
+              <MenuItem icon={<NotAllowedIcon />} onClick={logout}>
+                Logout
+              </MenuItem>
+            </MenuList>
+          </Menu>
+        </HStack>
+      </Box>
+    </>
   )
 }
 

@@ -105,8 +105,9 @@ const Signup: WithGetAccessControl<VFC> = () => {
                 text="店舗のID名"
                 validation={{
                   required: true,
+                  maxLength: 20,
                 }}
-                errorMessage="必須項目です"
+                errorMessage="必須項目です・20文字以内で入力してください"
               />
               <InputForm
                 theme="email"
@@ -125,7 +126,7 @@ const Signup: WithGetAccessControl<VFC> = () => {
                   required: true,
                   minLength: 6,
                 }}
-                errorMessage="6文字以上入力してください"
+                errorMessage="必須項目です・6文字以上入力してください"
               />
               <Center mt="10px">
                 <Button
