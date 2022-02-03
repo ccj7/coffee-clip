@@ -12,7 +12,6 @@ import {
 } from '@chakra-ui/react'
 import { useFormContext } from 'react-hook-form'
 import { FiFile } from 'react-icons/fi'
-import { async } from '@firebase/util'
 
 function ImageUpload(props: any) {
   const { size, theme, text } = props
@@ -70,7 +69,7 @@ function ImageUpload(props: any) {
     <Box mb="20px">
       <FormControl isInvalid={!!errors.file_}>
         <FormLabel fontSize="sm">{text}</FormLabel>
-        <InputGroup onClick={handleClick}>
+        <InputGroup onClick={handleClick} w={'100px'}>
           <input
             id={theme}
             type="text"
