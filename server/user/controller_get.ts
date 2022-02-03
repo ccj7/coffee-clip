@@ -1,11 +1,9 @@
 import { Request, Response } from 'express'
-import connectToDB from '../db-connection'
 import userModel from '../schema/userSchema'
 import ShopsDataModel from '../schema/shopSchema'
 
 export const getUsers = async (req: Request, res: Response): Promise<void> => {
     try {
-        await connectToDB()
         const users = await userModel.find({}, { _id: 0, __v: 0 })
         res.json(users)
     } catch (err) {
@@ -15,7 +13,6 @@ export const getUsers = async (req: Request, res: Response): Promise<void> => {
 
 export const search = async (req: Request, res: Response): Promise<void> => {
     try {
-        await connectToDB()
         const keyword = req.query.keyword
 
         if (keyword) {
@@ -76,8 +73,6 @@ export const getOtherUser = async (
     res: Response
 ): Promise<void> => {
     try {
-        await connectToDB()
-
         const authId: String = req.params.authId
         const handleName: String = req.params.handleName
 
@@ -124,7 +119,6 @@ export const getOtherUser = async (
 
 export const getUser = async (req: Request, res: Response): Promise<void> => {
     try {
-        await connectToDB()
         const data = await userModel.findOne(
             { auth_id: req.params.authId },
             { _id: 0, __v: 0 }
@@ -145,7 +139,6 @@ export const getFolloweeReviews = async (
     res: Response
 ): Promise<void> => {
     try {
-        await connectToDB()
         const authId: String = req.params.authId
         const user = await userModel.findOne({ auth_id: authId })
 
@@ -217,7 +210,6 @@ export const getFolloweeShops = async (
     res: Response
 ): Promise<void> => {
     try {
-        await connectToDB()
         const authId: String = req.params.authId
         const user = await userModel.findOne({ auth_id: authId })
 
