@@ -80,7 +80,7 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
       <Box w={{ base: '80%', md: '65%' }} my="0" mx="auto" mb="50px">
       <Center mb="50px">
         <Heading size="md" mt="50px">
-          オンラインショップ
+          店舗ページ 編集
         </Heading>
       </Center>
       {shopInfo && displayFormState && (
