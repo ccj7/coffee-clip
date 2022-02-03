@@ -8,7 +8,7 @@ import { isLoggedIn } from '../../../../util'
 
 import PrimaryButton from '../../../../components/Button'
 import Profile from '../../../../components/Profile'
-import LogCard from '../../../../components/user/LogCard'
+import MyLogCard from '../../../../components/user/MyLogCard'
 import UserHeader from '../../../../components/user/UserHeader'
 
 import { Box, Text, Stack, Spacer, HStack, Center } from '@chakra-ui/react'
@@ -23,18 +23,18 @@ const UserTopPage: WithGetAccessControl<VFC> = () => {
   const [isFollow, setIsFollow] = useState<boolean>(false)
 
   const getUser = async (handle: string | string[], authId: string) => {
-
     try {
-      const res: AxiosResponse = await axios.get(`/api/users/${authId}/${handle}`)
+      const res: AxiosResponse = await axios.get(
+        `/api/users/${authId}/${handle}`
+      )
       const myUser: AxiosResponse = await axios.get(`/api/users/${currentUser}`)
-  
+
       if (myUser.data.handle_name === handle_name) {
         router.replace('/user/mypage')
       } else {
         setUserInfo(res.data)
         setIsFollow(res.data.is_following)
       }
-
     } catch (error) {
       console.error(error)
     }
@@ -128,19 +128,20 @@ const UserTopPage: WithGetAccessControl<VFC> = () => {
             icon={userInfo.icon}
           />
 
-           {userInfo && (
-           <Box
-              w={{ base: '300px', md: '350px' }} 
-              mx='auto' 
-              mb='30px'
-              mt='-20px'>
-            <Center>
-              <PrimaryButton
-                text={isFollow ? 'フォロー中' : 'フォローする'}
-                onclick={orFollow}
-              />
-            </Center>
-          </Box>
+          {userInfo && (
+            <Box
+              w={{ base: '300px', md: '350px' }}
+              mx="auto"
+              mb="30px"
+              mt="-20px"
+            >
+              <Center>
+                <PrimaryButton
+                  text={isFollow ? 'フォロー中' : 'フォローする'}
+                  onclick={orFollow}
+                />
+              </Center>
+            </Box>
           )}
 
           <HStack
@@ -154,28 +155,26 @@ const UserTopPage: WithGetAccessControl<VFC> = () => {
             my="0"
             p="10px 20px 10px 20px"
           >
-          <Box>
-            <Text ml="40%" fontSize="20px" fontWeight="bold">
-              {userInfo.followee_handle_names.length}
-            </Text>
-            <Text fontSize={{ base: '10px', md: '14px' }}>フォロー</Text>
-          </Box>
-          <Spacer />
-          <Box>
-            <Text ml="40%" fontSize="20px" fontWeight="bold">
-              {userInfo.follower_handle_names.length}
-            </Text>
-            <Text fontSize={{ base: '10px', md: '14px' }}>フォロワー</Text>
-          </Box>
-          <Spacer />
-          <Box>
-            <Text ml="40%" fontSize="20px" fontWeight="bold">
-              {userInfo.followee_shops_handle_names.length}
-            </Text>
-            <Text fontSize={{ base: '8px', md: '12px' }} >
-              お気に入りShop
-            </Text>
-          </Box>
+            <Box>
+              <Text ml="40%" fontSize="20px" fontWeight="bold">
+                {userInfo.followee_handle_names.length}
+              </Text>
+              <Text fontSize={{ base: '10px', md: '14px' }}>フォロー</Text>
+            </Box>
+            <Spacer />
+            <Box>
+              <Text ml="40%" fontSize="20px" fontWeight="bold">
+                {userInfo.follower_handle_names.length}
+              </Text>
+              <Text fontSize={{ base: '10px', md: '14px' }}>フォロワー</Text>
+            </Box>
+            <Spacer />
+            <Box>
+              <Text ml="40%" fontSize="20px" fontWeight="bold">
+                {userInfo.followee_shops_handle_names.length}
+              </Text>
+              <Text fontSize={{ base: '8px', md: '12px' }}>お気に入りShop</Text>
+            </Box>
           </HStack>
         </Box>
       )}
@@ -185,7 +184,7 @@ const UserTopPage: WithGetAccessControl<VFC> = () => {
           <Box w={{ base: '80%', md: '65%' }} my="0" ml="auto" mr="auto">
             {userInfo.reviews.map((data: any, key: any) => {
               return (
-                <LogCard
+                <MyLogCard
                   key={key}
                   display_name={userInfo.display_name}
                   handle_name={userInfo.handle_name}
@@ -197,7 +196,7 @@ const UserTopPage: WithGetAccessControl<VFC> = () => {
           </Box>
         )}
       </Stack>
-      </Box>
+    </Box>
   )
 }
 
