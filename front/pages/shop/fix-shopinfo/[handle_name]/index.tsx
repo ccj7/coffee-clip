@@ -10,6 +10,7 @@ import axios from 'axios'
 import { useRouter } from 'next/router'
 import ImageUpload from '../../../../components/ImageUpload'
 import Message from '../../../../components/Message'
+import TextArea from '../../../../components/TextArea'
 
 import {
   Box,
@@ -18,7 +19,10 @@ import {
   Stack,
   RadioGroup,
   FormLabel,
+  Center,
+  Heading
 } from '@chakra-ui/react'
+import PrimaryButton from '../../../../components/Button'
 
 const FixShopInfo: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
@@ -29,6 +33,7 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
   const [shopInfo, setShopInfo] = useState<ShopData | null>(null)
   const [publishState, setPublishState] = useState<string>()
   const [message, setMessage] = useState<string>()
+  const [displayFormState, setDisplayFormState] = useState<boolean>(true)
 
   const methods = useForm({ shouldUnregister: false })
 
@@ -58,13 +63,12 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
       console.log(data)
       axios.put(`/api/shops/${currentUser}`, data).then((res) => {
         if (res.status === 200) {
-          setMessage('保存しました！')
+          setDisplayFormState(false)
+          setMessage('保存しました')
         }
       })
     }
     putNewData()
-
-    router.push('/shop/dashboard')
   }
 
   return (
@@ -74,13 +78,23 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
         <meta name="shopTopPage" content="shop Top Page" />
       </Head>
       <Header />
-      {shopInfo && (
+      <Box w={{ base: '80%', md: '65%' }} my="0" mx="auto" mb="50px">
+      <Center mb="50px">
+        <Heading size="md" mt="50px">
+          オンラインショップ
+        </Heading>
+      </Center>
+      {shopInfo && displayFormState && (
         <FormProvider {...methods}>
           <form onSubmit={methods.handleSubmit(onSubmit)}>
             <InputForm
               theme="display_name"
               text="お店の名前"
               defaultValue={shopInfo.display_name}
+              validation={{
+                required: true,
+              }}
+              errorMessage="必須項目です"
             />
             <ImageUpload size="sm" theme="icon" text="アイコン画像" />
             <InputForm
@@ -103,7 +117,7 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
               text="instagram URL"
               defaultValue={shopInfo.instagram_url}
             />
-            <InputForm
+            <TextArea
               theme="opening_hours"
               text="営業時間"
               defaultValue={shopInfo.opening_hours}
@@ -123,47 +137,61 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
               text="おすすめのコーヒー 名前"
               defaultValue={shopInfo.recommendation.title}
             />
-            <InputForm
+            <TextArea
               theme="recommendation.description"
               text="おすすめのコーヒー 紹介文"
               defaultValue={shopInfo.recommendation.description}
             />
-
             <ImageUpload
               size="sm"
               theme="recommendation.image"
               text="おすすめのコーヒー 写真"
             />
-
-            <InputForm
+            <TextArea
               theme="selling_point.text"
               text="お店の魅力"
               defaultValue={shopInfo.selling_point.text}
             />
-
             <ImageUpload
               size="sm"
               theme="selling_point.image"
-              text="お店の魅力　写真"
+              text="お店の魅力 写真"
             />
             <RadioGroup onChange={setPublishState} value={publishState}>
-              <FormLabel htmlFor="publish_state">公開ステータス</FormLabel>
+              <FormLabel fontSize="sm" htmlFor="publish_state">公開ステータス</FormLabel>
               <Stack spacing={4} direction="row">
-                <Radio value="0" {...methods.register('publish_state')}>
+                <Radio backgroundColor="white" colorScheme="gray" value="0" {...methods.register('publish_state')}>
                   公開する
                 </Radio>
-                <Radio value="1" {...methods.register('publish_state')}>
+                <Radio backgroundColor="white" colorScheme="gray" value="1" {...methods.register('publish_state')}>
                   非公開にする
                 </Radio>
               </Stack>
             </RadioGroup>
-            <Button mt={4} type="submit">
-              Submit
-            </Button>
+            <Center mt="40px">
+              <Button
+                mt={4} type="submit"
+                backgroundColor="brand.color4"
+                _hover={{ backgroundColor: '#b8b1aa' }}
+                color="white"
+              >
+                保存
+              </Button>
+            </Center>
           </form>
-          {message && <Message message={message} />}
         </FormProvider>
       )}
+      {message && (
+        <Center>
+          <Stack>
+            <Message message={message} />
+            <PrimaryButton text="ダッシュボードに戻る" onclick={() => {
+              router.push("/shop/dashboard")
+            }} />
+          </Stack>
+        </Center>
+      )}
+      </Box>
     </Box>
   )
 }
