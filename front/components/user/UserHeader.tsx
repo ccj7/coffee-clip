@@ -27,9 +27,7 @@ import { getAuth, signOut } from 'firebase/auth'
 import firebase from '../../auth/firebaseConfig'
 
 import React from 'react'
-import { ssrEntries } from 'next/dist/build/webpack/plugins/middleware-plugin'
 import { useForm } from 'react-hook-form'
-import axios from 'axios'
 
 function UserHeader() {
   const router = useRouter()
@@ -81,14 +79,14 @@ function UserHeader() {
                   backgroundColor={'brand.color3'}
                   _hover={{backgroundColor: '#cc8756'}}
                   boxSize='93%'
-                  mr='21px'
+                  mr='22px'
                   icon={<SearchIcon />}
                 />
               </InputRightElement>
             </InputGroup>
           </form>
 
-          <Breadcrumb separator="|">
+          <Breadcrumb separator="|" display={{base: "none", md: "block"}}>
             <BreadcrumbItem fontSize={{base:'12px', md:'16px'}}>
               <BreadcrumbLink href="/user/timeline">TimeLine</BreadcrumbLink>
             </BreadcrumbItem>
@@ -100,6 +98,10 @@ function UserHeader() {
             <BreadcrumbItem fontSize={{base:'12px', md:'16px'}}>
               <BreadcrumbLink href="/user/mypage">MyPage</BreadcrumbLink>
             </BreadcrumbItem>
+
+            <BreadcrumbItem fontSize={{base:'12px', md:'16px'}}>
+              <BreadcrumbLink href="/user/onlineShop">OnlineShop</BreadcrumbLink>
+            </BreadcrumbItem>
           </Breadcrumb>
 
           <Menu>
@@ -110,6 +112,20 @@ function UserHeader() {
               variant="outline"
             />
             <MenuList color="black">
+              <Box display={{base: "block", md: "none"}}>
+                <Link href="/user/timeline">
+                  <MenuItem>TimeLine</MenuItem>
+                </Link>
+                <Link href="/user/shoplist">
+                  <MenuItem>ShopList</MenuItem>
+                </Link>
+                <Link href="/user/mypage">
+                  <MenuItem>MyPage</MenuItem>
+                </Link>
+                <Link href="/user/onlineShop">
+                <MenuItem>OnlineShop</MenuItem>
+              </Link>
+              </Box>
               <Link href="/user/setting">
                 <MenuItem icon={<SettingsIcon />}>Setting</MenuItem>
               </Link>
