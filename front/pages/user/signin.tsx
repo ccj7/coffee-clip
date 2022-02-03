@@ -31,7 +31,6 @@ const Signin: WithGetAccessControl<VFC> = () => {
       })
       .catch((error: any) => {
         const errorCode = error.code
-        console.log(errorCode)
         if (
           String(errorCode) === 'auth/user-not-found' ||
           String(errorCode) === 'auth/wrong-password'
