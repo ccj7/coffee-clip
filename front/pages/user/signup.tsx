@@ -21,8 +21,6 @@ const Signup: WithGetAccessControl<VFC> = () => {
   const [alert, setAlert] = useState<boolean>(false)
   const [message, setMessage] = useState<string>('')
 
-  const alertRef = useRef(false)
-
   const methods = useForm()
   const router = useRouter()
 
@@ -32,7 +30,7 @@ const Signup: WithGetAccessControl<VFC> = () => {
     return res.data
   }
 
-  const userPost = (data: UserSignUpInfo, uid: string) => {
+  const postUserInfo = (data: UserSignUpInfo, uid: string) => {
     axios
       .post(
         '/api/users',
@@ -49,7 +47,7 @@ const Signup: WithGetAccessControl<VFC> = () => {
         }
       )
       .then(() => router.push('/user/timeline'))
-      .catch((res) => console.log(res))
+      .catch((err: any) => console.error(err))
   }
 
   const onSubmit = async (data: any) => {
@@ -63,13 +61,11 @@ const Signup: WithGetAccessControl<VFC> = () => {
         .then((userCredential) => {
           if (userCredential) {
             const user = userCredential.user
-            userPost(data, user.uid)
+            postUserInfo(data, user.uid)
           }
         })
         .catch((error: any) => {
           const errorCode = error.code
-          const errorMessage = error.message
-          console.log('🌸', errorCode)
           if (String(errorCode) === 'auth/email-already-in-use') {
             setAlert(true)
             setMessage('ご記入いただいたメールアドレスは既に使用されています')
