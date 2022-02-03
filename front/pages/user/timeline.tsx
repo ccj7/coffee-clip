@@ -14,17 +14,27 @@ import coffeeImg from '../../img/coffee.png'
 import { UserInitialDataForTimeline } from '../../initial_data/userInitialData'
 
 import { FiCoffee } from 'react-icons/fi'
-import { Box, Center, Heading, HStack, Spacer, Stack, Text, VStack } from '@chakra-ui/react'
+import {
+  Box,
+  Center,
+  Heading,
+  HStack,
+  Spacer,
+  Stack,
+  Text,
+  VStack,
+} from '@chakra-ui/react'
 
 const Timeline: WithGetAccessControl<VFC> = (props) => {
   const { currentUser } = useAuthContext()
   const router = useRouter()
-  const [userInfo, setUserInfo] = useState<UserDataForTimeline[]>([UserInitialDataForTimeline])
+  const [userInfo, setUserInfo] = useState<UserDataForTimeline[]>([
+    UserInitialDataForTimeline,
+  ])
 
   useEffect(() => {
     const getUser = async (authId: string) => {
       const res: any = await axios.get(`/api/users/${authId}/followee/reviews`)
-      console.log(res.data.reviews)
       setUserInfo(res.data.reviews)
     }
     if (currentUser) {
@@ -39,11 +49,13 @@ const Timeline: WithGetAccessControl<VFC> = (props) => {
         <meta name="Timeline" content="タイムライン" />
       </Head>
       <UserHeader />
-      <Box w={{base:'80%', md:'65%'}} my='0' mr='auto' ml='auto' mt='30px'>
+      <Box w={{ base: '80%', md: '65%' }} my="0" mr="auto" ml="auto" mt="30px">
         <HStack p="2">
-          <HStack color='brand.color1'>
-            <FiCoffee /> 
-            <Heading as='h2' size='md'>Time Line</Heading>
+          <HStack color="brand.color1">
+            <FiCoffee />
+            <Heading as="h2" size="md">
+              Time Line
+            </Heading>
           </HStack>
           <Spacer></Spacer>
           <PrimaryButton
@@ -54,7 +66,7 @@ const Timeline: WithGetAccessControl<VFC> = (props) => {
           />
         </HStack>
         <Stack>
-          { userInfo && userInfo.length > 0 && (
+          {userInfo && userInfo.length > 0 && (
             <Box>
               {userInfo.map((data, key) => {
                 return (
@@ -70,25 +82,28 @@ const Timeline: WithGetAccessControl<VFC> = (props) => {
             </Box>
           )}
           {userInfo && userInfo.length === 0 && (
-            <Box
-              w={{ base: '80%', md: '65%' }}
-              ml="auto" mr="auto">
+            <Box w={{ base: '80%', md: '65%' }} ml="auto" mr="auto">
               <Box
-              my={12} p={8} mt='70px'
-              borderRadius='16px'
-              backgroundColor='orange.50'
-              boxShadow='0px 2px 6px rgba(0, 0, 0, 0.3)'>
-                <Center mt='20px'>
+                my={12}
+                p={8}
+                mt="70px"
+                borderRadius="16px"
+                backgroundColor="orange.50"
+                boxShadow="0px 2px 6px rgba(0, 0, 0, 0.3)"
+              >
+                <Center mt="20px">
                   <VStack>
-                    <Heading size='md'>
+                    <Heading size="md">
                       まだタイムラインに表示する情報がありません。
                     </Heading>
-                  <Text>お気に入りのお店や気になるユーザーを探してみましょう！</Text>
+                    <Text>
+                      お気に入りのお店や気になるユーザーを探してみましょう！
+                    </Text>
                   </VStack>
                 </Center>
-                <Center mt='15px'>
-                  <Box w='50%'>
-                    <Image src={coffeeImg} alt='Coffee' />
+                <Center mt="15px">
+                  <Box w="50%">
+                    <Image src={coffeeImg} alt="Coffee" />
                   </Box>
                 </Center>
               </Box>
