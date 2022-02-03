@@ -48,6 +48,17 @@ describe('Users Get Request Tests', () => {
             expect(res.body).to.deep.equal(expectedData)
         })
 
+        it('GET /api/users/handle/:handleName', async () => {
+            const res1 = await chai
+                .request(server)
+                .get('/api/users/handle/kaori_hikita')
+
+            const res2 = await chai.request(server).get('/api/users/handle/foo')
+
+            expect(res1.body).to.be.true
+            expect(res2.body).to.be.false
+        })
+
         it('GET /api/users/:authId', async () => {
             const res = await chai
                 .request(server)
