@@ -147,11 +147,7 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
                 text="お店の魅力"
                 defaultValue={shopInfo.selling_point.text}
               />
-              <ImageUpload
-                size="sm"
-                theme="selling_point.image"
-                text="お店の魅力 写真"
-              />
+              <ImageUpload theme="selling_point.image" text="お店の魅力 写真" />
               <RadioGroup onChange={setPublishState} value={publishState}>
                 <FormLabel fontSize="sm" htmlFor="publish_state">
                   公開ステータス
