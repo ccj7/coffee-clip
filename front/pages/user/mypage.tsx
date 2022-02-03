@@ -92,7 +92,7 @@ const Mypage: WithGetAccessControl<VFC> = () => {
                 <Text ml="40%" fontSize="20px" fontWeight="bold">
                   {userInfo.followee_shops_handle_names.length}
                 </Text>
-                <Text fontSize={{ base: '8px', md: '12px' }}>
+                <Text fontSize={{ base: '8px', md: '12px' }} as='ins'>
                   お気に入りShop
                 </Text>
               </Box>
