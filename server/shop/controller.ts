@@ -41,9 +41,9 @@ export const getShopHandleNameCheck = async (
         const shop = await ShopsDataModel.findOne({ handle_name: handleName })
 
         if (!shop) {
-            res.status(200).send(false)
+            res.send(false)
         } else {
-            res.status(400).send(true)
+            res.send(true)
         }
     } catch (err) {
         res.status(400).send(err)
