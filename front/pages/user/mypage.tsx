@@ -9,8 +9,7 @@ import { isLoggedIn } from '../../util'
 
 import UserHeader from '../../components/user/UserHeader'
 import Profile from '../../components/Profile'
-import LogCard from '../../components/user/LogCard'
-// import MyLogCard from '../../components/user/MyLogCard'
+import MyLogCard from '../../components/user/MyLogCard'
 import PrimaryButton from '../../components/Button'
 
 import { Box, Text, Spacer, Stack, HStack, Flex } from '@chakra-ui/react'
@@ -122,8 +121,7 @@ const Mypage: WithGetAccessControl<VFC> = () => {
           <Box w={{ base: '80%', md: '65%' }} my="0" ml="auto" mr="auto">
             {userInfo.reviews.map((data: any, key: any) => {
               return (
-                <LogCard
-                // <MyLogCard
+                <MyLogCard
                   key={key}
                   display_name={userInfo.display_name}
                   handle_name={userInfo.handle_name}
