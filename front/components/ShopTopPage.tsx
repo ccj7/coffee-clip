@@ -224,7 +224,7 @@ const ShopTopPage = (props: any) => {
                   )}
                 </Box>
                 <Box>
-                  <Text fontSize="16px">{shopInfo.recommendation.title}</Text>
+                  <Text fontSize="16px" mt={{base:"10px"}}>{shopInfo.recommendation.title}</Text>
                   <Box h="2.5px" backgroundColor="brand.color3"></Box>
                   <Text mt="10px" fontSize="14px">
                     {shopInfo.recommendation.description}
