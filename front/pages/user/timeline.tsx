@@ -13,13 +13,7 @@ import { UserInitialDataForTimeline } from '../../initial_data/userInitialData'
 import BoxMessage from '../../components/BoxMessage'
 
 import { FiCoffee } from 'react-icons/fi'
-import {
-  Box,
-  Heading,
-  HStack,
-  Spacer,
-  Stack,
-} from '@chakra-ui/react'
+import { Box, Heading, HStack, Spacer, Stack } from '@chakra-ui/react'
 
 const Timeline: WithGetAccessControl<VFC> = (props) => {
   const { currentUser } = useAuthContext()
@@ -42,7 +36,6 @@ const Timeline: WithGetAccessControl<VFC> = (props) => {
     <div>
       <Head>
         <title>Timeline</title>
-        <meta name="Timeline" content="タイムライン" />
       </Head>
       <UserHeader />
       <Box w={{ base: '80%', md: '65%' }} my="0" mr="auto" ml="auto" mt="30px">
@@ -78,7 +71,10 @@ const Timeline: WithGetAccessControl<VFC> = (props) => {
             </Box>
           )}
           {userInfo && userInfo.length === 0 && (
-            <BoxMessage heading="まだタイムラインに表示する情報がありません。" text="お気に入りのお店や気になるユーザーを探してみましょう！" />
+            <BoxMessage
+              heading="まだタイムラインに表示する情報がありません。"
+              text="お気に入りのお店や気になるユーザーを探してみましょう！"
+            />
           )}
         </Stack>
       </Box>

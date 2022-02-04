@@ -16,25 +16,27 @@ const ShopTopPageOfShop: WithGetAccessControl<VFC> = () => {
     <div>
       <Head>
         <title>店舗向けプレビュー</title>
-        <meta name="shopTopPage" content="店舗向けプレビュー" />
       </Head>
       <Header />
-      <Box backgroundColor="brand.color1" >
+      <Box backgroundColor="brand.color1">
         <Center
-          height={{base: "100px", md: "70px"}}
+          height={{ base: '100px', md: '70px' }}
           color="white"
           w={{ base: '80%', md: '65%' }}
           ml="auto"
-          mr="auto">
-            <SimpleGrid columns={{md:2}} spacing={{md: '50px'}}>
-              <Heading size="md" mb="5px" mt="8px">店舗向けのプレビューページ</Heading>
-              <PrimaryButton
-                text={'ダッシュボードに戻る'}
-                onclick={() => {
-                  router.push('/shop/dashboard')
-                }}
-              />
-            </SimpleGrid>
+          mr="auto"
+        >
+          <SimpleGrid columns={{ md: 2 }} spacing={{ md: '50px' }}>
+            <Heading size="md" mb="5px" mt="8px">
+              店舗向けのプレビューページ
+            </Heading>
+            <PrimaryButton
+              text={'ダッシュボードに戻る'}
+              onclick={() => {
+                router.push('/shop/dashboard')
+              }}
+            />
+          </SimpleGrid>
         </Center>
       </Box>
       <ShopTopPage handle_name={handle_name} isUser={false} />
