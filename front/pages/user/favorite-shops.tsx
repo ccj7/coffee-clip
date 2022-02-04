@@ -29,7 +29,6 @@ const LikeShops: WithGetAccessControl<VFC> = (props) => {
     <Box>
       <Head>
         <title>お気に入りショップ</title>
-        <meta name="favorite shops" content="お気に入りショップ" />
       </Head>
       <UserHeader />
       <Center>

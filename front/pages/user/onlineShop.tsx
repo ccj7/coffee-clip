@@ -66,7 +66,6 @@ const onlineShop: WithGetAccessControl<VFC> = (props) => {
     <Box>
       <Head>
         <title>オンラインショップ</title>
-        <meta name="onlineShop" content="オンラインショップ" />
       </Head>
       <UserHeader />
 
@@ -75,8 +74,8 @@ const onlineShop: WithGetAccessControl<VFC> = (props) => {
           オンラインショップ
         </Heading>
       </Center>
-      <Center w={{base:'80%', md:'65%'}} mx='auto' my='0'>
-        <Text mt='14px' fontSize={'sm'}>
+      <Center w={{ base: '80%', md: '65%' }} mx="auto" my="0">
+        <Text mt="14px" fontSize={'sm'}>
           このオンラインショップでは、COFFEE CLIPが厳選した豆を販売しています
         </Text>
       </Center>
