@@ -2,6 +2,7 @@ import { Request, Response } from 'express'
 import { s3Upload } from '../s3'
 import ShopsDataModel from '../schema/shopSchema'
 import userModel from '../schema/userSchema'
+import { ShopsData } from '../schema/shopSchema'
 
 export const getShops = async (req: Request, res: Response) => {
     try {
@@ -76,11 +77,12 @@ export const getShopFromUser = async (req: Request, res: Response) => {
 }
 
 export const putShop = async (req: Request, res: Response) => {
+
     try {
         const dataBody = req.body
         const authIdCheck = await ShopsDataModel.findOne({
             auth_id: req.params.authId,
-        })
+        }) as ShopsData
 
         if (!authIdCheck) {
             res.status(400).send({ error: 'ショップのアカウントがありません' })
@@ -95,7 +97,7 @@ export const putShop = async (req: Request, res: Response) => {
             }
 
             if (dataBody?.selling_point.image) {
-                const imgFileName = `sellingpoint_shop_${req.params.authId}`
+                const imgFileName = `selling_point_shop_${req.params.authId}`
                 sellingPointData = await s3Upload(
                     dataBody.selling_point.image,
                     imgFileName
@@ -119,13 +121,13 @@ export const putShop = async (req: Request, res: Response) => {
             if (sellingPointData !== '') {
                 dataBody.selling_point.image = sellingPointData
             } else {
-                delete dataBody.selling_point.image
+                dataBody.selling_point.image = authIdCheck.selling_point?.image
             }
 
             if (recommendationData !== '') {
                 dataBody.recommendation.image = recommendationData
             } else {
-                delete dataBody.recommendation.image
+                dataBody.recommendation.image = authIdCheck.recommendation?.image
             }
 
             await ShopsDataModel.updateOne(
