@@ -61,7 +61,6 @@ const Setting: WithGetAccessControl<VFC> = () => {
     <Box>
       <Head>
         <title>Setting</title>
-        <meta name="Setting" content="ユーザープロフィール編集" />
       </Head>
       <UserHeader />
       <Box w={{ base: '80%', md: '65%' }} my="0" mx="auto" mb="50px">
