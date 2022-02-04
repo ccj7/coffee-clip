@@ -137,13 +137,30 @@ export const getOtherUser = async (
 
 export const getUser = async (req: Request, res: Response): Promise<void> => {
     try {
-        const data = await userModel.findOne(
+        const user = await userModel.findOne(
             { auth_id: req.params.authId },
             { _id: 0, __v: 0 }
         )
 
-        if (data) {
-            res.json(data)
+        if (user) {
+            for (const shopName of user.followee_shops_handle_names) {
+                const shop = await ShopsDataModel.findOne({
+                    handle_name: shopName,
+                })
+
+                if (shop) {
+                    if (!shop.publish_state) {
+                        user.followee_shops_handle_names.splice(
+                            user.followee_shops_handle_names.indexOf(
+                                shop.handle_name
+                            ),
+                            1
+                        )
+                    }
+                }
+            }
+
+            res.json(user)
         } else {
             res.status(400).json({ error: 'userが見つかりません' })
         }
