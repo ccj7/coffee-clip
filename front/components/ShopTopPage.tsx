@@ -17,11 +17,16 @@ import PostImage from './Image'
 import { AuthContext } from '../auth/AuthContext'
 import { shopInitialData } from '../initial_data/shopInitialDdata'
 import { BiHome } from 'react-icons/bi'
+import Alert from './Alert'
 
 const ShopTopPage = (props: any) => {
-  const { handle_name, isUser } = props
+  const { handle_name, isUser, setIsPublish } = props
   const { currentUser } = useContext(AuthContext)
   const [shopInfo, setShopInfo] = useState<ShopData>(shopInitialData)
+
+  // shop/top-page/;handle_name　にて、お気に入りボタンを押したときに表示するようのstate
+  const [alert, setAlert] = useState<boolean>(false)
+  const [message, setMessage] = useState<string>('')
 
   const getShop = async (handle: string | string[]) => {
     if (currentUser && isUser) {
@@ -31,6 +36,8 @@ const ShopTopPage = (props: any) => {
       const res: any = await axios.get(`/api/shops/${currentUser}`)
       if (res.data) {
         setShopInfo(res.data)
+        setIsPublish(res.data.publish_state)
+        console.log(res.data)
       }
     }
   }
@@ -71,15 +78,22 @@ const ShopTopPage = (props: any) => {
     }
   }
 
+  const popupAlert = () => {
+    setAlert(true)
+    setMessage(
+      'shopアカウントからはお気に入り登録はできません。これは見本のボタンです。'
+    )
+  }
+
   return (
     <>
-    <Box
-      w="100%"
-      h="300px"
-      pt="50px"
-      background="#988d83"
-      backgroundImage="linear-gradient(62deg, #988d83  0%, #af6938 100%)"
-    ></Box>
+      <Box
+        w="100%"
+        h="300px"
+        pt="50px"
+        background="#988d83"
+        backgroundImage="linear-gradient(62deg, #988d83  0%, #af6938 100%)"
+      ></Box>
       <Box
         w={{ base: '80%', md: '65%' }}
         ml="auto"
@@ -144,13 +158,10 @@ const ShopTopPage = (props: any) => {
             />
           )}
           {!isUser && (
-            <PrimaryButton
-              text={
-                shopInfo.is_following
-                  ? 'お気に入りに登録済み'
-                  : 'お気に入りに登録する'
-              }
-            />
+            <>
+              <PrimaryButton text="お気に入りに登録する" onclick={popupAlert} />
+              <Alert alert={alert} setAlert={setAlert} message={message} />
+            </>
           )}
         </Box>
       </Center>
@@ -224,7 +235,9 @@ const ShopTopPage = (props: any) => {
                   )}
                 </Box>
                 <Box>
-                  <Text fontSize="16px" mt={{base:"10px"}}>{shopInfo.recommendation.title}</Text>
+                  <Text fontSize="16px" mt={{ base: '10px' }}>
+                    {shopInfo.recommendation.title}
+                  </Text>
                   <Box h="2.5px" backgroundColor="brand.color3"></Box>
                   <Text mt="10px" fontSize="14px">
                     {shopInfo.recommendation.description}
