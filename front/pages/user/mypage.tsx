@@ -26,10 +26,7 @@ const Mypage: WithGetAccessControl<VFC> = () => {
     const getUser = async () => {
       const res = await axios.get(`/api/users/${currentUser}`)
 
-      // TODO このコードの意味確認
-      // if (res.data !== null) {
       setUserInfo(res.data)
-      // }
     }
 
     if (currentUser) {
