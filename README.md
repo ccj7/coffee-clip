@@ -4,11 +4,9 @@ COFFEE CLIP は、コーヒーを身近に感じてコーヒーで暮らしを�
 
 ## 始め方
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
 ### インストール
 
-1. このレポジトリをクローンして下さい:
+1. このレポジトリをクローンして下さい
 
 ```sh
 $ git clone https://github.com/ccj7/coffee-clip.git
@@ -26,7 +24,7 @@ $ cd server
 $ npm i
 ```
 
-3. env ファイルを使って環境変数を設定して下さい:
+3. env ファイルを使って環境変数を設定して下さい
 
 【フロントエンド】
 
@@ -43,10 +41,10 @@ NEXT_PUBLIC_FIREBASE_MEASURENEBT_ID= your_MEASURENEBT_ID
 【サーバー】
 
 ```
-S3_ACCESS_KEY_ID= `your_ACCESS_KEY`
-S3_SECRET_ACCESS_KEY= `your_SECRET_ACCESS_KEY`
-STRIPE_SECRET_KEY= `your_SECRET_KEY`
-STRIPE_ACCOUNT_ID= `your_ACCOUNT_ID`
+S3_ACCESS_KEY_ID= your_ACCESS_KEY
+S3_SECRET_ACCESS_KEY= your_SECRET_ACCESS_KEY
+STRIPE_SECRET_KEY= your_SECRET_KEY
+STRIPE_ACCOUNT_ID= your_ACCOUNT_ID
 ```
 
 4. 開発環境は以下のコマンドで立ち上げてください
