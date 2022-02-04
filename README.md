@@ -2,69 +2,75 @@
 
 COFFEE CLIP は、コーヒーを身近に感じてコーヒーで暮らしをもっと豊かにするための、コーヒー専門 SNS です。
 
-## Getting Started
+## 始め方
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites
+### インストール
 
-What things you need to install the software and how to install them
+1. このレポジトリをクローンして下さい:
 
-```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
+```sh
+$ git clone https://github.com/ccj7/coffee-clip.git
 ```
 
-And repeat
+2. 依存関係のインストール
 
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
+```sh
+   $ npm i
 ```
 
-### And coding style tests
+3. env ファイルを使って環境変数を設定して下さい:
 
-Explain what these tests test and why
+【フロントエンド】
+NEXT_PUBLIC_FIREBASE_APIKEY= `your_API_KEY`
+NEXT_PUBLIC_FIREBASE_AUTHDOMAIN= `your_AUTHDOMAIN`
+NEXT_PUBLIC_FIREBASE_PROJECT_ID= `your_PROJECT_ID`
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET= `your_STORAGE_BUCKET`
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID= `your_MESSAGING_SENDER_ID`
+NEXT_PUBLIC_FIREBASE_APP_ID= `your_APP_ID`
+NEXT_PUBLIC_FIREBASE_MEASURENEBT_ID= `your_MEASURENEBT_ID`
+
+【バックエンド】
+S3_ACCESS_KEY_ID= `your_ACCESS_KEY`
+S3_SECRET_ACCESS_KEY= `your_SECRET_ACCESS_KEY`
+STRIPE_SECRET_KEY= `your_SECRET_KEY`
+STRIPE_ACCOUNT_ID= `your_ACCOUNT_ID`
+
+## テストの実行方法
+
+API サーバーにはテストを用意しています。以下のコマンドを実行してテストを行うことができます。
+
+`/api/shops/` と `/api/users/` のエンドポイントに対してテストが行われます。
 
 ```
-Give an example
+$ cd server
+$ npm run test
 ```
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+1. デプロイしたいサーバーに COFFEE CLIP のソースをコピーします。
+2. 以下のコマンドを使って COFFEE CLIP のアプリケーションを立ち上げることができます。
+
+```
+$ docker-compose build
+$ docker-compose up
+```
 
 ## Built With
 
-- [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-- [Maven](https://maven.apache.org/) - Dependency Management
-- [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+// 使っているフレームワークをかく
+
+- [Next.js](https://nextjs.org/) - フロントエンド
+- []() -
+- []() -
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+テックリード:[Maho Miyata](https://github.com/mahomiyata)
+フロントエンド:[Mei Omomo](https://github.com/mei-omomo) & [Nao Nomura](https://github.com/naonmr)
+バックエンド:[Maho Miyazawa](https://github.com/Maho-Miyazawa) & [Motoki Mizuno](https://github.com/Motoki-tech)
 
 ## Versioning
 
