@@ -252,7 +252,7 @@ const ShopTopPage = (props: any) => {
               </Text>
               <SimpleGrid columns={{ md: 2 }}>
                 <Box>
-                  {shopInfo.recommendation.image && (
+                  {shopInfo.selling_point.image && (
                     <PostImage
                       src={shopInfo.selling_point.image}
                       alt="お店の魅力を表す写真"
