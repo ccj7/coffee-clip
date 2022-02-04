@@ -22,7 +22,7 @@ const Setting: WithGetAccessControl<VFC> = () => {
 
   const [displayName, setDisplayName] = useState<string>('')
   const [message, setMessage] = useState<string>('')
-  
+
   type UserPostData = {
     display_name?: string
     icon?: string
@@ -70,39 +70,46 @@ const Setting: WithGetAccessControl<VFC> = () => {
             ユーザープロフィール
           </Heading>
         </Center>
-        {!message &&
-        <FormProvider {...methods}>
-          <form onSubmit={methods.handleSubmit(onSubmit)}>
-            <InputForm
-              theme="display_name"
-              text="ユーザーネーム"
-              defaultValue={displayName}
-              validation={{
-                required: true,
-              }}
-              errorMessage="必須項目です"
-            />
-            <ImageUpload size="sm" theme="icon" text="アイコン画像" />
-            <Center>
-              <Button
-                type="submit" mr="15px" 
-                backgroundColor="brand.color4"
-                _hover={{ backgroundColor: '#b8b1aa' }}
-                color="white"
-              >
-                保存
-              </Button>
-              <Button onClick={() => {
-                  router.push("/user/mypage")
-                }} >
+        {!message && (
+          <FormProvider {...methods}>
+            <form onSubmit={methods.handleSubmit(onSubmit)}>
+              <InputForm
+                theme="display_name"
+                text="ユーザーネーム"
+                defaultValue={displayName}
+                validation={{
+                  required: true,
+                }}
+                errorMessage="必須項目です"
+              />
+              <ImageUpload theme="icon" text="アイコン画像" />
+              <Center>
+                <Button
+                  type="submit"
+                  mr="15px"
+                  backgroundColor="brand.color4"
+                  _hover={{ backgroundColor: '#b8b1aa' }}
+                  color="white"
+                >
+                  保存
+                </Button>
+                <Button
+                  onClick={() => {
+                    router.push('/user/mypage')
+                  }}
+                >
                   キャンセル
                 </Button>
-            </Center>
-          </form>
-        </FormProvider>
-        }
+              </Center>
+            </form>
+          </FormProvider>
+        )}
         {message && (
-          <BoxMessage heading={message} buttonLabel="マイページへ戻る" path="/user/mypage" />
+          <BoxMessage
+            heading={message}
+            buttonLabel="マイページへ戻る"
+            path="/user/mypage"
+          />
         )}
       </Box>
     </Box>
