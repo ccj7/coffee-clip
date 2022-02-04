@@ -7,6 +7,7 @@ import { isLoggedIn } from '../../../../util'
 
 import UserHeader from '../../../../components/user/UserHeader'
 import ShopTopPage from '../../../../components/ShopTopPage'
+import { Box } from '@chakra-ui/react'
 
 const ShopTopPageOfUser: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
@@ -15,14 +16,14 @@ const ShopTopPageOfUser: WithGetAccessControl<VFC> = () => {
   const { handle_name } = router.query
 
   return (
-    <>
+    <Box>
       <Head>
         <title>ショップ　トップページ</title>
       </Head>
       <UserHeader />
 
       <ShopTopPage handle_name={handle_name} isUser={true} />
-    </>
+    </Box>
   )
 }
 
