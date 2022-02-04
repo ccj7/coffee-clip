@@ -101,16 +101,19 @@ const FixShopInfo: WithGetAccessControl<VFC> = () => {
               <InputForm
                 theme="map_url"
                 text="googlemap URL"
+                type="url"
                 defaultValue={shopInfo.map_url}
               />
               <InputForm
                 theme="hp_url"
                 text="HP URL"
+                type="url"
                 defaultValue={shopInfo.hp_url}
               />
               <InputForm
                 theme="instagram_url"
                 text="instagram URL"
+                type="url"
                 defaultValue={shopInfo.instagram_url}
               />
               <TextArea
