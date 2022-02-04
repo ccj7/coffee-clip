@@ -17,25 +17,55 @@ $ git clone https://github.com/ccj7/coffee-clip.git
 2. 依存関係のインストール
 
 ```sh
-   $ npm i
+// フロントエンド
+$ cd front
+$ npm i
+
+// サーバーサイド
+$ cd server
+$ npm i
 ```
 
 3. env ファイルを使って環境変数を設定して下さい:
 
 【フロントエンド】
-NEXT_PUBLIC_FIREBASE_APIKEY= `your_API_KEY`
-NEXT_PUBLIC_FIREBASE_AUTHDOMAIN= `your_AUTHDOMAIN`
-NEXT_PUBLIC_FIREBASE_PROJECT_ID= `your_PROJECT_ID`
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET= `your_STORAGE_BUCKET`
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID= `your_MESSAGING_SENDER_ID`
-NEXT_PUBLIC_FIREBASE_APP_ID= `your_APP_ID`
-NEXT_PUBLIC_FIREBASE_MEASURENEBT_ID= `your_MEASURENEBT_ID`
 
-【バックエンド】
+```
+NEXT_PUBLIC_FIREBASE_APIKEY= your_API_KEY
+NEXT_PUBLIC_FIREBASE_AUTHDOMAIN= your_AUTHDOMAIN
+NEXT_PUBLIC_FIREBASE_PROJECT_ID= your_PROJECT_ID
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET= your_STORAGE_BUCKET
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID= your_MESSAGING_SENDER_ID
+NEXT_PUBLIC_FIREBASE_APP_ID= your_APP_ID
+NEXT_PUBLIC_FIREBASE_MEASURENEBT_ID= your_MEASURENEBT_ID
+```
+
+【サーバー】
+
+```
 S3_ACCESS_KEY_ID= `your_ACCESS_KEY`
 S3_SECRET_ACCESS_KEY= `your_SECRET_ACCESS_KEY`
 STRIPE_SECRET_KEY= `your_SECRET_KEY`
 STRIPE_ACCOUNT_ID= `your_ACCOUNT_ID`
+```
+
+4. 開発環境は以下のコマンドで立ち上げてください
+
+```bash
+// フロントエンド
+$ cd front
+$ npm run dev
+
+// サーバー
+$ cd server
+$ npm run dev
+```
+
+5. ビルドしたい以下のコマンドで実行できます
+
+```bash
+$ npm run build
+```
 
 ## テストの実行方法
 
@@ -48,7 +78,7 @@ $ cd server
 $ npm run test
 ```
 
-## Deployment
+## デプロイメント
 
 1. デプロイしたいサーバーに COFFEE CLIP のソースをコピーします。
 2. 以下のコマンドを使って COFFEE CLIP のアプリケーションを立ち上げることができます。
@@ -58,36 +88,20 @@ $ docker-compose build
 $ docker-compose up
 ```
 
-## Built With
+## テックスタック
 
-// 使っているフレームワークをかく
-
-- [Next.js](https://nextjs.org/) - フロントエンド
-- []() -
-- []() -
-
-## Contributing
-
-テックリード:[Maho Miyata](https://github.com/mahomiyata)
-フロントエンド:[Mei Omomo](https://github.com/mei-omomo) & [Nao Nomura](https://github.com/naonmr)
-バックエンド:[Maho Miyazawa](https://github.com/Maho-Miyazawa) & [Motoki Mizuno](https://github.com/Motoki-tech)
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+- [Next.js](https://nextjs.org/) - フロントエンドフレームワーク
+- [Firebase Authentication](https://firebase.google.com/docs/auth/) - ユーザー認証
+- [Chakra UI](https://chakra-ui.com/) - UI コンポーネントライブラリ
+- [Stripe](https://stripe.com/jp) - 決済システム
+- [Express](http://expressjs.com/) - Web アプリケーション・フレームワーク
+- [MongoDB](https://www.mongodb.com/) - データベース
+- [mongoose](https://mongoosejs.com/) - ORM
+- [Mocha](https://mochajs.org/) - テストフレームワーク
+- [Chai](https://www.chaijs.com/) - アサーションフレームワーク
 
 ## Authors
 
-- **Billie Thompson** - _Initial work_ - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
+テックリード:[Maho Miyata](https://github.com/mahomiyata)  
+フロントエンド:[Mei Omomo](https://github.com/mei-omomo) & [Nao Nomura](https://github.com/naonmr)  
+バックエンド:[Maho Miyazawa](https://github.com/Maho-Miyazawa) & [Motoki Mizuno](https://github.com/Motoki-tech)
