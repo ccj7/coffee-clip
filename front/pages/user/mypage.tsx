@@ -1,6 +1,5 @@
 import { VFC, useEffect, useState } from 'react'
 import Head from 'next/head'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import axios from 'axios'
 
@@ -12,7 +11,7 @@ import Profile from '../../components/Profile'
 import MyLogCard from '../../components/user/MyLogCard'
 import PrimaryButton from '../../components/Button'
 
-import { Box, Text, Spacer, Stack, HStack, Flex } from '@chakra-ui/react'
+import { Box, Text, Spacer, Stack, HStack, Link } from '@chakra-ui/react'
 
 const Mypage: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
@@ -26,10 +25,7 @@ const Mypage: WithGetAccessControl<VFC> = () => {
     const getUser = async () => {
       const res = await axios.get(`/api/users/${currentUser}`)
 
-      // TODO このコードの意味確認
-      // if (res.data !== null) {
       setUserInfo(res.data)
-      // }
     }
 
     if (currentUser) {
@@ -86,16 +82,19 @@ const Mypage: WithGetAccessControl<VFC> = () => {
               <Text fontSize={{ base: '10px', md: '14px' }}>フォロワー</Text>
             </Box>
             <Spacer />
-            <Link href="/user/favorite-shops">
-              <Box>
-                <Text ml="40%" fontSize="20px" fontWeight="bold">
-                  {userInfo.followee_shops_handle_names.length}
-                </Text>
+            <Box>
+              <Text ml="40%" fontSize="20px" fontWeight="bold">
+                {userInfo.followee_shops_handle_names.length}
+              </Text>
+              <Link
+                href="/user/favorite-shops"
+                _hover={{ textDecoration: 'none' }}
+              >
                 <Text fontSize={{ base: '8px', md: '12px' }} as="ins">
                   お気に入りShop
                 </Text>
-              </Box>
-            </Link>
+              </Link>
+            </Box>
           </HStack>
         </Box>
       )}
