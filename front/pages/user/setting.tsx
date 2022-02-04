@@ -60,13 +60,13 @@ const Setting: WithGetAccessControl<VFC> = () => {
   return (
     <Box>
       <Head>
-        <title>Setting</title>
+        <title>ユーザープロフィール編集</title>
       </Head>
       <UserHeader />
       <Box w={{ base: '80%', md: '65%' }} my="0" mx="auto" mb="50px">
         <Center mb="50px">
           <Heading size="md" mt="50px">
-            ユーザープロフィール
+            ユーザープロフィール編集
           </Heading>
         </Center>
         {!message && (

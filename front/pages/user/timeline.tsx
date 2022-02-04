@@ -35,7 +35,7 @@ const Timeline: WithGetAccessControl<VFC> = (props) => {
   return (
     <div>
       <Head>
-        <title>Timeline</title>
+        <title>Time Line</title>
       </Head>
       <UserHeader />
       <Box w={{ base: '80%', md: '65%' }} my="0" mr="auto" ml="auto" mt="30px">

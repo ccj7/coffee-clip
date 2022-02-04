@@ -1,4 +1,4 @@
-import { VFC } from 'react'
+import { useState, VFC } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 
@@ -11,6 +11,7 @@ import { Box } from '@chakra-ui/react'
 
 const ShopTopPageOfUser: WithGetAccessControl<VFC> = () => {
   const { currentUser } = useAuthContext()
+  const [ shopName, setShopName ] = useState()
 
   const router = useRouter()
   const { handle_name } = router.query
@@ -18,11 +19,10 @@ const ShopTopPageOfUser: WithGetAccessControl<VFC> = () => {
   return (
     <Box>
       <Head>
-        <title>ショップ　トップページ</title>
+        <title>{shopName} - ショップ詳細</title>
       </Head>
       <UserHeader />
-
-      <ShopTopPage handle_name={handle_name} isUser={true} />
+      <ShopTopPage handle_name={handle_name} isUser={true} setShopName={setShopName}/>
     </Box>
   )
 }
