@@ -20,7 +20,7 @@ import { BiHome } from 'react-icons/bi'
 import Alert from './Alert'
 
 const ShopTopPage = (props: any) => {
-  const { handle_name, isUser, setIsPublish } = props
+  const { handle_name, isUser, setIsPublish, setShopName } = props
   const { currentUser } = useContext(AuthContext)
   const [shopInfo, setShopInfo] = useState<ShopData>(shopInitialData)
 
@@ -32,12 +32,12 @@ const ShopTopPage = (props: any) => {
     if (currentUser && isUser) {
       const res: any = await axios.get(`/api/shops/${currentUser}/${handle}`)
       setShopInfo(res.data)
+      setShopName(res.data.display_name)
     } else if (currentUser && !isUser) {
       const res: any = await axios.get(`/api/shops/${currentUser}`)
       if (res.data) {
         setShopInfo(res.data)
         setIsPublish(res.data.publish_state)
-        console.log(res.data)
       }
     }
   }
