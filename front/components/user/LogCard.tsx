@@ -1,10 +1,20 @@
-import Link from 'next/link'
-import { Box, Heading, Image, Text, HStack, Avatar } from '@chakra-ui/react'
+import {
+  Box,
+  Heading,
+  Image,
+  Text,
+  HStack,
+  Avatar,
+  Link,
+} from '@chakra-ui/react'
 
 function LogCard(props: any) {
   const { display_name, handle_name, icon, review } = props
   return (
-    <Link href={{ pathname: `/user/topPage/${handle_name}` }}>
+    <Link
+      href={`/user/topPage/${handle_name}`}
+      _hover={{ textDecoration: 'none' }}
+    >
       <Box
         my={12}
         p={8}
@@ -28,12 +38,18 @@ function LogCard(props: any) {
         <HStack>
           {review && (
             <Box>
-              <Text fontWeight='bold' pt={4} letterSpacing="0.8px" fontSize="16px">
+              <Text
+                fontWeight="bold"
+                pt={4}
+                letterSpacing="0.8px"
+                fontSize="16px"
+                _hover={{ borderBottom: 'none' }}
+              >
                 {review.coffee_name}
               </Text>
               {review.image && (
                 <Image
-                  mt='10px'
+                  mt="10px"
                   boxSize="250px"
                   objectFit="cover"
                   src={review.image}
