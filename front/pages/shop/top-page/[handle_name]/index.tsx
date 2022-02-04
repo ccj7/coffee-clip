@@ -1,4 +1,4 @@
-import { VFC } from 'react'
+import { useState, VFC } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { isLoggedIn } from '../../../../util'
@@ -6,11 +6,13 @@ import { isLoggedIn } from '../../../../util'
 import Header from '../../../../components/shop/Header'
 import ShopTopPage from '../../../../components/ShopTopPage'
 import PrimaryButton from '../../../../components/Button'
-import { Box, Center, Heading, Spacer, SimpleGrid } from '@chakra-ui/react'
+import { Box, Center, Heading, Text, SimpleGrid } from '@chakra-ui/react'
 
 const ShopTopPageOfShop: WithGetAccessControl<VFC> = () => {
   const router = useRouter()
   const { handle_name } = router.query
+
+  const [isPublish, setIsPublish] = useState(true)
 
   return (
     <div>
@@ -29,6 +31,7 @@ const ShopTopPageOfShop: WithGetAccessControl<VFC> = () => {
           <SimpleGrid columns={{ md: 2 }} spacing={{ md: '50px' }}>
             <Heading size="md" mb="5px" mt="8px">
               店舗向けのプレビューページ
+              {isPublish ? ' (公開中)' : ' (非公開)'}
             </Heading>
             <PrimaryButton
               text={'ダッシュボードに戻る'}
@@ -37,9 +40,14 @@ const ShopTopPageOfShop: WithGetAccessControl<VFC> = () => {
               }}
             />
           </SimpleGrid>
+          {/* {isPublish ? <Text>公開中</Text> : <Text>非公開</Text>} */}
         </Center>
       </Box>
-      <ShopTopPage handle_name={handle_name} isUser={false} />
+      <ShopTopPage
+        handle_name={handle_name}
+        isUser={false}
+        setIsPublish={setIsPublish}
+      />
     </div>
   )
 }
