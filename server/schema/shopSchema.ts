@@ -1,17 +1,17 @@
 import { Schema, Types, Model, model } from 'mongoose'
 
-interface Recommendation {
+export interface Recommendation {
     title?: string
     description?: string
     image?: string
 }
 
-interface Selling_point {
+export interface Selling_point {
     text?: string
     image?: string
 }
 
-interface ShopsData {
+export interface ShopsData {
     auth_id: string
     handle_name: string
     display_name: string
@@ -23,8 +23,8 @@ interface ShopsData {
     opening_hours?: string
     regular_day_off?: string
     concept?: string
-    recommendation?: Types.DocumentArray<Recommendation>
-    selling_point?: Types.DocumentArray<Selling_point>
+    recommendation?: Recommendation
+    selling_point?: Selling_point
     follower_handle_name?: Types.Array<string>
     publish_state: boolean
 }
