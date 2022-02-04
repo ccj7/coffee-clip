@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import { s3Upload } from '../s3'
 import ShopsDataModel from '../schema/shopSchema'
 import userModel from '../schema/userSchema'
-import { Recommendation, Selling_point, ShopsData } from '../schema/shopSchema'
+import { ShopsData } from '../schema/shopSchema'
 
 export const getShops = async (req: Request, res: Response) => {
     try {
