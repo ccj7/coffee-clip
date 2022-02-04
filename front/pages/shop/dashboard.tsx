@@ -21,7 +21,7 @@ const DashBoard: WithGetAccessControl<VFC> = () => {
   const getShop = async (authId: string) => {
     try {
       const res: AxiosResponse = await axios.get(`/api/shops/${authId}`)
-      setShopInfo(res.data)       
+      setShopInfo(res.data)
     } catch (error) {
       console.error(error)
     }
@@ -37,7 +37,6 @@ const DashBoard: WithGetAccessControl<VFC> = () => {
     <Box>
       <Head>
         <title>ダッシュボード</title>
-        <meta name="dashboard" content="ダッシュボード" />
       </Head>
       <Header />
       {shopInfo && (
@@ -47,7 +46,7 @@ const DashBoard: WithGetAccessControl<VFC> = () => {
           icon={shopInfo.icon}
         />
       )}
-      <HStack w={{base:'70%', md:'40%'}} my='0' mx='auto'>
+      <HStack w={{ base: '70%', md: '40%' }} my="0" mx="auto">
         <Box>
           <PrimaryButton
             text="ページを編集"
@@ -60,7 +59,9 @@ const DashBoard: WithGetAccessControl<VFC> = () => {
         <Box>
           <PrimaryButton
             text="ページを確認"
-            onclick={() => router.push(`/shop/top-page/${shopInfo.handle_name}`)}
+            onclick={() =>
+              router.push(`/shop/top-page/${shopInfo.handle_name}`)
+            }
           />
         </Box>
       </HStack>

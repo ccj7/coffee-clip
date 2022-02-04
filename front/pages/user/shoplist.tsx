@@ -26,15 +26,16 @@ const Shoplist: WithGetAccessControl<VFC> = (props) => {
     <Box>
       <Head>
         <title>ショップ一覧</title>
-        <meta name="shopslist" content="ショップ一覧" />
       </Head>
       <UserHeader />
       <Center>
-        <Heading size='md' mt='50px' >ショップ一覧</Heading>
+        <Heading size="md" mt="50px">
+          ショップ一覧
+        </Heading>
       </Center>
 
-      <Box w={{base:'80%', md:'65%'}} my='0' mx='auto'>
-        <SimpleGrid columns={{md:2}}>
+      <Box w={{ base: '80%', md: '65%' }} my="0" mx="auto">
+        <SimpleGrid columns={{ md: 2 }}>
           {shopsInfo &&
             shopsInfo.map((shop: PartOfShopData, key: any) => {
               return (
@@ -46,7 +47,7 @@ const Shoplist: WithGetAccessControl<VFC> = (props) => {
                   concept={shop.concept}
                 />
               )
-              })}
+            })}
         </SimpleGrid>
       </Box>
     </Box>
