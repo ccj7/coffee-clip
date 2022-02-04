@@ -153,6 +153,7 @@ const UserTopPage: WithGetAccessControl<VFC> = () => {
             mx="auto"
             my="0"
             p="10px 20px 10px 20px"
+            cursor="default"
           >
             <Box>
               <Text ml="40%" fontSize="20px" fontWeight="bold">
