@@ -108,7 +108,6 @@ const UserTopPage: WithGetAccessControl<VFC> = () => {
     <Box>
       <Head>
         <title>トップページ</title>
-        <meta name="userTopPage" content="ユーザートップページ" />
       </Head>
       <UserHeader />
 
