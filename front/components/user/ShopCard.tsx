@@ -11,7 +11,8 @@ function ShopCard(props: any) {
       <Box
         w="80%"
         h="auto"
-        m="40px"
+        mt="40px"
+        mx="auto"
         backgroundColor="#fcf7f0"
         border="0.2px"
         borderRadius="24px"
