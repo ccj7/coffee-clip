@@ -72,23 +72,24 @@ const ShopTopPage = (props: any) => {
   }
 
   return (
+    <>
     <Box
       w="100%"
       h="300px"
       pt="50px"
       background="#988d83"
       backgroundImage="linear-gradient(62deg, #988d83  0%, #af6938 100%)"
-    >
+    ></Box>
       <Box
         w={{ base: '80%', md: '65%' }}
         ml="auto"
         mr="auto"
-        my="0"
         borderRadius="46px"
         backgroundColor="orange.50"
         pt="10px"
         pb="40px"
         mb="45px"
+        mt="-220px"
       >
         <Profile
           display_name={shopInfo.display_name}
@@ -223,7 +224,7 @@ const ShopTopPage = (props: any) => {
                   )}
                 </Box>
                 <Box>
-                  <Text fontSize="16px">{shopInfo.recommendation.title}</Text>
+                  <Text fontSize="16px" mt={{base:"10px"}}>{shopInfo.recommendation.title}</Text>
                   <Box h="2.5px" backgroundColor="brand.color3"></Box>
                   <Text mt="10px" fontSize="14px">
                     {shopInfo.recommendation.description}
@@ -255,7 +256,7 @@ const ShopTopPage = (props: any) => {
           </Box>
         </Box>
       </Box>
-    </Box>
+    </>
   )
 }
 
