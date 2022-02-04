@@ -14,9 +14,10 @@ import {
   Input,
   InputRightElement,
   InputGroup,
-  Link
+  Link,
 } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 import {
   HamburgerIcon,
   NotAllowedIcon,
@@ -25,6 +26,7 @@ import {
 } from '@chakra-ui/icons'
 import { getAuth, signOut } from 'firebase/auth'
 import firebase from '../../auth/firebaseConfig'
+import logo from '../../img/logo.jpg'
 
 import React from 'react'
 import { useForm } from 'react-hook-form'
@@ -60,8 +62,11 @@ function UserHeader() {
     <>
       <Box top={0} position="sticky" zIndex={"sticky"}>
         <HStack p="2" bg="brand.color1" color="brand.color6">
+          <Box w={{base:'54px', md:'38px'}} ml='4px'>
+            <Image src={logo} alt='COFFEE CLIP' />
+          </Box>
           <Link href="/user/timeline" _hover={{textDecoration: "none"}}>
-            <Text ml='10px' fontSize={{base:"lg", md:"3xl"}}>COFFEE CLIP</Text>
+            <Text ml='4px' fontSize={{base:"lg", md:"3xl"}}>COFFEE CLIP</Text>
           </Link>
           <Spacer/>
 
