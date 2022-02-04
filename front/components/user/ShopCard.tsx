@@ -45,7 +45,13 @@ function ShopCard(props: any) {
           </Text>
         </Box>
         <Center>
-          <Image mb="20px" borderRadius="5px" src={icon} />
+          <Image
+            mb="20px"
+            boxSize="250px"
+            objectFit="cover"
+            borderRadius="5px"
+            src={icon}
+          />
         </Center>
         <Box mx="auto" borderRadius="5px" py="8px">
           <Text fontSize="13px" fontWeight="bold">
