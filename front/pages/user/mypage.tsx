@@ -41,7 +41,6 @@ const Mypage: WithGetAccessControl<VFC> = () => {
     <Box>
       <Head>
         <title>マイページ</title>
-        <meta name="mypage" content="マイページ" />
       </Head>
       <UserHeader />
 
@@ -92,7 +91,7 @@ const Mypage: WithGetAccessControl<VFC> = () => {
                 <Text ml="40%" fontSize="20px" fontWeight="bold">
                   {userInfo.followee_shops_handle_names.length}
                 </Text>
-                <Text fontSize={{ base: '8px', md: '12px' }} as='ins'>
+                <Text fontSize={{ base: '8px', md: '12px' }} as="ins">
                   お気に入りShop
                 </Text>
               </Box>
@@ -101,18 +100,14 @@ const Mypage: WithGetAccessControl<VFC> = () => {
         </Box>
       )}
 
-      <Box 
-        w={{ base: '80%', md: '65%' }}
-        my="0" 
-        mx="auto"
-      >
-        <Box mb='-20px' mt="20px" textAlign='right'>
-        <PrimaryButton
+      <Box w={{ base: '80%', md: '65%' }} my="0" mx="auto">
+        <Box mb="-20px" mt="20px" textAlign="right">
+          <PrimaryButton
             text={'新しい投稿をする'}
             onclick={() => {
               router.push('/user/new-review')
             }}
-        />
+          />
         </Box>
       </Box>
 

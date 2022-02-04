@@ -81,7 +81,6 @@ const Signup: WithGetAccessControl<VFC> = () => {
     >
       <Head>
         <title>ユーザー Sign-Up</title>
-        <meta name="Sign-Up" content="ユーザー サインアップ" />
       </Head>
       <Header />
       <Alert alert={alert} setAlert={setAlert} message={message} />

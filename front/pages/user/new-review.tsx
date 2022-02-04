@@ -44,7 +44,6 @@ const NewReview: WithGetAccessControl<VFC> = () => {
       <Box>
         <Head>
           <title>新規投稿</title>
-          <meta name="NewReview" content="プロフィール編集" />
         </Head>
         <UserHeader />
         <Box w={{ base: '80%', md: '65%' }} my="0" mx="auto">
