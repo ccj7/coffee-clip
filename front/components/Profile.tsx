@@ -7,7 +7,7 @@ function PhotoImage(props: any) {
     <Box w='65%' my='0' ml='auto' mr='auto'>
       <VStack>
         <Avatar size="2xl" mt='8' mb='2' src={icon} alt="icon" />{' '}
-        <Heading size="lg">{display_name}</Heading>
+        <Heading size="lg" textAlign="center">{display_name}</Heading>
         <Text fontSize='20px' letterSpacing='1px' pb='8'>@{handle_name}</Text>
       </VStack>
     </Box>
