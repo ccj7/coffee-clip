@@ -2,6 +2,11 @@
 
 COFFEE CLIP は、コーヒーを身近に感じてコーヒーで暮らしをもっと豊かにするための、コーヒー専門 SNS です。
 
+## コンセプト
+
+私たちがなぜコーヒーをテーマに選んだかというと、コロナでおうち時間が増えてコーヒーの需要が伸びているからです。
+また、以前から自宅でコーヒーを飲んでいる人の中には、豆にこだわる人も増えてきているからです。
+
 ## 始め方
 
 ### インストール
@@ -26,7 +31,19 @@ $ npm i
 
 3. env ファイルを使って環境変数を設定して下さい
 
-【フロントエンド】
+【プロジェクト全体 (.env)】
+
+```
+MONGO_INITDB_ROOT_USERNAME=your_USER_NAME
+MONGO_INITDB_ROOT_PASSWORD=your_PASSWORD
+MONGO_INITDB_DATABASE=your_DATABASE
+ME_CONFIG_MONGODB_ADMINUSERNAME=your_USER_NAME
+ME_CONFIG_MONGODB_ADMINPASSWORD=your_PASSWORD
+ME_CONFIG_MONGODB_URL=your_URL
+MONGODB_URL=your_URL
+```
+
+【フロントエンド (/front/.env)】
 
 ```
 NEXT_PUBLIC_FIREBASE_APIKEY= your_API_KEY
@@ -38,7 +55,7 @@ NEXT_PUBLIC_FIREBASE_APP_ID= your_APP_ID
 NEXT_PUBLIC_FIREBASE_MEASURENEBT_ID= your_MEASURENEBT_ID
 ```
 
-【サーバー】
+【サーバー (/server/.env)】
 
 ```
 S3_ACCESS_KEY_ID= your_ACCESS_KEY
@@ -59,7 +76,7 @@ $ cd server
 $ npm run dev
 ```
 
-5. ビルドしたい以下のコマンドで実行できます
+5. ビルドしたい場合は、以下のコマンドで実行できます
 
 ```bash
 $ npm run build
@@ -100,6 +117,6 @@ $ docker-compose up
 
 ## Authors
 
-テックリード:[Maho Miyata](https://github.com/mahomiyata)  
+テックリード:[Maho Miyata](https://github.com/mahomiyata)
 フロントエンド:[Mei Omomo](https://github.com/mei-omomo) & [Nao Nomura](https://github.com/naonmr)  
 バックエンド:[Maho Miyazawa](https://github.com/Maho-Miyazawa) & [Motoki Mizuno](https://github.com/Motoki-tech)
