@@ -1,14 +1,11 @@
 # COFEEE CLIP☕️
 
 COFFEE CLIP は、コーヒーを身近に感じてコーヒーで暮らしをもっと豊かにするための、コーヒー専門 SNS です。
+[COFFEE CLIP](http://ec2-13-231-157-112.ap-northeast-1.compute.amazonaws.com/)
 
 ## コンセプト
 
 コロナ禍でおうち時間が増えた人たちの間でコーヒーの需要が伸びており、また、以前から自宅でコーヒーを飲んでいる人の中には豆にこだわる人も多いので、コーヒーの情報を収集したり、発信する場を作りたいと考えました。
-
-## デプロイメント
-
-[COFFEE CLIP](http://ec2-13-231-157-112.ap-northeast-1.compute.amazonaws.com/)
 
 ## 始め方
 
