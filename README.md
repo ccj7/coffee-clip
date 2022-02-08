@@ -3,6 +3,8 @@
 COFFEE CLIP は、コーヒーを身近に感じてコーヒーで暮らしをもっと豊かにするための、コーヒー専門 SNS です。  
 [COFFEE CLIP](http://ec2-13-231-157-112.ap-northeast-1.compute.amazonaws.com/)
 
+![top.png](imgs-for-readme/top.png)
+
 ## コンセプト
 
 コロナ禍でおうち時間が増えた人たちの間でコーヒーの需要が伸びており、また、以前から自宅でコーヒーを飲んでいる人の中には豆にこだわる人も多いので、コーヒーの情報を収集したり、発信する場を作りたいと考えました。
@@ -29,39 +31,19 @@ $ cd server
 $ npm i
 ```
 
-3. env ファイルを使って環境変数を設定して下さい
+3. 以下のサンプルファイルをコピーして環境変数を設定します
 
-【プロジェクト全体 (.env)】
+```sh
+// プロジェクト全体
+$ cp .env.sample .env
 
-```
-MONGO_INITDB_ROOT_USERNAME=your_USER_NAME
-MONGO_INITDB_ROOT_PASSWORD=your_PASSWORD
-MONGO_INITDB_DATABASE=your_DATABASE
-ME_CONFIG_MONGODB_ADMINUSERNAME=your_USER_NAME
-ME_CONFIG_MONGODB_ADMINPASSWORD=your_PASSWORD
-ME_CONFIG_MONGODB_URL=your_URL
-MONGODB_URL=your_URL
-```
+// フロントエンド
+$ cd front
+$ cp .env.sample .env
 
-【フロントエンド (/front/.env)】
-
-```
-NEXT_PUBLIC_FIREBASE_APIKEY= your_API_KEY
-NEXT_PUBLIC_FIREBASE_AUTHDOMAIN= your_AUTHDOMAIN
-NEXT_PUBLIC_FIREBASE_PROJECT_ID= your_PROJECT_ID
-NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET= your_STORAGE_BUCKET
-NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID= your_MESSAGING_SENDER_ID
-NEXT_PUBLIC_FIREBASE_APP_ID= your_APP_ID
-NEXT_PUBLIC_FIREBASE_MEASURENEBT_ID= your_MEASURENEBT_ID
-```
-
-【サーバー (/server/.env)】
-
-```
-S3_ACCESS_KEY_ID= your_ACCESS_KEY
-S3_SECRET_ACCESS_KEY= your_SECRET_ACCESS_KEY
-STRIPE_SECRET_KEY= your_SECRET_KEY
-STRIPE_ACCOUNT_ID= your_ACCOUNT_ID
+// サーバーサイド
+$ cd server
+$ cp .env.sample .env
 ```
 
 4. 開発環境は以下のコマンドで立ち上げてください
