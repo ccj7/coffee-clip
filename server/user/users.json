@@ -1,409 +1,405 @@
 {
-    "users": [
+  "users": [
+    {
+      "auth_id": "h1ERSr4qUNUoviCQlzZ0648p1cA2",
+      "handle_name": "kaori_hikita",
+      "display_name": "Kaori",
+      "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_user_kaori.jpeg",
+      "follower_handle_names": [
+        "bob_brown",
+        "alice_white",
+        "mizki",
+        "richard",
+        "roman"
+      ],
+      "followee_handle_names": [
+        "bob_brown",
+        "alice_white",
+        "mizki",
+        "mei_o",
+        "roman",
+        "brian"
+      ],
+      "followee_shops_handle_names": [
+        "coffeeeeen",
+        "moon_bucks",
+        "arasuna",
+        "inutahiko_coffee"
+      ],
+      "reviews": [
         {
-            "auth_id": "h1ERSr4qUNUoviCQlzZ0648p1cA2",
-            "handle_name": "kaori_hikita",
-            "display_name": "Kaori",
-            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_user_kaori.jpeg",
-            "follower_handle_names": [
-                "bob_brown",
-                "alice_white",
-                "mizki",
-                "richard",
-                "roman"
-            ],
-            "followee_handle_names": [
-                "bob_brown",
-                "alice_white",
-                "mizki",
-                "mei_o",
-                "roman",
-                "brian"
-            ],
-            "followee_shops_handle_names": [
-                "coffeeeeen",
-                "moon_bucks",
-                "arasuna",
-                "inutahiko_coffee"
-            ],
-            "reviews": [
-                {
-                    "coffee_name": "MoonBucksブレンドコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee1.jpeg",
-                    "description": "素敵なコーヒーでした。本当はブラジルコーヒーが目当てで購入しましたが、MoonBucksブレンドコーヒーもとても良かったです。今回購入して飲んでみた時に非常に美味しく、お気に入りの一杯になりました。今後も積極的にMoonBucksブレンドコーヒーを購入していきたいと思います！",
-                    "created_at": 1643251652844
-                },
-                {
-                    "coffee_name": "coffeeeeenブレンドコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee2.jpeg",
-                    "description": "最高のコーヒーです！",
-                    "created_at": 1643251451480
-                },
-                {
-                    "coffee_name": "Arasuna Kiyosumiオリジナルコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee3.jpeg",
-                    "description": "もっと味に深みがほしいです",
-                    "created_at": 1643251352844
-                },
-                {
-                    "coffee_name": "Arasuna Kiyosumiプレミアムコーヒー",
-                    "image": "",
-                    "description": "今まで購入したコーヒー豆の中で、最も香りが良く、上質なコーヒータイムを味わえると思います。価格もお手頃で、この価格でこれだけ上質なコーヒーは他に無いのではないかと思います。私のコーヒー歴はまだ5年で、それほどコーヒーに関して詳しいわけではありませんが、これまでの5年間の経験で、Arasuna Kiyosumiプレミアムコーヒーは、他のコーヒーと比較にならない香りの良さだと思います。いつもありがとうございます。",
-                    "created_at": 1643251438470
-                },
-                {
-                    "coffee_name": "犬田彦アメリカンコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee5.jpeg",
-                    "description": "今までに50回以上は購入してますが、500gが6パックでこの値段は安くてコスパが抜群です。私はコーヒーの酸味が苦手な方なので、このアメリカンコーヒーがとても飲みやすく気に入ってます。毎回箱の中を空けるのが楽しみです。これからもリピートします！",
-                    "created_at": 1643251438466
-                },
-                {
-                    "coffee_name": "Arasuna Kiyosumiエスプレッソコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee6.jpeg",
-                    "description": "最高の一杯です！",
-                    "created_at": 1643251352844
-                }
-            ]
+          "coffee_name": "MoonBucksブレンドコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee1.jpeg",
+          "description": "素敵なコーヒーでした。本当はブラジルコーヒーが目当てで購入しましたが、MoonBucksブレンドコーヒーもとても良かったです。今回購入して飲んでみた時に非常に美味しく、お気に入りの一杯になりました。今後も積極的にMoonBucksブレンドコーヒーを購入していきたいと思います！",
+          "created_at": 1643251652844
         },
         {
-            "auth_id": "testAuthUserIdBob",
-            "handle_name": "bob_brown",
-            "display_name": "Bob",
-            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_user_bob.jpeg",
-            "follower_handle_names": ["kaori_hikita", "alice_white"],
-            "followee_handle_names": ["kaori_hikita"],
-            "followee_shops_handle_names": [
-                "arasuna",
-                "coffeeeeen",
-                "green_bottle_coffee"
-            ],
-            "reviews": [
-                {
-                    "coffee_name": "Arasuna Kiyosumiプレミアムコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee7.jpeg",
-                    "description": "僕の中の、断トツのお気に入りのコーヒーが、このArasuna Kiyosumiプレミアムコーヒーです。みなさんも、ぜひ一度だまされたと思って試してみてください。絶対に後悔させません！",
-                    "created_at": 1643252638432
-                },
-                {
-                    "coffee_name": "coffeeeeenブレンドコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee8.jpeg",
-                    "description": "キレのある上質な味わいがクセになる！",
-                    "created_at": 1643251451480
-                },
-                {
-                    "coffee_name": "GreenBottleアメリカンコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee9.jpeg",
-                    "description": "若い方にも飲みやすい一杯だなと思います",
-                    "created_at": 1643251352850
-                }
-            ]
+          "coffee_name": "coffeeeeenブレンドコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee2.jpeg",
+          "description": "最高のコーヒーです！",
+          "created_at": 1643251451480
         },
         {
-            "auth_id": "testAuthUserIdAlice",
-            "handle_name": "alice_white",
-            "display_name": "Alice",
-            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_user_alice.jpeg",
-            "follower_handle_names": ["kaori_hikita", "bob_brown", "richard"],
-            "followee_handle_names": ["kaori_hikita"],
-            "followee_shops_handle_names": [
-                "coffeeeeen",
-                "yoneda_coffee",
-                "toutor"
-            ],
-            "reviews": [
-                {
-                    "coffee_name": "coffeeeeenブレンドコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee10.jpeg",
-                    "description": "前から飲みたいと思っていたコーヒーなので、今回購入して本当に良かったです。1人でも多くの方に飲んでもらいたいコーヒーです！",
-                    "created_at": 1643251451472
-                },
-                {
-                    "coffee_name": "米田スペシャルコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee11.jpeg",
-                    "description": "お値段が少し高めな印象ですが、味は最高でした",
-                    "created_at": 1643251425542
-                },
-                {
-                    "coffee_name": "TOUTORオリジナルコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee12.jpeg",
-                    "description": "心に残る一杯！！",
-                    "created_at": 1643251405542
-                }
-            ]
+          "coffee_name": "Arasuna Kiyosumiオリジナルコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee3.jpeg",
+          "description": "もっと味に深みがほしいです",
+          "created_at": 1643251352844
         },
         {
-            "auth_id": "testAuthUserIdMizki",
-            "handle_name": "mizki",
-            "display_name": "Mizki",
-            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_user_mizki.jpg",
-            "follower_handle_names": ["kaori_hikita"],
-            "followee_handle_names": ["kaori_hikita", "mei_o"],
-            "followee_shops_handle_names": [
-                "coffeeeeen",
-                "yoneda_coffee",
-                "4th_coffee"
-            ],
-            "reviews": [
-                {
-                    "coffee_name": "coffeeeeenブレンドコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee13.jpeg",
-                    "description": "これからも継続して購入してきたいコーヒーです",
-                    "created_at": 1643251451500
-                },
-                {
-                    "coffee_name": "米田スペシャルコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee14.jpeg",
-                    "description": "おいしいけど、値段が高いのがネックかな",
-                    "created_at": 1643251425200
-                },
-                {
-                    "coffee_name": "4th coffeeのブレンドコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee15.jpeg",
-                    "description": "500gが4パックでこの値段は安くてコスパが抜群です。4th coffeeのブレンドコーヒーはとても飲みやすく気に入ってます。毎回箱の中を空けるのが楽しみです。これからもリピートします！",
-                    "created_at": 1643251438466
-                }
-            ]
+          "coffee_name": "Arasuna Kiyosumiプレミアムコーヒー",
+          "image": "",
+          "description": "今まで購入したコーヒー豆の中で、最も香りが良く、上質なコーヒータイムを味わえると思います。価格もお手頃で、この価格でこれだけ上質なコーヒーは他に無いのではないかと思います。私のコーヒー歴はまだ5年で、それほどコーヒーに関して詳しいわけではありませんが、これまでの5年間の経験で、Arasuna Kiyosumiプレミアムコーヒーは、他のコーヒーと比較にならない香りの良さだと思います。いつもありがとうございます。",
+          "created_at": 1643251438470
         },
         {
-            "auth_id": "testAuthUserIdNao",
-            "handle_name": "nao",
-            "display_name": "Nao",
-            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_user_nao.jpg",
-            "follower_handle_names": ["paddy_p"],
-            "followee_handle_names": [],
-            "followee_shops_handle_names": ["coffeeeeen", "yoneda_coffee"],
-            "reviews": [
-                {
-                    "coffee_name": "coffeeeeenブレンドコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee1.jpeg",
-                    "description": "これからも継続して購入してきたいコーヒーです",
-                    "created_at": 1643251451320
-                },
-                {
-                    "coffee_name": "米田スペシャルコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee2.jpeg",
-                    "description": "おいしいけど、値段が高いのがネックかな",
-                    "created_at": 1643251424200
-                }
-            ]
+          "coffee_name": "犬田彦アメリカンコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee5.jpeg",
+          "description": "今までに50回以上は購入してますが、500gが6パックでこの値段は安くてコスパが抜群です。私はコーヒーの酸味が苦手な方なので、このアメリカンコーヒーがとても飲みやすく気に入ってます。毎回箱の中を空けるのが楽しみです。これからもリピートします！",
+          "created_at": 1643251438466
         },
         {
-            "auth_id": "testAuthUserIdMei",
-            "handle_name": "mei_o",
-            "display_name": "mei",
-            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_user_mei.jpg",
-            "follower_handle_names": ["kaori_hikita", "mizki"],
-            "followee_handle_names": [],
-            "followee_shops_handle_names": [
-                "coffeeeeen",
-                "moon_bucks",
-                "yoneda_coffee"
-            ],
-            "reviews": [
-                {
-                    "coffee_name": "coffeeeeenブレンドコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee3.jpeg",
-                    "description": "味わい深いコーヒーでした",
-                    "created_at": 1643251451320
-                },
-                {
-                    "coffee_name": "MoonBucksプレミアムコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee4.jpeg",
-                    "description": "今まで購入したコーヒー豆の中で、おいしく、最高のコーヒータイムが味わえます。価格もお手頃で、この価格でこれだけ上質なコーヒーは他に無いのではないかと思います。私はこれまで多くのコーヒーを飲んできましたが、MoonBucksさんのプレミアムコーヒーは、他のコーヒーと比較にならない香りの良さだと思います。",
-                    "created_at": 1643251438470
-                },
-                {
-                    "coffee_name": "米田オリジナルコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee5.jpeg",
-                    "description": "飲みやすいコーヒー。後味もさっぱりしているところが良い！",
-                    "created_at": 1643251424200
-                }
-            ]
-        },
-        {
-            "auth_id": "testAuthUserIdPaddy",
-            "handle_name": "paddy_p",
-            "display_name": "Paddy",
-            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_user_paddy.jpg",
-            "follower_handle_names": ["take_a_walk"],
-            "followee_handle_names": ["take_a_walk", "nao"],
-            "followee_shops_handle_names": ["arasuna"],
-            "reviews": [
-                {
-                    "coffee_name": "Arasuna Kiyosumiオリジナルコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee6.jpeg",
-                    "description": "これが無いと生きていけない！世界中の人に飲んでもらいたい最高のコーヒーです！",
-                    "created_at": 1643251452418
-                },
-                {
-                    "coffee_name": "Arasuna Kiyosumiプレミアムコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee7.jpeg",
-                    "description": "初めて購入してみましたが、高級感あふれる香りが最高でした！",
-                    "created_at": 1643251438451
-                }
-            ]
-        },
-        {
-            "auth_id": "testAuthUserIdWalk",
-            "handle_name": "take_a_walk",
-            "display_name": "Walk",
-            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_user_walk.jpg",
-            "follower_handle_names": ["paddy_p"],
-            "followee_handle_names": ["paddy_p"],
-            "followee_shops_handle_names": ["toutor"],
-            "reviews": [
-                {
-                    "coffee_name": "TOUTORオリジナルコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee8.jpeg",
-                    "description": "5年前からヘビロテしています！TOUTORの中でもこのオリジナルコーヒーが一番好み！",
-                    "created_at": 1643251452315
-                },
-                {
-                    "coffee_name": "TOUTORプレミアムコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee9.jpeg",
-                    "description": "少しお高めなので、ご褒美として購入しています",
-                    "created_at": 1643251438465
-                },
-                {
-                    "coffee_name": "TOUTORアメリカンコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee10.jpeg",
-                    "description": "飲みやすく、朝の目覚めに最高の一杯です！",
-                    "created_at": 1643251438432
-                }
-            ]
-        },
-        {
-            "auth_id": "testAuthUserIdRoman",
-            "handle_name": "roman",
-            "display_name": "Roman",
-            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_user_roman.jpg",
-            "follower_handle_names": ["kaori_hikita"],
-            "followee_handle_names": ["kaori_hikita"],
-            "followee_shops_handle_names": ["harries"],
-            "reviews": [
-                {
-                    "coffee_name": "Harriesスペシャルコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee11.jpeg",
-                    "description": "ベリーのような果実味とハチミツのような甘さ。ジャスミンティのような香りと柔らかさ！チョコレートタルトと一緒に食べるのがオススメです",
-                    "created_at": 1643251652850
-                },
-                {
-                    "coffee_name": "Harriesオリジナルコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee12.jpeg",
-                    "description": "ラズベリー、赤ブドウ、グアバのような果実感心地よい口当たりがやみつき！",
-                    "created_at": 1643251451315
-                },
-                {
-                    "coffee_name": "Harriesアメリカンコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee13.jpeg",
-                    "description": "とにかくおいしい！この一言に尽きる！！",
-                    "created_at": 1643251438432
-                },
-                {
-                    "coffee_name": "Harriesプレミアムコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee14.jpeg",
-                    "description": "コーヒーを飲み慣れた方に特におすすめしたいコーヒーです！",
-                    "created_at": 1643251438421
-                }
-            ]
-        },
-        {
-            "auth_id": "testAuthUserIdRichard",
-            "handle_name": "richard",
-            "display_name": "Richard",
-            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_user_richard.jpg",
-            "follower_handle_names": [],
-            "followee_handle_names": ["alice_white", "kaori_hikita"],
-            "followee_shops_handle_names": ["4th_coffee", "inutahiko_coffee"],
-            "reviews": [
-                {
-                    "coffee_name": "4th coffeeのブレンドコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee15.jpeg",
-                    "description": "目覚めに最高の一杯",
-                    "created_at": 1643251451313
-                },
-                {
-                    "coffee_name": "犬田彦オリジナルコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee1.jpeg",
-                    "description": "こんなにおいしいコーヒーがあったなんて！！感謝感激！！",
-                    "created_at": 1643251438475
-                }
-            ]
-        },
-        {
-            "auth_id": "testAuthUserIdAna",
-            "handle_name": "ana",
-            "display_name": "ana",
-            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_user_ana.jpg",
-            "follower_handle_names": ["wesley", "brian"],
-            "followee_handle_names": [],
-            "followee_shops_handle_names": ["moon_bucks", "arasuna"],
-            "reviews": [
-                {
-                    "coffee_name": "MoonBucksブレンドコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee2.jpeg",
-                    "description": "上質な味わい",
-                    "created_at": 1643251451318
-                },
-                {
-                    "coffee_name": "Arasuna Kiyosumiオリジナルコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee3.jpeg",
-                    "description": "最高においしい一杯でした！",
-                    "created_at": 1643251438460
-                }
-            ]
-        },
-        {
-            "auth_id": "testAuthUserIdWesley",
-            "handle_name": "wesley",
-            "display_name": "Wesley",
-            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_user_weslee.jpg",
-            "follower_handle_names": [],
-            "followee_handle_names": ["ana"],
-            "followee_shops_handle_names": ["moon_bucks", "arasuna"],
-            "reviews": [
-                {
-                    "coffee_name": "MoonBucksブレンドコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee4.jpeg",
-                    "description": "香りに癒されるとても素敵な一杯です！",
-                    "created_at": 1643251452318
-                },
-                {
-                    "coffee_name": "Arasuna Kiyosumiオリジナルコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee5.jpeg",
-                    "description": "さわやかな香りを感じる一杯！おすすめ！",
-                    "created_at": 1643251438458
-                }
-            ]
-        },
-        {
-            "auth_id": "testAuthUserIdBrian",
-            "handle_name": "brian",
-            "display_name": "Brian",
-            "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_user_brian.jpg",
-            "follower_handle_names": ["kaori_hikita"],
-            "followee_handle_names": ["ana"],
-            "followee_shops_handle_names": ["green_bottle_coffee", "arasuna"],
-            "reviews": [
-                {
-                    "coffee_name": "GreenBottleCoffeeのブレンドコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee6.jpeg",
-                    "description": "毎日欠かさず飲んでいます！これが無いともはや生きていけない！！",
-                    "created_at": 1643251533432
-                },
-                {
-                    "coffee_name": "Arasuna Kiyosumiオリジナルコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee7.jpeg",
-                    "description": "面白い香り！？",
-                    "created_at": 1643251438480
-                },
-                {
-                    "coffee_name": "Arasuna Kiyosumiアメリカンコーヒー",
-                    "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee8.jpeg",
-                    "description": "これはクセになる！！！",
-                    "created_at": 1643251424100
-                }
-            ]
+          "coffee_name": "Arasuna Kiyosumiエスプレッソコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee6.jpeg",
+          "description": "最高の一杯です！",
+          "created_at": 1643251352844
         }
-    ]
+      ]
+    },
+    {
+      "auth_id": "testAuthUserIdBob",
+      "handle_name": "bob_brown",
+      "display_name": "Bob",
+      "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_user_bob.jpeg",
+      "follower_handle_names": ["kaori_hikita", "alice_white"],
+      "followee_handle_names": ["kaori_hikita"],
+      "followee_shops_handle_names": [
+        "arasuna",
+        "coffeeeeen",
+        "green_bottle_coffee"
+      ],
+      "reviews": [
+        {
+          "coffee_name": "Arasuna Kiyosumiプレミアムコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee7.jpeg",
+          "description": "僕の中の、断トツのお気に入りのコーヒーが、このArasuna Kiyosumiプレミアムコーヒーです。みなさんも、ぜひ一度だまされたと思って試してみてください。絶対に後悔させません！",
+          "created_at": 1643252638432
+        },
+        {
+          "coffee_name": "coffeeeeenブレンドコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee8.jpeg",
+          "description": "キレのある上質な味わいがクセになる！",
+          "created_at": 1643251451480
+        },
+        {
+          "coffee_name": "GreenBottleアメリカンコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee9.jpeg",
+          "description": "若い方にも飲みやすい一杯だなと思います",
+          "created_at": 1643251352850
+        }
+      ]
+    },
+    {
+      "auth_id": "testAuthUserIdAlice",
+      "handle_name": "alice_white",
+      "display_name": "Alice",
+      "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_user_alice.jpeg",
+      "follower_handle_names": ["kaori_hikita", "bob_brown", "richard"],
+      "followee_handle_names": ["kaori_hikita"],
+      "followee_shops_handle_names": ["coffeeeeen", "yoneda_coffee", "toutor"],
+      "reviews": [
+        {
+          "coffee_name": "coffeeeeenブレンドコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee10.jpeg",
+          "description": "前から飲みたいと思っていたコーヒーなので、今回購入して本当に良かったです。1人でも多くの方に飲んでもらいたいコーヒーです！",
+          "created_at": 1643251451472
+        },
+        {
+          "coffee_name": "米田スペシャルコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee11.jpeg",
+          "description": "お値段が少し高めな印象ですが、味は最高でした",
+          "created_at": 1643251425542
+        },
+        {
+          "coffee_name": "TOUTORオリジナルコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee12.jpeg",
+          "description": "心に残る一杯！！",
+          "created_at": 1643251405542
+        }
+      ]
+    },
+    {
+      "auth_id": "testAuthUserIdMizki",
+      "handle_name": "mizki",
+      "display_name": "Mizki",
+      "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_user_mizki.jpg",
+      "follower_handle_names": ["kaori_hikita"],
+      "followee_handle_names": ["kaori_hikita", "mei_o"],
+      "followee_shops_handle_names": [
+        "coffeeeeen",
+        "yoneda_coffee",
+        "4th_coffee"
+      ],
+      "reviews": [
+        {
+          "coffee_name": "coffeeeeenブレンドコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee13.jpeg",
+          "description": "これからも継続して購入してきたいコーヒーです",
+          "created_at": 1643251451500
+        },
+        {
+          "coffee_name": "米田スペシャルコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee14.jpeg",
+          "description": "おいしいけど、値段が高いのがネックかな",
+          "created_at": 1643251425200
+        },
+        {
+          "coffee_name": "4th coffeeのブレンドコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee15.jpeg",
+          "description": "500gが4パックでこの値段は安くてコスパが抜群です。4th coffeeのブレンドコーヒーはとても飲みやすく気に入ってます。毎回箱の中を空けるのが楽しみです。これからもリピートします！",
+          "created_at": 1643251438466
+        }
+      ]
+    },
+    {
+      "auth_id": "testAuthUserIdNao",
+      "handle_name": "nao",
+      "display_name": "Nao",
+      "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_user_nao.jpg",
+      "follower_handle_names": ["paddy_p"],
+      "followee_handle_names": [],
+      "followee_shops_handle_names": ["coffeeeeen", "yoneda_coffee"],
+      "reviews": [
+        {
+          "coffee_name": "coffeeeeenブレンドコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee1.jpeg",
+          "description": "これからも継続して購入してきたいコーヒーです",
+          "created_at": 1643251451320
+        },
+        {
+          "coffee_name": "米田スペシャルコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee2.jpeg",
+          "description": "おいしいけど、値段が高いのがネックかな",
+          "created_at": 1643251424200
+        }
+      ]
+    },
+    {
+      "auth_id": "testAuthUserIdMei",
+      "handle_name": "mei_o",
+      "display_name": "mei",
+      "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_user_mei.jpg",
+      "follower_handle_names": ["kaori_hikita", "mizki"],
+      "followee_handle_names": [],
+      "followee_shops_handle_names": [
+        "coffeeeeen",
+        "moon_bucks",
+        "yoneda_coffee"
+      ],
+      "reviews": [
+        {
+          "coffee_name": "coffeeeeenブレンドコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee3.jpeg",
+          "description": "味わい深いコーヒーでした",
+          "created_at": 1643251451320
+        },
+        {
+          "coffee_name": "MoonBucksプレミアムコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee4.jpeg",
+          "description": "今まで購入したコーヒー豆の中で、おいしく、最高のコーヒータイムが味わえます。価格もお手頃で、この価格でこれだけ上質なコーヒーは他に無いのではないかと思います。私はこれまで多くのコーヒーを飲んできましたが、MoonBucksさんのプレミアムコーヒーは、他のコーヒーと比較にならない香りの良さだと思います。",
+          "created_at": 1643251438470
+        },
+        {
+          "coffee_name": "米田オリジナルコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee5.jpeg",
+          "description": "飲みやすいコーヒー。後味もさっぱりしているところが良い！",
+          "created_at": 1643251424200
+        }
+      ]
+    },
+    {
+      "auth_id": "testAuthUserIdPaddy",
+      "handle_name": "paddy_p",
+      "display_name": "Paddy",
+      "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_user_paddy.jpg",
+      "follower_handle_names": ["take_a_walk"],
+      "followee_handle_names": ["take_a_walk", "nao"],
+      "followee_shops_handle_names": ["arasuna"],
+      "reviews": [
+        {
+          "coffee_name": "Arasuna Kiyosumiオリジナルコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee6.jpeg",
+          "description": "これが無いと生きていけない！世界中の人に飲んでもらいたい最高のコーヒーです！",
+          "created_at": 1643251452418
+        },
+        {
+          "coffee_name": "Arasuna Kiyosumiプレミアムコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee7.jpeg",
+          "description": "初めて購入してみましたが、高級感あふれる香りが最高でした！",
+          "created_at": 1643251438451
+        }
+      ]
+    },
+    {
+      "auth_id": "testAuthUserIdWalk",
+      "handle_name": "take_a_walk",
+      "display_name": "Walk",
+      "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_user_walk.jpg",
+      "follower_handle_names": ["paddy_p"],
+      "followee_handle_names": ["paddy_p"],
+      "followee_shops_handle_names": ["toutor"],
+      "reviews": [
+        {
+          "coffee_name": "TOUTORオリジナルコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee8.jpeg",
+          "description": "5年前からヘビロテしています！TOUTORの中でもこのオリジナルコーヒーが一番好み！",
+          "created_at": 1643251452315
+        },
+        {
+          "coffee_name": "TOUTORプレミアムコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee9.jpeg",
+          "description": "少しお高めなので、ご褒美として購入しています",
+          "created_at": 1643251438465
+        },
+        {
+          "coffee_name": "TOUTORアメリカンコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee10.jpeg",
+          "description": "飲みやすく、朝の目覚めに最高の一杯です！",
+          "created_at": 1643251438432
+        }
+      ]
+    },
+    {
+      "auth_id": "testAuthUserIdRoman",
+      "handle_name": "roman",
+      "display_name": "Roman",
+      "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_user_roman.jpg",
+      "follower_handle_names": ["kaori_hikita"],
+      "followee_handle_names": ["kaori_hikita"],
+      "followee_shops_handle_names": ["harries"],
+      "reviews": [
+        {
+          "coffee_name": "Harriesスペシャルコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee11.jpeg",
+          "description": "ベリーのような果実味とハチミツのような甘さ。ジャスミンティのような香りと柔らかさ！チョコレートタルトと一緒に食べるのがオススメです",
+          "created_at": 1643251652850
+        },
+        {
+          "coffee_name": "Harriesオリジナルコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee12.jpeg",
+          "description": "ラズベリー、赤ブドウ、グアバのような果実感心地よい口当たりがやみつき！",
+          "created_at": 1643251451315
+        },
+        {
+          "coffee_name": "Harriesアメリカンコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee13.jpeg",
+          "description": "とにかくおいしい！この一言に尽きる！！",
+          "created_at": 1643251438432
+        },
+        {
+          "coffee_name": "Harriesプレミアムコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee14.jpeg",
+          "description": "コーヒーを飲み慣れた方に特におすすめしたいコーヒーです！",
+          "created_at": 1643251438421
+        }
+      ]
+    },
+    {
+      "auth_id": "testAuthUserIdRichard",
+      "handle_name": "richard",
+      "display_name": "Richard",
+      "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_user_richard.jpg",
+      "follower_handle_names": [],
+      "followee_handle_names": ["alice_white", "kaori_hikita"],
+      "followee_shops_handle_names": ["4th_coffee", "inutahiko_coffee"],
+      "reviews": [
+        {
+          "coffee_name": "4th coffeeのブレンドコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee15.jpeg",
+          "description": "目覚めに最高の一杯",
+          "created_at": 1643251451313
+        },
+        {
+          "coffee_name": "犬田彦オリジナルコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee1.jpeg",
+          "description": "こんなにおいしいコーヒーがあったなんて！！感謝感激！！",
+          "created_at": 1643251438475
+        }
+      ]
+    },
+    {
+      "auth_id": "testAuthUserIdAna",
+      "handle_name": "ana",
+      "display_name": "ana",
+      "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_user_ana.jpg",
+      "follower_handle_names": ["wesley", "brian"],
+      "followee_handle_names": [],
+      "followee_shops_handle_names": ["moon_bucks", "arasuna"],
+      "reviews": [
+        {
+          "coffee_name": "MoonBucksブレンドコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee2.jpeg",
+          "description": "上質な味わい",
+          "created_at": 1643251451318
+        },
+        {
+          "coffee_name": "Arasuna Kiyosumiオリジナルコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee3.jpeg",
+          "description": "最高においしい一杯でした！",
+          "created_at": 1643251438460
+        }
+      ]
+    },
+    {
+      "auth_id": "testAuthUserIdWesley",
+      "handle_name": "wesley",
+      "display_name": "Wesley",
+      "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_user_weslee.jpg",
+      "follower_handle_names": [],
+      "followee_handle_names": ["ana"],
+      "followee_shops_handle_names": ["moon_bucks", "arasuna"],
+      "reviews": [
+        {
+          "coffee_name": "MoonBucksブレンドコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee4.jpeg",
+          "description": "香りに癒されるとても素敵な一杯です！",
+          "created_at": 1643251452318
+        },
+        {
+          "coffee_name": "Arasuna Kiyosumiオリジナルコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee5.jpeg",
+          "description": "さわやかな香りを感じる一杯！おすすめ！",
+          "created_at": 1643251438458
+        }
+      ]
+    },
+    {
+      "auth_id": "testAuthUserIdBrian",
+      "handle_name": "brian",
+      "display_name": "Brian",
+      "icon": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/icon_user_brian.jpg",
+      "follower_handle_names": ["kaori_hikita"],
+      "followee_handle_names": ["ana"],
+      "followee_shops_handle_names": ["green_bottle_coffee", "arasuna"],
+      "reviews": [
+        {
+          "coffee_name": "GreenBottleCoffeeのブレンドコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee6.jpeg",
+          "description": "毎日欠かさず飲んでいます！これが無いともはや生きていけない！！",
+          "created_at": 1643251533432
+        },
+        {
+          "coffee_name": "Arasuna Kiyosumiオリジナルコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee7.jpeg",
+          "description": "面白い香り！？",
+          "created_at": 1643251438480
+        },
+        {
+          "coffee_name": "Arasuna Kiyosumiアメリカンコーヒー",
+          "image": "https://coffee-clip.s3.ap-northeast-1.amazonaws.com/coffee8.jpeg",
+          "description": "これはクセになる！！！",
+          "created_at": 1643251424100
+        }
+      ]
+    }
+  ]
 }

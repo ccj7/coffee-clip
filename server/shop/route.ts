@@ -1,11 +1,11 @@
 import { Router } from 'express'
 import {
-    getShops,
-    getShop,
-    getShopHandleNameCheck,
-    putShop,
-    postShop,
-    getShopFromUser,
+  getShops,
+  getShop,
+  getShopHandleNameCheck,
+  putShop,
+  postShop,
+  getShopFromUser,
 } from './controller'
 
 const routes = Router()
