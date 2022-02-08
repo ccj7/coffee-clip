@@ -21,11 +21,11 @@ $ git clone https://github.com/ccj7/coffee-clip.git
 2. 依存関係のインストール
 
 ```sh
-// フロントエンド
+# フロントエンド
 $ cd front
 $ npm i
 
-// サーバーサイド
+# サーバーサイド
 $ cd server
 $ npm i
 ```
@@ -33,14 +33,14 @@ $ npm i
 3. 以下のサンプルファイルをコピーして環境変数を設定します
 
 ```sh
-// プロジェクト全体
+# プロジェクト全体
 $ cp .env.sample .env
 
-// フロントエンド
+# フロントエンド
 $ cd front
 $ cp .env.sample .env
 
-// サーバーサイド
+# サーバーサイド
 $ cd server
 $ cp .env.sample .env
 ```
@@ -48,11 +48,11 @@ $ cp .env.sample .env
 4. 開発環境は以下のコマンドで立ち上げてください
 
 ```bash
-// フロントエンド
+# フロントエンド
 $ cd front
 $ npm run dev
 
-// サーバー
+# サーバー
 $ cd server
 $ npm run dev
 ```
