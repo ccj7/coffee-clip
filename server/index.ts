@@ -10,5 +10,5 @@ runSeedShop()
 runSeedUser()
 
 app.listen(PORT, (): void => {
-    console.log(`Start on port ${PORT}.`)
+  console.log(`Start on port ${PORT}.`)
 })

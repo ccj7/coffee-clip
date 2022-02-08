@@ -1,22 +1,22 @@
 import { Router } from 'express'
 import {
-    getUsers,
-    search,
-    getUserHandleNameCheck,
-    getOtherUser,
-    getUser,
-    getFolloweeReviews,
-    getFolloweeShops,
+  getUsers,
+  search,
+  getUserHandleNameCheck,
+  getOtherUser,
+  getUser,
+  getFolloweeReviews,
+  getFolloweeShops,
 } from './controller_get'
 
 import { postUser, postReview } from './controller_post'
 
 import {
-    putUserProfile,
-    followUser,
-    unfollowUser,
-    followShop,
-    unfollowShop,
+  putUserProfile,
+  followUser,
+  unfollowUser,
+  followShop,
+  unfollowShop,
 } from './controller_put'
 
 const routes = Router()
