@@ -1,6 +1,7 @@
 # COFEEE CLIP☕️
 
 COFFEE CLIP は、コーヒーを身近に感じてコーヒーで暮らしをもっと豊かにするための、コーヒー専門 SNS です。
+※デモ動画は[こちら](https://youtu.be/iNLA8MqJN6A?t=1830)からご覧ください
 
 ![top.png](imgs-for-readme/top.png)
 
